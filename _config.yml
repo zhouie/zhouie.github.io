@@ -117,7 +117,7 @@ abbrlink:
   rep: dec    #support dec(default) and hex
 
 # 评论系统
-issues:
+issues: false
   owner: zhouie
    repo: BlogComments
    token: f4abd58733d25a5ad53172d023a15acd189cf0da #没搞明白
