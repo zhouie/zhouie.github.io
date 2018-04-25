@@ -1,0 +1,48 @@
+language: node_js
+node_js: stable
+
+notifications:
+  email:
+    recipients:
+      - nanzhouie@gmail.com
+      - 2419853727@qq.com
+    on_success: change # default: change
+    on_failure: always # default: always
+
+install:
+  - npm install
+
+script:
+  - hexo clean
+  - hexo generate
+  - cp README.md ./public/README.md
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "zhouie"
+  - git config user.email "nanzhouie@gmail.com"
+  - git add .
+  - git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  
+  # Github Pages
+  - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master 
+  # Coding Pages
+  - git push --force --quiet "https://zhouie:${CO_TOKEN}@${CO_REF}" master:master
+  - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  # Github Pages
+  - git push --quiet "https://${CI_TOKEN}@${GH_REF}" master:master --tags
+  # Coding Pages
+  - git push --quiet "https://zhouie:${CO_TOKEN}@${CO_REF}" master:master --tags
+
+
+branches:
+  only:
+    - blog
+
+env:
+ global:
+   # Github Pages
+   - GH_REF: github.com/zhouie/zhouie.github.io
+   # Coding Pages
+   - CO_REF: git.coding.net/zhouie/zhouie.coding.me.git
