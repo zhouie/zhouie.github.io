@@ -119,7 +119,7 @@ abbrlink:
 # 评论系统
 issues:
   owner: zhouie
-   repo: BlogComments
+   repo: zhouie.github.io
    token: b2192fb5b25daec721d02647fb4614f9d4d08190 #没搞明白
          
 

@@ -113,7 +113,7 @@ uyan_uid: false
 gitment: 
   enable: false
   owner: zhouie
-  repo: zhouie.github.io
+  repo: zhouie.github.io 
   client_id: fd11fc3e8a0403e142bd
   client_secret: f556ee9f983c7c52a003bfd101c5e3e4c03d8303
 
