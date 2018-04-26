@@ -29,6 +29,9 @@ menu:
   code:
     text: 作品
     url: /works
+  about:
+    text: 关于
+    url: /about
 
 
 # 你的头像url
