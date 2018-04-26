@@ -119,7 +119,7 @@ gitment:
 
 # 是否使用 gitalk，https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false
   repo: zhouie.github.io
   owner: zhouie
   admin: zhouie
@@ -129,13 +129,13 @@ gitalk:
 
 # Valine Comment system. https://valine.js.org
 valine:
-  enable: false # 如果你想使用valine，请将值设置为 true
-  appId:  # your leancloud appId
-  appKey:  # your leancloud appKey
+  enable: true # 如果你想使用valine，请将值设置为 true
+  appId:  76LtLdyVhce7hiGaqN8kTlgc-gzGzoHsz # your leancloud appId
+  appKey: wLgyxnvOp3T5cdL7xO45AC1j # your leancloud appKey
   notify: false # Mail notify
   verify: false # Verify code
-  avatar: mm # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
-  placeholder: Just go go # Comment Box placeholder
+  avatar: 'mm'  # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
+  placeholder: 'just go go' # Comment Box placeholder
   guest_info: nick,mail,link # Comment header info
   pageSize: 10 # comment list page size
 

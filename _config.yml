@@ -117,10 +117,10 @@ abbrlink:
   rep: dec    #support dec(default) and hex
 
 # 评论系统
-issues:
-  owner: zhouie
-   repo: zhouie.github.io
-   token: b2192fb5b25daec721d02647fb4614f9d4d08190 #没搞明白
+#issues:
+#  owner: zhouie
+#   repo: zhouie.github.io
+#   token: b2192fb5b25daec721d02647fb4614f9d4d08190 #没搞明白
          
 
 # 个人作品
