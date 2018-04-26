@@ -29,7 +29,7 @@ menu:
   code:
     text: 作品
     url: /works
-  about:
+  user-o:
     text: 关于
     url: /about
 
