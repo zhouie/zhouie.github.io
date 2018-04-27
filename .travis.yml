@@ -17,6 +17,7 @@ script:
   - hexo generate
   - cp README.md ./public/README.md
   - cp CNAME ./public/CNAME
+  - cp robots.txt ./public/robots.txt
 
 after_script:
   - cd ./public
