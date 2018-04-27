@@ -1,4 +1,4 @@
 ﻿title: 音乐
 layout: pages
 ---
-{% meting "2202609320" "netease" "playlist" "mutex:false" "listmaxheight:360px" "preload:none" "theme:#99CCCC"%}
+{% meting "2202609320" "netease" "playlist" "mutex:true" "listmaxheight:360px" "preload:metadata" "theme:#99CCCC"%}
