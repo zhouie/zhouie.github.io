@@ -94,8 +94,8 @@ cnzz: false
 baidu_tongji: 840d0f85db8546fc7578e9a459f10d7f
 
 # 腾讯分析，如要开启，输入站点id
-tajs: 65782384
-
+tajs: 65795960
+        
 # google
 google_analytics: UA-117762077-1
 google_site_verification: false
