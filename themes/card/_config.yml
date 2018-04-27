@@ -26,6 +26,9 @@ menu:
   film:
     text: 电影
     url: /movies
+  music:
+    text: 音乐
+    url: /musics
   code:
     text: 作品
     url: /works
