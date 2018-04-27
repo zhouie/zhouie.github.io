@@ -37,7 +37,7 @@ menu:
 # 你的头像url
 avatar: assets/images/avatar.jpg
 # avatar link
-avatar_link: /
+avatar_link: /about
 # 头像背景图
 brand: assets/images/brand.jpg
 # favicon
@@ -90,14 +90,14 @@ postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅�
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
 cnzz: false
 
-# 百度统计，如要开启，改为你的 key
-baidu_tongji: false
+# 百度统计，如要开启，改为你的 key ID,负责设为false
+baidu_tongji: 840d0f85db8546fc7578e9a459f10d7f
 
 # 腾讯分析，如要开启，输入站点id
 tajs: 65782384
 
 # google
-google_analytics: false
+google_analytics: UA-117762077-1
 google_site_verification: false
 
 # less
@@ -132,7 +132,7 @@ gitalk:
 
 # Valine Comment system. https://valine.js.org
 valine:
-  enable: true # 如果你想使用valine，请将值设置为 true
+  enable: false # 如果你想使用valine，请将值设置为 true
   appId:  76LtLdyVhce7hiGaqN8kTlgc-gzGzoHsz # your leancloud appId
   appKey: wLgyxnvOp3T5cdL7xO45AC1j # your leancloud appKey
   notify: false # Mail notify
@@ -160,7 +160,7 @@ visit_counter:
   site_pv: 站点总访问量：
 
 reading_time: 
-  wpm: 150 #每分钟阅读字数
+  wpm: 180 #每分钟阅读字数
   display: min. #显示文本标识
 
 # 动态定义title
