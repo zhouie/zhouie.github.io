@@ -6,7 +6,7 @@
     var sDesc = truncate(strip_html(page.excerpt || config.description), { length: 80})
     var sPic = page.photos && page.photos.length ? page.photos[0]
         : (/^(http:|https:)?\/\//.test(theme.avatar) ? theme.avatar
-            : config.url.replace(\/\/$/, '') + theme.avatar)
+            : config.url.replace(/\/$/, '') + theme.avatar)
 %>
 
 <div class="<%- scope %>-share" id="<%- scope %>Share">
@@ -27,7 +27,7 @@
         </a>
       </li>
       <li>
-        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%-sUrl%>&sharesource=qzone&title=<%-sTitle%>&pics=<%-sPic%>&summary=<%-sDesc%>" data-title="人人网">
+        <a class="renren share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=<%-sUrl%>&sharesource=qzone&title=<%-sTitle%>&pics=<%-sPic%>&summary=<%-sDesc%>" data-title="人人网">
           <i class="icon icon-renren"></i>
         </a>
       </li>
@@ -36,7 +36,6 @@
           <img src="http://p7n85i5tr.bkt.clouddn.com/zhouie/img/logo/qz_logo.png"/>
         </a>
       </li>
-
       <li>
         <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%-sUrl%>" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
