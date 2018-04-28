@@ -6,7 +6,7 @@
     var sDesc = truncate(strip_html(page.excerpt || config.description), { length: 80})
     var sPic = page.photos && page.photos.length ? page.photos[0]
         : (/^(http:|https:)?\/\//.test(theme.avatar) ? theme.avatar
-            : config.url.replace(/\/$/, '') +'/'+ theme.avatar)
+            : config.url.replace(/\/$/, '') + theme.avatar)
 %>
 
 <div class="<%- scope %>-share" id="<%- scope %>Share">

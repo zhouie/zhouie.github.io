@@ -38,13 +38,13 @@ menu:
 
 
 # 你的头像url
-avatar: assets/images/avatar.jpg
+avatar: /assets/images/avatar.jpg
 # avatar link
 avatar_link: /about
 # 头像背景图
-brand: assets/images/brand.jpg
+brand: /assets/images/brand.jpg
 # favicon
-favicon: assets/images/favicon.ico
+favicon: /assets/images/favicon.ico
 
 # email
 email: nanzhouie@gmail.com
