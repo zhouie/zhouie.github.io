@@ -125,7 +125,7 @@ gitment:
 
 # 是否使用 gitalk，https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
+  enable: true
   repo: zhouie.github.io
   owner: zhouie
   admin: zhouie
