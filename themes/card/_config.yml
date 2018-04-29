@@ -35,12 +35,13 @@ menu:
   user-secret:
     text: 关于
     url: /about
-  github:
-    url: https://github.com/zhouie
-    target: _blank
-  weibo:
-    url: http://weibo.com/5736541528/
-    target: _blank
+
+# github:
+#   url: https://github.com/zhouie
+#   target: _blank
+# weibo:
+#   url: http://weibo.com/5736541528/
+#   target: _blank
 
 
 # 你的头像url
@@ -137,10 +138,10 @@ valine:
   enable: true # 如果你想使用valine，请将值设置为 true
   appId:  76LtLdyVhce7hiGaqN8kTlgc-gzGzoHsz # your leancloud appId
   appKey: wLgyxnvOp3T5cdL7xO45AC1j # your leancloud appKey
-  notify: false # Mail notify
-  verify: false # Verify code
-  avatar: 'mm'  # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
-  placeholder: 'just go go' # Comment Box placeholder
+  notify: true # Mail notify
+  verify: true # Verify code
+  avatar: 'retro'  # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide Link：https://valine.js.org/avatar/
+  placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!' # Comment Box placeholder
   guest_info: nick,mail,link # Comment header info
   pageSize: 10 # comment list page size
 
