@@ -43,7 +43,7 @@ layout: pages
 ​
 # 📝更新日志
 
-> 详见[这里](https://zhouie.coding.me/posts/2018042721/)
+> 详见[这里](https://zhouie.cn/posts/201804271/)
 
 * `2018-01-13`正式开始
 * `2018-02-04`完成了基于[Jekyll](https://www.jekyll.com.cn/)框架下[Vno-Jekyll](https://github.com/onevcat/vno-jekyll)主题的静态网站搭建
