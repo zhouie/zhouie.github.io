@@ -130,7 +130,7 @@ gitment:
 
 # 是否使用 gitalk，https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false
   repo: zhouie.github.io
   owner: zhouie
   admin: zhouie
