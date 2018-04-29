@@ -26,13 +26,13 @@ menu:
   film:
     text: 电影
     url: /movies
-  music:
+  headphones:
     text: 音乐
     url: /musics
   code:
     text: 作品
     url: /works
-  user-o:
+  user-secret:
     text: 关于
     url: /about
 
@@ -102,6 +102,11 @@ tajs: 65795960
 # google
 google_analytics: UA-117762077-1
 google_site_verification: false
+
+
+# sogou站长验证 http://zhanzhang.sogou.com/
+sogou_site_verification: false
+
 
 # less
 less:
