@@ -8,8 +8,8 @@ tags:
   - Git
   - CI持续集成
   - Travis CI
-abbrlink: 732638714
-date: 2018-04-27 11:09:41
+abbrlink: 201804261
+date: 2018-04-26 11:09:41
 ---
 
 ## 完成Hexo主题安装和配置
@@ -22,7 +22,7 @@ date: 2018-04-27 11:09:41
 
 [NexT 主题](https://github.com/iissnan/hexo-theme-next/blob/master/README.cn.md)，一个高质量并且优雅的`Hexo`主题，[NexT使用文档](http://theme-next.iissnan.com/)..
 
-当然了，`Hexo`主题很多，更多可访问[这里](https://hexo.io/themes/)
+当然了，`Hexo`主题很多，更多可访问[官网](https://hexo.io/themes/)以及[Hexo's GitHub WiKi](https://github.com/hexojs/hexo/wiki)
 
 
 ## 基于Travis CI实现同步部署
@@ -45,3 +45,5 @@ date: 2018-04-27 11:09:41
 * [Travis自动部署Hexo四](https://jingyan.baidu.com/article/215817f7b606e81eda142388.html)
 * [Travis自动部署Hexo五](https://jingyan.baidu.com/article/b87fe19e57eb54521935684d.html)
 * [Travis自动部署Hexo六](https://jingyan.baidu.com/article/bea41d43a6cd12b4c41be64e.html)
+
+

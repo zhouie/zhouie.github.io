@@ -5,7 +5,7 @@ categories:
 tags:
   - SSL
   - HTTPS
-abbrlink: 345689316
+abbrlink: 201804231
 date: 2018-04-23 10:01:44
 ---
 
@@ -29,7 +29,7 @@ date: 2018-04-23 10:01:44
 
 默认情况下使用GitHub Pages的给定域名则支持http和https两种协议，但是如果使用自定义域名的话，则只能通过`http://`访问，也就是说我们在`Github上搭建 Hexo 或Jekyll 主题博客`后，通过`CNAME`绑定个人域名后，我们只能通过`http://`域名来访问。如果访问`https://XXX.github.io/`(即原来的GitHub Pages域名)将会被重定向到`我们的自定义域名`。但若直接访问`https://我们的自定义域名`，浏览器会报`SSL_DOMAIN_NOT_MATCHED`警告。
 
->附：`在Github上搭建 Hexo 或Jekyll 主题博客`，这个网上教程很多，提供一篇我之前有写过的一篇教程[Jekyll 搭建个人博客](https://zhouie.cn/2018/02/Jekyll-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E6%8B%93%E5%B1%95%E7%89%88/)。
+>附：`在Github上搭建 Hexo 或Jekyll 主题博客`，这个网上教程很多，提供一篇我之前有写过的一篇教程[Jekyll 搭建个人博客](https://zhouie.cn/posts/201802151/)。
 
 
 那么怎么给自己的域名加上`https`呢？这个时候就需要使用第三方网站的证书了。而GitHub Pages并不支持上传SSL证书。
