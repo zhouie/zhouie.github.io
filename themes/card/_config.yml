@@ -103,7 +103,6 @@ tajs: 65795960
 google_analytics: UA-117762077-1
 google_site_verification: false
 
-
 # less
 less:
   compress: true
@@ -126,12 +125,12 @@ gitment:
 
 # 是否使用 gitalk，https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
+  on: true
   repo: zhouie.github.io
   owner: zhouie
   admin: zhouie
-  clientID: efe2b85ecf0d05958f93
-  clientSecret: 3080f5e8248ec7a2ccb49feb2f9abac5c09439f9
+  clientID: 68bb0419d294bb60b0d8
+  clientSecret: 19d618298567a6a134f1a19427149aae4c8f4d91
   distractionFreeMode: true
 
 # Valine Comment system. https://valine.js.org
