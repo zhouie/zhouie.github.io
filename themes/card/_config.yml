@@ -95,7 +95,6 @@ cnzz: false
 
 # 百度统计，如要开启，改为你的 key ID,负责设为false
 baidu_tongji: 691056d9723d4c6dc862bc15de1dc5d4
-baidu-site-verification: Cxah1phI1M
 
 # 腾讯分析，如要开启，输入站点id
 tajs: 65795960
@@ -103,10 +102,6 @@ tajs: 65795960
 # google
 google_analytics: UA-117762077-1
 google_site_verification: false
-
-
-# sogou站长验证 http://zhanzhang.sogou.com/
-sogou_site_verification: KeXFovGst3
 
 
 # less
