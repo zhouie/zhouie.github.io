@@ -9,12 +9,8 @@ Allow: /works/
 Allow: /about/
 Allow: /musics/
 
-Disallow: /vendors/
-Disallow: /js/
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /vendors/
-Disallow: /fancybox/
+Disallow: /wiki/
+Disallow: /assets/
 
 Sitemap: https://www.zhouie.cn/sitemap.xml
 Sitemap: https://www.zhouie.cn/baidusitemap.xml
