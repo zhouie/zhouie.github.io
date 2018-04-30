@@ -3,40 +3,40 @@
         <%- partial('plugins/site-visit') %>
         <p>
             <% if ((config.feed) && (config.feed.path.length)) { %>
-                <span><a href="<%- url_for(config.feed.path) %>" target="_blank" class="rss" title="rss"><i class="icon icon-rss"></i></a></span>
+                <span><a href="<%- url_for(config.feed.path) %>" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-rss"></i></a></span>
             <% } %>
             <span>
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="license" title="License">
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" >
                     <i class="icon icon-cc"></i>
                 </a>
             </span>
             <span>
-                <a href="https://www.travis-ci.org/zhouie/zhouie.github.io" rel="license" title="Travis CI" target="_blank">
+                <a href="https://www.travis-ci.org/zhouie/zhouie.github.io" rel="external nofollow" title="Travis CI" target="_blank">
                     <i class="icon icon-cloud-upload"></i>
                 </a>
             </span>
             <span>
-                <a href="https://github.com/zhouie/zhouie.github.io" rel="license" title="Github" target="_blank">
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="Github" target="_blank" >
                     <i class="icon icon-github"></i>
                 </a>
             </span>
             <span>
-                <a href="http://weibo.com/u/5736541528" rel="license" title="Weibo" target="_blank">
+                <a href="http://weibo.com/u/5736541528" rel="license" title="Weibo" target="_blank" rel="external nofollow">
                     <i class="icon icon-weibo"></i>
                 </a>
             </span>
             <span>
-                <a href="https://plus.google.com/110700564157953759206" title="Google+" target="_blank">
+                <a href="https://plus.google.com/110700564157953759206" title="Google+" target="_blank" rel="external nofollow">
                     <i class="icon icon-google-plus"></i>
                 </a>
             </span>
             <span>
-                <a href="http://www.linkedin.com/in/zhouie/" title="Linkedin" target="_blank">
+                <a href="http://www.linkedin.com/in/zhouie/" title="Linkedin" target="_blank" rel="external nofollow">
                     <i class="icon icon-linkedin"></i>
                 </a>
             </span>
             <span>
-                <a href="https://www.paypal.me/zhouie" rel="license" title="PayPal.me" target="_blank">
+                <a href="https://www.paypal.me/zhouie" rel="external nofollow" title="PayPal.me" target="_blank">
                     <i class="icon icon-paypal"></i>
                 </a>
             </span>
@@ -53,7 +53,7 @@
                 <% if(theme.ICP_license) {%>
                 <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a><br>
                 <% } %>
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+                Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
             </span>
         </p>
     </div>
