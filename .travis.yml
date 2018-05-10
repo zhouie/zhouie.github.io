@@ -18,7 +18,6 @@ script:
   - cp README.md ./public/README.md
   - cp CNAME ./public/CNAME
   - cp robots.txt ./public/robots.txt
-  - cp baidu_verify_Cxah1phI1M.html ./public/baidu_verify_Cxah1phI1M.html
   - cp sogousiteverification.txt ./public/sogousiteverification.txt
 
 after_script:
