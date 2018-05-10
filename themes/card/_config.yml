@@ -98,10 +98,13 @@ toc:
 postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
 
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
-cnzz: false
+cnzz: 1273664769
 
 # 百度统计，如要开启，改为你的 key ID,负责设为false
 baidu_tongji: 691056d9723d4c6dc862bc15de1dc5d4
+
+#百度自动推送功能
+baidu_push: true
 
 # 腾讯分析，如要开启，输入站点id
 tajs: 65795960
