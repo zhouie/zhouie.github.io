@@ -31,4 +31,4 @@ Material Design 风格的Hexo主题，基于 Hexo 3.0+ 制作。 你可以点击
 * [收纳箱(二)](https://zhouie.cn/posts/201805011)
 * [【国漫】天行九歌](https://zhouie.cn/posts/201805121)
 * [Driver License](https://zhouie.cn/posts/201805261)
-* [物联网概论复习总结](https://zhouie.cn/posts/201805261)
+* [物联网概论复习总结](https://zhouie.cn/posts/201805271)
