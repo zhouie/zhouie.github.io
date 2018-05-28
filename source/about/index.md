@@ -16,6 +16,7 @@ layout: pages
 &nbsp;🔹接触较多的便是**前端开发**，目前计划深入地去做**Android**、**小程序**这块的拓展提升
 &nbsp;🔹坚定的**共产主义**追随者，中共预备党员
 &nbsp;🔹还是希望以后有机会，去邻国日本**旅居**一段时间
+&nbsp;🔖[个人简历](https://zhouie.cn/zhouie.cn-blog.pdf)™
 
 
 # 🐕友情链接

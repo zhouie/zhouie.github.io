@@ -19,7 +19,8 @@ script:
   - cp CNAME ./public/CNAME
   - cp robots.txt ./public/robots.txt
   - cp sogousiteverification.txt ./public/sogousiteverification.txt
-
+  - cp zhouie.cn-blog.pdf ./public/zhouie.cn-blog.pdf
+  
 after_script:
   - cd ./public
   - git init
