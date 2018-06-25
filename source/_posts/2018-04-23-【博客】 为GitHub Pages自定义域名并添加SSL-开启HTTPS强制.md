@@ -1,5 +1,5 @@
 ﻿---
-title: 为GitHub Pages自定义域名并添加SSL-开启https强制
+title: 【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制
 categories:
   - 博客
 tags:

@@ -1,5 +1,5 @@
 ---
-title: 基于Travis CI实现Hexo在Github和Coding的同步自动化部署
+title: 【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署
 categories:
   - 博客
 tags:
