@@ -2,47 +2,38 @@
    "items":
    [
       {
-        "title":"My Albums",
+        "title":"Albums",
         "date":"2017.12",
-        "cover":"http://img.my.csdn.net/uploads/201804/09/1523204437_3851.jpg",
-        "subTitle":"这是什么",
-        "description":"作品描述........................................................................................................",
-        "link": "https://zhouie.cn",
-        "tags": ["标签1","标签2","标签3"]
+        "cover":"http://p7n85i5tr.bkt.clouddn.com/zhouie/img/works/albums/albums.jpg",
+        "subTitle":"北岛向南的老店 · 相册",
+        "description":"起先是因为想做一个Online Albums，恰巧碰到了HTML5 UP提供的这个主题框架，还是比较适合的。当然现在看来这样还是不怎么满意，不过自定义这个过程还是挺有意思的那时候。目前照片什么的更多的是放在500px(国内)以及Flickr(国外)。",
+        "link": "https://javef.github.io/project/albums/",
+        "tags": ["html-up","albums"]
        },
        {
         "title":"2048",
-        "date":"2018.04",
+        "date":"2018.02",
         "cover":"http://p7n85i5tr.bkt.clouddn.com/zhouie/img/works/2048/2048.jpg",
-        "subTitle":"2048，了解一下？",
-        "description":"意外蹿红的小游戏—— 这是20岁的Gabriele Cirulli开发的一款数字游戏。初衷就是觉得好玩，在将其开源版本放到Github上后，意外走红。这款游戏的玩法很简单，每次可以选择上下左右滑动，每滑动一次，所有的数字方块都会往滑动的方向靠拢，系统也会在空白的地方乱数出现一个数字方块，相同数字的方块在靠拢、相撞时会相加，不断的叠加最终拼凑出2048这个数字就算成功。",
+        "subTitle":"北岛向南的老店 · 2048",
+        "description":"意外蹿红的小游戏—— 20岁的Gabriele Cirulli开发的一款数字游戏，将其开源版本放到Github上后，意外走红。这款游戏的玩法很简单，每次可以选择上下左右滑动，每滑动一次，所有的数字方块都会往滑动的方向靠拢，系统也会在空白的地方乱数出现一个数字方块，相同数字的方块在靠拢、相撞时会相加，不断的叠加最终拼凑出2048这个数字就算成功。",
         "link": "https://javef.github.io/project/2048/",
         "tags": ["小游戏","2048"]
        },{
-        "title":"2048",
-        "date":"2018.04",
-        "cover":"http://img.my.csdn.net/uploads/201804/09/1523204437_3851.jpg",
-        "subTitle":"2048，了解一下？",
-        "description":"意外蹿红的小游戏—— 这是20岁的Gabriele Cirulli开发的一款数字游戏。初衷就是觉得好玩，在将其开源版本放到Github上后，意外走红。这款游戏的玩法很简单，每次可以选择上下左右滑动，每滑动一次，所有的数字方块都会往滑动的方向靠拢，系统也会在空白的地方乱数出现一个数字方块，相同数字的方块在靠拢、相撞时会相加。不断的叠加最终拼凑出2048这个数字就算成功。",
-        "link": "https://javef.github.io/project/2048/",
-        "tags": ["小游戏","2048"]
+        "title":"Webrtc",
+        "date":"2018.??",
+        "cover":"http://p7n85i5tr.bkt.clouddn.com/zhouie/img/works/webrtc/webrtc.jpg",
+        "subTitle":"北岛向南的小屋 · Webrtc视聊",
+        "description":"WebRTC（Web Real-Time Communication）项目的最终目的主要是让Web开发者能够基于浏览器轻易快捷开发出丰富的实时多媒体应用，而无需下载安装任何插件，Web开发者也无需关注多媒体的数字信号处理过程，只需编写简单的Javascript程序即可实现；另外WebRTC还希望能够建立一个多互联网浏览器间健壮的实时通信的平台，形成开发者与浏览器厂商良好的生态环境。之前在一门课程上已经弄好了webrtc实时通信的完整框架了，也做了一个简单的线上demo，只是距离上线还未进行完善优化处理。目前也没时间更新这PART，只能等等看之后有没有一段时间来做这个吧。",
+        "link": "https://javef.github.io/project/webrtc/",
+        "tags": ["webrtc","视聊"]
        },{
-        "title":"2048",
+        "title":"Lab",
         "date":"2018.04",
-        "cover":"http://img.my.csdn.net/uploads/201804/09/1523204437_3851.jpg",
-        "subTitle":"2048，了解一下？",
-        "description":"意外蹿红的小游戏—— 这是20岁的Gabriele Cirulli开发的一款数字游戏。初衷就是觉得好玩，在将其开源版本放到Github上后，意外走红。这款游戏的玩法很简单，每次可以选择上下左右滑动，每滑动一次，所有的数字方块都会往滑动的方向靠拢，系统也会在空白的地方乱数出现一个数字方块，相同数字的方块在靠拢、相撞时会相加。不断的叠加最终拼凑出2048这个数字就算成功。",
-        "link": "https://javef.github.io/project/2048/",
-        "tags": ["小游戏","2048"]
-       },{
-        "title":"2048",
-        "date":"2018.04",
-        "cover":"http://img.my.csdn.net/uploads/201804/09/1523204437_3851.jpg",
-        "subTitle":"2048，了解一下？",
-        "description":"意外蹿红的小游戏—— 这是20岁的Gabriele Cirulli开发的一款数字游戏。初衷就是觉得好玩，在将其开源版本放到Github上后，意外走红。这款游戏的玩法很简单，每次可以选择上下左右滑动，每滑动一次，所有的数字方块都会往滑动的方向靠拢，系统也会在空白的地方乱数出现一个数字方块，相同数字的方块在靠拢、相撞时会相加。不断的叠加最终拼凑出2048这个数字就算成功。",
-        "link": "https://javef.github.io/project/2048/",
-        "tags": ["小游戏","2048"]
+        "cover":"http://p7n85i5tr.bkt.clouddn.com/zhouie/img/works/lab/lab.jpg",
+        "subTitle":"北岛向南的老店 · Lab",
+        "description":"这里列举了一些在平时学习、逛贴过程中碰到过的CSS样式、JS动画实例等，以作测试、演示、收集...",
+        "link": "https://javef.github.io/project/mylab/",
+        "tags": ["html-css","测试演示","收集"]
        }
-
    ]
 }
