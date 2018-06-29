@@ -33,7 +33,7 @@ layout: pages
 | Where | Social Links |
 | :--:			| :--:|
 | 邮箱	 		| <nanzhouie@gmail.com>🍦 |
-| 微信公众号		| 欢迎关注[北岛向南](http://img.my.csdn.net/uploads/201804/08/1523153885_1616.jpg)(ID:nanzhouie)🍟 |
+| 微信公众号		| 欢迎关注[北岛向南](http://parov0k9s.bkt.clouddn.com/img/share/%E5%8C%97%E5%B2%9B%E5%90%91%E5%8D%97.png)(ID:nanzhouie)🍟 |
 | Flickr 		| [愿有人陪你颠沛流离](https://www.flickr.com/photos/nanzhouie/)☕ |
 | 网易云音乐 	| [南城四月里的小巷](http://music.163.com/#/user/home?id=426481614)🍩 |
 | 豆瓣			| [那时我们有梦](https://www.douban.com/people/jave_f/)🍰 |
