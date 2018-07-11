@@ -43,6 +43,7 @@ date: 2018-07-10 23:30:11
 至于安装JDK的步骤，一直默认Next即可，没有什么需要特别注意的。
 
 #### 配置本机JAVA环境
+
 * 安装完成后，右击"我的电脑"，点击"属性"，选择"高级系统设置"
 
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/2.png)
@@ -142,6 +143,7 @@ date: 2018-07-10 23:30:11
 此外，我们在maven项目中运行`mvn install`，项目将会自动打包并安装到本地仓库中。
 
 * 仓库镜像的配置 
+
 maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.org/maven2/](http://repo1.maven.org/maven2/)，一般不翻墙的话速度非常慢
 
 在setting.xml中找到`<mirrors>…………</mirrors>`的位置，在`<mirrors>…………</mirrors>`中间加入你想要的仓库的标签，这里推荐几个国内网速比较快，资源比较全的仓库
@@ -263,6 +265,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-2.png)
 
 * eclipse中更新配置文件
+
 找到`User settings`，修改配置文件为之前已经修改好了的配置文件`settings.xml`
 
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-3.png)
