@@ -1,5 +1,5 @@
 ---
-title: 【软件测试】 简易版selenium环境搭建-Eclipse
+title: 【软件测试】 Selenium环境搭建-Eclipse 简易教程
 categories:
   - 软件测试
 tags:
