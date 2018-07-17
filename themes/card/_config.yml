@@ -44,14 +44,14 @@ menu:
 #   target: _blank
 
 
-# 你的头像url
+# 你的头像url /assets/images/avatar.jpg
 avatar: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/avatar.jpg
 # avatar link
 avatar_link: /
 # 头像背景图
-brand: /assets/images/brand.jpg
+brand: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/brand.jpg
 # favicon
-favicon: /assets/images/favicon.ico
+favicon: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/favicon.ico
 
 # email
 email: nanzhouie@gmail.com
@@ -80,8 +80,8 @@ share: true
 # 是否开启打赏，关闭 reward: false
 reward:
   title: 赠人玫瑰，手有余香
-  wechat: /assets/images/wechat.png     #微信，关闭设为 false
-  alipay: /assets/images/alipay.jpg     #支付宝，关闭设为 false
+  wechat: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/wechat.png     #微信，关闭设为 false
+  alipay: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/alipay.jpg     #支付宝，关闭设为 false
 
 # 是否开启搜索
 search: true
@@ -95,7 +95,7 @@ toc:
   list_number: true  # 是否显示数字排序
 
 # 文章页留言内容，hexo中所有变量及辅助函数等均可调用，具体请查阅 hexo.io
-postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
+# postMessage: 这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
 
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
 cnzz: 1273664769
