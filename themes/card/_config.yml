@@ -51,7 +51,7 @@ avatar_link: /
 # 头像背景图
 brand: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/brand.jpg
 # favicon
-favicon: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/favicon.ico
+favicon: /assets/images/favicon.ico
 
 # email
 email: nanzhouie@gmail.com
