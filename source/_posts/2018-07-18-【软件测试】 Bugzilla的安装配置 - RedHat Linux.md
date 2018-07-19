@@ -23,8 +23,8 @@ date: 2018-07-18 22:13:31
 ### 准备点什么
 #### 下载
 
-[Red Hat Linux光盘映像文件]()，提取码：
-[Bugzilla光盘映像文件]()，提取码：
+[Red Hat Linux光盘映像文件](https://pan.baidu.com/s/1jGPsHFOiDGD47gHHXhhfdA)，提取码：skny
+[Bugzilla光盘映像文件](https://pan.baidu.com/s/1xENl7EHPPNOlkxAIlWpXQg)，提取码：3f4f
 
 #### 安装环境
 
