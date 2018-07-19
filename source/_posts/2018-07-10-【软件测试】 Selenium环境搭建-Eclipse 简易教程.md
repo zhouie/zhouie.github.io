@@ -5,6 +5,7 @@ categories:
 tags:
   - selenium
   - UI自动化
+  - 实习
 abbrlink: 201807101
 date: 2018-07-10 23:30:11
 ---
