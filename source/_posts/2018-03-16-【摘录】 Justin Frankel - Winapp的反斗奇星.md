@@ -31,7 +31,13 @@ date: 2018-03-16 13:21:34
 麻烦还不仅如此。2003年5月，Nullsoft开发了WASTE，一种私人的加密P2P文件共享软件。通过AOL Instant Messenger或ICQ，它可以安全地传送文件和消息而不被记录和察觉。不可避免，AOL立即取消WASTE项目。为此Frankel威胁要辞职，但他仍然在公司留了很长时间，直到Winamp 5.0完成。
 离开AOL后，Justin Frankel一点都不寂寞，成立了一家新公司Cockos，尝试实现各种有趣的想法，比如实时的声效处理软硬件、HTTP包的拦截、目录同步工具等。谁知道哪一天这位反斗奇星又会给我们带来怎样的新惊喜？
 
+---
+补充一下，近来有接触到Foobar2000这款免费的多功能音频播放器，作者是也是原Winamp开发公司[Nullsoft](http://www.winamp.com/index.html)成员 **Peter Pawlowski**。除了播放之外，它还支持生成媒体库、转换媒体文件编码、提取CD等功能，是一款功能强大的音频处理工具。Foobar2000之所以出现，便是在于Peter Pawlowski 不满于Winamp2.x的插件体系架构和更倾向于图形、外观的发展方向的 Winamp3。从使用上来看，这款软件很好用也有一些插件什么的，可以用来扩展功能。
+
 相关链接：
 
 [百度云分享](https://pan.baidu.com/s/1tkjCIvCRz5J4dt3FxU4WOA)（提取码：6lxk）
 [https://www.cockos.com/index.php](https://www.cockos.com/index.php)
+[foobar2000音频播放器](http://www.foobar2000.org/)
+[Foobar2000的汉化版](http://blog.sina.com.cn/go2spa)
+
