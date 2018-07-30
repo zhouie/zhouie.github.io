@@ -284,7 +284,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 [mozilla-geckodriver](https://github.com/mozilla/geckodriver/releases/)
 
-[chromedriver](http://npm.taobao.org/mirrors/chromedriver)
+[chromedriver](http://npm.taobao.org/mirrors/chromedriver)、[chromedriver2](http://chromedriver.storage.googleapis.com/index.html)
 
 **注意**：为了避免浏览器与Driver版本上的不匹配，所以建议大家下载相应的最新版driver，并将浏览器更新至最新版，这样就可以避免出现不必要的错误。
 
