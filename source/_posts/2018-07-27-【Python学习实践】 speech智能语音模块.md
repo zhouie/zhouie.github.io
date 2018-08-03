@@ -39,12 +39,17 @@ IntelliJ IDEA 注册码:[http://idea.lanyus.com/](http://idea.lanyus.com/)以及
 IDEA系列主题下载地址：[http://www.riaway.com/theme.php](http://www.riaway.com/theme.php)，这些主题支持的IDE包括：InteliJ IDEA, PhpStorm, PyCharm, RubyMine, WebStorm and AppCode。
 
 注：怎么安装下载的主题
+
 1. 从主菜单打开你的编辑器选择` File->Import Setting` ，选择你下载的jar文件;
 2. 等待重启之后进行配置：打开` File->Settings->Editor->Colors and fonts`，然后选择你安装的主题即可完成。
 
 #### 安装pywin32扩展库
 
-pywin32即 `Python for Windows Extensions`，提供了Pyhton访问和调用Windows底层功能函数的接口，pywin32包括了`win32api`、`win32com`、`win32gui`、`win32process`等模块，下载地址：[https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/](https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/)，这个要 **根据Python版本（2.\*/3.\*）和CPU位数（32位/64位）下载相应版本并安装**。
+pywin32即 `Python for Windows Extensions`，提供了Pyhton访问和调用Windows底层功能函数的接口，pywin32包括了`win32api`、`win32com`、`win32gui`、`win32process`等模块
+
+下载地址：[https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/](https://sourceforge.net/projects/pywin32/files/pywin32/Build%20221/)
+
+这个要 **根据Python版本（2.\*/3.\*）和CPU位数（32位/64位）下载相应版本并安装**。
 
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/speech/2.png)
 
@@ -92,7 +97,7 @@ pywin32即 `Python for Windows Extensions`，提供了Pyhton访问和调用Windo
 2. line157 修改`print prompt`，改成`print(prompt)`；
 3. 对最后的函数`_ensure_event_thread`修改如下：
 
-```
+```python
 class T(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -135,7 +140,7 @@ def _ensure_event_thread():
 4. 既然谈到这儿，就多聊一些关于音频方面的内容，比如，如何使用Python播放`mp3`、`wav`、`ogg`格式的音频文件
     - 调用系统默认播放器播放
     
-    ```
+    ```python
     import time
     import os
     file = r'F:/Test/musicT/Hello.mp3'
@@ -146,7 +151,7 @@ def _ensure_event_thread():
         + pygame.mixer.Sound，主要加载ogg和wav音频文件。
         + pygame.mixer.music，主要加载mp3音频文件。
 
-    ```
+    ```python
     import time
     import pygame
     file = r'F:/Test/musicT/Hello.mp3'
@@ -158,7 +163,7 @@ def _ensure_event_thread():
     ```
     - mp3play播放，语速正常，但貌似目前只能用于python2.\*，不支持python3.\*
     
-    ```
+    ```python
     import time
     import mp3play
 
@@ -179,7 +184,7 @@ def _ensure_event_thread():
 
 当然，也可以[去GitHub上Download Latest Version](https://github.com/zhouie/vir_speaker)，嗯emmm..，提前感谢您的`star` ⭐
 
-```
+```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Time    : 2018/7/27 18:01

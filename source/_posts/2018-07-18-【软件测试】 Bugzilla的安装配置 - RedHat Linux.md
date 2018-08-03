@@ -40,13 +40,16 @@ date: 2018-07-18 22:13:31
 1、如何查看发行版本、内核版本
 
 查看内核版本
-```
+
+```shell
 uname -a            #显示电脑以及操作系统的相关信息
 或
 cat /proc/version   #正在运行的内核版本
 ```
+
 查看发行版本
-````
+
+```shell
 cat /etc/redhat-release
 或
 cat /etc/issue
@@ -58,7 +61,7 @@ cat /etc/issue
 
 2、如何查看perl解释器、MySQL数据库、Apache服务器版本
 
-```
+```shell
 rpm -q perl         #perl解释器
 rpm -q httpd        #Apache服务器版本
 mysql --version     #MySQL数据库
@@ -70,7 +73,8 @@ mysql --version     #MySQL数据库
 ##### 安装Apache(httpd服务)
 
 注意，这需要挂载至磁盘1，也就是`shrike-i386-disc1.iso`磁盘下，至于怎么挂载，请参照下面的动图来操作即可。
-```
+
+```shell
 mount /dev/cdrom /mnt/cdrom
 ```
 挂载之后，再去安装httpd服务（因为Linux镜像文件自带httpd服务的安装包，所以没去在线下载，当然了在线下载也是可以的），因为我之前已经安装过一次了，所以，再次安装它会提示我`Already installed`。
@@ -81,7 +85,7 @@ mount /dev/cdrom /mnt/cdrom
 
 修改IP地址确保虚拟机与主机网络地址相同（前三个字段），这样互相才能ping通。因为我的网络IP地址是随机分配的，所以我这里选择临时修改IP地址方式。当然网上也有更多一些其他方式，自查
 
-```
+```shell
 ifconfig eth0 192.168.1.103 netmask 255.255.255.0
 ```
 
@@ -91,7 +95,7 @@ ifconfig eth0 192.168.1.103 netmask 255.255.255.0
 
 将磁盘挂起至`/mnt/cdrom`目录下，挂起步骤如上所示（ps：`umount /mnt/cdrom` 解开挂载指令）
 
-```
+```shell
 mount /dev/cdrom /mnt/cdrom
 ```
 
@@ -102,7 +106,8 @@ mount /dev/cdrom /mnt/cdrom
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/4.png)
 
 之后我们需要将`/mnt/cdrom`中的文件复制cp到`/tmp`目录下
-```
+
+```shell
 mkdir /tmp/perl
 cp /mnt/cdrom/* /tmp/
 cp /mnt/cdrom/perl/* /tmp/perl/

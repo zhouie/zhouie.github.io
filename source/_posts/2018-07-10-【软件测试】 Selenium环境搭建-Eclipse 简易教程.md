@@ -151,7 +151,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 1、阿里云的maven仓库
 
-```
+```xml
 <mirror>
       <id>alimaven</id>
       <name>aliyun maven</name>
@@ -162,7 +162,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 2、开源中国的仓库
 
-```
+```xml
 <mirror>  
     <id>nexus-osc</id>  
     <mirrorOf>central</mirrorOf>  
@@ -189,7 +189,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 进入Maven目录下，找到settings.xml文件，然后在`<proxies>`标签中加入如下信息：
 
-```
+```xml
     <proxies> 
     <proxy>
       <id>my-proxy</id>
@@ -322,7 +322,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 ![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/23.png)
 
 pom.xml文件修改前：
-```
+```xml
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -334,7 +334,7 @@ pom.xml文件修改前：
 ```
 
 pom.xml文件修改后：
-```
+```xml
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -371,7 +371,7 @@ pom.xml文件修改后：
 
 * 编写一段如下所示的Demo代码
 
-```
+```java
 package com.xtu2018.one;
 
 import org.openqa.selenium.By;
