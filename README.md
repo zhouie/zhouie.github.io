@@ -1,6 +1,7 @@
 
 [![Build Status](https://www.travis-ci.org/zhouie/zhouie.github.io.svg?branch=blog)](https://www.travis-ci.org/zhouie/zhouie.github.io)
 
+[TOC]
 
 ## About Theme
 
