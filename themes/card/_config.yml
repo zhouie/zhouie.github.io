@@ -188,3 +188,6 @@ lightbox: true
 
 # icp备案号  ICP_license: 京ICP备1234556号-1
 ICP_license: false
+
+# 公安安备号 beian_gov : 43030202001139
+beian_gov : 43030202001139
