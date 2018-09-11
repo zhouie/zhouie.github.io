@@ -50,9 +50,9 @@
     <div class="bottom">
         <p>
             <span>
-                <%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%><%- date(new Date(), 'YYYY') %>
+                <%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%> <%- date(new Date(), 'YYYY') %>
 
-                Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+                Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
             </span>
             <span>
                 <% if(theme.ICP_license) {%>
