@@ -48,21 +48,21 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span><%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%><%- date(new Date(), 'YYYY') %></span>
+        <p>
             <span>
-                
-                <% if(theme.beian_gov) {%>
-                <div style="width:300px;margin:0 auto; padding:20px 0;">
-                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="http://wx2.sinaimg.cn/large/006fVPCvly1fv5i9fklj6j300k00kq36.jpg" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43030202001139号</p></a>
-                </div><br>
-                <% } %>
-
-                <% if(theme.ICP_license) {%>
-                <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a><br>
-                <% } %>
+                <%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%><%- date(new Date(), 'YYYY') %>
 
                 Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a>
+            </span>
+            <span>
+                <% if(theme.ICP_license) {%>
+                <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a>
+                <% } %>
                 
+                <% if(theme.beian_gov) {%>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139"><img src="http://wx2.sinaimg.cn/large/006fVPCvly1fv5i9fklj6j300k00kq36.jpg" style="float:left;"/>湘公网安备 43030202001139号</a>
+                <% } %>
+
                 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
             </span>
         </p>
