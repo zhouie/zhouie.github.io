@@ -57,3 +57,4 @@ layout: pages
 * `2018-04-28`完成了基于[Hexo](https://hexo.io/zh-cn/)框架下[indigo](https://github.com/yscoder/hexo-theme-indigo)主题的静态网站搭建
 * `2018-04-29`基于[Travis CI](https://www.travis-ci.org/)实现[Hexo](https://hexo.io/zh-cn/)在[Github](https://github.com/)和[Coding](https://coding.net/)的同步自动化部署
 * `2018-04-30`将评论系统更换为[Valine](https://valine.js.org/)
+* `2018-09-11`成功通过湘公网安备案 43030202001139
