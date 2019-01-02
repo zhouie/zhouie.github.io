@@ -129,9 +129,10 @@ uyan_uid: false
 
 # 是否使用 gitment，https://github.com/imsun/gitment
 gitment: false
+
 # gitment:
 #  owner: zhouie
-#  repo: zhouie.github.io 
+#  repo: zhouie.github.io
 #  client_id: fd11fc3e8a0403e142bd
 #  client_secret: f556ee9f983c7c52a003bfd101c5e3e4c03d8303
 
@@ -144,7 +145,7 @@ valine:
   notify: true # Mail notify
   verify: true # Verify code
   avatar: 'retro'  # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide Link：https://valine.js.org/avatar/
-  placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!' # Comment Box placeholder
+  placeholder: '(ヾﾉ≧∀≦)o来啊，快活啊!' # Comment Box placeholder
   guest_info: nick,mail,link # Comment header info
   pageSize: 10 # comment list page size
 

@@ -5,7 +5,7 @@ notifications:
   email:
     recipients:
       - nanzhouie@gmail.com
-      - 2419853727@qq.com
+      - nanzhouie@qq.com
     on_success: change # default: change
     on_failure: always # default: always
 
