@@ -81,7 +81,7 @@ share: true
 reward:
   title: 赠人玫瑰，手有余香
   wechat: https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg     #微信，关闭设为 false
-  alipay: https://i.loli.net/2019/02/22/5c6f8f754a6de.jpg     #支付宝，关闭设为 false
+  alipay: https://i.loli.net/2019/02/22/5c6f9576d940e.jpg     #支付宝，关闭设为 false
 
 # 是否开启搜索
 search: true
@@ -172,13 +172,13 @@ visit_counter:
   site_pv: 站点总访问量：
 
 reading_time: 
-  wpm: 180 #每分钟阅读字数
+  wpm: 170 #每分钟阅读字数
   display: min. #显示文本标识
 
 # 动态定义title
-title_change: false
-  #normal: (つェ⊂)咦!又好了!
-  #leave: 死鬼去哪里了！
+title_change: true
+  normal: (つェ⊂)咦!又好了!
+  leave: 死鬼去哪里了！
 
 # 设置为 true 发布后将使用 unpkg cdn 最新的主题样式
 # 如果想让你的自定义样式生效，把此项设为 false
