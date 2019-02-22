@@ -45,11 +45,11 @@ menu:
 
 
 # 你的头像url /assets/images/avatar.jpg
-avatar: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/avatar.jpg
+avatar: https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg
 # avatar link
 avatar_link: /
 # 头像背景图
-brand: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/brand.jpg
+brand: https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg
 # favicon
 favicon: /assets/images/favicon.ico
 
@@ -80,8 +80,8 @@ share: true
 # 是否开启打赏，关闭 reward: false
 reward:
   title: 赠人玫瑰，手有余香
-  wechat: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/wechat.png     #微信，关闭设为 false
-  alipay: http://p7n85i5tr.bkt.clouddn.com/zhouie/conf/alipay.jpg     #支付宝，关闭设为 false
+  wechat: https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg     #微信，关闭设为 false
+  alipay: https://i.loli.net/2019/02/22/5c6f8f754a6de.jpg     #支付宝，关闭设为 false
 
 # 是否开启搜索
 search: true
