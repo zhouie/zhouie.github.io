@@ -23,8 +23,8 @@ date: 2018-07-18 22:13:31
 ### 准备点什么
 #### 下载
 
-[Red Hat Linux光盘映像文件](https://pan.baidu.com/s/1jGPsHFOiDGD47gHHXhhfdA)，提取码：skny
-[Bugzilla光盘映像文件](https://pan.baidu.com/s/1xENl7EHPPNOlkxAIlWpXQg)，提取码：3f4f
+* [Red Hat Linux光盘映像文件](https://pan.baidu.com/s/1jGPsHFOiDGD47gHHXhhfdA)，提取码：skny
+* [Bugzilla光盘映像文件](https://pan.baidu.com/s/1xENl7EHPPNOlkxAIlWpXQg)，提取码：3f4f
 
 #### 安装环境
 
@@ -79,7 +79,7 @@ mount /dev/cdrom /mnt/cdrom
 ```
 挂载之后，再去安装httpd服务（因为Linux镜像文件自带httpd服务的安装包，所以没去在线下载，当然了在线下载也是可以的），因为我之前已经安装过一次了，所以，再次安装它会提示我`Already installed`。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/1.gif)
+![](https://i.loli.net/2019/02/24/5c729679b3fcb.gif)
 
 ##### 修改IP信息
 
@@ -89,7 +89,7 @@ mount /dev/cdrom /mnt/cdrom
 ifconfig eth0 192.168.1.103 netmask 255.255.255.0
 ```
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/2.png)
+![](https://i.loli.net/2019/02/24/5c7296794d331.png)
 
 #### 第一阶段
 
@@ -99,11 +99,11 @@ ifconfig eth0 192.168.1.103 netmask 255.255.255.0
 mount /dev/cdrom /mnt/cdrom
 ```
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/3.gif)
+![](https://i.loli.net/2019/02/24/5c729679cc472.gif)
 
 磁盘挂载后，这个目录`/mnt/cdrom`下有着这些文件：(3个MySQL.rpm文件、gcc.rpm文件、perl文件夹、buzilla压缩包)
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/4.png)
+![](https://i.loli.net/2019/02/24/5c7296794ebcc.png)
 
 之后我们需要将`/mnt/cdrom`中的文件复制cp到`/tmp`目录下
 
@@ -113,12 +113,12 @@ cp /mnt/cdrom/* /tmp/
 cp /mnt/cdrom/perl/* /tmp/perl/
 ```
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/5.png)
+![](https://i.loli.net/2019/02/24/5c72967957cbe.png)
 
 解压bugzilla文件包，然后将文件移到`/var/www/html/bugzilla`目录下（ps:`/var/www/html`为apache的 docroot，可以在`httpd.conf`中修改`DocumentRoot "/var/www/html"`这条语句来换个位置）
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/6-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/6-2.png)
+![](https://i.loli.net/2019/02/24/5c72967952169.png)
+![](https://i.loli.net/2019/02/24/5c729679505bd.png)
 
 注意：记住上面提到的几个目录：`/tmp`、`/tmp/perl`、`/var/www/html/bugzilla`，在整个安装过程中可能会在这几个目录来回切入切出，所以心里要有点数：每个目录下的文件有哪些？是干嘛的？
 
@@ -128,9 +128,9 @@ cp /mnt/cdrom/perl/* /tmp/perl/
 
 主要安装的组件有哪些呢？可以通过这个命令来实时看一下自己还需要安装哪些
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/7-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/7-2.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/7-3.png)
+![](https://i.loli.net/2019/02/24/5c7296e936292.png)
+![](https://i.loli.net/2019/02/24/5c7296e9347f2.png)
+![](https://i.loli.net/2019/02/24/5c7296e939aa3.png)
 
 * AppConfig
 * CGI
@@ -156,21 +156,21 @@ perl指令说明
 (一)、安装AppConfig-1.56
 进入/tmp/perl,解压AppConfig-1.56.tar.gz，然后进入AppConfig-1.56文件，perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/8-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/8-2.png)
+![](https://i.loli.net/2019/02/24/5c7296e92ea66.png)
+![](https://i.loli.net/2019/02/24/5c7296e93b480.png)
 
 (二)、安装CGI.pm-3.05
 进入/tmp/perl,解压CGI.pm-3.05.tar.gz，然后进入CGI.pm-3.05,perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/9-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/9-2.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/9-3.png)
+![](https://i.loli.net/2019/02/24/5c7296e93057a.png)
+![](https://i.loli.net/2019/02/24/5c7296e937f9f.png)
+![](https://i.loli.net/2019/02/24/5c7296e931cd6.png)
 
 (三)、安装TimeDate-1.16
 进入/tmp/perl,解压TimeDate-1.16.tar.gz，然后进入TimeDate-1.16,perl Makefile.PL、make、make test 、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/10-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/10-2.png)
+![](https://i.loli.net/2019/02/24/5c729748e2199.png)
+![](https://i.loli.net/2019/02/24/5c729748ea40e.png)
 
 (四)、安装DBI-1.45
 进入/tmp/perl,解压DBI-1.45.tar.gz，然后进入DBI-1.45,perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more
@@ -179,23 +179,23 @@ perl指令说明
 
 (五)、安装MySQL-client-4.0.21-0.i386.rpm、MySQL-devel-4.0.21-0.i386.rpm、MySQL-server-4.0.21-0.i386.rpm
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/11.png)
+![](https://i.loli.net/2019/02/24/5c72974983945.png)
 
 (六)、安装DBD-mysql-2.9004(要在安装了数据库之后安装)
 进入/tmp/perl,解压DBD-mysql-2.9004.tar.gz，然后进入DBD-mysql-2.9004.,unset LANG(清掉设置，如有Makefile文件将它删掉)、perl Makefile.PL、make、make test 、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/12-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/12-2.png)
+![](https://i.loli.net/2019/02/24/5c729749869c7.png)
+![](https://i.loli.net/2019/02/24/5c72974985168.png)
 
 (七)、安装gcc -3.2.2-5.i386.rpm
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/13.png)
+![](https://i.loli.net/2019/02/24/5c729749da754.png)
 
 (八)、安装gd-2.0.33
 进入/tmp/perl,解压gd-2.0.33.tar.gz，然后进入gd-2.0.33,./configure、make、make check、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/14-1.png)
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/14-2.png)
+![](https://i.loli.net/2019/02/24/5c7297864888c.png)
+![](https://i.loli.net/2019/02/24/5c729787eb935.png)
 
 (九)、安装GD-2.30
 进入/tmp/perl,解压GD-2.30.tar.gz ，然后进入GD-2.30,perl Makefile.PL、make、make test、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more
@@ -237,13 +237,13 @@ perl指令说明
 
 `cd /var/www/html/bugzilla`，进入修改bugzilla目录下，`vi localconfig`，修改localconfig文件
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/15.png)
+![](https://i.loli.net/2019/02/24/5c72978779fc1.png)
 
 (二)、修改Apache的配置
 
 > 我们需要通过配置来告诉Apache新安装的bugzilla的位置，并且特别告知它是一个cgi程序，具体配制方法就是在apache的conf/httpd.conf文件中加入以下代码：
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/16.png)
+![](https://i.loli.net/2019/02/24/5c729786e6cf7.png)
 
 说明：
 `AddHandler cgi-script .cgi` 指明这个目录是cgi应用；`Options Indexes ExecCGI` 赋予执行 cgi应用的权力 
@@ -252,10 +252,10 @@ Apache的配置文件 httpd.conf 在`/etc/httpd/conf`目录下，注意，修改
 
 #### 最后一步
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/17.png)
+![](https://i.loli.net/2019/02/24/5c7297879f355.png)
 
 按照上面的操作走完之后，将会提示输入管理员邮件地址、真实用户名、密码，至于，bugzilla的安装已经完成。
 
 访问服务器IP/bugzilla（这里的服务器IP就是之前配置的临时IP地址，这个依照你主机的IP地址来定就好，比如我的就是http://192.168.1.103/bugzilla/index.cgi）
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/bugzilla/18.png)
+![](https://i.loli.net/2019/02/24/5c729787e537c.png)

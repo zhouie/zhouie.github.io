@@ -39,7 +39,7 @@ date: 2018-07-10 23:30:11
 
 相信不少朋友的电脑上都安装配置有JAVA环境（JDK），那么可以通过`Win + R` -> `cmd` -> `java -version` 来查看是否安装了JAVA环境以及相应JDK版本
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/1.png)
+![](https://i.loli.net/2019/02/24/5c7183ee1e53d.png)
 
 至于安装JDK的步骤，一直默认Next即可，没有什么需要特别注意的。
 
@@ -47,15 +47,15 @@ date: 2018-07-10 23:30:11
 
 * 安装完成后，右击"我的电脑"，点击"属性"，选择"高级系统设置"
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/2.png)
+![](https://i.loli.net/2019/02/24/5c7183ee2a3b8.png)
 
 * 选择"高级"选项卡，点击"环境变量"
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/3.png)
+![](https://i.loli.net/2019/02/24/5c7183ee3619f.png)
 
 * 然后就会出现如下图所示的画面：
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/4.png)
+![](https://i.loli.net/2019/02/24/5c7183ee4da10.png)
 
 * 在"**系统变量**"中设置3项属性，JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击"编辑"，不存在则点击"新建"。变量设置参数如下：
 
@@ -75,7 +75,7 @@ date: 2018-07-10 23:30:11
     - `Win + R` -> `cmd`
     - 键入命令: `java -version`、`java`、`javac` 几个命令，出现以下信息，说明环境变量配置成功
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/5.png)
+![](https://i.loli.net/2019/02/24/5c7183ee59364.png)
 
 #### Eclipse IDE
 至于Eclipse IDE，网上版本有很多，不过我个人还是建议到[Eclipse官网](http://www.eclipse.org/)下载安装，功能完善还很放心
@@ -94,7 +94,7 @@ date: 2018-07-10 23:30:11
 #### 下载与安装
 这里提供一个Maven程序包：[apache-maven-3.3.9](https://pan.baidu.com/s/1vnn9JAZ57nKqfPjskUTAvw)，提取密码：3xwe。当然，也可前往[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)下载编译过的版本
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/6.png)
+![](https://i.loli.net/2019/02/24/5c7183eed3abb.png)
 
 * 将文件解压到`D:\Program Files\apache-maven-3.3.9`目录下，文件目录结构如下所示：
     - bin目录：该目录包含了mvn运行的脚本，这些脚本用来配置Java命令；
@@ -105,29 +105,29 @@ date: 2018-07-10 23:30:11
     - NOTICE.txt：记录了Maven包含的第三方软件。
     - README.txt
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/7.png)
+![](https://i.loli.net/2019/02/24/5c7183ee6ebf6.png)
 
 * 同JDK环境配置一样，新建环境变量 `MAVEN_HOME`，赋值`D:\Program Files\apache-maven-3.3.9`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/8.png)
+![](https://i.loli.net/2019/02/24/5c7183ee9a16f.png)
 
 * 新建环境变量 `MAVEN` ，赋值 `%MAVEN_HOME%\bin`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/9.png)
+![](https://i.loli.net/2019/02/24/5c720d2f593a3.png)
 
 * 新建环境变量 `MAVEN_OPTS` ，赋值 `-Xms256m -Xmx512m`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/10.png)
+![](https://i.loli.net/2019/02/24/5c720d2f7a212.png)
 
 * 编辑环境变量`Path`，增加`%MAVEN%;`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/11.png)
+![](https://i.loli.net/2019/02/24/5c720d2f983fe.png)
 
 * 测试mvn是否安装成功
     - `Win + R` -> `cmd`
     - 键入命令: `mvn -v`，出现以下信息，说明mvn环境配置成功
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/12.png)
+![](https://i.loli.net/2019/02/24/5c720d2f864eb.png)
 
 #### 配置Maven本地仓库
 
@@ -179,7 +179,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 * 运行`mvn help:system`命令验证一下，运行情况应该如下图所示，如果前面的配置成功，那么`E:\maven-repository`会出现一些文件。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/13.png)
+![](https://i.loli.net/2019/02/24/5c720d2fa6003.png)
 
 * 这里补充一下，要不要设置HTTP代理呢？
 
@@ -227,7 +227,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 打开eclipse，点击`help–>Install New Software`,然后输入要下载插件的链接地址：`http://m2eclipse.sonatype.org/sites/m2e`，如下图
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/14.png)
+![](https://i.loli.net/2019/02/24/5c720d2f908ba.png)
 
 勾选择要下载的项，点击下一步进行下载。下载完成会自动安装。安装速度跟你自身网速和服务器有关。
 
@@ -236,7 +236,7 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 打开eclipse，点击`help–>Eclipse Marketplace`,然后输入`maven`回车搜索，选择以下勾选的插件"`Maven Integration for Eclipse (Luna)`"，点击`Install`安装
 参考网站：[http://marketplace.eclipse.org/content/maven-integration-eclipse-luna](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/15.png)
+![](https://i.loli.net/2019/02/24/5c720d2f92bc2.png)
 
 #### 方式二、离线安装
 [eclipse-maven3-plugin.zip](https://pan.baidu.com/s/1UXkFZloKFgmWQhSQL1Hnjg)，提取密码：x5hq。
@@ -253,23 +253,23 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 将解压后的子文件夹`features`和`plugins`的`jar包文件`分别导入Eclipse安装目录下的`features`和`plugins`文件夹内，然后重启Eclipse就可以在`Preferences`中看到Maven选项了，即Maven插件配置成功。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16.png)
+![](https://i.loli.net/2019/02/24/5c720d9897467.png)
 
 保证Eclipse有了Maven插件后，那么就按照下面的步骤来 **配置Maven**:
 
 * 在`windows -> preferences`中找到maven选项，下图
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-1.png)
+![](https://i.loli.net/2019/02/24/5c720d9895339.png)
 
 * 找到`maven -> installations`，选择`add按钮`，找到的maven的对应路径，如下
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-2.png)
+![](https://i.loli.net/2019/02/24/5c720d989fc49.png)
 
 * eclipse中更新配置文件
 
 找到`User settings`，修改配置文件为之前已经修改好了的配置文件`settings.xml`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-3.png)
+![](https://i.loli.net/2019/02/24/5c720d98a189c.png)
 
 至此，Maven和eclipse的集成已经完成！
 
@@ -290,38 +290,39 @@ maven自带的仓库是国外的maven官方的一个仓库[http://repo1.maven.or
 
 下载好对应浏览器的Driver之后，将其解压放在浏览器安装目录下。比如，我用的是google浏览器，所以对应下载的是最高版本的`chromedriver.exe`，解压后放在对应Google浏览器的安装目录下，如下图所示
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/16-4.png)
+![](https://i.loli.net/2019/02/24/5c720d98a330f.png)
 
 
 ### Eclipse中新建Maven项目并安装selenium依赖
 
 * 打开eclipse，点击`File –> New -> Project`,输入`Maven`搜索，选择`Maven Project`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/17.png)
+![](https://i.loli.net/2019/02/24/5c720d989c6cb.png)
 
 * 一直点击Next（3次），填入相关名称信息，点击Finish完成。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/18.gif)
+![](https://i.loli.net/2019/02/24/5c720d98cd138.gif)
 
 * 如果没有什么问题的话，侧边栏`Project Explorer`中会出现一个正常的文件夹（这里的正常意味着未爆红，并且有`Maven Dependencies`这样一个目录）
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/19.png)
+![](https://i.loli.net/2019/02/24/5c720d989e33e.png)
 
 * 打开新建Maven项目`xtu2018`下的`pom.xml`文件，搜索定位到`<dependencies>`标签处
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/20.png)
+![](https://i.loli.net/2019/02/24/5c720d98a9bdb.png)
 
 * 去[http://mvnrepository.com/](http://mvnrepository.com/)**maven公共库网站**搜索`selenium`，选择第一项`Selenium Java`，点击进入，建议选择最新版本（也可以结合用户数参考）
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/21.png)
+![](https://i.loli.net/2019/02/24/5c7283d45a4aa.png)
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/22.png)
+![](https://i.loli.net/2019/02/24/5c7283d47ef13.png)
 
 * 比如我这里选择了`Selenium Java 3.13.0`，那么点击`3.13.0`进入后，复制页面下方Maven对应代码块，粘贴至`pom.xml`文件对应位置并保存修改。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/23.png)
+![](https://i.loli.net/2019/02/24/5c7283d4a371e.png)
 
 pom.xml文件修改前：
+
 ```xml
   <dependencies>
     <dependency>
@@ -334,6 +335,7 @@ pom.xml文件修改前：
 ```
 
 pom.xml文件修改后：
+
 ```xml
   <dependencies>
     <dependency>
@@ -354,7 +356,7 @@ pom.xml文件修改后：
 
 * 在对`pom.xml`修改后并保存，Maven项目文件下的`Maven Dependencies`文件目录下会多出很多这样的`*.jar`包，如果是第一次创建Maven项目，那么加入这些`*.jar`包的时间要求很长，需要耐心等待才能看到这样的变化，当然也不乏会出一些问题，当然，这都是后话...
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/24.png)
+![](https://i.loli.net/2019/02/24/5c7283d4d0892.png)
 
 * 如果这些`*.jar`包加入正常，没出什么问题，也就意味着selenium依赖安装完成（其实这在上面截图中的`*.jar`包中可以找到），那么就可以很愉快地直接进入代码编写阶段了...
 
@@ -363,11 +365,11 @@ pom.xml文件修改后：
 
 * 移除掉`src/test/java`下的`com.xtu2018`包
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/25.png)
+![](https://i.loli.net/2019/02/24/5c7283d4785a4.png)
 
 * 并在`src/test/java`下新建一个包package`com.xtu2018.one`，再在该包下新建一个类`demo01.java`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/26.png)
+![](https://i.loli.net/2019/02/24/5c7283d476a10.png)
 
 * 编写一段如下所示的Demo代码
 
@@ -407,4 +409,4 @@ public class demo01 {
 }
 ```
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/selenium/27.gif)
+![](https://i.loli.net/2019/02/24/5c7283d54ed24.gif)

@@ -31,7 +31,7 @@ date: 2018-08-03 23:11:31
 1、 下载 qimage-win
 首先从 [github](https://github.com/jiwenxing/qimage-win/releases) 下载最新的release版本(推荐使用2.*正式版)，并解压到任意目录，在`qimage-win`文件夹中看到的目录结构应该如下：
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/1.png)
+![](https://i.loli.net/2019/02/24/5c729db110375.png)
 
 其中`dump-clipboard-png.ps1`是保存截图的`powershell`脚本，`qiniu-image-upload.ahk`即完成文件上传的`AutoHotkey`脚本。
 
@@ -41,7 +41,7 @@ date: 2018-08-03 23:11:31
 
 这款软件的安装很简单，正常安装Next就行。具体软件更多学习内容可参照——[AutoHotkey中文帮助](http://ahkcn.sourceforge.net/docs)
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/2.png)
+![](https://i.loli.net/2019/02/24/5c729db1e25f8.png)
 
 3、 注册七牛云账号并创建一个bucket
 
@@ -65,7 +65,7 @@ date: 2018-08-03 23:11:31
 
 `qimage-win` 文件夹中打开`settings.ini`文件，可以看到:
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/3.png)
+![](https://i.loli.net/2019/02/24/5c729db119e46.png)
 
 这里的配置项都需要根据自己的七牛云账号以及所创建的 bucket 进行修改，后面的两个配置项为可选配置，默认情况下可以暂时先不管。
 
@@ -77,7 +77,7 @@ date: 2018-08-03 23:11:31
 
 在`对象存储->存储空间列表`中选择或新建一个存储空间即 bucket，点击该 bucket 在右边看到一个测试域名，该域名`bucketDomain`便是图片上传后的访问域名，特别注意域名不要少了前面的`http://`头部。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/4.gif)
+![](https://i.loli.net/2019/02/24/5c729db18a0e1.gif)
 
 完成文件上传的`AutoHotkey`脚本中默认的快捷键是`^!V`，即`Ctrl+Alt+V`(其中，`^`代表`Ctrl`，`!`为`Alt`)，如果您希望修改为其它自己更习惯的快捷键，直接对`qiniu-image-upload.ahk`脚本修改即可生效。
 
@@ -91,15 +91,15 @@ date: 2018-08-03 23:11:31
 
 本地图片文件上传
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/5.gif)
+![](https://i.loli.net/2019/02/24/5c729db1a6e5d.gif)
 
 截图上传
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/6.gif)
+![](https://i.loli.net/2019/02/24/5c729db19e933.gif)
 
 其它文件上传
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/qiniu_upload/7.gif)
+![](https://i.loli.net/2019/02/24/5c729db20647e.gif)
 
 ### Q&A
 

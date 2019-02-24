@@ -30,7 +30,7 @@ date: 2018-07-27 20:25:11
 
 在众多IDE中，最受大家追捧的一款便是PyCharm了，作为 **JetBrains**全家桶的一份子，这款软件具备完善功能，如：调试、语法高亮、项目管理、代码跳转、智能提示、自动完成，单元测试甚至版本控制等。另外，它还提供了一些很好的功能用于 **Django 开发**，同时支持 **Google App Engine**，更酷的是，PyCharm 支持 **IronPython**。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/speech/1.png)
+![](https://i.loli.net/2019/02/24/5c7299a7c5f6c.png)
 
 官方下载地址：[http://www.jetbrains.com/pycharm/download/](http://www.jetbrains.com/pycharm/download/)
 
@@ -51,11 +51,11 @@ pywin32即 `Python for Windows Extensions`，提供了Pyhton访问和调用Windo
 
 这个要 **根据Python版本（2.\*/3.\*）和CPU位数（32位/64位）下载相应版本并安装**。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/speech/2.png)
+![](https://i.loli.net/2019/02/24/5c7299a7aa57e.png)
 
 比如，像我这种情况，就需要安装 `pywin32-221.win-amd64-py3.7.exe`
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/speech/3.png)
+![](https://i.loli.net/2019/02/24/5c7299a7caf45.png)
 
 #### 安装speech模块
 
@@ -147,6 +147,7 @@ def _ensure_event_thread():
     os.system(file)
     time.sleep(10)
     ```
+    
     - pygame 播放，但存在语速失真的不足，pygame提供了两个加载音乐文件的方法
         + pygame.mixer.Sound，主要加载ogg和wav音频文件。
         + pygame.mixer.music，主要加载mp3音频文件。
@@ -178,7 +179,7 @@ def _ensure_event_thread():
     ```
 5. 在编程过程中，有遇到了下面这种问题，针对这种情形的解决方案便是去任务管理下找到并结束智能语音进程。
 
-![](http://p7n85i5tr.bkt.clouddn.com/zhouie/img/speech/4.png)
+![](https://i.loli.net/2019/02/24/5c7299a7d8283.png)
 
 ### 源程序
 

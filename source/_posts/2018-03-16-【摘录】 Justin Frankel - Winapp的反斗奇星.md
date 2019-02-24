@@ -1,4 +1,4 @@
- ---
+---
 title: 【摘录】 Justin Frankel - Winapp的反斗奇星
 categories:
   - 摘录

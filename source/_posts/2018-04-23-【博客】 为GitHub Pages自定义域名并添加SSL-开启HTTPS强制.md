@@ -68,60 +68,52 @@ date: 2018-04-23 10:01:44
 
 如果你还没有Cloudflare账号，[点击注册](https://www.cloudflare.com/a/sign-up)
 
-* 登陆后，[点击这里](https://www.cloudflare.com/a/add-site) 增加你的域名，如下图，输入你的域名，例如 `zhouie.cn` 并点击`Begin Scan`
+* 登陆后，[点击这里](https://www.cloudflare.com/a/add-site) 增加你的域名，如下图，输入你的域名，例如 `zhouie.cn` 并点击`Add Site`
 
-![](https://dha4w82d62smt.cloudfront.net/items/1p3D360D0G3y1z1C363y/Image%202018-04-23%20at%206.45.37%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7155bba23d6.png)
 
-> 注意不要写`WWW`前缀，大约60秒即可完成域名解析扫描。完成后点击`Continue Setup` 继续下一步
-
-* 你看到`DNS记录（包括子域）列表`之后，按照下图提示设置后，其中`cname`是为了重定向`www`备的，点击`Continue`下一步
-
-![](https://dha4w82d62smt.cloudfront.net/items/3l0J1B3N3z2U142b1I0v/Image%202018-04-23%20at%206.54.04%20PM.png)
+> 注意不要写`WWW`前缀，大约60秒即可完成域名解析扫描。完成后点击`Confirm Setup` 继续下一步
 
 * 选择免费计划，然后下一步~
 
-![](https://dha4w82d62smt.cloudfront.net/items/3k0s2u3h1E3Y2W0M2J0o/Image%202018-04-23%20at%206.55.56%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7156ab2eadb.png)
+
+* 你看到`DNS记录（包括子域）列表`之后，按照下图提示设置后，其中`cname`是为了重定向`www`备的，点击`Continue`下一步
+
+![](https://i.loli.net/2019/02/23/5c7156c6357c5.png)
 
 > 到你域名控制面板修改`cloudflare`给出的域名服务器，我这里以`阿里云`为例
 
 * 在`域名管理台`点击`管理`
 
-![](https://dha4w82d62smt.cloudfront.net/items/2d1w3U2z2U3R2q0Q2N1R/Image%202018-04-23%20at%207.02.00%20PM.png)
-
-![](https://dha4w82d62smt.cloudfront.net/items/2u3o1Q3z383R0O0Z2F14/Image%202018-04-23%20at%207.11.28%20PM.png)
+![](https://i.loli.net/2019/02/23/5c715710009a1.png)
 
 > 注：虽然官方说明，域名服务器修改最长需要72小时生效，但我用域名做了自己测试，大约只需要 5~10 分钟，看到 **Status: Active** 即可
 
-![](https://dha4w82d62smt.cloudfront.net/items/1t3O2b3t2Y2K2g1M303h/Image%202018-04-23%20at%207.17.33%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7157d994bd5.png)
 
 * 设置SSL
 点击 `crypto `菜单 , 然后设置`Flexible SSL` ，如下图
 
-![](https://dha4w82d62smt.cloudfront.net/items/3E1j3m3a1X3i362v431x/Image%202018-04-23%20at%207.19.14%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7158e14f1ce.png)
 
-* 添加www重定向到https://yicodes.com
+* 添加www重定向到`https://zhouie.cn`并添加自动重定向到 SSL页面
 
-![](https://dha4w82d62smt.cloudfront.net/items/0o1p3o0t0G2Y0N2h2B3x/Image%202018-04-23%20at%207.23.29%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7158f91602a.png)
 
-* 添加自动重定向到 SSL页面
+* 添加SSL的教程就此完成，一般需要5~30分钟生效，小绿锁出现了，哈哈，美滋滋=.=
 
-![](https://dha4w82d62smt.cloudfront.net/items/2d2V021G3V2J3i2a201I/Image%202018-04-23%20at%207.26.11%20PM.png)
-
-* 添加SSL的教程就此完成，一般需要5~30分钟生效！！！ 
-![](https://dha4w82d62smt.cloudfront.net/items/3C1w0i0V2A0U241k0n0u/Screen%20Recording%202018-04-23%20at%2007.37.38.99%20PM.gif)
-
-### 小绿锁出现了，哈哈
-
-![](https://dha4w82d62smt.cloudfront.net/items/1v1B1F0h3f371Y3W1G3Q/Image%202018-04-23%20at%208.23.01%20PM.png)
+![](https://i.loli.net/2019/02/23/5c715929765a5.png)
 
 
 ---
 ## 补充[[转载]](https://steffan.cn/)
 ### 为什么Github Pages不支持为自定义域名添加SSL证书呢？
 当我们访问自定义域名，DNS指向的地址(`Github Pages`的`IP`)会在我们的仓库中寻找`cname`文件，判断目标文件和请求来源地址的域名一致后，`Github Pages`会将`errorlife.github.io`的内容返回给用户。
-![](https://dha4w82d62smt.cloudfront.net/items/2F1j3N1e1Y0T2n0w3I19/Image%202018-04-23%20at%207.52.59%20PM.png)
 
-![](https://dha4w82d62smt.cloudfront.net/items/3F3j0e1H1H0l1R2C1Q3j/Image%202018-04-23%20at%207.56.43%20PM.png)
+![](https://i.loli.net/2019/02/23/5c715964bc516.png)
+
+![](https://i.loli.net/2019/02/23/5c715972c1f75.png)
 
 * Ok，这是一个比较完整的过程，但是在解析的途中，看上面两张图(tracert一下这个”裸奔”站好了 :P)，你会发现请求的地址是“美国Fastly公司CDN网络节点”，很明显这是Github的CDN，而且它只支持80端口，不支持443端口，免费的CDN一般不支持,而https默认就是使用443端口。
 
@@ -142,7 +134,7 @@ date: 2018-04-23 10:01:44
 v友的解决办法：
 >按下`F12`，尴尬的事情发生了，原来是配置文件和`palceholder`在作怪，由于`多说`的头像用的还是`http`，巧的是，没多久，多说就下线关门了。
 
-![](https://dha4w82d62smt.cloudfront.net/items/133s2D1e2O2z163v0y0g/Image%202018-04-23%20at%208.17.06%20PM.png)
+![](https://i.loli.net/2019/02/23/5c7159b8abe7c.png)
 
 >这就要求我们对https协议理解通透，之后google了一下，发现https并不支持这种第三方引入资源。
 
@@ -156,4 +148,4 @@ v友的解决办法：
 * [为自定义域名的GitHub Pages添加SSL 完整方案](https://www.yicodes.com/2016/12/04/free-cloudflare-ssl-for-custom-domain/)
 * [Hexo支持https访问](https://www.mdslq.cn/archives/40865889.html)
 * [github pages绑定了个人域名，怎么使用https访问而证书不报错呢？-知乎](https://www.zhihu.com/question/33495825)
-* [为绑定域名的 GitHub Pages 启用 HTTPS](http://mazhuang.org/2016/05/21/enable-https-for-github-pages/)>>>>>>没有测试过，不过似乎已经不能用了。
+* [为绑定域名的 GitHub Pages 启用 HTTPS](http://mazhuang.org/2016/05/21/enable-https-for-github-pages/)
