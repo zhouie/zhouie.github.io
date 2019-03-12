@@ -58,5 +58,5 @@ layout: pages
 * `2018-04-29`基于[Travis CI](https://www.travis-ci.org/)实现[Hexo](https://hexo.io/zh-cn/)在[Github](https://github.com/)和[Coding](https://coding.net/)的同步自动化部署
 * `2018-04-30`将评论系统更换为[Valine](https://valine.js.org/)
 * `2018-09-11`成功通过湘公网安备案 43030202001139
-* `2018-01-05`失效图床更换链接(https://sm.ms/)
-* `2018-03-12`添加鼠标特效(爱心图形♥以及24字社会主义核心价值观)
+* `2019-01-05`失效图床更换链接(https://sm.ms/)
+* `2019-03-12`添加鼠标特效(爱心图形♥以及24字社会主义核心价值观)
