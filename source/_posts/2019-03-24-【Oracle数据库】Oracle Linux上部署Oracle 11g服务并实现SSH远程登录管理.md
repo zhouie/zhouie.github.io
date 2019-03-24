@@ -21,7 +21,7 @@ date: 2019-03-24 00:03:09
 
 > 如遇链接失效，Mail To `nanzhouieATqq.com`!
 
-### 一、实验内容
+### 实验内容
 1. 安装 `virtualbox` 虚拟机（我更喜欢的是`VMware`）；
 2. 在虚拟机上安装`Oracle Linux`；
 3. 在`Oracle Linux`上安装`Oracle 11g`；
@@ -30,8 +30,8 @@ date: 2019-03-24 00:03:09
 6. 采用远程访问方式，使用 `i*sqlplus`或者第三方管理软件登录服务器，进行数据库实例管理。
 7. 建立`HR`的模式（建议使用官方脚本）。
 
-### 二、实验前期准备
-#### 1．软件目录
+### 实验前期准备
+#### 软件目录
 | 名称 | 版本号  |
 | :--:  |  :--: |
 | Vmware虚拟机 | 15.0.0-full-10134415-64bit  |
@@ -41,20 +41,26 @@ date: 2019-03-24 00:03:09
 | Oracle_11gR2_client | 11g Release2 (11.2)-32bit  |
 | Oracle Linux文件(DOC-1002902.ova) | Oracle Linux x64  |
 
-#### 2．准备一些配置文件、脚本文件
+#### 准备配置文件、脚本文件
 * 在Oracle服务器端建立`HR(Human Resource)`模式所需的脚本执行文件；
 * Oracle客户端配置`TNS`服务所需要的`tnsname.ora`、`listener.ora`文件。
+
 > ps：以上这些安装、配置、脚本文件在上面我分享的百度云链接文件中都能找到。
-### 三、实验方案（具体步骤）
-#### （一）在虚拟机上安装Oracle Linux
-1．在虚拟机中导入老师提供的 `DOC-1002902.ova`文件，由于实验室32位PC机的原因，导入过程总是以失败结束；因此改选`64位PC机(配载VM虚拟机)`来操作。
-![image](http://upload-images.jianshu.io/upload_images/9934558-1dc8a0a2960422f5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 实验方案（具体步骤）
+#### 在虚拟机上安装Oracle Linux
+
+1. 在虚拟机中导入老师提供的 `DOC-1002902.ova`文件，由于实验室32位PC机的原因，导入过程总是以失败结束；因此改选`64位PC机(配载VM虚拟机)`来操作。
+
+![](http://upload-images.jianshu.io/upload_images/9934558-1dc8a0a2960422f5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-4b75778372c442ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-2．在VM虚拟机成功安装`Oracle linux`（我的账户登录密码 ~~oracle~~ ），可以去设置语言、时区、用户名及密码等。
+
+2. 在VM虚拟机成功安装`Oracle linux`（我的账户登录密码 ~~oracle~~ ），可以去设置语言、时区、用户名及密码等。
 ![](http://upload-images.jianshu.io/upload_images/9934558-acced08f8525796b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#### （二）在Linux上安装Oracle 11g R2(服务器端)
-##### 1. 前期准备
-###### 1.1 硬件环境监测
+
+#### 在Linux上安装Oracle 11g R2(服务器端)
+##### 前期准备
+###### 硬件环境监测
 | Content |Instruction |
 | :--:  |  :--: |
 | 检查物理内存 | `grep MemTotal /proc/meminfo` |
@@ -63,7 +69,7 @@ date: 2019-03-24 00:03:09
 
 > PS：这一类指令可以有很多，但其实只要在之前导入虚拟机文件过程没有什么异常，不是很有必要去了解这些硬件环境信息，那么这一步可以跳过。
 
-###### 1.2 检查各种补丁包、函数依赖包
+###### 检查各种补丁包、函数依赖包
 * 方法：通过上网查找到需要的函数依赖包有以下这些：
 	```
 	binutils-2.17.50.0.6
@@ -93,11 +99,13 @@ date: 2019-03-24 00:03:09
 	sysstat-7.0.2
 	```
 * 通过类似重复以下的操作，借助root用户终端 `yum search/install` 命令将这些未安装的依赖包全部安装到服务端。
+
 ![](http://upload-images.jianshu.io/upload_images/9934558-8fb3715030425bd8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image](http://upload-images.jianshu.io/upload_images/9934558-2bb2d34a1a21ff84?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 * 然后，再使用`yum`快速安装oracle预装环境——`yum install oracle-rdbms-server-11gR2-preinstall`
 
-###### 1.3 修改用户环境配置等参数文件
+###### 修改用户环境配置等参数文件
 * 通过`vi .bash_profile`命令进入编辑界面，点击`i`进入`insert模式`，就可以写入以下数据了，写完数据后，点击`ESC`退出`insert模式`敲入`:wq` 保存本次修改并回到终端。
 	```bash
 	#!/bin/bash
@@ -123,11 +131,12 @@ date: 2019-03-24 00:03:09
 	chown -Roracle:oinstall/u01/app/oracle/product/11.2.0/db_1
 	chmod -R 775 /u01/app/oracle/product/11.2.0/db_1
 	```
-###### 1.4 切换到Oracle用户
+
+###### 切换到Oracle用户
 去设置里面找到`users`，解锁并修改已经生成的`oracle`用户密码，再切换用户登录到`oracle`下。
 ![](http://upload-images.jianshu.io/upload_images/9934558-52b8825356126603?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##### 2. 安装Oracle 11g
+##### 安装Oracle 11g
 在终端输入命令：`unzip oracle11g 11.2.0.4` 两个安装文件（也可以手动合并到同一个文件夹下），进入安装文件中的目录`database`，运行命令: `./runInstaller`
 ![](http://upload-images.jianshu.io/upload_images/9934558-0bfa487e1e68f80d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 同时，如果由于环境配置的原因，发现随后`安装界面出现乱码`，那么最好在执行安装之前添上这样一条语句：`export LANG=en_US_UTF-8`。
@@ -165,60 +174,61 @@ date: 2019-03-24 00:03:09
 * 随后，就可以点击`next`，出现如下界面，表示在虚拟机这边安装服务端的`Oracle 11g`就已经成功了
 ![](http://upload-images.jianshu.io/upload_images/9934558-e2f14184bd102626?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##### 3. 服务端NETCA创建配置监听程序
-###### 3.1 执行netca指令
+##### 服务端NETCA创建配置监听程序
+###### 执行netca指令
 ![](http://upload-images.jianshu.io/upload_images/9934558-20dfc120af86a0f6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-ec32de2ea25dc77c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 3.2 接下来的界面弹窗中直接默认Next
+###### 接下来的界面弹窗中直接默认Next
 在选择TCP/IP端口号时，可能会出现一个弹窗提示：默认的1521端口可能被占用。通过查找并没有发现被占用问题，因此选择Yes继续。
 ![](http://upload-images.jianshu.io/upload_images/9934558-35b6376c10ba97db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-bbd5d043cd714ddd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-##### 4. 建立一个数据库实例DBCA建库
+##### 建立一个数据库实例DBCA建库
 ![](http://upload-images.jianshu.io/upload_images/9934558-65d8235b39eabd98?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-451dd8eaeb25a446?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-62e9c091087ac224?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-46af35de1b2f0b0b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.1 设置数据库名和SID
+###### 设置数据库名和SID
 ![](http://upload-images.jianshu.io/upload_images/9934558-8ee997ffa3c0c518?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.2 不启用OEM
+###### 不启用OEM
 ![](http://upload-images.jianshu.io/upload_images/9934558-0f5989ece6c27129?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.3 设置密码
+###### 设置密码
 ![](http://upload-images.jianshu.io/upload_images/9934558-9f56bcb83fdc0eba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.4 不需修改、直接next
+###### 不需修改、直接next
 ![](http://upload-images.jianshu.io/upload_images/9934558-5256678d831edec4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.5 不启用快速恢复区、不启用归档
+###### 不启用快速恢复区、不启用归档
 ![](http://upload-images.jianshu.io/upload_images/9934558-f1fcbd9f66f93d70?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###### 4.6 不需修改、直接next
+###### 不需修改、直接next
 ![](http://upload-images.jianshu.io/upload_images/9934558-01ef04431cfb57ed?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-6421cad657428e32?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-98231589a401ccfa?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-4b6746a3369b4809?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 至此，Oracle服务端实例数据库创建完毕。
 
-##### 5. 服务端启用ssh服务
+##### 服务端启用ssh服务
 ![](http://upload-images.jianshu.io/upload_images/9934558-97739298d1c072f1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### （三）在主机上安装Oracle 11g Client(客户端)
+#### 在主机上安装Oracle 11g Client(客户端)
 ##### 检查ssh服务是否正常
 下载`putty.exe`，打开以后，安装下图填入相对应信息（虚拟机IP地址可以在网络设置中找到，同时，建议虚拟机端网络连接方式选择仅主机模式）进行测试（确保虚拟机处于开启状态）。
 ![](http://upload-images.jianshu.io/upload_images/9934558-140897e6f9719600?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-5bbe51db491c1bde?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-#### （四）安装Oracle客户端并配置本地网络服务监听
-##### 1. 点击setup.exe启动安装
+#### 安装Oracle客户端并配置本地网络服务监听
+##### 点击setup.exe启动安装
 * 安装过程中，除修改安装路径外，其余直接默认Next即可。
 ![](http://upload-images.jianshu.io/upload_images/9934558-24d4f4fc62da0ba4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * 选择管理员选项
 ![](http://upload-images.jianshu.io/upload_images/9934558-96b3632e4be7814e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-##### 2. 配置前的一些准备
+
+##### 配置前的一些准备
 * 将之前准备好的 `listener.ora`、`tnsnames.ora`文件（两个文件里面的内容如下所示）放到如下所示目录下。
 ![](http://upload-images.jianshu.io/upload_images/9934558-60a9d80d7e8b3e3e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-25e33f069563f53d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -228,29 +238,35 @@ date: 2019-03-24 00:03:09
 * 在ssh服务控制终端执行如下（开启数据库、开启监听）
 ![](http://upload-images.jianshu.io/upload_images/9934558-a019ff1e3459cf01?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-cc266ba67ec12f0d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-##### 3. 本地网络服务名配置
+
+##### 本地网络服务名配置
 在所有程序中找到`Net Configuration Assistant`，进入配置界面操作如下。在测试连接过程中更改登录如果忘了数据库服务端密码（以`sys`用户为例），则需要重新给`sys`设置密码（详见后面的实验问题及解决办法）。
 ![](http://upload-images.jianshu.io/upload_images/9934558-f0cfdb00504ac935?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-c9ff6c61433c79cb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-927087915ef45538?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-6e86aa7a4da4062b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-fd459eee5572500b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-#### （五）第三方软件Toad for Oracle连接数据库
-##### 1. TNS检测
+
+#### 第三方软件Toad for Oracle连接数据库
+##### TNS检测
 进入`cmd`测试如下，说明数据库监听配置无误
 ![](http://upload-images.jianshu.io/upload_images/9934558-b09217e5837d98d3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-##### 2. 使用Toad连接
+
+##### 使用Toad连接
 打开`Toad for Oracle`中的`toad.exe`启动，输入数据库服务端用户名以及密码后成功连接会出现如下的工作界面。
 ![](http://upload-images.jianshu.io/upload_images/9934558-24b1520095a04c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![](http://upload-images.jianshu.io/upload_images/9934558-d9044bea068e60db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
-#### （六）建立HR的模式（服务器端进行）
-##### 1. 准备脚本文件
+
+#### 建立HR的模式（服务器端进行）
+##### 准备脚本文件
 在如下所示目录中，将已准备好的脚本文件粘贴过来
 ![](http://upload-images.jianshu.io/upload_images/9934558-d483da5e7162ba69?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-##### 2. 执行脚本文件
+
+##### 执行脚本文件
 进入数据库层面，按照下面流程执行` hr_main.sql `这个脚本文件设置参数，就可以解锁HR用户并构建`HR模式`，且数据表中都有初始样例数据。
 ![](http://upload-images.jianshu.io/upload_images/9934558-ffffb128c20a817f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-### 四、实验出现的问题及解决办法
+
+### 实验出现的问题及解决办法
 1. 第一次尝试安装时，总是在`Linking Text File`出失败，且界面卡死在那里。
 ![](http://upload-images.jianshu.io/upload_images/9934558-0826e3f4a60e55ee?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 * 解决办法：
@@ -272,6 +288,7 @@ date: 2019-03-24 00:03:09
 ![](http://upload-images.jianshu.io/upload_images/9934558-bb8f17a7ed7beb34?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 只能选择用户状态是`open`的用户进行重新设置口令的处理
 ![](http://upload-images.jianshu.io/upload_images/9934558-ce0d8da4aa41d616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ### 参考文章
 * [⭐Oracle linux安装Oracle 11G](http://www.cnblogs.com/iyoume2008/p/6986374.html)
 * [HR Schema](https://docs.oracle.com/cd/B19306_01/server.102/b14198/scripts.htm#Cihgfecd)
