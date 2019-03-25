@@ -23,10 +23,10 @@
         "title":"Webrtc",
         "date":"2018.??",
         "cover":"https://i.loli.net/2019/02/22/5c6f96ca5c58a.jpg",
-        "subTitle":"北岛向南的小屋 · Webrtc视聊",
+        "subTitle":"北岛向南的小屋 · Webrtc聊天室",
         "description":"WebRTC（Web Real-Time Communication）项目的最终目的主要是让Web开发者能够基于浏览器轻易快捷开发出丰富的实时多媒体应用，而无需下载安装任何插件，Web开发者也无需关注多媒体的数字信号处理过程，只需编写简单的Javascript程序即可实现；另外WebRTC还希望能够建立一个多互联网浏览器间健壮的实时通信的平台，形成开发者与浏览器厂商良好的生态环境。之前在一门课程上已经弄好了webrtc实时通信的完整框架了，也做了一个简单的线上demo，只是距离上线还未进行完善优化处理。目前也没时间更新这PART，只能等等看之后有没有一段时间来做这个吧。",
         "link": "https://javef.github.io/project/webrtc/",
-        "tags": ["webrtc","视聊"]
+        "tags": ["webrtc","聊天室"]
        },
        {
         "title":"Lab",
