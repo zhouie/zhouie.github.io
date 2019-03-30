@@ -54,10 +54,10 @@ brand: https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg
 favicon: /assets/images/favicon.ico
 
 # email
-email: nanzhouie@gmail.com
+email: nanzhouie@qq.com
 
 # 设置 Android L Chrome 浏览器状态栏颜色
-color: '#3F51B5'
+color: '#3366FF'
 
 # 页面标题
 tags_title: 标签
@@ -172,7 +172,7 @@ visit_counter:
   site_pv: 站点总访问量：
 
 reading_time: 
-  wpm: 170 #每分钟阅读字数
+  wpm: 160 #每分钟阅读字数
   display: min. #显示文本标识
 
 # 动态定义title
@@ -190,5 +190,5 @@ lightbox: true
 # icp备案号  ICP_license: 京ICP备1234556号-1
 ICP_license: false
 
-# 公安安备号 beian_gov : 43030202001139
+# 公安备案号 beian_gov : 43030202001139
 beian_gov : 43030202001139
