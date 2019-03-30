@@ -1,5 +1,5 @@
 ---
-title: 【Oracle数据库】Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理
+title: 【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理
 categories:
   - Oracle数据库
 tags:
