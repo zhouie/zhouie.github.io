@@ -20,28 +20,29 @@ menu:
   th-list:
     text: 分类
     url: /categories
-  bookmark:
+  book:
     text: 读书
     url: /books
   film:
     text: 电影
     url: /movies
-  headphones:
+  music:
     text: 音乐
     url: /musics
-  code:
+  laptop:
     text: 作品
     url: /works
   user-secret:
     text: 关于
     url: /about
+  weibo:
+    url: https://weibo.com/u/5736541528
+    target: _blank
 
 # github:
 #   url: https://github.com/zhouie
 #   target: _blank
-# weibo:
-#   url: http://weibo.com/5736541528/
-#   target: _blank
+
 
 
 # 你的头像url /assets/images/avatar.jpg
@@ -68,7 +69,7 @@ categories_title: 分类
 excerpt_render: false
 excerpt_length: 180
 excerpt_link: 阅读全文...
-mathjax: false
+mathjax: true
 archive_yearly: true
 
 # 是否显示文章最后更新时间
@@ -164,7 +165,7 @@ canonical: false
 since_year: 2017
 
 # 用户页面中作者相关的描述性文字，如不需要设为 false
-about: 学到一句很好的话：“爱的心意大家都是有的，只是爱的能力各有不同，不要因此而否定了爱的存在。”<br>欢迎关注我的微信公众号：<b>北岛向南</b>(ID:nanzhouie)。
+about: 欢迎关注我的微信公众号：北岛向南 ( ID:nanzhouie )。
 
 # “不蒜子”访问量统计，详见 http://ibruce.info/2015/04/04/busuanzi/
 visit_counter:

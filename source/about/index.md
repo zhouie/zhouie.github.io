@@ -19,32 +19,45 @@ layout: pages
 🔖 [个人简历](https://zhouie.cn/zhouie.cn-blog.pdf)™
 
 
-# 🐕友情链接
+# 📬交流渠道
 
-| | |
-|	:--:	|	:--:	|
-| [北岛向南的老店](https://javef.github.io/)	 | 湖湘老店发来祝贺，🔞了解一下？ |
-| [EricXie's Blog](http://ericxie.coding.me/)| 教书匠，👨伪码农 |
-| [创造狮导航](http://chuangzaoshi.com/)		 | 为创意🎨工作者而设计 |
+* 自媒体
+    - [QQ邮箱🍰](nanzhouie@qq.com)
+    - [微信公众号🍟](https://i.loli.net/2019/02/22/5c6f99a47fbab.png)
+    - [CSDN🍔](https://blog.csdn.net/jave_f)
+    - [简书🍒](https://www.jianshu.com/u/003b6aa1939d)
+    - [豆瓣小站🍦](https://www.douban.com/people/jave_f/)
+    - [知乎专栏🍇](https://www.zhihu.com/people/jave_f/activities)
+    - [](https://my.oschina.net/zhouie)
+* Q&A Platform
+    - [V2EX🌿](https://www.v2ex.com/member/zhouie)
+    - [SegmentFault🌵](https://segmentfault.com/u/zhouie)
+    - [StackOverflow🌷](https://stackoverflow.com/users/9711261/zhouie)
+    - [Peing提问箱🍀](https://peing.net/zh-CN/zhouie)
+* 相册
+    - [500px🎨](https://500px.com/nanzhouie)
+    - [Flickr📷](https://www.flickr.com/photos/nanzhouie/)
+    - [北岛向南的老店相册🖼](https://javef.github.io/project/albums/)
+* 音乐
+    - [网易云音乐🎙](http://music.163.com/#/user/home?id=426481614)
+    - [豆瓣FM🎵](https://douban.fm/)
+    - [雨天咖啡馆🎧](http://rainycafe.com/)
+* 赞赏
+    - [微信支付🏧](https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg)
+    - [支付宝💴](https://i.loli.net/2019/02/22/5c6f9576d940e.jpg)
+    - [Paypal.me💰](https://www.paypal.me/zhouie)
 
 
-# 📬与我交流
+# 🤞友情链接
 
-| | |
-| :--:			| :--:|
-| 邮箱	 		| <nanzhouie@qq.com>🍦 |
-| 微信公众号		| [北岛向南(ID:nanzhouie)](https://i.loli.net/2019/02/22/5c6f99a47fbab.png)🍟 |
-| Flickr 		| [愿有人陪你颠沛流离](https://www.flickr.com/photos/nanzhouie/)☕ |
-| 网易云音乐 	| [南城四月里的小巷](http://music.163.com/#/user/home?id=426481614)🍩 |
-| 豆瓣			| [那时我们有梦](https://www.douban.com/people/jave_f/)🍰 |
-| 知乎			| [我亦是行人](https://www.zhihu.com/people/jave_f/activities) 🍇|
-| 简书 			| [一个优质创作社区](https://www.jianshu.com/u/003b6aa1939d)🍒 |
-| CSDN			| [连世界都没观过，哪来的世界观](https://blog.csdn.net/jave_f)🍔 |
+* [北岛向南的老店](https://javef.github.io/)
+* [Eric Xie - 教书匠，伪码农](http://ericxie.coding.me/)
+* [创造狮 - 创意工作者导航](http://chuangzaoshi.com/)
 
 ​
 # 📝更新日志
 
-> 详见[这里](https://zhouie.cn/posts/201804271/)
+> 具体更新日志详见[这里](https://zhouie.cn/posts/201804271/)
 
 * `2018-01-13`正式开始
 * `2018-02-04`完成了基于[Jekyll](https://www.jekyll.com.cn/)框架下[Vno-Jekyll](https://github.com/onevcat/vno-jekyll)主题的静态网站搭建
@@ -59,4 +72,8 @@ layout: pages
 * `2018-04-30`将评论系统更换为[Valine](https://valine.js.org/)
 * `2018-09-11`成功通过湘公网安备案 43030202001139
 * `2019-01-05`失效图床更换链接(https://sm.ms/)
-* `2019-03-12`添加鼠标特效(爱心图形♥以及24字社会主义核心价值观)
+* `2019-03-12`添加鼠标特效(爱心图形❤以及24字社会主义核心价值观)
+
+# 安徽地图
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464616.575792618!2d115.0220874396435!3d32.003880581552764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3434a48ca17082d7%3A0x7aa8d6156e75706d!2z5Lit5Zu95a6J5b6955yB!5e0!3m2!1szh-CN!2sth!4v1554028308613!5m2!1szh-CN!2sth" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>

@@ -3,11 +3,15 @@
         <%- partial('plugins/site-visit') %>
         <p>
             <% if ((config.feed) && (config.feed.path.length)) { %>
-                <span><a href="<%- url_for(config.feed.path) %>" target="_blank" class="rss" title="rss" rel="external nofollow"><i class="icon icon-rss"></i></a></span>
+                <span>
+                    <a href="<%- url_for(config.feed.path) %>" target="_blank" class="rss" title="rss" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
             <% } %>
             <span>
-                <a href="https://www.travis-ci.org/zhouie/zhouie.github.io" rel="external nofollow" title="Travis CI" target="_blank">
-                    <i class="icon icon-cloud-upload"></i>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
                 </a>
             </span>
             <span>
@@ -16,32 +20,12 @@
                 </a>
             </span>
             <span>
-                <a href="http://weibo.com/u/5736541528" rel="license" title="Weibo" target="_blank" rel="external nofollow">
-                    <i class="icon icon-weibo"></i>
-                </a>
-            </span>
-            <span>
-                <a href="https://plus.google.com/110700564157953759206" title="Google+" target="_blank" rel="external nofollow">
-                    <i class="icon icon-google-plus"></i>
-                </a>
-            </span>
-            <span>
-                <a href="http://www.linkedin.com/in/zhouie/" title="Linkedin" target="_blank" rel="external nofollow">
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
                     <i class="icon icon-linkedin"></i>
                 </a>
             </span>
             <span>
-                <a href="https://www.paypal.me/zhouie" rel="external nofollow" title="PayPal.me" target="_blank">
-                    <i class="icon icon-paypal"></i>
-                </a>
-            </span>
-            <span>
-                <a href="https://500px.com/nanzhouie" rel="license" title="500px" target="_blank">
-                    <i class="icon icon-500px"></i>
-                </a>
-            </span>
-            <span>
-                <a rel="external nofollow" href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="License">
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
                     <i class="icon icon-cc"></i>
                 </a>
             </span>
@@ -50,16 +34,14 @@
     <div class="bottom">
         <p>
             <span>
-                <%-config.author %> &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%> <%- date(new Date(), 'YYYY') %>
-
-                · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+                Copyright &copy; <%if (theme.since_year && theme.since_year < date(new Date(), 'YYYY')) {%><%- theme.since_year %> - <%}%> <%- date(new Date(), 'YYYY') %> · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
 
                 <% if(theme.ICP_license) {%>
                 <a href="http://www.miitbeian.gov.cn/" target="_blank"><%- theme.ICP_license %></a>
                 <% } %>
                 
                 <% if(theme.beian_gov) {%>
-                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<%= theme.beian_gov %>"> ·  湘公网安备 <%= theme.beian_gov %>号</a>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<%= theme.beian_gov %>"><img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /> ·  湘公网安备 <%= theme.beian_gov %>号</a>
                 <% } %>
 
                 <% if(theme.cnzz_id) {%>
