@@ -13,8 +13,8 @@ install:
   - npm install
 
 script:
-  - hexo clean
   - hexo douban -bm
+  - hexo clean
   - hexo generate
   - cp README.md ./public/README.md
   - cp CNAME ./public/CNAME
