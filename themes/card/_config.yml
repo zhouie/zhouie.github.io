@@ -35,11 +35,13 @@ menu:
   user-secret:
     text: 关于
     url: /about
-  weibo:
-    url: https://weibo.com/u/5736541528
-    target: _blank
 
+# weibo:
+#   text: 微博
+#   url: https://weibo.com/u/5736541528
+#   target: _blank
 # github:
+#   text: Github
 #   url: https://github.com/zhouie
 #   target: _blank
 

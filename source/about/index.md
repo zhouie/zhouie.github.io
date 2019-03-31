@@ -19,7 +19,7 @@ layout: pages
 🔖 [个人简历](https://zhouie.cn/zhouie.cn-blog.pdf)™
 
 
-# 📬交流渠道
+### 📬交流渠道
 
 * 自媒体
     - [QQ邮箱🍰](nanzhouie@qq.com)
@@ -74,6 +74,5 @@ layout: pages
 * `2019-01-05`失效图床更换链接(https://sm.ms/)
 * `2019-03-12`添加鼠标特效(爱心图形❤以及24字社会主义核心价值观)
 
-# 安徽地图
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464616.575792618!2d115.0220874396435!3d32.003880581552764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3434a48ca17082d7%3A0x7aa8d6156e75706d!2z5Lit5Zu95a6J5b6955yB!5e0!3m2!1szh-CN!2sth!4v1554028308613!5m2!1szh-CN!2sth" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
