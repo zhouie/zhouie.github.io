@@ -2,24 +2,24 @@ title: 关于我
 layout: pages
 ---
 
-# 🗽关于本站
+## 🗽关于本站
 
 😛大家好，这儿是**北岛向南**的个人小站，用来记录、感悟、分享、学习...，“**北岛**”取自我最欣赏的中国当代诗人[北岛](https://zh.wikipedia.org/wiki/%E5%8C%97%E5%B2%9B_(%E8%AF%97%E4%BA%BA))，“**向南**”则是我从一位多年的老友那儿'偷'来的...
 
 
-# 🎓个人简介
+## 🎓个人简介
 
-🔹 长期生活在中国以**南**地区
-🔹 **年少**时也曾在日记本偷偷写下————**以后出国去香榭丽舍大街养老**的梦
-🔹 目前本科在读，打算**读研**进一步提升自己，认识更多**有趣的灵魂**
-🔹 长期在计算机边缘化地区学习探索，实用**有趣**技术的热衷粉丝，学习**涉猎广泛**
-🔹 接触较多的便是**前端开发**，目前计划深入地去做**Android**、**小程序**这块的拓展提升
-🔹 坚定的**共产主义**追随者，中共党员
-🔹 还是希望以后有机会，去邻国日本**旅居**一段时间
-🔖 [个人简历](https://zhouie.cn/zhouie.cn-blog.pdf)™
+* 长期生活在中国以南地区
+* 年少时也曾在日记本偷偷写下————以后出国去香榭丽舍大街养老的梦
+* 目前本科在读，打算读研进一步提升自己，认识更多有趣的灵魂
+* 长期在计算机边缘化地区学习探索，实用有趣技术的热衷粉丝，学习涉猎广泛
+* 接触较多的便是前端开发，目前计划深入地去做Android、小程序这块的拓展提升
+* 坚定的共产主义追随者，中共党员
+* 还是希望以后有机会，去邻国日本旅居一段时间
+* [个人简历](https://zhouie.cn/zhouie.cn-blog.pdf)™
 
 
-### 📬交流渠道
+## 📬交流渠道
 
 * 自媒体
     - [QQ邮箱🍰](nanzhouie@qq.com)
@@ -28,18 +28,18 @@ layout: pages
     - [简书🍒](https://www.jianshu.com/u/003b6aa1939d)
     - [豆瓣小站🍦](https://www.douban.com/people/jave_f/)
     - [知乎专栏🍇](https://www.zhihu.com/people/jave_f/activities)
-    - [](https://my.oschina.net/zhouie)
+    - [开源中国🍥](https://my.oschina.net/zhouie)
 * Q&A Platform
-    - [V2EX🌿](https://www.v2ex.com/member/zhouie)
+    - [V2EX🌴](https://www.v2ex.com/member/zhouie)
     - [SegmentFault🌵](https://segmentfault.com/u/zhouie)
     - [StackOverflow🌷](https://stackoverflow.com/users/9711261/zhouie)
     - [Peing提问箱🍀](https://peing.net/zh-CN/zhouie)
 * 相册
     - [500px🎨](https://500px.com/nanzhouie)
     - [Flickr📷](https://www.flickr.com/photos/nanzhouie/)
-    - [北岛向南的老店相册🖼](https://javef.github.io/project/albums/)
+    - [北岛向南的老店相册🌅](https://javef.github.io/project/albums/)
 * 音乐
-    - [网易云音乐🎙](http://music.163.com/#/user/home?id=426481614)
+    - [网易云音乐🎹](http://music.163.com/#/user/home?id=426481614)
     - [豆瓣FM🎵](https://douban.fm/)
     - [雨天咖啡馆🎧](http://rainycafe.com/)
 * 赞赏
@@ -47,15 +47,14 @@ layout: pages
     - [支付宝💴](https://i.loli.net/2019/02/22/5c6f9576d940e.jpg)
     - [Paypal.me💰](https://www.paypal.me/zhouie)
 
-
-# 🤞友情链接
+## 👾友情链接
 
 * [北岛向南的老店](https://javef.github.io/)
 * [Eric Xie - 教书匠，伪码农](http://ericxie.coding.me/)
 * [创造狮 - 创意工作者导航](http://chuangzaoshi.com/)
-
 ​
-# 📝更新日志
+
+## 📝更新日志
 
 > 具体更新日志详见[这里](https://zhouie.cn/posts/201804271/)
 
@@ -74,5 +73,6 @@ layout: pages
 * `2019-01-05`失效图床更换链接(https://sm.ms/)
 * `2019-03-12`添加鼠标特效(爱心图形❤以及24字社会主义核心价值观)
 
+---
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464616.575792618!2d115.0220874396435!3d32.003880581552764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3434a48ca17082d7%3A0x7aa8d6156e75706d!2z5Lit5Zu95a6J5b6955yB!5e0!3m2!1szh-CN!2sth!4v1554028308613!5m2!1szh-CN!2sth" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464616.575792618!2d115.0220874396435!3d32.003880581552764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3434a48ca17082d7%3A0x7aa8d6156e75706d!2z5Lit5Zu95a6J5b6955yB!5e0!3m2!1szh-CN!2sth!4v1554028308613!5m2!1szh-CN!2sth" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
