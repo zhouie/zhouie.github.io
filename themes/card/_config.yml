@@ -125,7 +125,7 @@ less:
 
 # 以下评论插件开启一个即可
 # 是否开启 disqus
-disqus_shortname: zhouie
+# disqus_shortname: zhouie
 
 
 # 是否开启友言评论, 填写友言用户id
