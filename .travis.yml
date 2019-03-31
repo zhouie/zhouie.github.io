@@ -11,7 +11,6 @@ notifications:
 
 install:
   - npm install
-  - npm install hexo-douban --update --save
 
 script:
   - hexo clean
