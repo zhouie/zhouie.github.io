@@ -4,4 +4,4 @@ layout: pages
 >下一次如果邂逅，你别再那么瘦
 
 
-{% meting "2202609320" "netease" "playlist" "mutex:true" "listmaxheight:360px" "preload:none" "theme:#abced8"%}
+{% meting "2202609320" "netease" "playlist" "lrctype:0.5" "mutex:true" "listmaxheight:400px" "preload:none" "theme:#FF0000"%}
