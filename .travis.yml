@@ -14,6 +14,7 @@ install:
 
 script:
   - hexo clean
+  - hexo douban -bm
   - hexo generate
   - cp README.md ./public/README.md
   - cp CNAME ./public/CNAME
@@ -36,8 +37,6 @@ after_script:
   # Coding Pages
   - git push --force --quiet "https://zhouie:${CO_TOKEN}@${CO_REF}" master:master
   - git tag v0.0.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-  
-
 
 branches:
   only:
