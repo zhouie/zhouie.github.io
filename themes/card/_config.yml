@@ -183,7 +183,7 @@ reading_time:
   display: min. #显示文本标识
 
 # 动态定义title
-title_change: false
+title_change: true
   # normal: (つェ⊂)咦!又好了!
   # leave: 死鬼去哪里了！
 
