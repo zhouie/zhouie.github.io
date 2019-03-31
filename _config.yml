@@ -84,7 +84,7 @@ deploy:
 # 豆瓣插件
 douban:
   user: jave_f
-  builtin: true
+  builtin: false
   book:
     title: '读书'
     quote: '要么旅行，要么读书，身体和灵魂必须有一个在路上。'
