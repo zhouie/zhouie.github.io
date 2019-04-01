@@ -103,7 +103,7 @@ class T(threading.Thread):
         threading.Thread.__init__(self)
     def run(self):
             pass
-        
+
 def _ensure_event_thread():
     """
     Make sure the eventthread is running, which checks the handlerqueue
@@ -138,8 +138,8 @@ def _ensure_event_thread():
     - 最开始是打算用[pyttsx](https://github.com/RapidWareTech/pyttsx)（Python3好像要用[pyttsx3](https://github.com/nateshmbhat/pyttsx3)），期间碰到了不少的问题，尤其对于Python3来说，只能多去搜搜看了，[pyttsx的中文语音识别问题及探究之路](http://www.cnblogs.com/leenid/p/6875031.html)、[pyttsx3 - Text-to-speech x-platform](https://pyttsx3.readthedocs.io/en/latest/)、[py库：文本转为语音（pywin32、pyttsx](https://www.cnblogs.com/qq21270/p/7899622.html)
     - 之后也接触到了[pydub](http://pydub.com/)，pydub需要依赖[libav](https://libav.org/)或者[ffmpeg](https://zhouie.cn/posts/201807241)，推荐阅读：[五十音听写：Python 音频处理库 pydub](https://www.jianshu.com/p/a9291fa603f6)、[python音频处理库：pydub](http://appleu0.sinaapp.com/?p=588)。
 4. 既然谈到这儿，就多聊一些关于音频方面的内容，比如，如何使用Python播放`mp3`、`wav`、`ogg`格式的音频文件
-    - 调用系统默认播放器播放
-    
+* 调用系统默认播放器播放
+
     ```python
     import time
     import os
@@ -147,10 +147,10 @@ def _ensure_event_thread():
     os.system(file)
     time.sleep(10)
     ```
-    
-    - pygame 播放，但存在语速失真的不足，pygame提供了两个加载音乐文件的方法
-        + pygame.mixer.Sound，主要加载ogg和wav音频文件。
-        + pygame.mixer.music，主要加载mp3音频文件。
+
+* pygame 播放，但存在语速失真的不足，pygame提供了两个加载音乐文件的方法
+    - pygame.mixer.Sound，主要加载ogg和wav音频文件。
+    - pygame.mixer.music，主要加载mp3音频文件。
 
     ```python
     import time
@@ -162,8 +162,9 @@ def _ensure_event_thread():
     time.sleep(10)
     pygame.mixer.music.stop()
     ```
-    - mp3play播放，语速正常，但貌似目前只能用于python2.\*，不支持python3.\*
-    
+
+* mp3play播放，语速正常，但貌似目前只能用于python2.\*，不支持python3.\*
+
     ```python
     import time
     import mp3play
@@ -177,6 +178,7 @@ def _ensure_event_thread():
     file = r'F:/Test/musicT/Hello.mp3'
     playmusic(file)
     ```
+
 5. 在编程过程中，有遇到了下面这种问题，针对这种情形的解决方案便是去任务管理下找到并结束智能语音进程。
 
 ![](https://i.loli.net/2019/02/24/5c7299a7d8283.png)
@@ -238,8 +240,8 @@ while i < num:
 
 speech.say("Congratulation!")
 
-``` 
+```
 
 ### 效果展示
 
-<iframe frameborder="0" width="100%" height="500" src="https://v.qq.com/iframe/player.html?vid=o0737zviriw&tiny=0&auto=0" allowfullscreen>
+<iframe frameborder="0" width="100%" height="350" src="https://v.qq.com/iframe/player.html?vid=o0737zviriw&tiny=0&auto=0" allowfullscreen>
