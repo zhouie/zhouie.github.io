@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【博客】 走进Markdown园子 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Tool-share,Markdown">
+    <meta name="description" content="欢迎关注微信公众号：北岛向南（id：nanzhouie）                                                                                               扫一扫 + 微信公众号               GitHub Pages：https://zhouie.cn/markdown-doc/ 认识 Ma">
+<meta name="keywords" content="Tool-share,Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【博客】 走进Markdown园子">
+<meta property="og:url" content="https://zhouie.cn/posts/201804111/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="欢迎关注微信公众号：北岛向南（id：nanzhouie）                                                                                               扫一扫 + 微信公众号               GitHub Pages：https://zhouie.cn/markdown-doc/ 认识 Ma">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6f99a47fbab.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-4c5a24a5f95eedf3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-05da83bfeaa6a4e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-1bdd77944c0d8fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-b0c6b00935a0af53.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-fb9d1c8bfee4bb02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-e1d71e8b0a800a57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-7ffb3a68d1fdcc39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-57977ecf41c031f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-445c5c7936373bc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-72cc2973ef001d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-b0b9909aefb2555a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-efd91c34cbe2849a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-c89eb527af49927d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-fa5d514243c6c708.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-f003266ca4ac9440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-e6aeb2a4e420fb35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0635cdbcf1bc72ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-3c4655a6de7daf8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-5f40c812ffdd87fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-52c5ae09b9bc1010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-4bfc4f7c431d98b2.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-a3b8bcbba480f671.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-c4d9210cb2081e33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-8d86761d26e18495.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-f56ab5cf8821ed92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-54fad55faeb3709b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9934558-a23a100ba5d35018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-7be18ee13a963162.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【博客】 走进Markdown园子">
+<meta name="twitter:description" content="欢迎关注微信公众号：北岛向南（id：nanzhouie）                                                                                               扫一扫 + 微信公众号               GitHub Pages：https://zhouie.cn/markdown-doc/ 认识 Ma">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/22/5c6f99a47fbab.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【博客】 走进Markdown园子</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【博客】 走进Markdown园子</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-11T13:46:57.000Z" itemprop="datePublished" class="page-time">
+  2018-04-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#认识-Markdown"><span class="post-toc-number">1.</span> <span class="post-toc-text">认识 Markdown</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Markdown的优点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Markdown的优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Markdown-的现状"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Markdown 的现状</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Markdown官方文档"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Markdown官方文档</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Markdown"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用Markdown</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">标题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加粗、斜体-和-删除线"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">加粗、斜体 和 删除线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列表"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">列表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分割线"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">分割线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入链接"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">插入链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#插入图片"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">插入图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表格"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">表格</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#角标"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">角标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上下标"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">上下标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#直接链接与邮箱"><span class="post-toc-number">2.11.</span> <span class="post-toc-text">直接链接与邮箱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#换行"><span class="post-toc-number">2.12.</span> <span class="post-toc-text">换行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反斜杠"><span class="post-toc-number">2.13.</span> <span class="post-toc-text">反斜杠</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码高亮"><span class="post-toc-number">2.14.</span> <span class="post-toc-text">代码高亮</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-number">2.15.</span> <span class="post-toc-text">其他</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#锚点"><span class="post-toc-number">2.15.1.</span> <span class="post-toc-text">锚点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#空格"><span class="post-toc-number">2.15.2.</span> <span class="post-toc-text">空格</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#图片图床"><span class="post-toc-number">2.15.3.</span> <span class="post-toc-text">图片图床</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LaTeX公式"><span class="post-toc-number">2.15.4.</span> <span class="post-toc-text">LaTeX公式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#行内公式（-表示）"><span class="post-toc-number">2.15.4.1.</span> <span class="post-toc-text">行内公式（$表示）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#整行公式（-表示）"><span class="post-toc-number">2.15.4.2.</span> <span class="post-toc-text">整行公式（$$表示）</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#流程图、渲染序列图"><span class="post-toc-number">2.15.5.</span> <span class="post-toc-text">流程图、渲染序列图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#流程图"><span class="post-toc-number">2.15.5.1.</span> <span class="post-toc-text">流程图</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#渲染序列图"><span class="post-toc-number">2.15.5.2.</span> <span class="post-toc-text">渲染序列图</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#GitHub-Emoji"><span class="post-toc-number">2.15.6.</span> <span class="post-toc-text">GitHub Emoji</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Markdown的局限性"><span class="post-toc-number">2.16.</span> <span class="post-toc-text">Markdown的局限性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Markdown-工具的选择"><span class="post-toc-number">3.</span> <span class="post-toc-text">Markdown 工具的选择</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Windows-平台"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Windows 平台</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sublime"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">Sublime</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#简书"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">简书</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Cmd-Markdown"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">Cmd Markdown</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#马克飞象"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">马克飞象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为知笔记"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">为知笔记</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Simple-MarkPad"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">Simple MarkPad</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MarkPad"><span class="post-toc-number">3.1.7.</span> <span class="post-toc-text">MarkPad</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Miu"><span class="post-toc-number">3.1.8.</span> <span class="post-toc-text">Miu</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Mac-平台"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Mac 平台</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mou"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">Mou</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ulysses"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">Ulysses</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Byword"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">Byword</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#typora"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">typora</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Quiver"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">Quiver</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Alternote"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">Alternote</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SnippetsLab"><span class="post-toc-number">3.2.7.</span> <span class="post-toc-text">SnippetsLab</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#MarkdownPad"><span class="post-toc-number">3.2.8.</span> <span class="post-toc-text">MarkdownPad</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网页版-线上"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">网页版(线上)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Others"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">Others</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#More"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">More</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#推荐阅读"><span class="post-toc-number">4.</span> <span class="post-toc-text">推荐阅读</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#补充"><span class="post-toc-number">5.</span> <span class="post-toc-text">补充</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-04-11-【博客】 走进Markdown园子"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【博客】 走进Markdown园子</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-11 13:46:57" datetime="2018-04-11T13:46:57.000Z"  itemprop="datePublished">2018-04-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        43 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>欢迎关注微信公众号：<strong>北岛向南</strong>（id：nanzhouie）</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6f99a47fbab.png" alt="扫一扫 + 微信公众号" title>
+                </div>
+                <div class="image-caption">扫一扫 + 微信公众号</div>
+            </figure>
+<hr>
+<p><strong>GitHub Pages：</strong><a href="https://zhouie.cn/markdown-doc/">https://zhouie.cn/markdown-doc/</a></p>
+<h2 id="认识-Markdown"><a href="#认识-Markdown" class="headerlink" title="认识 Markdown"></a>认识 Markdown</h2><blockquote>
+<p>HTML ( <code>HyperText Markup Language</code> ) 作为一种超文本标记语言 ( <code>Markup Language</code> ) 应运而生，无数的网页从此有了主次分明，层次清晰的格式。<br>如果将 HTML 比作一架重机枪，那么 Markdown 就是一把手枪，满足了主要的文本格式标记的需求，可是操作性却大大简化。<br>秉承 <strong>易读易写</strong> 的宗旨，Markdown 作为一种轻量级标记语言 ( <code>Lightweight Markup Language</code> ) ，让无数的程序猿和文字工作者爱不释手。</p>
+</blockquote>
+<h3 id="Markdown的优点"><a href="#Markdown的优点" class="headerlink" title="Markdown的优点"></a>Markdown的优点</h3><ul>
+<li>专注你的文字内容而不是排版样式，安心写作</li>
+<li>轻松的导出 <code>HTML</code>、<code>PDF</code> 和本身的 <code>.md</code> 文件</li>
+<li>纯文本内容，兼容所有的文本编辑器与字处理软件</li>
+<li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱</li>
+<li>可读、直观、学习成本低</li>
+</ul>
+<h3 id="Markdown-的现状"><a href="#Markdown-的现状" class="headerlink" title="Markdown 的现状"></a>Markdown 的现状</h3><blockquote>
+<p>有时候一件事情的真相，不是来自于对它的思考，而是来自于对它的感觉。<br>——Stanley Kubrick</p>
+</blockquote>
+<p>这是 John Grumber 最喜欢的用来解释 Markdown 设计初衷的一句话，Markdown 语言希望带来的就是纯粹的写作的感觉，旨在简洁、高效，也由于 Markdown 的易读易写，人们用不同的编程语言实现了多个版本的解析器和生成器。</p>
+<p>目前不同的 Markdown 工具集成了不同的功能（但基础功能大致相同），例如 <strong>流程图</strong> 与 <strong>时序图</strong> ，<strong>复杂表格</strong> 与 <strong>复杂公式</strong> 的呈现。<br>我相信随着 Markdown 语法的逐渐普及开来，以后更多的平台会支持 Markdown 书写模式，并集成更加完整的功能模块。</p>
+<p>虽然功能的 “<strong>丰富</strong>” 并没有什么本质的缺点，但这个程度一旦 “过” 了头，终归有些背离初衷，与 “易读易写” 出现矛盾，开始在编写的过程中觉得有些许吃力了。那这个时候，用户可能会觉得，不如使用专业化的工具来撰写更有效率。</p>
+<h3 id="Markdown官方文档"><a href="#Markdown官方文档" class="headerlink" title="Markdown官方文档"></a>Markdown官方文档</h3><ul>
+<li><a href="http://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">创始人 John Gruber 的 Markdown 语法说明</a></li>
+<li><a href="https://zhouie.cn/markdown-doc/markdown-doc-syntax-zh">Markdown 中文版语法说明</a></li>
+</ul>
+<blockquote>
+<p>了解一下 John Gruber</p>
+</blockquote>
+<p>2004 年 John Gruber创造 Markdown 语言，14年间，Markdown 语言从程序员圈子中逐渐扩散开来，成为了越来越多的电脑写作者第一选择。</p>
+<p>John Gruber 是一个资深果粉，他的个人博客 <a href="https://daringfireball.net/" target="_blank" rel="noopener">Daring Fireball</a> 被人戏称为 苹果官方喉舌博客。所以你应该懂为什么最好的 Markdown 编辑器都集中在 Mac 平台上了吧。</p>
+<hr>
+<h2 id="使用Markdown"><a href="#使用Markdown" class="headerlink" title="使用Markdown"></a>使用Markdown</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>Markdown 通过在行首添加 1 ~ 6个 <code>#</code> 符号来定义不同级别的标题，最多到六级标题。<br>注意 ：<code>#</code> 后最好是需要加一个空格。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-4c5a24a5f95eedf3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="# 标题样式" title>
+                </div>
+                <div class="image-caption"># 标题样式</div>
+            </figure>
+<p>特别的，还可使用 <code>=</code> (高阶标题) 和 <code>-</code> (次阶标题) 标记 一级 和 二级 标题。<br>注意：<code>=</code> 和 <code>-</code> 的个数在不同 Markdown 工具中都有不同，但这倒不是多大的问题了，简单试试就知道了。 </p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">效果和一级标题一样</span><br><span class="line">=</span><br><span class="line">效果和二级标题一样</span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-05da83bfeaa6a4e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="- = 标题样式" title>
+                </div>
+                <div class="image-caption">- = 标题样式</div>
+            </figure>
+<h3 id="加粗、斜体-和-删除线"><a href="#加粗、斜体-和-删除线" class="headerlink" title="加粗、斜体 和 删除线"></a>加粗、斜体 和 删除线</h3><ul>
+<li>markdown使用 <code>*</code> 和 <code>_</code>  强调文本，使用一个 <code>*</code> 和 <code>_</code> 包围的文本会被转化为 <em>斜体</em> ；而用两个 <code>*</code> 和 <code>_</code> 包围的文本则会被转化成 <strong>加粗</strong> ；使用两个<code>~</code>包围的文本会被转化为 <del>删除线</del></li>
+<li>但如果你的 <code>*</code> 、<code>_</code> 和 <code>~</code> 两边都有空白的话，它们就只会被当成普通的符号，这其实也是一个需要注意的地方</li>
+<li><p>如果要在文字前后直接插入普通的 星号 <code>*</code> 或 下划线 <code>_</code> ，你可以用 反斜杠 <code>\</code> 转义</p>
+</li>
+<li><p>书写格式</p>
+</li>
+</ul>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*斜体文字*</span><br><span class="line"><span class="symbol">_</span>斜体文字<span class="symbol">_</span></span><br><span class="line">**加粗文字**</span><br><span class="line"><span class="symbol">__</span>加粗文字<span class="symbol">__</span></span><br><span class="line">~~删除内容~~</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p><em>斜体文字</em><br><em>斜体文字</em><br><strong>加粗文字</strong><br><strong>加粗文字</strong><br><del>删除内容</del></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>Markdown支持 无序列表 和 有序列表。<br>无序列表可以使用 <code>*</code> ， <code>+</code> ， <code>-</code> 三者中任意符号来标记；有序列表则使用 <code>数字</code> 加 <code>.</code> 来标记。<br>注意：标记后面最好是需要加一个空格，有序列表的数字会被按顺序自动更正。通常情况下，无序列表的项目符号是按照实心圆、空心圆、实心方格的层级关系递进的。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">有序列表</span><br><span class="line"><span class="bullet">1. </span>第一点</span><br><span class="line"><span class="bullet">2. </span>第二点</span><br><span class="line"><span class="bullet">5. </span>第三点</span><br><span class="line"></span><br><span class="line">无序列表</span><br><span class="line"><span class="bullet">* </span>这是无序列表项目</span><br><span class="line"><span class="bullet">- </span>这是无序列表项目</span><br><span class="line"><span class="bullet">+ </span>这是无序列表项目</span><br><span class="line"></span><br><span class="line">嵌套的列表</span><br><span class="line"><span class="bullet">- </span>呵呵</span><br><span class="line"><span class="bullet">    + </span>嘉嘉</span><br><span class="line"><span class="bullet">    * </span>嘻嘻</span><br><span class="line"><span class="bullet">    * </span>吼吼</span><br><span class="line"><span class="bullet">        * </span>嘎嘎</span><br><span class="line"><span class="bullet">        - </span>桀桀</span><br><span class="line"><span class="bullet">+ </span>哈哈</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>有序列表</p>
+<ol>
+<li>第一点</li>
+<li>第二点</li>
+<li>第三点</li>
+</ol>
+<p>无序列表</p>
+<ul>
+<li>这是无序列表项目</li>
+</ul>
+<ul>
+<li>这是无序列表项目</li>
+</ul>
+<ul>
+<li>这是无序列表项目</li>
+</ul>
+<p>嵌套的列表</p>
+<ul>
+<li>呵呵<ul>
+<li>嘉嘉</li>
+</ul>
+<ul>
+<li>嘻嘻</li>
+<li>吼吼<ul>
+<li>嘎嘎</li>
+</ul>
+<ul>
+<li>桀桀</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>哈哈</li>
+</ul>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在段落前添加一个 <code>&gt;</code> 符号即可将该段落标记为引用<br>注意： <code>&gt;</code> 后最好是需要加一个空格；<code>&gt;</code>、<code>&gt;&gt;</code> 和 <code>&gt;&gt;&gt;</code> 等多层嵌套的使用，有点不太好总结，不要问我为什么，实践出真知。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">一般用法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 这是引用</span></span><br><span class="line"></span><br><span class="line">迭代使用（引用中的引用）</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 这是一级引用</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; 这是二级引用</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; 这是三级引用</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt; 这是二级引用</span></span><br><span class="line"><span class="meta">&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 这是一级引用</span></span><br><span class="line"></span><br><span class="line">引用的区块内也可使用其他 Markdown 语法</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 1.   这是第一行列表项。</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 3.   这是第二行列表项。</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 5.   这是第三行列表项。</span></span><br><span class="line"><span class="meta">&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 给出一些例子代码：</span></span><br><span class="line"><span class="meta">&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     <span class="built_in">return</span> shell_exec(<span class="string">"echo <span class="variable">$input</span> | <span class="variable">$markdown_script</span>"</span>);</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果 </li>
+</ul>
+<p>一般用法</p>
+<blockquote>
+<p>这是引用</p>
+</blockquote>
+<p>迭代使用（引用中的引用）</p>
+<blockquote>
+<p>这是一级引用</p>
+<blockquote>
+<p>这是二级引用</p>
+<blockquote>
+<p>这是三级引用</p>
+</blockquote>
+<p>这是二级引用</p>
+</blockquote>
+<p>这是一级引用</p>
+</blockquote>
+<p>引用的区块内也可使用其他 Markdown 语法</p>
+<blockquote>
+<ol>
+<li>这是第一行列表项。</li>
+<li>这是第二行列表项。</li>
+<li>这是第三行列表项。</li>
+</ol>
+<p>给出一些例子代码：</p>
+<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre></blockquote>
+<ul>
+<li>补充一下</li>
+</ul>
+<p>引用区块和代码区块的区别：<code>&gt;</code>引用区块中的文本保留Markdown语法，而<code>\</code>```代码块中的文本不保留Markdown语法。</p>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>分割线最常使用就是三个或以上 <code>*</code> ，还可以使用 <code>-</code> 和 <code>_</code> 。<br>注意：使用 <code>---</code> 作为水平分割线时，要在它的前面空一行，防止 <code>---</code> 被当成标题标记的表示方式。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">***</span></span><br><span class="line"><span class="string">___</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<hr>
+<hr>
+<hr>
+<h3 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h3><p>markdown文本中插入链接非常方便，有 <code>文内链接</code> 和 <code>引用链接</code> 两种方式。</p>
+<p>注意：文内链接 和 引用链接 显示效果是一样的，但是在编辑状态下的使用情况不一样。文内链接紧跟链接文字，可以在看到链接文字的同时清楚的知道链接地址，但是不便于多次重复利用。</p>
+<p>引用链接可以重复使用，但一般都是将一些链接放在一起统一管理，如一段文字后面或文章结尾，因此在找到链接和链接文字的对应关系上有些麻烦，各有利弊，分情况使用吧。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">文内链接</span><br><span class="line">这是一个文内链接的[<span class="string">例子</span>](<span class="link">http://example.com/ "鼠标悬浮此处显示的标题"</span>)。</span><br><span class="line">[<span class="string">这个</span>](<span class="link">http://example.net/</span>)链接在鼠标悬浮时没有标题。</span><br><span class="line">[<span class="string">这个</span>](<span class="link">/about/</span>)链接是本地资源。</span><br><span class="line"></span><br><span class="line">引用链接</span><br><span class="line">这是一个引用链接的 [<span class="string">例子</span>][<span class="symbol">id</span>]，[<span class="string">例子2</span>][<span class="symbol"></span>]。</span><br><span class="line">[<span class="symbol">id</span>]: <span class="link">http://example.com/  "鼠标悬浮标题（可选）"</span></span><br><span class="line">[<span class="symbol">例子2</span>]: <span class="link">http://example.com/ </span></span><br><span class="line">注意，这里的 id 没有大小写区分，如果省略 id ，则前面方括号的内容会被用作 id 。</span><br><span class="line"></span><br><span class="line">我常用的网站包括 [<span class="string">Google</span>][<span class="symbol">1</span>]， [<span class="string">Yahoo</span>][<span class="symbol">2</span>] 和 [<span class="string">MSN</span>][<span class="symbol">3</span>] 。</span><br><span class="line">[<span class="symbol">1</span>]: <span class="link">http://google.com/        "Google"</span></span><br><span class="line">[<span class="symbol">2</span>]: <span class="link">http://search.yahoo.com/  "Yahoo Search"</span></span><br><span class="line">[<span class="symbol">3</span>]: <span class="link">http://search.msn.com/    "MSN Search"</span></span><br><span class="line">  </span><br><span class="line">也可以写成</span><br><span class="line"></span><br><span class="line">我常用的网站包括 [<span class="string">Google</span>][<span class="symbol"></span>]，[<span class="string">Yahoo</span>][<span class="symbol"></span>] 和 [<span class="string">MSN</span>][<span class="symbol"></span>] 。</span><br><span class="line">[<span class="symbol">google</span>]: <span class="link">http://google.com/        "Google"</span></span><br><span class="line">[<span class="symbol">yahoo</span>]:  <span class="link">http://search.yahoo.com/  "Yahoo Search"</span></span><br><span class="line">[<span class="symbol">msn</span>]:    <span class="link">http://search.msn.com/    "MSN Search"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>文内链接<br>这是一个文内链接的<br>这是一个链接的<a href="http://example.com/" title="鼠标悬浮此处显示的标题" target="_blank" rel="noopener">例子</a>。<br><a href="http://example.net/" target="_blank" rel="noopener">这个</a>链接在鼠标悬浮时没有标题。<br><a href="/about/">这个</a>链接是本地资源。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-1bdd77944c0d8fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用链接的解析效果" title>
+                </div>
+                <div class="image-caption">引用链接的解析效果</div>
+            </figure>
+<h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>插入图片和插入链接非常类似，只是在方括号前多一个 <code>!</code> 。</p>
+<p><code>[图片上传失败...(image-3c0559-1533526878147)]</code></p>
+<ul>
+<li>Alt text为如果图片无法显示时显示的文字。</li>
+<li>/path/to/img.jpg为图片所在路径。</li>
+<li>Optional title为显示标题。显示效果为在你将鼠标放到图片上后，会显示一个小框提示，提示的内容就是Optional title。</li>
+</ul>
+<p>注意：Markdown 语法目前还没有某种合适的办法指定图片的宽高，但据我所知，很多平台以及在这个方向作出相当多的改进了，一起期待吧！</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">文内链接</span><br><span class="line">![<span class="string">idol</span>](<span class="link">http://pcx2lec2u.bkt.clouddn.com/201808051449_378.jpg</span>)</span><br><span class="line"></span><br><span class="line">引用链接</span><br><span class="line"></span><br><span class="line">![<span class="string">idol</span>][<span class="symbol">idol</span>]</span><br><span class="line">[<span class="symbol">idol</span>]: <span class="link">http://pcx2lec2u.bkt.clouddn.com/201808051449_378.jpg</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>文内链接</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-b0c6b00935a0af53.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="idol" title>
+                </div>
+                <div class="image-caption">idol</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-fb9d1c8bfee4bb02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="引用链接解析效果" title>
+                </div>
+                <div class="image-caption">引用链接解析效果</div>
+            </figure>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>表格的书写格式一目了然，还是很方便简洁的。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string"> 左对齐 </span>|<span class="string"> 中间对齐 </span>|<span class="string"> 右对齐 </span>|</span><br><span class="line">|<span class="string"> :---   </span>|<span class="string">  :---:   </span>|<span class="string">   ---: </span>|</span><br><span class="line">|<span class="string"> 左1    </span>|<span class="string">  中1     </span>|<span class="string">  右1   </span>|</span><br><span class="line">|<span class="string"> 左2    </span>|<span class="string">  中2     </span>|<span class="string">  右3   </span>|</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:center">中间对齐</th>
+<th style="text-align:right">右对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">左1</td>
+<td style="text-align:center">中1</td>
+<td style="text-align:right">右1</td>
+</tr>
+<tr>
+<td style="text-align:left">左2</td>
+<td style="text-align:center">中2</td>
+<td style="text-align:right">右2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="角标"><a href="#角标" class="headerlink" title="角标"></a>角标</h3><p>不同于前面说的链接，这里的角标内容会被放在文末，点击可以实现跳转，使用 <code>[^]</code> 来定义脚注。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用 Markdown[^1] 可以效率的书写文档，直接转换成 HTML[^2] ，你可以使用Leanote[^Le] 编辑器进行书写。</span><br><span class="line">[<span class="symbol">^1</span>]: <span class="link">Markdown是一种纯文本标记语言</span></span><br><span class="line">[<span class="symbol">^2</span>]: <span class="link">HyperText Markup Language 超文本标记语言</span></span><br><span class="line">[<span class="symbol">^Le</span>]: <span class="link">开源笔记平台，支持Markdown和笔记直接发为博文</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>使用 Markdown<a href="Markdown是一种纯文本标记语言。">^1</a> 可以效率的书写文档，直接转换成 HTML[^2] ，你可以使用Leanote<a href="开源笔记平台，支持Markdown和笔记直接发为博文。">^Le</a> 编辑器进行书写。</p>
+<p>[^2]: HyperText Markup Language 超文本标记语言。</p>
+<h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><p><code>&lt;sub&gt;</code>、<code>&lt;sup&gt;</code> 用作表示上下标</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E = mc<span class="tag">&lt;<span class="name">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">Water : H<span class="tag">&lt;<span class="name">sub</span>&gt;</span>2<span class="tag">&lt;/<span class="name">sub</span>&gt;</span>O</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>E = mc<sup>2</sup></p>
+<p>Water : H<sub>2</sub>O</p>
+<h3 id="直接链接与邮箱"><a href="#直接链接与邮箱" class="headerlink" title="直接链接与邮箱"></a>直接链接与邮箱</h3><p>在 markdown 中将 链接地址 或 邮箱地址 用 <code>&lt;&gt;</code> 包围，则会被自动转换成可点击的链接地址。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="string">http:</span><span class="comment">//haoeric.com&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;haoeric0520<span class="meta">@gmail</span>.com&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p><a href="http://haoeric.com" target="_blank" rel="noopener">http://haoeric.com</a></p>
+<p><a href="mailto:&#x68;&#97;&#111;&#101;&#114;&#105;&#x63;&#48;&#x35;&#50;&#x30;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x68;&#97;&#111;&#101;&#114;&#105;&#x63;&#48;&#x35;&#50;&#x30;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
+<h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>使用html标签 <code>&lt;br/&gt;</code> 、 <code>&lt;br&gt;</code> 换行</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一行hahaha &lt;br/&gt; 第二行<span class="number">6666</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>第一行hahaha <br> 第二行6666</p>
+<h3 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠"></a>反斜杠</h3><p>如果需要避免文本中的符号被当做 markdown 标识符而发生不必要的格式转化，可以在符号前加 <code>\</code> 来避免。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">\*</span>不是斜体<span class="symbol">\*</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<p>* 不是斜体 *</p>
+<p>整理一下，Markdown 支持以下这些符号前面加上 反斜杠 来帮助插入普通的符号：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>\</code></td>
+<td style="text-align:center"><code>反斜线</code></td>
+</tr>
+<tr>
+<td style="text-align:center">`</td>
+<td style="text-align:center"><code>反引号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>*</code></td>
+<td style="text-align:center"><code>星号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>_</code></td>
+<td style="text-align:center"><code>底线</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>{}</code></td>
+<td style="text-align:center"><code>花括号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>[]</code></td>
+<td style="text-align:center"><code>方括号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>()</code></td>
+<td style="text-align:center"><code>括弧</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>#</code></td>
+<td style="text-align:center"><code>井字号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td style="text-align:center"><code>加号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>-</code></td>
+<td style="text-align:center"><code>减号</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>.</code></td>
+<td style="text-align:center"><code>英文句点</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>!</code></td>
+<td style="text-align:center"><code>惊叹号</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h3><p>使用栅栏标记代码块的一个好处是可以标明代码的语种，然后实现代码的高亮。</p>
+<ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```ruby</span><br><span class="line">require 'redcarpet'</span><br><span class="line">markdown = Redcarpet.<span class="keyword">new</span>(<span class="string">"Hello World!"</span>)</span><br><span class="line">puts markdown.to_html</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解析效果</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'redcarpet'</span></span><br><span class="line">markdown = Redcarpet.new(<span class="string">"Hello World!"</span>)</span><br><span class="line">puts markdown.to_html</span><br></pre></td></tr></table></figure>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h4><p>网页中，<code>锚点</code> 其实就是页内超链接，也就是 链接本文档内部的某些元素 ，实现当前页面中的跳转，最典型的例子就是 <code>目录</code> 这种结构了。比如我这里写下一个锚点，点击 <code>回到目录</code>，就能跳转到 <code>目录</code>。 在 <code>目录</code> 中点击 这一节，就能跳过来。</p>
+<p>在 <code>Github</code> 的 <code>md</code> 文件中，会为每个 <code>h1~h6</code> 标签(即 <code># ... ######</code> )，自动塞入一个 <code>a</code> 标签，并渲染好 <code>id</code> 。 </p>
+<p>比如 <code># h1</code>，被渲染成html如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"user-content-h1"</span> <span class="attr">class</span>=<span class="string">"anchor"</span> <span class="attr">href</span>=<span class="string">"#h1"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">svg</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span> <span class="attr">class</span>=<span class="string">"octicon octicon-link"</span> <span class="attr">height</span>=<span class="string">"16"</span> <span class="attr">role</span>=<span class="string">"img"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 16 16"</span> <span class="attr">width</span>=<span class="string">"16"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">"M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    h1</span><br><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不去管 <code>svg</code> 部分，可以看到 <code>h1</code> 标签内嵌入了一个 <code>id</code> 为  <code>&quot;user-content-h1&quot;</code> 的 <code>a</code> 标签，如果标题为 <code># h5</code> ，那么 <code>id</code> 就会是 <code>user-content-h5</code> 。</p>
+<h4 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h4><p>在段首加入 <code>&amp;emsp;</code>、<code>&amp;ensp;</code>、<code>&amp;nbsp;</code> 来输入空格，其中，<code>&amp;emsp;</code> 是一个中文字符，<code>&amp;ensp;</code> 是半个中文字符 ，<code>&amp;nbsp;</code> 是1/4中文字符。</p>
+<h4 id="图片图床"><a href="#图片图床" class="headerlink" title="图片图床"></a>图片图床</h4><p>插入图片的地址需要图床，那么，究竟什么是图床呢？</p>
+<p><strong>图床</strong>，顾名思义，图片床，即大量图片汇聚地，每一张图片都有一个<code>url</code>,供所需站点使用。</p>
+<p>详情可以参考我之前写的博文 <a href="https://zhouie.cn/posts/201804241/">图床工具分享</a> 。</p>
+<p>另外，越来越多的 Markdown 工具现在开始支持 <strong>一键上传图片至云端并生成 Markdown 引用链接至剪切板</strong>，可以看看最近的我最近在这方面的 收获总结 —— <a href="https://zhouie.cn/posts/201808032/">Md2All Markdown排版利器</a> 以及 <a href="https://zhouie.cn/posts/201808033/">qiniu_upload windows工具</a>。</p>
+<p>ps：七牛云邀请注册链接：<a href="https://portal.qiniu.com/signup?code=3lowm9s25ur82" target="_blank" rel="noopener">https://portal.qiniu.com/signup?code=3lowm9s25ur82</a></p>
+<h4 id="LaTeX公式"><a href="#LaTeX公式" class="headerlink" title="LaTeX公式"></a>LaTeX公式</h4><ul>
+<li><a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">LaTeX公式参考语法</a></li>
+</ul>
+<h5 id="行内公式（-表示）"><a href="#行内公式（-表示）" class="headerlink" title="行内公式（$表示）"></a>行内公式（<code>$</code>表示）</h5><ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">爱因斯坦发明的质能方程是：<span class="symbol">$</span>E=mc^<span class="number">2</span><span class="symbol">$</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>显示效果</li>
+</ul>
+<p>爱因斯坦发明的质能方程是：$E=mc^2$</p>
+<h5 id="整行公式（-表示）"><a href="#整行公式（-表示）" class="headerlink" title="整行公式（$$表示）"></a>整行公式（<code>$$</code>表示）</h5><ul>
+<li>书写格式</li>
+</ul>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span><span class="symbol">$</span>\sum_&#123;i=<span class="number">1</span>&#125;^n a_i=<span class="number">0</span><span class="symbol">$</span><span class="symbol">$</span></span><br><span class="line"><span class="symbol">$</span><span class="symbol">$</span>f(x_1,x_x,\ldots,x_n) = x_1^<span class="number">2</span> + x_2^<span class="number">2</span> + \cdots + x_n^<span class="number">2</span> <span class="symbol">$</span><span class="symbol">$</span></span><br><span class="line"><span class="symbol">$</span><span class="symbol">$</span>\<span class="keyword">sum</span>^&#123;j<span class="number">-1</span>&#125;_&#123;k=<span class="number">0</span>&#125;&#123;\widehat&#123;\<span class="built-in">gamma</span>&#125;_&#123;kj&#125; z_k&#125;<span class="symbol">$</span><span class="symbol">$</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>显示效果</li>
+</ul>
+<p>$$\sum_{i=1}^n a_i=0$$<br>$$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$<br>$$\sum^{j-1}<em>{k=0}{\widehat{\gamma}</em>{kj} z_k}$$</p>
+<h4 id="流程图、渲染序列图"><a href="#流程图、渲染序列图" class="headerlink" title="流程图、渲染序列图"></a>流程图、渲染序列图</h4><ul>
+<li><a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="noopener">流程图参考语法</a></li>
+<li><a href="https://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="noopener">渲染序列图参考语法</a></li>
+</ul>
+<h5 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h5><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">```flow</span><br><span class="line">st=&gt;start: Start:&gt;https://www.zybuluo.com</span><br><span class="line">io=&gt;inputoutput: verification</span><br><span class="line">op=&gt;operation: Your Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">sub=&gt;subroutine: Your Subroutine</span><br><span class="line">e=&gt;<span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">st-&gt;io-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;sub-&gt;io</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-e1d71e8b0a800a57.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="流程图 显示效果图" title>
+                </div>
+                <div class="image-caption">流程图 显示效果图</div>
+            </figure>
+<h5 id="渲染序列图"><a href="#渲染序列图" class="headerlink" title="渲染序列图"></a>渲染序列图</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```sequence</span><br><span class="line">Alice-&gt;Bob: Hello Bob, how are you?</span><br><span class="line">Note right of Bob: Bob thinks</span><br><span class="line">Bob--&gt;Alice: I am good thanks!</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-7ffb3a68d1fdcc39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="渲染序列图 显示效果图" title>
+                </div>
+                <div class="image-caption">渲染序列图 显示效果图</div>
+            </figure>
+<h4 id="GitHub-Emoji"><a href="#GitHub-Emoji" class="headerlink" title="GitHub Emoji"></a>GitHub Emoji</h4><p>Github 的 Markdown 语法支持添加 emoji 表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。<br>我在 github 上分享了 <a href="https://github.com/zhouie/markdown-emoji" target="_blank" rel="noopener">markdown-emoji 列表</a>，可以去看看。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-57977ecf41c031f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="markdown-emoji 列表" title>
+                </div>
+                <div class="image-caption">markdown-emoji 列表</div>
+            </figure></p>
+<blockquote>
+<p>可是奇怪的是，我的GitHub Pages 采用 Hexo框架，渲染不出 emoji 表情(不支持)，这是为什么呢？</p>
+</blockquote>
+<p>这是因为 Hexo 默认的 markdown 渲染引擎不会渲染 emoji 表情，详情可参阅 <a href="https://www.jianshu.com/p/732240700424" target="_blank" rel="noopener">搭建Hexo博客进阶篇</a></p>
+<h3 id="Markdown的局限性"><a href="#Markdown的局限性" class="headerlink" title="Markdown的局限性"></a>Markdown的局限性</h3><ul>
+<li>不同的 Markdown 工具功能细节上可能会不一样</li>
+<li>写技术类文章条理很重要，因此在开篇有个目录，也显得非常有必要，因此越来越多工具支持 <code>[TOC]</code> 一键生成目录列表，具体可参看我的 <a href="https://github.com/zhouie/github-md-toc" target="_blank" rel="noopener">github-md-toc</a></li>
+<li>另外还有，<code>流程图</code>，<code>渲染序列图</code>，<code>LaTex数学公式</code>，<code>代码语法高亮</code>，<code>显示代码行号</code>，<code>图片/文字 居中/左右对齐</code>，<code>[TOC]目录生成</code>，等等这些，其实都是非常必要的功能，值得去做一些扩展。</li>
+</ul>
+<hr>
+<h2 id="Markdown-工具的选择"><a href="#Markdown-工具的选择" class="headerlink" title="Markdown 工具的选择"></a>Markdown 工具的选择</h2><blockquote>
+<p>还是那句话，编辑器的兴盛固然是好事，但工具的过度丰富也是一种麻烦，如何选出适合自己的 Markdown 编辑器让很多人大伤脑筋，甚至在很多时候，一个设计不佳的 Markdown 编辑器会让初次尝试 Markdown 的写作者放弃使用 Markdown 来写作。</p>
+</blockquote>
+<h3 id="Windows-平台"><a href="#Windows-平台" class="headerlink" title="Windows 平台"></a>Windows 平台</h3><h4 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a><a href="http://www.sublimetext.com/" target="_blank" rel="noopener">Sublime</a></h4><ul>
+<li><strong>支持 OS X、Windows、Ubuntu 等 UNIX 及 Linux 平台</strong></li>
+<li>关联阅读：<a href="https://blog.csdn.net/jave_f/article/details/79894028" target="_blank" rel="noopener">强大的Sublime编辑器</a></li>
+<li>Sublime Text 是程序员圈子里口口相传的「神器」级代码编辑器，它基于 Vim 开发，各种功能性组件层出不穷，功能极度强大，是代码编辑器中的标杆作品。</li>
+<li>同时，它也支持 Markdown 语法高亮，于是很多人都习惯于用它来进行 Markdown 文档书写。由于有着诸如 Markdown Preview、Sublime-Evernote 等扩展性插件，在 Sublime Text 里完全可以完成 Makrdown 书写预览与导出的过程。</li>
+<li>如果你是一名开发者，Sublime Text 基本可以满足你对 Markdown 编辑的全部需求，如果你是一名普通用户，我则更推荐你使用专业的 Markdown 编辑器。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-445c5c7936373bc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="简书"><a href="#简书" class="headerlink" title="简书"></a><a href="https://www.jianshu.com/" target="_blank" rel="noopener">简书</a></h4><ul>
+<li>简书的Web 端使用 Markdown 很舒服，它同样支持左右两栏的实时预览，字体优雅、简洁。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-72cc2973ef001d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="简书" title>
+                </div>
+                <div class="image-caption">简书</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Cmd-Markdown"><a href="#Cmd-Markdown" class="headerlink" title="Cmd Markdown"></a><a href="https://www.zybuluo.com/cmd/" target="_blank" rel="noopener">Cmd Markdown</a></h4><ul>
+<li>除了编辑，管理您的私有文档，Cmd Markdown 还支持发布文稿，您可以在这里将文稿共享给朋友、亲友、同事。</li>
+<li><strong>支持 Linux、Mac、Windows 三大平台</strong>，轻松选择适合你的客户端<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-b0b9909aefb2555a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cmd Markdown" title>
+                </div>
+                <div class="image-caption">Cmd Markdown</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-efd91c34cbe2849a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cmd Markdown 全平台端 优势" title>
+                </div>
+                <div class="image-caption">Cmd Markdown 全平台端 优势</div>
+            </figure>
+</li>
+</ul>
+<h4 id="马克飞象"><a href="#马克飞象" class="headerlink" title="马克飞象"></a><a href="https://maxiang.io" target="_blank" rel="noopener">马克飞象</a></h4><ul>
+<li><strong>支持 Windows 平台</strong></li>
+<li>专为 <a href="https://app.yinxiang.com/referral/Registration.action?sig=1b8f0696566f3d6d59044226739bab4069e3723d147381eb8ebe9c849f6711ff&amp;uid=18502813" target="_blank" rel="noopener">印象笔记</a> 打造的 Markdown 编辑器<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-c89eb527af49927d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="马克飞象" title>
+                </div>
+                <div class="image-caption">马克飞象</div>
+            </figure>
+</li>
+</ul>
+<h4 id="为知笔记"><a href="#为知笔记" class="headerlink" title="为知笔记"></a><a href="http://www.wiz.cn/" target="_blank" rel="noopener">为知笔记</a></h4><ul>
+<li><strong>支持 Windows 平台</strong></li>
+<li>作为一个支持全平台的云笔记应用，为知笔记完全可以当作 Markdown 编辑器来使用，当我们需要跨大平台进行 Markdown 协作写作的时候，会是一个不错的选择。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-fa5d514243c6c708.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="为知笔记" title>
+                </div>
+                <div class="image-caption">为知笔记</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Simple-MarkPad"><a href="#Simple-MarkPad" class="headerlink" title="Simple MarkPad"></a><a href="http://simple-markpad.qiniudn.com/" target="_blank" rel="noopener">Simple MarkPad</a></h4><ul>
+<li>Simple Markpad 最吸引人的一点就是，在诸多看起来就让人觉复杂的 Windows 平台的 Markdown 编辑器中，它始终保持着简约的风格。</li>
+<li>它支持自动列表、图片拖入、Markdown 语法高亮、全屏写作模式、字数统计，还有丰富的快捷键，同时具有着素雅而克制的界面风格。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-f003266ca4ac9440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="MarkPad"><a href="#MarkPad" class="headerlink" title="MarkPad"></a><a href="http://code52.org/DownmarkerWPF/" target="_blank" rel="noopener">MarkPad</a></h4><ul>
+<li><strong>支持 Windows 平台</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-e6aeb2a4e420fb35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MarkPad" title>
+                </div>
+                <div class="image-caption">MarkPad</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Miu"><a href="#Miu" class="headerlink" title="Miu"></a><a href="https://github.com/egoist/Miu" target="_blank" rel="noopener">Miu</a></h4><ul>
+<li><strong>支持 Windows 平台</strong></li>
+<li>一个很优秀的工具，但是由于和 <a href="http://25.io/mou/" target="_blank" rel="noopener">Mou</a> 重复性比较高，同时与其有些争议问题，故并未介绍，有兴趣的话可以自行查看。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0635cdbcf1bc72ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Miu" title>
+                </div>
+                <div class="image-caption">Miu</div>
+            </figure>
+</li>
+</ul>
+<h3 id="Mac-平台"><a href="#Mac-平台" class="headerlink" title="Mac 平台"></a>Mac 平台</h3><h4 id="Mou"><a href="#Mou" class="headerlink" title="Mou"></a><a href="http://25.io/mou/" target="_blank" rel="noopener">Mou</a></h4><ul>
+<li>Mou 是一款由国人开发的 Mac 平台上的 Markdown 编辑器，支持自定义界面主题，导入输出CSS格式文件，最重要的是 Mou 支持 Markdown 实时预览，这让不少初学者能快速上手 Markdown 写作。</li>
+<li>Mou 除了直观的实时预览功能之外，还是目前对中文支持最好的 Markdown 编辑器，无论是多种的编辑主题，还是各式的输出样式，在支持自定义的同时，对中文的优化也是目前的最好的，Mou 甚至支持竖排编写。同时，Mou 还具有发布功能，支持发布到 Tumblr。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-3c4655a6de7daf8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Ulysses"><a href="#Ulysses" class="headerlink" title="Ulysses"></a><a href="http://www.ulyssesapp.com/" target="_blank" rel="noopener">Ulysses</a></h4><ul>
+<li>作为 Markdown 编辑器领域的老牌王者，这款应用入围了苹果2013年 Mac App Store 的 The Best of 2013。Ulysses 有着经典的文档库架构，多样化的可供自定义的编辑主题，大量的输出格式选择，功能丰富，最适合长文写作与颜控用户。</li>
+<li>无论是 PDF 还是 ePub 格式你都可以在官网下载到大量的现成格式模版，省去大量的用在排版上的时间，你需要做的只是按照自己的想法写完文章，之后就可以通过 Ulysses 导出成任意自己想要的格式了。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-5f40c812ffdd87fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Byword"><a href="#Byword" class="headerlink" title="Byword"></a><a href="https://bywordapp.com/" target="_blank" rel="noopener">Byword</a></h4><ul>
+<li>如果说 Ulysses 是功能最丰富的 Markdown 编辑器，Byword 就是最简约的 Markdown 编辑器。同样作为 Apple 平台上的老牌编辑器，Byword 有着一种简约克制的气质，仅有 <strong>6.4 MB</strong> 的体量，却创造出了一个完美而纯粹的写作环境。</li>
+<li>在我看来 Byword 应该是目前编辑器中最忠于 Markdown 语言发明初衷的的编辑器 —— 简单、干净、利落，<strong>All for writing feelings</strong>。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-52c5ae09b9bc1010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="typora"><a href="#typora" class="headerlink" title="typora"></a><a href="https://www.typora.io/" target="_blank" rel="noopener">typora</a></h4><ul>
+<li><strong>支持 Mac 与 Windows 平台</strong></li>
+<li>关联阅读： <a href="https://sspai.com/30292" target="_blank" rel="noopener">《让 Markdown 写作更简单，免费极简编辑器：Typora》</a><br>这款编辑器在大家都还在苦恼如何处理预览和写作界面之间的关系时候，机智的将「写作」和「预览」合二为一了，你输入的地方，即是你输出的地方。</li>
+<li>Markdown 标记成为了类似快捷键一样的存在，你就像在使用一个所见即所编辑器一样，自然而快速的进行写作。可以说，Typora 完全颠覆了目前的 Markdown 编辑器的交互模式，将 Markdown 写作向普通用户推进了一大步。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-4bfc4f7c431d98b2.gif?imageMogr2/auto-orient/strip" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure></li>
+<li>Typora 的革新不止于此，它还提供了了类似 Office 的图像式表格建立方式，支持目录大纲生成，支持拖拽插入图片，并且支持所有主流代码的高亮与 LaTeX 公式编写。</li>
+<li>可以说 Typora 是目前 Markdown 编辑器中功能最与众不同的一个，诸多新鲜而强大的功能让它卓尔不群，绝对值得尝试。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-a3b8bcbba480f671.gif?imageMogr2/auto-orient/strip" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Quiver"><a href="#Quiver" class="headerlink" title="Quiver"></a><a href="http://happenapps.com/" target="_blank" rel="noopener">Quiver</a></h4><ul>
+<li>关联阅读：<a href="https://sspai.com/32193" target="_blank" rel="noopener">《技术写作者的专属笔记本：Quiver》</a></li>
+<li>Quiver 同样是一款国人开发的软件。它具有着强大的 Markdown 编辑能力，但同时又不仅限于此。</li>
+<li>它集合了写作软件与笔记软件的特点，它既有着传统 Markdown 写作软件的实时编辑预览，又有着笔记软件的文件逻辑结构，同时它还内置了 Ace 代码编辑器，通过 Cell 的概念，将各种不同的格式组合在一起，最后形成一个个文件。</li>
+<li>Quiver 可以说是一款为技术写作设计的，专注于笔记方向的 Markdown 编辑器，它能够在为你提供流畅的 Markdown 写作体验的同时，为你构建起一个良好的知识管理结构。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-c4d9210cb2081e33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="Alternote"><a href="#Alternote" class="headerlink" title="Alternote"></a><a href="http://alternoteapp.com/" target="_blank" rel="noopener">Alternote</a></h4><ul>
+<li>同为 Mac 平台上的笔记式 Markdown 编辑软件，Alternote 则是为印象笔记进行了深度定制，成为了一款简约轻量的第三方印象笔记客户端。它抛弃了印象笔记臃肿的架构，专注于对写作体验的优化，深度重构了印象笔记对对于 Markdown 写作者的意义。</li>
+<li>在 Alternote 里，Markdown 标记在输入完成后会自动转换成对应的富文本格式，并不需要额外的预览，不过美中不足的是，这样也造成了一旦转换为富文本就无法再转换回来的问题。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-8d86761d26e18495.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alternote" title>
+                </div>
+                <div class="image-caption">Alternote</div>
+            </figure>
+</li>
+</ul>
+<h4 id="SnippetsLab"><a href="#SnippetsLab" class="headerlink" title="SnippetsLab"></a><a href="http://www.renfei.org/snippets-lab/" target="_blank" rel="noopener">SnippetsLab</a></h4><ul>
+<li>Snippetslab9 是一款 Mac 平台的面向开发者的代码管理与编写工具，专注于帮助使用者收集整理代码片段，快速调用有价值的代码片段，打造属于个人的代码仓库。</li>
+<li>那么它和 Markdown 的关系在哪里呢？奥秘就在它的菜单栏助手上。Snippetslab 的菜单栏助手有着类似印象笔记菜单栏助手的特性，支持在菜单栏打开小窗口进行程序编写，同时可以对代码进行语法高亮，而它正好也支持 Markdown。</li>
+<li>目前所有平台中，Snippetslab 是唯一一款提供了菜单栏 Markdown 文字输入的应用，你可以在不用打开主题程序的情况下，以小视窗形式快速的进行 Markdown 编写。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-f56ab5cf8821ed92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h4 id="MarkdownPad"><a href="#MarkdownPad" class="headerlink" title="MarkdownPad"></a><a href="http://markdownpad.com/" target="_blank" rel="noopener">MarkdownPad</a></h4><ul>
+<li><strong>支持 Mac 平台</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-54fad55faeb3709b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+</li>
+</ul>
+<h3 id="网页版-线上"><a href="#网页版-线上" class="headerlink" title="网页版(线上)"></a>网页版(线上)</h3><ul>
+<li><a href="http://blog.didispace.com/tools/online-markdown/" target="_blank" rel="noopener">程序猿DD - 常用工具：Markdown转换工具</a></li>
+<li><a href="https://maxiang.io/" target="_blank" rel="noopener">马克飞象 - 专为印象笔记打造的Markdown编辑器</a></li>
+<li><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">Cmd Markdown编辑阅读器 - 作业部落出品</a></li>
+<li><a href="http://dillinger.io/" target="_blank" rel="noopener">Dillinger, the Last Markdown Editor ever.</a></li>
+<li><a href="https://stackedit.io/" target="_blank" rel="noopener">StackEdit – In-browser Markdown editor</a></li>
+<li><a href="http://www.tryscribble.com/" target="_blank" rel="noopener">Scribble - Simple Markdown Wiki</a></li>
+<li><a href="https://markdowntohtml.com/" target="_blank" rel="noopener">Free Markdown to HTML Converter</a></li>
+<li><a href="https://draftin.com/" target="_blank" rel="noopener">Draft. Write Better.</a></li>
+<li><a href="https://markable.in/" target="_blank" rel="noopener">Markable.in</a></li>
+<li><a href="https://mrcoles.com/demo/markdown-css/" target="_blank" rel="noopener">Markdown.css</a></li>
+</ul>
+<p>同时，也有一些 Markdown 相关浏览器插件也是很棒的，最典型的便是：<a href="https://markdown-here.com/" target="_blank" rel="noopener">Markdown-Here</a>，我也有写一篇博文专门介绍分享了它 —— <a href="https://zhouie.cn/posts/201808031/">Markdown-Here md-2-html渲染</a></p>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><ul>
+<li><a href="http://pandao.github.io/editor.md/index.html" target="_blank" rel="noopener">Editor.md - 开源在线 Markdown 编辑器</a></li>
+<li><a href="http://writemonkey.com/index.php" target="_blank" rel="noopener">WriteMonkey</a></li>
+<li><a href="http://daux.io/index" target="_blank" rel="noopener">DAUX.IO</a></li>
+<li><a href="https://github.com/retext-project/retext" target="_blank" rel="noopener">ReText</a></li>
+<li><a href="https://www.zybuluo.com/cmd/" target="_blank" rel="noopener">Cmd Markdown</a></li>
+<li><a href="https://www.vim.org/" target="_blank" rel="noopener">vim</a></li>
+<li><a href="https://github.com/egrcc/Mango" target="_blank" rel="noopener">Mango</a></li>
+<li><a href="http://pad.haroopress.com/user.html" target="_blank" rel="noopener">Haroopad</a></li>
+<li><a href="https://ia.net/writer" target="_blank" rel="noopener">iA Writer</a></li>
+<li><a href="http://www.wandoujia.com/apps-com.ryeeeeee.markdownx?mt=8&amp;uo=4&amp;ct=appcards" target="_blank" rel="noopener">MarkdownX</a></li>
+<li><a href="http://markitup.jaysalvat.com/home/" target="_blank" rel="noopener">markItUp! Universal Markup jQuery Editor</a></li>
+</ul>
+<h3 id="More"><a href="#More" class="headerlink" title="More"></a>More</h3><p>如有更好的 Markdown 免费编辑器推荐，请到<a href="https://github.com/Javef/Markdown/issues" target="_blank" rel="noopener">这里留言反馈</a>，谢谢~</p>
+<hr>
+<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
+<li><a href="https://www.jianshu.com/p/564bdf3a9462?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">MarkDown学习笔记</a></li>
+<li><a href="https://www.zybuluo.com/liayun/note/371635" target="_blank" rel="noopener">首次使用MarkDown好激动</a></li>
+<li><a href="https://www.jianshu.com/p/d7d6da4b7c60?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">让你的Markdown用起来得心应手</a></li>
+<li><a href="https://www.jianshu.com/p/34c92cbd0aaf/" target="_blank" rel="noopener">一段JS代码让Markdown自动生成侧边栏目录</a></li>
+<li><a href="https://zhouie.cn/markdown-doc/markdown-doc-syntax-zh">Markdown 语法说明 (简体中文版)</a></li>
+<li><a href="https://sspai.com/post/32483#fn5" target="_blank" rel="noopener">码字必备：18 款优秀的 Markdown 写作工具 | 2015 年度盘点 - 少数派</a></li>
+</ul>
+<hr>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>2018/04/20 07:12<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload-images.jianshu.io/upload_images/9934558-a23a100ba5d35018.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Markdown_desktop_tool_rank.png" title>
+                </div>
+                <div class="image-caption">Markdown_desktop_tool_rank.png</div>
+            </figure></p>
+<p>2018/08/05 20:36<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-7be18ee13a963162.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="整理于2015年" title>
+                </div>
+                <div class="image-caption">整理于2015年</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201804111/" rel="external">【博客】 走进Markdown园子</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201804111/" target="_blank" rel="external">https://zhouie.cn/posts/201804111/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool-share/">Tool-share</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804111/&sharesource=qzone&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804111/&srcUrl=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 走进Markdown园子》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804111/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804111/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804111/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 走进Markdown园子》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804111/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804111/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201804171/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 转载的一些站点与工具(一)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201803191/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【转载】 图灵访谈：Redis带你尽享丝滑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804111/&sharesource=qzone&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804111/&srcUrl=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804111/&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 走进Markdown园子》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804111/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804111/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 走进Markdown园子》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804111/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 走进Markdown园子》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804111/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804111/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201804111/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

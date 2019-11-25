@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【核心网CN】 3GPP系统演进学习相关名词 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="3GPP,3GPP2,GSM/GPRS/EDGE/GERAN,UMTS/UTRAN,LTE/E-UTRAN,LTE-A/SAE,非3GPP,CDMA2000">
+    <meta name="description" content="今年是2019年，5G服务时代眼看就要在全球铺展开来。这段时间学习了一些通信方面的知识，这里首先梳理下各代移动通信网络中出现的各种特有名词。 什么是3GPP第三代合作伙伴计划3GPP（3rd Generation Partnership Project）是一个成立于1998年12月的标准化机构。该组织囊括了来自世界所有地区的标准化组织，当前其成员包括欧洲的ETSI、日本的ARIB和TTC、中国的C">
+<meta name="keywords" content="3GPP,3GPP2,GSM&#x2F;GPRS&#x2F;EDGE&#x2F;GERAN,UMTS&#x2F;UTRAN,LTE&#x2F;E-UTRAN,LTE-A&#x2F;SAE,非3GPP,CDMA2000">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【核心网CN】 3GPP系统演进学习相关名词">
+<meta property="og:url" content="https://zhouie.cn/posts/201908142/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="今年是2019年，5G服务时代眼看就要在全球铺展开来。这段时间学习了一些通信方面的知识，这里首先梳理下各代移动通信网络中出现的各种特有名词。 什么是3GPP第三代合作伙伴计划3GPP（3rd Generation Partnership Project）是一个成立于1998年12月的标准化机构。该组织囊括了来自世界所有地区的标准化组织，当前其成员包括欧洲的ETSI、日本的ARIB和TTC、中国的C">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTAzZWVmN2M1MmMwMzgyM2QucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWEwMTA1ZDY3MGQyODVmNzgucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTIwYTgwN2ZlNzY1MTQ1MjYucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTY3YTZlZWY1OTE1YzA0NjkucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTNhMWRhNGNjNmUzOGY3NWMucG5n">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【核心网CN】 3GPP系统演进学习相关名词">
+<meta name="twitter:description" content="今年是2019年，5G服务时代眼看就要在全球铺展开来。这段时间学习了一些通信方面的知识，这里首先梳理下各代移动通信网络中出现的各种特有名词。 什么是3GPP第三代合作伙伴计划3GPP（3rd Generation Partnership Project）是一个成立于1998年12月的标准化机构。该组织囊括了来自世界所有地区的标准化组织，当前其成员包括欧洲的ETSI、日本的ARIB和TTC、中国的C">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTAzZWVmN2M1MmMwMzgyM2QucG5n">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【核心网CN】 3GPP系统演进学习相关名词</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【核心网CN】 3GPP系统演进学习相关名词</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-14T17:25:35.000Z" itemprop="datePublished" class="page-time">
+  2019-08-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/核心网CN/">核心网CN</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是3GPP"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是3GPP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#名词翻译与大致发展"><span class="post-toc-number">2.</span> <span class="post-toc-text">名词翻译与大致发展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二代（2G）移动电话系统"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">第二代（2G）移动电话系统</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三代（3G）移动电话系统"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第三代（3G）移动电话系统</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第四代（4G）移动电话系统"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第四代（4G）移动电话系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充说明"><span class="post-toc-number">3.</span> <span class="post-toc-text">补充说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#LTE与SAE的关系"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">LTE与SAE的关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#非3GPP系统举例"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">非3GPP系统举例</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#不足与改进体现在哪"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">不足与改进体现在哪</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#再补充一些"><span class="post-toc-number">4.</span> <span class="post-toc-text">再补充一些</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3GPP2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">3GPP2</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2019-08-14-【核心网CN】3GPP系统演进学习相关名词"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【核心网CN】 3GPP系统演进学习相关名词</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-14 17:25:35" datetime="2019-08-14T17:25:35.000Z"  itemprop="datePublished">2019-08-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/核心网CN/">核心网CN</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        14 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>今年是2019年，5G服务时代眼看就要在全球铺展开来。这段时间学习了一些通信方面的知识，这里首先梳理下各代移动通信网络中出现的各种特有名词。</p>
+<h3 id="什么是3GPP"><a href="#什么是3GPP" class="headerlink" title="什么是3GPP"></a>什么是3GPP</h3><p>第三代合作伙伴计划3GPP（3rd Generation Partnership Project）是一个成立于1998年12月的标准化机构。该组织囊括了来自世界所有地区的标准化组织，当前其成员包括欧洲的ETSI、日本的ARIB和TTC、中国的CCSA、韩国的TTA、北美洲的ATIS和印度的电信标准开发协会。</p>
+<p>这个组织机构的出现，最初是为了在国际电信联盟的IMT-2000计划范围内制订和实现全球性的（第三代）移动电话系统规范（也就是3G）。因为，在1998年末3GPP组织成立之前，3G的标准化工作一直在各个地区标准化组织之间并行进行。 </p>
+<h3 id="名词翻译与大致发展"><a href="#名词翻译与大致发展" class="headerlink" title="名词翻译与大致发展"></a>名词翻译与大致发展</h3><h4 id="第二代（2G）移动电话系统"><a href="#第二代（2G）移动电话系统" class="headerlink" title="第二代（2G）移动电话系统"></a>第二代（2G）移动电话系统</h4><ul>
+<li>GSM（Global System for Mobile Communications）：全球移动通讯系统。它经常被描述成“2G”。</li>
+<li>GPRS（General Packet Radio Service）：通用分组无线服务。它经常被描述成“2.5G”。</li>
+<li>EDGE（Enhanced Data rates for GSM Evolution）：GSM增强数据率演进。作为2G和2.5G（GPRS）的延伸，有时会称为2.75G。</li>
+<li>GERAN （GSM EDGE Radio Access Network）：GSM／EDGE 无线通讯网络。是GSM/EDGE的无线接入部分（GPRS的空中接口）。</li>
+</ul>
+<h4 id="第三代（3G）移动电话系统"><a href="#第三代（3G）移动电话系统" class="headerlink" title="第三代（3G）移动电话系统"></a>第三代（3G）移动电话系统</h4><ul>
+<li><p>UMTS（Universal Mobile Telecommunications System）：通用移动通讯系统。有时也叫3GSM，强调结合了3G技术而且是GSM标准的后续标准。MTS分组交换系统是由GPRS系统所演进而来，故系统的架构颇为相像。</p>
+</li>
+<li><p>UTRAN（UMTS Terrestrial Radio Access Network）：UMTS的陆地无线接入网（UMTS的空中接口）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTAzZWVmN2M1MmMwMzgyM2QucG5n" alt="UTRAN 架构" title>
+                </div>
+                <div class="image-caption">UTRAN 架构</div>
+            </figure>
+</li>
+</ul>
+<ul>
+<li><p>HSDPA（High Speed Downlink Packet Access）：高速下行分组接入。又称为3.5G，属于W-CDMA技术的延伸。</p>
+</li>
+<li><p>LTE（Long Term Evolution）：长期演进技术。是电信中用于手机及数据终端的高速无线通讯标准，为高速下行分组接入（HSDPA）过渡到4G的版本，俗称为3.9G。</p>
+</li>
+<li><p>E-UTRAN（Evolved Universal Terrestrial Radio Access Network)：演进的通用陆面无线接入网络。属于3GPP LTE 的空中界面。与 HSPA 不同的是，LTE 的 E-UTRA 系一全新的系统，绝不相容于W-CDMA。它提供了更高的传输速率，低延迟和最佳化数据包的能力，用OFDMA无线接入给下行连接，SC-FDMA给上行连接。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWEwMTA1ZDY3MGQyODVmNzgucG5n" alt="作为LTE和SAE网络一部分的EUTRAN架构" title>
+                </div>
+                <div class="image-caption">作为LTE和SAE网络一部分的EUTRAN架构</div>
+            </figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：这里有一个准确的说法，<strong>国际上来看，长期演进技术LTE实际上不能称为真正的4G</strong>，因为它没有匹配国际电信联盟无线电通信部门要求的4G标准；LTE-A才匹配国际电信联盟无线电通信部门要求的4G标准。<br>但在国内，人们已经普遍将LTE认为是4G的代名词，这也没什么好纠结的，知道这个点就行。当然了，基于这样的认知，长期演进技术（LTE）的提升版本LTE-A在中国大陆称4G+。</p>
+</blockquote>
+<h4 id="第四代（4G）移动电话系统"><a href="#第四代（4G）移动电话系统" class="headerlink" title="第四代（4G）移动电话系统"></a>第四代（4G）移动电话系统</h4><ul>
+<li>LTE-A（LTE-Advanced）：高级长期演进技术，在中国大陆称4G+，是长期演进技术（LTE）的提升版本，也是4G规范的国际高速无线通信标准。</li>
+<li>SAE（System Architecture Evolution）：系统架构演进。是3GPP对于LTE无线通信标准的核心网络架构的升级计划。SAE体系结构的主要组成部分是核心分组网演进（EPC，Evolved Packet Core )，也被称为SAE核心。</li>
+</ul>
+<h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><h4 id="LTE与SAE的关系"><a href="#LTE与SAE的关系" class="headerlink" title="LTE与SAE的关系"></a>LTE与SAE的关系</h4><p>移动数据网络（PS）网络部分最早的资料都冠以SAE名头。SAE 全称是系统架构演进（System Architecture Evolution），是PS网络核心网网络架构向4G演进的工作项目。<br>与SAE对应的概念是LTE。LTE全称是无线接口长期演进（Long Term Evolution，LTE），是无线接口部分向4G演进的工作项目。<br>SAE和LTE都是工作项目（Work Item）的名字，是3GPP为达成某种目标，聚集了一群人，在某个时间开展的一项工作。所以，SAE和LTE是一群人从事的一个工作、一项事业。 而SAE和LTE所研究的对象，分别被称为EPC和E-UTRAN。这两个才构成我们看到的网络。 </p>
+<ul>
+<li>E-UTRAN：演进的UMTS陆地无线接入网（Evolved Universal Terrestrial Radio Access Network）是3GPP 4G空中接口部分。 </li>
+<li>EPC：演进分组核心网（Evolved Packet Core），即 4G核心网。 </li>
+</ul>
+<p>EPC和E-UTRAN共同构成了EPS（演进的分组系统）。EPS代表了整个端到端的4G网络。 由于业界在宣传4G网络时（特别是终端在宣传支持4G时）往往以LTE来表述，造成LTE在今天成了4G整个网络的代名词。 </p>
+<blockquote>
+<p>总结一下，就是：我们将LTE代表4G网络，E-UTRAN代表4G网络无线接入部分，EPC代表4G网络核心网部分。</p>
+</blockquote>
+<h4 id="非3GPP系统举例"><a href="#非3GPP系统举例" class="headerlink" title="非3GPP系统举例"></a>非3GPP系统举例</h4><ul>
+<li>WiMAX（Worldwide Interoperability for Microwave Access）：全球互通微波访问。是一项高速无线数据网络标准，主要用在城域网，由WiMAX论坛提出并于2001年6月成形。在概念上类似WiFi，WiMAX传送速率更快，传送范围距离更大，简单理解为一种“大WiFi”。</li>
+<li>CDMA2000：也是一个3G移动通讯标准，但CDMA2000与另一个3G标准UMTS不兼容。</li>
+<li>WIFI：在中文里又称作“无线热点”，是Wi-Fi联盟制造商的商标做为产品的品牌认证，是一个创建于IEEE 802.11标准的无线局域网技术。</li>
+</ul>
+<h4 id="不足与改进体现在哪"><a href="#不足与改进体现在哪" class="headerlink" title="不足与改进体现在哪"></a>不足与改进体现在哪</h4><p>传统3GPP网络的不足：</p>
+<ul>
+<li>分组域网络业务支撑能力较弱，基本只能支持非实时性业务，语音业务依赖于电路域（CS）进行承载，造成分组域（PS）和电路域需要分网络运营，不利于网络的统一维护和管理，增加了运维成本。</li>
+<li>现有网络由于网络层次较多，数据路由转发效率较低，网络性能需要进一步优化。</li>
+<li>目前业务终端的处理能力及无线接入能力在不断增加，多种无线接入技术融合成为可能，促使网络支持多种无线接入系统。</li>
+</ul>
+<p>LTE/EPC的研究目标是确定3GPP的长期演进计划，探索未来10年的关键技术。按照3GPP标准演进的构想，LTE/EPC的关键特性如下：</p>
+<ul>
+<li>网络架构全面分组化：整个网络全部接口除空口部分外的其他部分<br>已经全部IP化、分组化，电路域不再被定义，只有分组域，语音业务可以由分组域配合IMS(IP Multimedia Subsystem)域等方式提供，以提升网络效率和性能。</li>
+<li><p>网络架构扁平化：网络结构趋于简单，简化了网络部署，同时大大缩短了时延。如：无线接入部分从3G时代的RNC+NodeB演进为一个eNodeB节点。网络部分的用户面只经过SAE-GW一个节点。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTIwYTgwN2ZlNzY1MTQ1MjYucG5n" alt="简单的3G架构" title>
+                </div>
+                <div class="image-caption">简单的3G架构</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTY3YTZlZWY1OTE1YzA0NjkucG5n" alt="LTE/EPC融合了GERAN和UTRAN的互操作" title>
+                </div>
+                <div class="image-caption">LTE/EPC融合了GERAN和UTRAN的互操作</div>
+            </figure>
+</li>
+<li><p>支持多接入技术：支持与现有3GPP系统的互通，同时支持非3GPP网络的接入，支持用户在3GPP及非3GPP网络间的漫游和切换。</p>
+</li>
+<li>高速率：峰值速率可以达到下行100Mbit/s，上行50Mbit/s。</li>
+<li>部署快：由于网络的简单化，可以快速部署网络，以适应业务不断丰富化发展的趋势。</li>
+<li>实时业务增强：增加对实时业务的支持，简化业务连接建立的时延。</li>
+</ul>
+<h3 id="再补充一些"><a href="#再补充一些" class="headerlink" title="再补充一些"></a>再补充一些</h3><h4 id="3GPP2"><a href="#3GPP2" class="headerlink" title="3GPP2"></a>3GPP2</h4><p>第三代合作伙伴计划2（3rd Generation Partnership Project 2）创建于1998年12月，成员包括：通信工业协会（北美）、中国通信标准化协会（中国）、电波产业会（日本）和TTA（韩国）。<br>3GPP2声称其致力于使国际电信联盟的IMT-2000计划中的（3G）移动电话系统规范在全球的发展，实际上它是从2G的cdmaOne（IS-95）发展而来3G的CDMA2000（IS-2000）标准体系的标准化机构，它受到拥有多项CDMA关键技术专利的高通公司的较多支持。<br>与之对应的第三代合作伙伴计划3GPP致力于从GSM向W-CDMA（UMTS）过渡，因此两个机构存在一定竞争。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTNhMWRhNGNjNmUzOGY3NWMucG5n" alt="移动通讯标准发展-ing" title>
+                </div>
+                <div class="image-caption">移动通讯标准发展-ing</div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201908142/" rel="external">【核心网CN】 3GPP系统演进学习相关名词</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201908142/" target="_blank" rel="external">https://zhouie.cn/posts/201908142/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3GPP/">3GPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/3GPP2/">3GPP2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDMA2000/">CDMA2000</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GSM-GPRS-EDGE-GERAN/">GSM/GPRS/EDGE/GERAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LTE-A-SAE/">LTE-A/SAE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LTE-E-UTRAN/">LTE/E-UTRAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UMTS-UTRAN/">UMTS/UTRAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/非3GPP/">非3GPP</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201908142/&sharesource=qzone&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201908142/&srcUrl=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201908142/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201908142/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201908142/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201908142/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201908142/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201909251/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【升级】 联想Y430p更换SSD、增加8G内存条</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201908141/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【核心网CN】 IMSI、TMSI、P-TMSI、GUTI、S-TMSI、MSISDN、MSRN、IMEI等这些移动用户标识的辨析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201908142/&sharesource=qzone&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201908142/&srcUrl=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201908142/&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201908142/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201908142/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201908142/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【核心网CN】 3GPP系统演进学习相关名词》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201908142/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201908142/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201908142/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

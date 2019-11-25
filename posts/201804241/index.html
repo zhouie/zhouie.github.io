@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【分享】 图床工具分享 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Tool-share,图床">
+    <meta name="description" content="什么是图床？这并不是一个多么高大上的名词概念！用比较通俗的话来说，当你在撰写新文章时，你需要去插入图片以使得你的文章内容更加直观、易懂，这个时候有以下几种办法：  在博客根目录的 source 文件夹下新建一个image文件夹专门存放图片，在博文中引用的图片路径为 /image/图片名.后缀  1![](图片路径)  对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人">
+<meta name="keywords" content="Tool-share,图床">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【分享】 图床工具分享">
+<meta property="og:url" content="https://zhouie.cn/posts/201804241/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="什么是图床？这并不是一个多么高大上的名词概念！用比较通俗的话来说，当你在撰写新文章时，你需要去插入图片以使得你的文章内容更加直观、易懂，这个时候有以下几种办法：  在博客根目录的 source 文件夹下新建一个image文件夹专门存放图片，在博文中引用的图片路径为 /image/图片名.后缀  1![](图片路径)  对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【分享】 图床工具分享">
+<meta name="twitter:description" content="什么是图床？这并不是一个多么高大上的名词概念！用比较通俗的话来说，当你在撰写新文章时，你需要去插入图片以使得你的文章内容更加直观、易懂，这个时候有以下几种办法：  在博客根目录的 source 文件夹下新建一个image文件夹专门存放图片，在博文中引用的图片路径为 /image/图片名.后缀  1![](图片路径)  对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【分享】 图床工具分享</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【分享】 图床工具分享</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-24T23:39:59.000Z" itemprop="datePublished" class="page-time">
+  2018-04-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是图床？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是图床？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#国内"><span class="post-toc-number">2.</span> <span class="post-toc-text">国内</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#国外"><span class="post-toc-number">3.</span> <span class="post-toc-text">国外</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-04-24-【分享】 图床工具"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【分享】 图床工具分享</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-24 23:39:59" datetime="2018-04-24T23:39:59.000Z"  itemprop="datePublished">2018-04-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        5 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="什么是图床？"><a href="#什么是图床？" class="headerlink" title="什么是图床？"></a>什么是图床？</h3><p>这并不是一个多么高大上的名词概念！用比较通俗的话来说，当你在撰写新文章时，你需要去插入图片以使得你的文章内容更加直观、易懂，这个时候有以下几种办法：</p>
+<ol>
+<li>在博客根目录的 source 文件夹下新建一个<code>image</code>文件夹专门存放图片，在博文中引用的图片路径为 <code>/image/图片名.后缀</code></li>
+</ol>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="selector-attr">[]</span>(图片路径)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源，将站点配置文件中的<code>post_asset_folder</code>选项设为 true 来打开文章资源文件夹</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>然后再博文中通过相对路径引用</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">asset_img</span> 图片文件名 %&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们知道Github的主机还在国外，虽说目前访问速度还不算慢的，可是不论是Github还是Coding，项目容量都是有限的，不可能放入太多图片文件。 如果在项目文件中以相对路径引用的话，会出现跳转页面时一些图片路径会错误；使用绝对路径引用的话，会出现重定向的问题，浏览器可能会报<code>302异常</code>，使浏览器上的绿色小锁头不见了(这个不能忍……)。</p>
+</blockquote>
+<ol start="3">
+<li>使用第三方云服务储存，把图片放在国内的图床上是个更好的选择，虽然绝大多数云服务提供商都是收费(或是会有会员免费体验期或是按月分发一些免费容量)的，但在这个巨大的网络缝隙中，还是能找到其他一些可取的方法去满足我们(贫穷的学生党，呜wuwu~~)，下面我会列出一些我所找到的可取之径：</li>
+</ol>
+<h3 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h3><ul>
+<li><a href="https://cn.aliyun.com/" target="_blank" rel="noopener">阿里云</a></li>
+<li><a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云</a></li>
+<li><a href="https://cloud.baidu.com/" target="_blank" rel="noopener">百度云</a></li>
+<li><a href="https://www.163yun.com/" target="_blank" rel="noopener">网易云</a></li>
+<li><a href="https://www.qiniu.com/" target="_blank" rel="noopener">七牛云</a></li>
+<li><a href="https://www.upyun.com/" target="_blank" rel="noopener">又拍云</a></li>
+<li><a href="https://www.fangcloud.com/" target="_blank" rel="noopener">亿方云</a></li>
+<li><a href="https://www.jianguoyun.com/" target="_blank" rel="noopener">坚果云</a></li>
+<li><a href="https://500px.com/" target="_blank" rel="noopener">500px</a></li>
+</ul>
+<hr>
+<ul>
+<li><a href="http://photo.weibo.com/upload/index?prel=p0_1" target="_blank" rel="noopener">上传照片到微博微相册</a></li>
+</ul>
+<p>QQ空间相册其实也是可以的，只是这类处理方法也比较麻烦low…</p>
+<hr>
+<p>上面这些都是目前国内一些在云服务方面较为主流的、实力也比较可靠的服务提供商，很多带有CDN加速处理，加载起来会更快。但可能有时候会因为容量太少的问题等，给劳苦大众带来一些不愉快，所以啊，还是广泛地搜集了一波国内其他一些的图床服务，其实这也是为了应对自己的不时之需，毕竟国内做图床服务这方面的不稳定性真的是…跌宕起伏</p>
+<p>(哎，抬头远望，长城方向)</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">图床服务</th>
+<th style="text-align:center">个人评价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://sm.ms/" target="_blank" rel="noopener">SM.MS</a></td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://www.tuchuang001.com/" target="_blank" rel="noopener">cheveieto</a></td>
+<td style="text-align:center">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://imgchr.com/" target="_blank" rel="noopener">路过图床</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://upload.otar.im/" target="_blank" rel="noopener">uploader</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.tietuku.com/" target="_blank" rel="noopener">贴图库</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.clantu.com/" target="_blank" rel="noopener">Clantu云相册</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://zs.mtkan.cc/" target="_blank" rel="noopener">淡然图床</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.suiyiyun.cn/" target="_blank" rel="noopener">随意云</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://mpic.lzhaofu.cn/" target="_blank" rel="noopener">MPic-图床神器</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://tu.aixinxi.net/index.php" target="_blank" rel="noopener">爱信息图床</a></td>
+<td style="text-align:center">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pic.gimhoy.com/" target="_blank" rel="noopener">Gimhoy图床</a></td>
+<td style="text-align:center">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://loli.io/signin" target="_blank" rel="noopener">萝莉图床</a></td>
+<td style="text-align:center">⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h3><ul>
+<li><a href="https://app.cl.ly/drops" target="_blank" rel="noopener">CloudApp</a>————国内可访问，个人比较推荐这个应用</li>
+<li><a href="https://www.dropbox.com/h" target="_blank" rel="noopener">Dropbox</a>————墙了</li>
+<li><a href="https://www.flickr.com/" target="_blank" rel="noopener">Flickr</a>————墙了</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201804241/" rel="external">【分享】 图床工具分享</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201804241/" target="_blank" rel="external">https://zhouie.cn/posts/201804241/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool-share/">Tool-share</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图床/">图床</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804241/&sharesource=qzone&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804241/&srcUrl=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 图床工具分享》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804241/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804241/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 图床工具分享》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804241/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 图床工具分享》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804241/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804241/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201804261/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201804242/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 在线演示工具分享</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804241/&sharesource=qzone&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804241/&srcUrl=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804241/&title=《【分享】 图床工具分享》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 图床工具分享》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804241/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804241/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 图床工具分享》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804241/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 图床工具分享》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804241/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804241/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201804241/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

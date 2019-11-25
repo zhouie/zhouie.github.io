@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【复习】 物联网概论复习总结 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="XTU,IoT">
+    <meta name="description" content="物联网(IoT)写在前面 本文严禁转载，只限于学习交流。 这只是笔者在复习所学这门专业课时整理的一些材料，粗制滥造，还望多多包涵。 笔者这里总结复习材料的绝大部分来自叶st老师在最后一节复习课上的提点😎… 考核内容：不单一，70基础部分 + 30实际应用   基础部分可参考：   翻译的那四篇论文中的基础知识 本文后面的内容   实际应用主要分布在：   离散数学知识，图论(匈牙利算法)，生成树">
+<meta name="keywords" content="XTU,IoT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【复习】 物联网概论复习总结">
+<meta property="og:url" content="https://zhouie.cn/posts/201805271/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="物联网(IoT)写在前面 本文严禁转载，只限于学习交流。 这只是笔者在复习所学这门专业课时整理的一些材料，粗制滥造，还望多多包涵。 笔者这里总结复习材料的绝大部分来自叶st老师在最后一节复习课上的提点😎… 考核内容：不单一，70基础部分 + 30实际应用   基础部分可参考：   翻译的那四篇论文中的基础知识 本文后面的内容   实际应用主要分布在：   离散数学知识，图论(匈牙利算法)，生成树">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71628f8071f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71629ff036b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7162abebc47.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7163b8585b1.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7163cf58452.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7163dd8d6cf.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7163ee80fa6.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71640674246.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643ca0754.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643c9e747.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643cab81f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643c74b9d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643cc6084.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643c90385.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643cbef0f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c71643cc9266.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164c9d3786.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164c9f2345.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164ca05085.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164c9d1d6a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164c9c83fd.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7164ca2e754.png">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【复习】 物联网概论复习总结">
+<meta name="twitter:description" content="物联网(IoT)写在前面 本文严禁转载，只限于学习交流。 这只是笔者在复习所学这门专业课时整理的一些材料，粗制滥造，还望多多包涵。 笔者这里总结复习材料的绝大部分来自叶st老师在最后一节复习课上的提点😎… 考核内容：不单一，70基础部分 + 30实际应用   基础部分可参考：   翻译的那四篇论文中的基础知识 本文后面的内容   实际应用主要分布在：   离散数学知识，图论(匈牙利算法)，生成树">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/23/5c71628f8071f.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【复习】 物联网概论复习总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【复习】 物联网概论复习总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-27T23:57:54.000Z" itemprop="datePublished" class="page-time">
+  2018-05-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/复习/">复习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#物联网-IoT"><span class="post-toc-number">1.</span> <span class="post-toc-text">物联网(IoT)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#领域名词、概念"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">领域名词、概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网定义"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">物联网定义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念起源"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">概念起源</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#本质体现"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">本质体现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#主要特征"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">主要特征</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网的发展概况"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">物联网的发展概况</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网的框架结构"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">物联网的框架结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网标准体系"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">物联网标准体系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网关键技术和难点"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">物联网关键技术和难点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网应用领域"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">物联网应用领域</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RFID技术"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">RFID技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应答器"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">应答器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#阅读器"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">阅读器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据信息的编码与调制"><span class="post-toc-number">1.9.3.</span> <span class="post-toc-text">数据信息的编码与调制</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WSN-ZigBee技术"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">WSN/ZigBee技术</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#云计算"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">云计算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#云计算关键技术"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">云计算关键技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#云计算与相关技术的关系"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">云计算与相关技术的关系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#云计算-Vs-并行计算"><span class="post-toc-number">1.12.1.</span> <span class="post-toc-text">云计算 Vs 并行计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#云计算-Vs-分布式计算"><span class="post-toc-number">1.12.2.</span> <span class="post-toc-text">云计算 Vs 分布式计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#云计算-Vs-网格计算"><span class="post-toc-number">1.12.3.</span> <span class="post-toc-text">云计算 Vs 网格计算</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#云计算-Vs-效用计算"><span class="post-toc-number">1.12.4.</span> <span class="post-toc-text">云计算 Vs 效用计算</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#云计算与物联网"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">云计算与物联网</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物联网组网技术"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">物联网组网技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#现场总线技术"><span class="post-toc-number">1.14.1.</span> <span class="post-toc-text">现场总线技术</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#WIFI技术、蓝牙技术、GPS技术"><span class="post-toc-number">1.14.2.</span> <span class="post-toc-text">WIFI技术、蓝牙技术、GPS技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#WIFI"><span class="post-toc-number">1.14.2.1.</span> <span class="post-toc-text">WIFI</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#蓝牙技术"><span class="post-toc-number">1.14.2.2.</span> <span class="post-toc-text">蓝牙技术</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#GPS"><span class="post-toc-number">1.14.2.3.</span> <span class="post-toc-text">GPS</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#还有很多物联网组网技术"><span class="post-toc-number">1.14.2.4.</span> <span class="post-toc-text">还有很多物联网组网技术</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">补充</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-05-27-【复习】 物联网概论复习总结"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【复习】 物联网概论复习总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-27 23:57:54" datetime="2018-05-27T23:57:54.000Z"  itemprop="datePublished">2018-05-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/复习/">复习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        47 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="物联网-IoT"><a href="#物联网-IoT" class="headerlink" title="物联网(IoT)"></a>物联网(IoT)</h2><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><ol>
+<li>本文严禁转载，只限于学习<a href="mailto:nanzhouieATqq.com" target="_blank" rel="noopener">交流</a>。</li>
+<li>这只是笔者在复习所学这门专业课时整理的一些材料，粗制滥造，还望多多包涵。</li>
+<li>笔者这里总结复习材料的绝大部分来自叶st老师在最后一节复习课上的提点😎…</li>
+<li>考核内容：不单一，70基础部分 + 30实际应用</li>
+</ol>
+<blockquote>
+<p>基础部分可参考：</p>
+</blockquote>
+<ul>
+<li>翻译的那四篇论文中的基础知识</li>
+<li>本文后面的内容</li>
+</ul>
+<blockquote>
+<p>实际应用主要分布在：</p>
+</blockquote>
+<ul>
+<li>离散数学知识，图论(<strong>匈牙利算法</strong>)，生成树</li>
+<li>中心极限定理</li>
+<li>切比雪夫不等式</li>
+<li><strong>路由选择方式Dij</strong></li>
+<li>最大(小)费用流</li>
+<li>码分复用(原理、CDMA、随机码、正交)</li>
+</ul>
+<h3 id="领域名词、概念"><a href="#领域名词、概念" class="headerlink" title="领域名词、概念"></a>领域名词、概念</h3><ul>
+<li><strong>IoT</strong>：物联网 Internet of things</li>
+<li><strong>WSN</strong>：无线传感器网络 Wireless Sensor Network</li>
+<li><strong>ZigBee</strong>：ZigBee是 <strong>IEEE 802.15.4协议</strong>的代名词</li>
+<li><strong>RFID</strong>：射频识别 Radio Frequency Identification</li>
+<li>EPC：物联网产品电子代码 Electronic Product Code</li>
+<li>M2M：机对机通信 Machine-to-Machine</li>
+<li>CPS：信息物理融合系统 Cyber Physical Systems</li>
+<li>FCS：现场总线控制系统 Fieldbus Control System</li>
+<li>DCS：分布式控制系统 Distributed Control System</li>
+<li>云计算</li>
+</ul>
+<h3 id="物联网定义"><a href="#物联网定义" class="headerlink" title="物联网定义"></a>物联网定义</h3><h4 id="概念起源"><a href="#概念起源" class="headerlink" title="概念起源"></a>概念起源</h4><p>麻省理工学院Ashton教授于 <strong>1999年</strong>最早提出，其理念是基于射频识别技术(RFID)、电子代码(EPC)等技术，在互联网的基础上，构造一个 <strong>实现全球物品信息实时共享的实物互联网</strong>，即物联网。</p>
+<h4 id="本质体现"><a href="#本质体现" class="headerlink" title="本质体现"></a>本质体现</h4><ol>
+<li><strong>互联网特征</strong>，即对需要联网的物一定要能够实现互联互通的互联网络;</li>
+<li><strong>识别与通信特征</strong>，即纳入物联网的“物”一定要具备自动识别、物物通信的功能;</li>
+<li><strong>智能化特征</strong>，即网络系统应具有自动化、自我反馈与智能控制的特点。</li>
+</ol>
+<h4 id="主要特征"><a href="#主要特征" class="headerlink" title="主要特征"></a>主要特征</h4><ol>
+<li><strong>全面感知</strong>，利用射频识别、二维码、传感器等感知、捕获、测量技术随时随地对物体进行信息采集和获取。</li>
+<li><strong>可靠传送</strong>，通过将物体接入信息网络，依托各种通信网络，随时随地进行可靠的信息交互和共享。</li>
+<li><strong>智能处理</strong>，利用各种智能计算技术，对海量的感知数据和信息进行分析并处理，实现智能化的决策和控制。</li>
+</ol>
+<h3 id="物联网的发展概况"><a href="#物联网的发展概况" class="headerlink" title="物联网的发展概况"></a>物联网的发展概况</h3><p><strong>日本</strong>：<strong>2009年8月</strong>，日本提出 <strong>“智慧泛在”</strong> 构想，将 <strong>传感网</strong>列为国家重要战略，致力于一个 <strong>个性化的物联网智能服务体系</strong></p>
+<p><strong>美国</strong>：<strong>2009年初</strong>，美国 <strong>国际商业机器公司(即IBM)</strong>，提出 <strong>“智慧的地球”</strong>概念，认为：信息产业下一阶段的任务是把新一代信息技术充分运用在各行各业之中，具体就是把传感器嵌入和装备到电网、铁路、桥梁、隧道、公路、建筑、供水系统、大坝、油气管道等各种物体中，并且被普遍连接，形成物联网；</p>
+<p><strong>欧盟</strong>：<strong>2009年6月</strong>，欧盟委员会向欧盟议会、理事会、欧洲经济和社会委员会及地区委员会递交了 <strong>《欧盟物联网行动计划》</strong>，其目的为希望欧洲通过构建新型物联网管理框架来引领世界“物联网”发展；</p>
+<p><strong>韩国</strong>：<strong>2009年10月</strong>，韩国通信委员会通过 <strong>《物联网基础设施构建基本规划》</strong>，将物联网确定为新增长动力，树立了“通过构建世界最先进的物联网基础实施，打造未来广播通信融合领域超一流信息强国”的目标；</p>
+<p><strong>中国</strong>：<strong>2009年8月</strong>，国务院总理温家宝来到中科院无锡研发中心考察，指出关于物联网可以尽快去做三件事情：一是把传感系统和3G中的TD技术结合起来；二是在国家重大科技专项中，加快推进传感网发展；三是尽快建立中国的传感信息中心，或者叫“<strong>感知中国</strong>”中心；<br><strong>2010年3月</strong>，国务院总理 <strong>温家宝</strong>在 <strong>《政府工作报告》</strong>中，将 <strong>“加快物联网的研发应用”</strong>明确纳入重点产业振兴，表明物联网已经被提升为国家战略，中国开启物联网元年。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71628f8071f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="物联网的框架结构"><a href="#物联网的框架结构" class="headerlink" title="物联网的框架结构"></a>物联网的框架结构</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71629ff036b.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7162abebc47.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="物联网标准体系"><a href="#物联网标准体系" class="headerlink" title="物联网标准体系"></a>物联网标准体系</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7163b8585b1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7163cf58452.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>值得注意的是，没有纳入标准的技术并不一定不属于物联网体系范畴！</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7163dd8d6cf.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7163ee80fa6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71640674246.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="物联网关键技术和难点"><a href="#物联网关键技术和难点" class="headerlink" title="物联网关键技术和难点"></a>物联网关键技术和难点</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643ca0754.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643c9e747.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="物联网应用领域"><a href="#物联网应用领域" class="headerlink" title="物联网应用领域"></a>物联网应用领域</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643cab81f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其中，主要应用于十大领域：智能电网、智能交通、智能物流、智能家居、环境与安全检测、医疗健康、国防军事、精细农牧业、金融与服务业、工业与自动控制化。</p>
+<h3 id="RFID技术"><a href="#RFID技术" class="headerlink" title="RFID技术"></a>RFID技术</h3><p>RFID系统主要由 <strong>应答器</strong>、<strong>阅读器</strong>和 <strong>高层软件</strong>组成。<br>其中 <strong>应答器</strong>是集成电路芯片形式，而集成芯片又根据它的封装不同表现的形式也不太一样。<br><strong>阅读器</strong>用于产生射频载波完成与应答器之间的信息交互的功能。<br><strong>高层软件</strong>则是信息的管理和决策系统。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643c74b9d.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="应答器"><a href="#应答器" class="headerlink" title="应答器"></a>应答器</h4><p>在RFID系统中，识别信息存放于电子信息载体中，这个电子信息载体就是应答器，应答器在具体不同应用领域有表现为多种不同的形式</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643cc6084.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>应答器是由 <em>天线</em> 、<em>编/解码器</em> 、 <em>电源</em> 、<em>解调器</em> 、<em>存储器</em> 、<em>控制器</em> 以及 <em>负载电路</em> 组成。<br>其中，应答器天线部分主要用于数据通信和获取射频能量，给应答器的其他电路提供合格的直流电源；<br>存储器容量一般在几字节到几千字节之间，存储的数据量一般为产品的序列号，如EPC编码；<br>控制器是应答器系统的核心部分，对于可读可写应答器，需要内部逻辑控制对读写的使能，读写的操作的支持，对于有密码的答器，要求控制器能进行数字验证操作。</p>
+<p><strong>应答器的基本组成示意图</strong>如图所示</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643c90385.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>黑色区域就是该应答器的CPU、存储器、编解码功能单元，外围印制铜模线即为应答器的天线单元。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643cbef0f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>应答器可以分为只读应答器、读/写应答器和具有识别功能的应答器。</p>
+<p>应答器 <strong>能源不同</strong>还可以分为：<strong>无源(被动式)</strong> 应答器、<strong>半无源(半被动式)</strong> 应答器和 <strong>有源（主动式）</strong>应答器。</p>
+<blockquote>
+<p>被动式<br>被动式标签没有内部供电电源。其内部集成电路通过接收到的电磁波进行驱动，这些电磁波是由RFID读写器发出的。当标签接收到足够强度的讯号时，可以向读写器发出数据。这些数据不仅包括ID号（全球唯一标示ID），还可以包括预先存在于标签内EEPROM中的数据。<br>由于被动式标签具有价格低廉，体积小巧，无需电源的优点。市场的RFID标签主要是被动式的。</p>
+</blockquote>
+<blockquote>
+<p>半主动式<br>一般而言，被动式标签的天线有两个任务，第一：接收读写器所发出的电磁波，藉以驱动标签IC；第二：标签回传信号时，需要靠天线的阻抗作切换，才能产生0与1的变化。问题是，想要有最好的回传效率的话，天线阻抗必须设计在“开路与短路”，这样又会使信号完全反射，无法被标签IC接收，半主动式标签就是为了解决这样的问题。半主动式类似于被动式，不过它多了一个小型电池，电力恰好可以驱动标签IC，使得IC处于工作的状态。这样的好处在于，天线可以不用管接收电磁波的任务，充分作为回传信号之用。比起被动式，半主动式有更快的反应速度，更好的效率。</p>
+</blockquote>
+<blockquote>
+<p>主动式<br>与被动式和半主动式不同的是，主动式标签本身具有内部电源供应器，用以供应内部IC所需电源以产生对外的讯号。一般来说，主动式标签拥有较长的读取距离和较大的记忆体容量可以用来储存读写器所传送来的一些附加讯息。</p>
+</blockquote>
+<h4 id="阅读器"><a href="#阅读器" class="headerlink" title="阅读器"></a>阅读器</h4><p>RFID阅读器（读写器）通过天线实现对应答器识别码和内存数据的读出或写入操作。<br>典型的阅读器包含有 <em>高频模块(发送器和接收器)</em> 、<em>控制单元</em> 、<em>振荡电路</em> 以及 <em>阅读器天线</em> 几部分。</p>
+<p>在实际应用中，有4种波段的频率，低频（125kHz），高频（13.54MHz），超高频（850～910MHz），微波（2.45GHz）。<br>不同频率用在不同的领域，下图显示了不同应用场合的阅读器。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c71643cc9266.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在射频读写器的应用中遇到的一个问题就是 <strong>阅读器冲突</strong>，这是一个阅读器接收到的信息和另外一个阅读器接收到的信息发生冲突，产生 <strong>重叠</strong>。解决这个问题的一种方法是 <strong>使用TDMA技术，保证阅读器不会互相干扰</strong>。</p>
+<p>RFID阅读器是以一定的频率、特定的通信协议完成对应答器中信息的读取。</p>
+<p><strong>阅读器基本组成模块</strong>如图所示。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164c9d3786.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>阅读器和应答器耦合的方式有多种，应用较为典型的是电感耦合。<br>阅读器和应答器天线部分的电感线圈通过电磁场进行信息传输。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164c9f2345.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>【例题】：对于一个RFID标签，内部有50匝线圈绕制而成的天线线圈，读写器周围磁通变化率为0.004Wb/s，试计算在电子标签的天线两端能够产生多大的感应电动势？</p>
+<pre><code>解： 根据 公式E=n（Δφ/Δt）可知，
+当读写器周围的磁通变化率为0.004Wb/s，线圈匝数为50匝，代入公式可得感应电动势：
+E=n（Δφ/Δt）=50×0.004Wb/s=0.2V
+</code></pre><h4 id="数据信息的编码与调制"><a href="#数据信息的编码与调制" class="headerlink" title="数据信息的编码与调制"></a>数据信息的编码与调制</h4><p>从模拟信号转换成数字信号分为三个阶段：</p>
+<ul>
+<li><strong>抽样</strong>：每隔一个相等的时间间隙，采集连续信号的一个样值。</li>
+</ul>
+<p>抽样定理：一个频带限制在（0，τ）内的时间连续信号X(t)，如果以不大于1/2的间隔对它进行等间隔抽样，则X(t)将被所得到的值完全确定。也可以说，若对信号以fs≥2的抽样速率进行均匀抽样，则X(t)可以被所得到的抽样值完全确定。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164ca05085.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li><strong>量化</strong>：将量值连续分布的样值，归并到有限个取值范围内。</li>
+</ul>
+<p>非均匀量化：非均匀量化采用压扩技术——按输入信号的概率密度函数来分布量化电平。实现非均匀量化的方法之一是把输入量化器的信号X先进行压缩处理，再把压缩后的信号进行均匀量化。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164c9d1d6a.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li><strong>编码</strong>：用二进制数字代码，表达这有限个值域（量化区）。</li>
+</ul>
+<p>常用的RFID编码方法为曼彻斯特编码，曼彻斯特编码，也叫做相位编码，是一个同步时钟编码技术，被物理层使用来编码一个同步位流的时钟和数据。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164c9c83fd.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="WSN-ZigBee技术"><a href="#WSN-ZigBee技术" class="headerlink" title="WSN/ZigBee技术"></a>WSN/ZigBee技术</h3><p>WSN，<strong>无线传感网络</strong>，<strong>Wireless Sensor Network</strong>的简称<br>传感器、感知对象和观察者构成了无线传感器网络的三个要素<br>其中，无线传感网络内的各个要素通过一个统一的协议进行信息的传输，这个协议就是Zigbee。</p>
+<p>ZigBee是 <strong>IEEE 802.15.4协议</strong>的代名词。根据这个协议规定的技术是一种 <strong>短距离、低功耗</strong>的无线通信技术。</p>
+<p>ZigBee是采用 <strong>数据帧</strong>的概念，每个无线帧包括了大量无线包装，包含了大量时间、地址、命令、同步等信息，<strong>真正的数据信息只占很少部分</strong>，且这正是ZigBee可以实现网络组织管理、实现高可靠传输的关键。同时，ZigBee采用了 <strong>MAC技术</strong>和 <strong>DSSS（直扩序列调制，Direct Sequence Spread Spectrum）技术</strong>，能够实现 <strong>高可靠、大规模网络传输</strong>。</p>
+<p><strong>ZigBee定义了两种物理设备类型</strong>：</p>
+<ul>
+<li><strong>全功能设备FFD</strong>(Full Function Device)</li>
+<li><strong>精简功能设备RFD</strong>(Reduced Function Device)</li>
+</ul>
+<blockquote>
+<p>其中，FFD可以和FFD、RFD通信，而RFD只能和FFD通信，RFD之间是无法通信的。RFD的应用相对简单，例如在传感器网络中，它们只负责将采集的数据信息发送给它的协调点，并不具备数据转发、路由发现和路由维护等功能。RFD占用资源少，需要的存储容量也小，成本比较低。</p>
+</blockquote>
+<p>详细可参考<a href="https://baike.baidu.com/item/ZigBee%E6%8A%80%E6%9C%AF/5273672?fr=aladdin" target="_blank" rel="noopener">ZigBee技术-百度百科</a></p>
+<h3 id="云计算"><a href="#云计算" class="headerlink" title="云计算"></a>云计算</h3><p>云计算是一种基于互联网的、大众参与的计算模式，其计算资源（计算能力、存储能力、交互能力）是动态、可伸缩、且被虚拟化的，以服务的方式提供。<br>云计算是一种革命性的举措，它可以使计算能力也可以作为一种商品进行流通，通过互联网进行传输，就像煤气、水电一样取用方便。在计算机流程图中，互联网常以一个云状的图案来表示，用来表示对复杂基础设施的抽象。因此，最初选择了用云来比喻，将这种计算模型叫做云计算。</p>
+<blockquote>
+<p><strong>云</strong>(资源池)是一些可以自我维护和管理的虚拟计算资源，通常是一些大型服务器集群，包括计算服务器、存储服务器和宽带资源等。</p>
+<p><strong>私有云</strong>(专用云)是由单个客户所拥有的按需提供基础设施，该客户控制哪些应用程序在哪里运行，拥有服务器、网络和磁盘，并且可以决定允许哪些用户使用基础设施。</p>
+<p><strong>公用云</strong>是由第三方运行的云，第三方可以把来自许多不同客户的作业在云内的服务器、存储系统和其它基础设施上混合在一起。最终用户不知道运行其作业的同一台服务器、网络或磁盘上还有哪些用户。</p>
+<p><strong>混合云</strong>把公用云模式与私有云模式结合在一起。客户通过一种可控的方式对云部分拥有，部分与他人共享。</p>
+<p><strong>云应用</strong>(Cloud Application)是通过网络访问、从不需要本地下载的软件应用。</p>
+<p><strong>云架构</strong>(Cloud Architectures)是可以通往网络访问和使用软件应用的设计。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7164ca2e754.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="云计算关键技术"><a href="#云计算关键技术" class="headerlink" title="云计算关键技术"></a>云计算关键技术</h4><ul>
+<li><strong>数据存储技术</strong></li>
+</ul>
+<p>云计算(Cloud Computing)的数据存储技术主要有 <strong>Google</strong>的非开源的<strong>GFS（Google File System，Google文件系统</strong>和 <strong>Apache基金会Hadoop开发团队</strong>开发的开源 <strong>HDFS（Hadoop Distributed File System，Hadoop分布式文件系统）</strong></p>
+<blockquote>
+<p>两者区别可参考文章 <a href="https://www.cnblogs.com/liango/p/7136448.html" target="_blank" rel="noopener">分布式文件系统比较出名的有HDFS和GFS</a></p>
+</blockquote>
+<ul>
+<li><strong>数据管理技术</strong></li>
+</ul>
+<p>云计算的数据管理技术最著名的是Google的BigTable数据管理技术，同时Hadoop开发团队正在开发BigTable的开源数据管理模块——— HBase。</p>
+<ul>
+<li><strong>软件开发技术</strong></li>
+</ul>
+<p>Google提出的一种处理和产生大规模数据集的编程模型———— MapReduce。</p>
+<h3 id="云计算与相关技术的关系"><a href="#云计算与相关技术的关系" class="headerlink" title="云计算与相关技术的关系"></a>云计算与相关技术的关系</h3><h4 id="云计算-Vs-并行计算"><a href="#云计算-Vs-并行计算" class="headerlink" title="云计算 Vs 并行计算"></a>云计算 Vs 并行计算</h4><ul>
+<li>云计算的萌芽 — 并行计算；</li>
+<li><strong>并行计算</strong><br>强大的并行计算能力需要巨额的投资；<br>并且，传统的并行计算机的使用是一个相当专业的工作，需要使用者具有较高的专业素质。</li>
+<li><strong>云计算</strong><br>将服务器等设施集中起来，最大程度地做到资源共享；<br>能够动态地为用户提供计算能力和存储能力，随时满足用户的需求。</li>
+</ul>
+<h4 id="云计算-Vs-分布式计算"><a href="#云计算-Vs-分布式计算" class="headerlink" title="云计算 Vs 分布式计算"></a>云计算 Vs 分布式计算</h4><ul>
+<li>分布式计算研究如何把一个需要非常巨大的计算能力才能解决的问题分成许多小的部分，然后把这些部分分配给许多计算机进行处理，最后把这些计算结果综合起来得到最终的结果。</li>
+<li>分布式计算是一个很大的范畴。在当今的网络时代，不是分布式计算的应用已经很少了。</li>
+<li>云计算和下面将要提及的网格计算，都只是分布式计算的一种。</li>
+</ul>
+<h4 id="云计算-Vs-网格计算"><a href="#云计算-Vs-网格计算" class="headerlink" title="云计算 Vs 网格计算"></a>云计算 Vs 网格计算</h4><ul>
+<li>网格（Grid）是20世纪90年代中期发展起来的下一代互联网核心技术。</li>
+<li>其开创者Ian Foster将之定义为“在动态、多机构参与的虚拟组织中协同共享资源和求解问题” 。</li>
+<li>网格计算可以分为三种类型，即计算网格、信息网格和知识网格。</li>
+<li>网格计算与云计算的关系，就像是OSI与TCP/IP之间的关系。</li>
+<li>云计算是网格计算的一种简化实用版本。</li>
+</ul>
+<h4 id="云计算-Vs-效用计算"><a href="#云计算-Vs-效用计算" class="headerlink" title="云计算 Vs 效用计算"></a>云计算 Vs 效用计算</h4><ul>
+<li>效用计算随着主机的发展出现。</li>
+<li>考虑到主机的购买成本高昂，一些用户就通过租用而不是购买的方式使用主机。效用计算的目标就是把服务器及存储系统打包给用户使用，按照用户实际使用的资源量对用户进行计费。</li>
+<li>可以说，效用计算是云计算的前生。</li>
+</ul>
+<h3 id="云计算与物联网"><a href="#云计算与物联网" class="headerlink" title="云计算与物联网"></a>云计算与物联网</h3><p><strong>物联网需要云计算</strong></p>
+<ul>
+<li>云计算解决了物联网中服务器节点的不可靠性问题，最大限度地降低服务器的出错率。</li>
+<li>云计算可以解决物联网中访问服务器资源受限的问题。</li>
+<li>云计算让物联网在更广泛的范围内进行信息资源共享。</li>
+<li>云计算增强了物联网中的数据处理能力，并提高了智能化处理程度。</li>
+</ul>
+<blockquote>
+<p>物联网是云计算的一个重要范畴，是云计算在现实中的一种应用形式.</p>
+</blockquote>
+<blockquote>
+<p>但，需要注意的是，云计算并非物联网应用的必需品！</p>
+</blockquote>
+<ul>
+<li>云计算作为一种新兴的计算模型，能够提供高效的、动态的和可以大规模扩展的计算处理能力，在物联网中占有重要的地位。物联网的发展离不开云计算的支撑，物联网也将成为云计算最大的用户，为云计算的更广泛应用奠定基石。</li>
+</ul>
+<h3 id="物联网组网技术"><a href="#物联网组网技术" class="headerlink" title="物联网组网技术"></a>物联网组网技术</h3><h4 id="现场总线技术"><a href="#现场总线技术" class="headerlink" title="现场总线技术"></a>现场总线技术</h4><p><strong>特点</strong></p>
+<p>现场总线技术实际上是采用串行数据传输和连接方式代替传统的并联信号传输和连接方式的方法，它依次实现了控制层和现场总线设备层之间的数据传输，同时在保证传输实时性的情况下实现信息的可靠性和开放性。</p>
+<p>布线简单、开放性、实时性、可靠性</p>
+<h4 id="WIFI技术、蓝牙技术、GPS技术"><a href="#WIFI技术、蓝牙技术、GPS技术" class="headerlink" title="WIFI技术、蓝牙技术、GPS技术"></a>WIFI技术、蓝牙技术、GPS技术</h4><h5 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h5><p>Wireless Fidelity，又称 <strong>802.11b标准</strong>。</p>
+<blockquote>
+<p>IEEE 802.11b无线网络规范是IEEE 802.11a网络规范的变种，最高带宽为11Mbps，在信号较弱或有干扰的情况下，带宽可调整为5.5Mbps、2Mbps和1Mbps，带宽的自动调整，有效地保障了网络的稳定性和可靠性。</p>
+</blockquote>
+<hr>
+<h5 id="蓝牙技术"><a href="#蓝牙技术" class="headerlink" title="蓝牙技术"></a>蓝牙技术</h5><p>一个开放性、短距离无线通信的标准。</p>
+<blockquote>
+<p>蓝牙是一种支持设备短距离通信（一般10m内）的无线电技术。能在包括移动电话、PDA、无线耳机、笔记本电脑、相关外设等众多设备之间进行无线信息交换。<br>蓝牙采用分散式网络结构以及快跳频和短包技术，支持点对点及点对多点通信，工作在全球通用的2.4GHz ISM（即工业、科学、医学）频段。其数据速率为1Mbps。采用时分双工传输方案实现全双工传输。</p>
+</blockquote>
+<p><strong>蓝牙技术特点</strong></p>
+<ul>
+<li>能传送语音和数据；</li>
+<li>全球范围适用，使用频段无需申请；</li>
+<li>低成本、低功耗和低辐射；</li>
+<li>安全性、抗干扰性和稳定性强；</li>
+<li>可以建立临时性的对等连接，支持点对多的通信方式。</li>
+</ul>
+<hr>
+<h5 id="GPS"><a href="#GPS" class="headerlink" title="GPS"></a>GPS</h5><p>Global Positioning System（全球定位系统）的简称。</p>
+<p><strong>GPS特点</strong></p>
+<ul>
+<li>定位精度高</li>
+<li>观测时间短</li>
+<li>应用广泛</li>
+<li>全天候</li>
+<li>多功能</li>
+<li>操作简便</li>
+</ul>
+<hr>
+<h5 id="还有很多物联网组网技术"><a href="#还有很多物联网组网技术" class="headerlink" title="还有很多物联网组网技术"></a>还有很多物联网组网技术</h5><p>如电力线通信(Power Line Communication,PLC)技术、微机电系统(Micro-Electro-Mechanical Systems,MEMS)技术等…</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>翻译的<a href="https://download.csdn.net/download/jave_f/10440719" target="_blank" rel="noopener">四篇物联网前沿技术论文</a>中一些基础知识问题</p>
+<ul>
+<li><p><strong>可见光通信</strong>(Visible Light Communication，VLC)</p>
+<ul>
+<li><p><strong>概念、名词</strong></p>
+<ul>
+<li>ReflexCode</li>
+<li>VLC(Visible Light Communication)= 可见光通信</li>
+<li>GSK(Grayscale Shift Keying)= 灰度移位键控</li>
+<li>OOK(On-OFF Keying)= <a href="https://baike.baidu.com/item/ook/9996982" target="_blank" rel="noopener">开关键控</a></li>
+<li>RoI(Region of Interest)= 感兴趣区域</li>
+<li>RLL(Run Length Limited)= <a href="https://baike.baidu.com/item/RLL/4096234" target="_blank" rel="noopener">游程长度压缩限制编码</a></li>
+<li>NC编码(N’s-complement coding)</li>
+<li>FEC(Forward Error Correction)= <a href="https://baike.baidu.com/item/%E5%89%8D%E5%90%91%E7%BA%A0%E9%94%99%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF/4911791" target="_blank" rel="noopener">前向纠错编码</a></li>
+<li>PPR(Packet Reception Ratio)= 数据包接收率</li>
+<li>PER(Packet Error Ratio)= 数据包错误率</li>
+<li><a href="https://baike.baidu.com/item/%E9%B2%81%E6%A3%92%E6%80%A7/832302" target="_blank" rel="noopener">鲁棒性</a>，所谓“鲁棒性”，是指控制系统在一定（结构，大小）的参数摄动下，维持其它某些性能的特性。</li>
+</ul>
+</li>
+<li><p><strong>可见光通信为什么采用LED灯、而非白炽灯？</strong></p>
+<ul>
+<li>其实LED发光是一闪一闪的，因为闪动频率极高，我们的肉眼 “功能”太差分辨不出来，这种闪动其实就是一种开、关过程，LED这一开一关就可以承担发送信息的任务了，比如，开就代表“1”，关就代表“0”，通过信息编码也就是0与1的各种组合，就可以通过灯光来传递了，灯光在空气中传输就类似于光纤通信中信息在光纤中传输一样，这就是LED可见光通信的基本原理。</li>
+<li>LED作为半导体器件，这种高速的亮灭也就是开关的通断能力是它的特性，而白炽灯因为在亮灭的变化过程中非常容易被损坏，且亮灭变化动作太慢，因而不具备这种通信功能。</li>
+<li>(LED灯可以调节频率，而白炽灯不支持；白炽灯在数据通信时噪音较大…)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>移动广告</strong>(Mobile advertising)</p>
+<ul>
+<li><p><strong>概念、名词</strong></p>
+<ul>
+<li><p>AaaP(Advertising as a Platform)一个基于广告的系统，可执行大规模的移动测量研究。</p>
+</li>
+<li><p>移动广告(Mobile advertising)</p>
+<ul>
+<li>可以获取图片并运行 JavaScript</li>
+<li>可以访问一些本地传感器</li>
+<li>拥有完整浏览器的资源</li>
+<li>极低的成本</li>
+<li>可以访问唯一标识符和设备位置</li>
+<li>所有这些功能都可以在没有用户交互的情况下使用</li>
+</ul>
+</li>
+<li><p>广告标识符</p>
+<ul>
+<li>该标识符是设备上所有应用程序共享的随机 UUID；</li>
+<li>我们的系统通过定位特定的广告标识符将广告发送到特定设备来收集纵向数据。</li>
+</ul>
+</li>
+<li><p>UUID(Universally Unique Identifier)</p>
+<ul>
+<li>通用唯一识别码</li>
+<li>UUID是由一组32位数的16进制数字所构成，是故UUID理论上的总数为16^32=2^128；</li>
+<li>与被陨石击中的机率比较的话，已知一个人每年被陨石击中的机率估计为170亿分之1，也就是说机率大约是0.00000000006 (6 x 10^-11)，等同于在一年内置立数十兆笔UUID并发生一次重复。换句话说，每秒产生10亿笔UUID，100年后只产生一次重复的机率是50%。如果地球上每个人都各有6亿笔UUID，发生一次重复的机率是50%。</li>
+</ul>
+</li>
+<li><p><a href="https://www.maxmind.com/zh/geoip2-databases" target="_blank" rel="noopener">IP2Geo数据库</a></p>
+</li>
+<li><p>RTB协议(<a href="https://developers.google.com/ad-exchange/rtb/" target="_blank" rel="noopener">实时出价协议</a>)</p>
+<ul>
+<li>实时出价（RTB）协议指定您的应用程序如何在每次展示实时可用时评估和出价，以响应出价请求。</li>
+</ul>
+</li>
+<li><p>Impression</p>
+<ul>
+<li>Impression是指放置广告图像的网页每一次显示，就是一次印象。</li>
+</ul>
+</li>
+<li><p>CPM(Cost Per Mille或Cost Per Thousand Impressions)</p>
+<ul>
+<li>千次印象费用，是西方一些网络广告应用比较成熟的国家所采用的最常规的收费模式之一。</li>
+</ul>
+</li>
+<li><p>SSP</p>
+<ul>
+<li>自助服务平台的供应端平台</li>
+</ul>
+</li>
+<li><p>DSP</p>
+<ul>
+<li>需求方平台</li>
+<li>利用先进的定位功能和优化算法，DSP可帮助广告客户和代理机构确定即将到来的展示的价值，并发出出价以赢得该展示</li>
+</ul>
+</li>
+<li><p>蜂窝网络(Cellular network)</p>
+<ul>
+<li>又称移动网络（mobile network），是一种移动通信硬件架构，分为模拟蜂窝网络和数字蜂窝网络。</li>
+<li>由于构成网络覆盖的各通信基地台的信号覆盖呈六边形，从而使整个网络像一个蜂窝而得名。</li>
+<li>常见的蜂窝网络类型有：GSM网络（有些国家叫pcs-1900）、CDMA网络、3G网络、FDMA、TDMA、PDC、TACS、AMPS等。</li>
+</ul>
+</li>
+<li><p>电池状态 API(Battery Status API)</p>
+<ul>
+<li>更多时候被称之为 Battery API, 提供了有关系统充电级别的信息并提供了通过电池等级或者充电状态的改变提醒用户的事件。 </li>
+<li>这个可以在设备电量低的时候调整应用的资源使用状态，或者在电池用尽前保存应用中的修改以防数据丢失。</li>
+</ul>
+</li>
+<li><p>关键电池电量水平</p>
+<ul>
+<li>当电量到最低水平，会提示第一次说电池电量不足；</li>
+<li>当电量到保留电量，会提示第二说让你快点接上电源，否则休眠；</li>
+<li>当电量到关键水平，如果还没有插入电源，系统会自动休眠。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>挑战、难点在于哪里？为此做了哪些工作？</strong></p>
+<ul>
+<li>法律与伦理的限制<ul>
+<li>得到了IRB 批准，允许在非互动盲审过程中进行更深入的伦理讨论；</li>
+<li>美国联邦准则允许在研究对参与者的风险不高于最低限度的情况下缺乏明确同意的研究，获得书面同意是不切实际的；</li>
+<li>我们发现的服务条款并未明确排除AaaP使用的广告类型。</li>
+</ul>
+</li>
+<li>地理、网络、能源管理、安全和隐私等等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>射频识别技术</strong>(Radio Frequency Identification，RFID)</p>
+<ul>
+<li><p><strong>概念、名词</strong></p>
+<ul>
+<li>ART，UPE，EZB，LoF，FNEB<ul>
+<li>它们估算标签数量仅仅通过静态群体。</li>
+<li>然而这些方案可以用来估算两段时间内群体总量的改变，但是不能分别估算到达和离开标签的数量</li>
+</ul>
+</li>
+<li><p>ZDE</p>
+<ul>
+<li>虽然它是唯一可以估算两个时间段内动态群体出入标签的数量的方案，</li>
+<li>但是它有三个主要的限制：<ul>
+<li>不能实现任意高可靠性;</li>
+<li>不符合C1G2标准；</li>
+<li>不能工作在多阅读器上。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>缺失标签检测方案</p>
+<ul>
+<li>仅仅估算离开标签的数量，且无法估算到达标签的数量，即使到达标签的ID可能是知道的。</li>
+<li>如果标签ID未知，则该方案无效。</li>
+</ul>
+</li>
+<li><p>标签识别协议TH</p>
+<ul>
+<li>估计到达和离开标签数量的一个看似很明显的解决方案是使用标签识别协议</li>
+<li>来收集每个时刻所有标签的ID，然后通过比较这两个时刻的ID来识别到达标签和离开标签</li>
+<li>这个解决方案有两个问题：<ul>
+<li>第一，它不保护隐私，因为阅读器能够读到任何标签的ID。</li>
+<li>第二，它很慢，因为标签识别的过程比标签估算慢几个数量级。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DTE(Dynamic Tag Estimation Scheme，动态标签评估协议)</p>
+<ul>
+<li>可以快速估计在任何两个时刻之间到达和离开标签的数量；</li>
+<li>具有任意高的准确度；</li>
+<li>适用于单一以及多个阅读器；</li>
+<li>符合C1G2标准</li>
+</ul>
+</li>
+<li><p>C1G2标准</p>
+<ul>
+<li>根据C1G2标准，标签不会传输其标签的ID，除非阅读器明确要求它们这么做。</li>
+<li>这保留了阅读器不允许读取群体中标签的ID的隐私设置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>如何解决重叠区域出现重复计数问题</strong>？</p>
+<ul>
+<li>使用 <strong>TDMA技术</strong>，保证阅读器不会互相干扰</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>WIFI技术(Wireless Fidelity)</strong><br>  利用无人机采集WIFI信号3D成像</p>
+<ul>
+<li><p><strong>概念、名词</strong></p>
+<ul>
+<li>马尔可夫随机场(MRF)</li>
+<li>贝叶斯公式</li>
+<li>(循环)置信传播(Loopy Belief Propagation)</li>
+</ul>
+</li>
+<li><p><strong>如果实验中采用圆柱形的墙壁，那么无人机飞行路径该如何规划？</strong></p>
+<ul>
+<li>螺旋线形轨迹、极坐标</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201805271/" rel="external">【复习】 物联网概论复习总结</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201805271/" target="_blank" rel="external">https://zhouie.cn/posts/201805271/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IoT/">IoT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XTU/">XTU</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201805271/&sharesource=qzone&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201805271/&srcUrl=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201805271/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201805271/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201805271/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201805271/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201805271/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201806031/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【记录】 愿你们都能有一个远大前程，都能不负此生</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201805211/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【电台】 蕊希电台</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201805271/&sharesource=qzone&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201805271/&srcUrl=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201805271/&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201805271/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201805271/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201805271/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【复习】 物联网概论复习总结》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201805271/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201805271/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201805271/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

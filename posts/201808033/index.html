@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【分享】 Qiniu_upload windows工具 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Tool-share,图床,七牛云">
+    <meta name="description" content="介绍一款 提升markdown贴图体验的实用小工具，支持 windows 及 mac，基于 AutoHotkey 和 qshell 实现，支持本地文件、截图及网络图片一键上传至七牛云，并获取图片的 markdown引用 至剪贴板（Ctrl+Alt+V），并自动粘贴到当前编辑器。  支持各种格式图片上传 支持截图及网络图片直接复制上传 支持各种格式单个文件上传 AutoHotkey开放源码，完全免费">
+<meta name="keywords" content="Tool-share,图床,七牛云">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【分享】 Qiniu_upload windows工具">
+<meta property="og:url" content="https://zhouie.cn/posts/201808033/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="介绍一款 提升markdown贴图体验的实用小工具，支持 windows 及 mac，基于 AutoHotkey 和 qshell 实现，支持本地文件、截图及网络图片一键上传至七牛云，并获取图片的 markdown引用 至剪贴板（Ctrl+Alt+V），并自动粘贴到当前编辑器。  支持各种格式图片上传 支持截图及网络图片直接复制上传 支持各种格式单个文件上传 AutoHotkey开放源码，完全免费">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db110375.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db1e25f8.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db119e46.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db18a0e1.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db1a6e5d.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db19e933.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729db20647e.gif">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【分享】 Qiniu_upload windows工具">
+<meta name="twitter:description" content="介绍一款 提升markdown贴图体验的实用小工具，支持 windows 及 mac，基于 AutoHotkey 和 qshell 实现，支持本地文件、截图及网络图片一键上传至七牛云，并获取图片的 markdown引用 至剪贴板（Ctrl+Alt+V），并自动粘贴到当前编辑器。  支持各种格式图片上传 支持截图及网络图片直接复制上传 支持各种格式单个文件上传 AutoHotkey开放源码，完全免费">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/24/5c729db110375.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【分享】 Qiniu_upload windows工具</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【分享】 Qiniu_upload windows工具</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-03T23:11:31.000Z" itemprop="datePublished" class="page-time">
+  2018-08-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文档"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考文档</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行"><span class="post-toc-number">3.</span> <span class="post-toc-text">运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#效果展示"><span class="post-toc-number">4.</span> <span class="post-toc-text">效果展示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Q-amp-A"><span class="post-toc-number">5.</span> <span class="post-toc-text">Q&amp;A</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见问题一-七牛云UP-HOST有误"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">常见问题一: 七牛云UP_HOST有误</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见问题二-powershell执行权限问题"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">常见问题二: powershell执行权限问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推荐阅读-imp"><span class="post-toc-number">6.</span> <span class="post-toc-text">推荐阅读 !imp</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-08-03-【分享】 qiniu_upload windows工具"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【分享】 Qiniu_upload windows工具</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-03 23:11:31" datetime="2018-08-03T23:11:31.000Z"  itemprop="datePublished">2018-08-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        12 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>介绍一款 <strong>提升markdown贴图体验的实用小工具</strong>，支持 <code>windows</code> 及 <code>mac</code>，基于 <code>AutoHotkey</code> 和 <code>qshell</code> 实现，支持本地文件、截图及网络图片一键上传至七牛云，并获取图片的 markdown引用 至剪贴板（<code>Ctrl+Alt+V</code>），并自动粘贴到当前编辑器。</p>
+<ul>
+<li>支持各种格式图片上传</li>
+<li>支持截图及网络图片直接复制上传</li>
+<li>支持各种格式单个文件上传</li>
+<li><code>AutoHotkey</code>开放源码，完全免费</li>
+<li>安装使用非常简单</li>
+</ul>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a href="http://jverson.com/2017/05/28/qiniu-image-v2/" target="_blank" rel="noopener">windows版本markdown一键贴图工具（2.x及以上版本）</a></li>
+<li><a href="https://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="noopener">AutoHotkey&amp;qshell实现图片一键上传七牛并返回markdown引用（适用1.x版本）</a></li>
+<li><a href="http://ahkcn.sourceforge.net/docs" target="_blank" rel="noopener">AutoHotkey中文帮助</a></li>
+<li><a href="https://autohotkey.com/docs/Hotkeys.htm#Symbols" target="_blank" rel="noopener">You can use the following modifier symbols to define hotkeys</a></li>
+<li><a href="https://github.com/octan3/img-clipboard-dump" target="_blank" rel="noopener">Powershell-Scripts for dumping images from clipboard</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>1、 下载 qimage-win<br>首先从 <a href="https://github.com/jiwenxing/qimage-win/releases" target="_blank" rel="noopener">github</a> 下载最新的release版本(推荐使用2.*正式版)，并解压到任意目录，在<code>qimage-win</code>文件夹中看到的目录结构应该如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db110375.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其中<code>dump-clipboard-png.ps1</code>是保存截图的<code>powershell</code>脚本，<code>qiniu-image-upload.ahk</code>即完成文件上传的<code>AutoHotkey</code>脚本。</p>
+<p>2、 安装 AutoHotkey</p>
+<p><a href="https://autohotkey.com/" target="_blank" rel="noopener">AutoHotkey</a>官网下载安装最新版本，这是一款免费的、Windows平台下开放源代码的 <strong>热键脚本语言</strong>，利用其通过 <strong>自定义热键</strong> 触发一系列系统调用从而完成自动化操作。</p>
+<p>这款软件的安装很简单，正常安装Next就行。具体软件更多学习内容可参照——<a href="http://ahkcn.sourceforge.net/docs" target="_blank" rel="noopener">AutoHotkey中文帮助</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db1e25f8.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>3、 注册七牛云账号并创建一个bucket</p>
+<p>还没有七牛云帐号的朋友，😉欢迎通过我的邀请注册链接：<a href="https://portal.qiniu.com/signup?code=3lowm9s25ur82" target="_blank" rel="noopener">https://portal.qiniu.com/signup?code=3lowm9s25ur82</a>完成七牛云的注册，注册后会发邮件到你邮箱，通过邮件激活并登录即可。</p>
+<blockquote>
+<p>ps：注册的时候，你要填一项个人网站域名，如果没网站的，就请随便填一个真实存在的网站吧，<code>www.baidu.com</code>也是可以的哦~</p>
+</blockquote>
+<p>这个部分的操作请参照 <a href="https://zhouie.cn/posts/201808032/#Md2All%E7%9A%84%E4%BA%91%E5%9B%BE%E5%BA%8A">Md2All的云图床</a></p>
+<p>注意，在新建七牛云存储空间(bucket)时，选择存储区域上要多加留意，<a href="https://developer.qiniu.com/kodo/manual/1671/region-endpoint" target="_blank" rel="noopener">参照文档</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">存储区域</th>
+<th style="text-align:center">地域简称</th>
+<th style="text-align:center">上传域名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">华东</td>
+<td style="text-align:center"><code>z0</code></td>
+<td style="text-align:center">服务器端上传：<code>http(s)://up.qiniup.com</code> 客户端上传： <code>http(s)://upload.qiniup.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">华北</td>
+<td style="text-align:center"><code>z1</code></td>
+<td style="text-align:center">服务器端上传：<code>http(s)://up-z1.qiniup.com</code> 客户端上传：<code>http(s)://upload-z1.qiniup.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">华南</td>
+<td style="text-align:center"><code>z2</code></td>
+<td style="text-align:center">服务器端上传：<code>http(s)://up-z2.qiniup.com</code> 客户端上传：<code>http(s)://upload-z2.qiniup.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">北美</td>
+<td style="text-align:center"><code>na0</code></td>
+<td style="text-align:center">服务器端上传：<code>http(s)://up-na0.qiniup.com</code> 客户端上传：<code>http(s)://upload-na0.qiniup.com</code></td>
+</tr>
+<tr>
+<td style="text-align:center">东南亚</td>
+<td style="text-align:center"><code>as0</code></td>
+<td style="text-align:center">服务器端上传：<code>http(s)://up-as0.qiniup.com</code> 客户端上传：<code>http(s)://upload-as0.qiniup.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>4、 配置文件</p>
+<p><code>qimage-win</code> 文件夹中打开<code>settings.ini</code>文件，可以看到:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db119e46.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这里的配置项都需要根据自己的七牛云账号以及所创建的 bucket 进行修改，后面的两个配置项为可选配置，默认情况下可以暂时先不管。</p>
+<p><code>ACCESS_KEY</code> &amp; <code>SECRET_KEY</code></p>
+<p>这是<code>qshell</code>操作个人账号的账号凭证，登陆七牛账号后在<code>个人面板-&gt;密钥管理</code>中查看，或者直接访问<code>https://portal.qiniu.com/user/key</code>查看。</p>
+<p><code>BUCKET_NAME</code> &amp; <code>BUCKET_DOMAIN</code></p>
+<p>在<code>对象存储-&gt;存储空间列表</code>中选择或新建一个存储空间即 bucket，点击该 bucket 在右边看到一个测试域名，该域名<code>bucketDomain</code>便是图片上传后的访问域名，特别注意域名不要少了前面的<code>http://</code>头部。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db18a0e1.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>完成文件上传的<code>AutoHotkey</code>脚本中默认的快捷键是<code>^!V</code>，即<code>Ctrl+Alt+V</code>(其中，<code>^</code>代表<code>Ctrl</code>，<code>!</code>为<code>Alt</code>)，如果您希望修改为其它自己更习惯的快捷键，直接对<code>qiniu-image-upload.ahk</code>脚本修改即可生效。</p>
+<p>关于<code>hotkey</code>的符号与按键对应关系请参考 <a href="https://autohotkey.com/docs/Hotkeys.htm" target="_blank" rel="noopener">You can use the following modifier symbols to define hotkeys</a></p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>配置完成后，以管理员身份运行<code>qImage.exe</code>，这时便可以参照下面的效果显示，使用<code>Ctrl+Alt+V</code>尝试一键上传图片至七牛云指定bucket了。</p>
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>本地图片文件上传</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db1a6e5d.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>截图上传</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db19e933.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其它文件上传</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729db20647e.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><p>如果以上操作完成后，没有按照预期达到图片上传的效果，可以先自己调试找一下原因，一般报错信息会打印在cmd命令行中，但是cmd窗口一闪而过可能看不清楚，这时候需要将<code>settings.ini</code>配置文件中的可选参数<code>DEBUG_MODE = false</code>改为<code>DEBUG_MODE = true</code>以打开调试模式，再次尝试，这时候cmd窗口不会自动关闭，便可以看到具体的报错信息从而对症下药解决问题。</p>
+<p>使用过程中的任何问题可以在github中提交<a href="https://github.com/jiwenxing/qiniu-image-tool-win/issues" target="_blank" rel="noopener">issues</a></p>
+<h4 id="常见问题一-七牛云UP-HOST有误"><a href="#常见问题一-七牛云UP-HOST有误" class="headerlink" title="常见问题一: 七牛云UP_HOST有误"></a>常见问题一: 七牛云UP_HOST有误</h4><p>具体的错误信息如下所示：</p>
+<blockquote>
+<p>Uploading G:\Users\Cooper\Desktop\9999.png =&gt; markdown : 201705082057_244.png …<br>Progress: 100%<br>Put file error, 400 incorrect region, please use up-z2.qiniu.com, Reqid: 0wUAAGp6j6faorwU<br>Last time: 0.43 s, Average Speed: 415.6 KB/s</p>
+</blockquote>
+<p>在七牛云的官方文档中<code>UP_HOST</code>为非必填项，配置文件中使用的是默认值<code>http://up.qiniu.com</code>，而每个区域所对应的的七牛云上传域名都不同，当与你所在空间区域不匹配时便会报以上的错误信息<br>不过很友善的是，错误信息中已经给出了建议的<code>UP_HOST</code>，例如上面的错误信息就给出明确的提示 <code>please use up-z2.qiniu.com</code>，这时将可选配置项<code>UP_HOST = http://up.qiniu.com</code>修改为<code>UP_HOST = http://up-z2.qiniu.com</code>，保存即可。</p>
+<p>参照上面的<code>存储区域-上传域名</code>表格，不难看出出现这种报错的原因其实是因为，默认情况下，bucket的默认存储区域是 华东 ，对应<code>http(s)://up.qiniup.com</code>，但我之前在新建bucket时将 存储区域 选择在了 华南 地区，显然对应配置文件中自然需要修改成<code>http://up-z2.qiniu.com</code>!</p>
+<h4 id="常见问题二-powershell执行权限问题"><a href="#常见问题二-powershell执行权限问题" class="headerlink" title="常见问题二: powershell执行权限问题"></a>常见问题二: powershell执行权限问题</h4><p>具体的错误信息如下所示：</p>
+<blockquote>
+<p>set-executionpolicy : 对注册表项“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell”的访问被拒绝。 要更改默认(LocalMachine)作用域的执行策略，请使用“以管理员身份运行”选项启动 Windows PowerShell。要更改当前用户的执行策略，请运行 “Set-ExecutionPolicy -Scope Current User”。</p>
+</blockquote>
+<p>这是<code>powershell</code>执行权限问题，重新以管理员权限运行<code>qImage.exe</code>即可。</p>
+<h3 id="推荐阅读-imp"><a href="#推荐阅读-imp" class="headerlink" title="推荐阅读 !imp"></a>推荐阅读 !imp</h3><ul>
+<li><p>1小时编写一个支持七牛上传的 markdown 客户端 —— <a href="https://zhaopeng.me/1174.html" target="_blank" rel="noopener"> 技术实现篇 </a>，<a href="https://zhaopeng.me/1207.html" target="_blank" rel="noopener"> 代码优化篇 </a> ， <a href="https://zhaopeng.me/1218.html" target="_blank" rel="noopener"> 打包发布篇 </a>，<a href="https://github.com/zhaopengme/ndpediter" target="_blank" rel="noopener"> res</a>，<a href="https://gitee.com/imzhpe/ndpediter" target="_blank" rel="noopener"> 备份地址</a></p>
+</li>
+<li><p><a href="https://jverson.com/2017/05/28/qiniu-image-v2/" target="_blank" rel="noopener">qiniu-image-tool | Markdown 一键贴图工具 v.2.x </a>，<a href="https://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="noopener"> v.1.x </a>，<a href="https://github.com/jiwenxing/qimage-win" target="_blank" rel="noopener"> res </a>，<a href="https://github.com/jiwenxing/qimage-win/issues" target="_blank" rel="noopener"> issues </a>，<a href="https://github.com/jiwenxing/qimage-win/releases" target="_blank" rel="noopener"> download</a></p>
+</li>
+<li><p><a href="https://jverson.com/2017/04/28/alfred-qiniu-upload/" target="_blank" rel="noopener">qimage-mac | 使用alfred在markdown中愉快的贴图 </a>，<a href="https://github.com/jiwenxing/qimage-mac" target="_blank" rel="noopener"> res </a>，<a href="https://github.com/jiwenxing/qimage-mac/releases" target="_blank" rel="noopener"> download </a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/haoliuhust/p/6084102.html" target="_blank" rel="noopener">QiniuUpload | 一个方便用七牛做图床然后插入markdown的小工具 </a>，<a href="https://github.com/HaoLiuHust/QiniuUpload" target="_blank" rel="noopener"> res </a>，<a href="https://developer.qiniu.com/kodo/sdk/1237/csharp" target="_blank" rel="noopener"> doc </a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/qq_31915279/article/details/61824114" target="_blank" rel="noopener">在Atom下配置并使用MarkDown全教程 </a>，<a href="https://blog.csdn.net/fjinhao/article/details/78577212" target="_blank" rel="noopener"> 更多参考1 </a>，<a href="https://www.jianshu.com/p/af4d34d39797" target="_blank" rel="noopener"> 更多参考2 </a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/c859ead1b493" target="_blank" rel="noopener">一个码字工作者的正确书写发文姿势 —— MWeb + Markdown Here + 七牛 实现一键发布</a></p>
+</li>
+<li><p><a href="http://www.chairis.cn/blog/article/15" target="_blank" rel="noopener">Laravel项目中使用markdown编辑器及图片粘贴上传七牛云 </a>，<a href="https://www.cnblogs.com/ChainZhang/p/7058904.html" target="_blank" rel="noopener"> 备份地址 </a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/44d818f781a7" target="_blank" rel="noopener">qiniu upload files谷歌浏览器插件</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/sylan15/article/details/78453205" target="_blank" rel="noopener">Python实现七牛云图片和文件上传脚本实现</a>，<a href="https://github.com/sylan215/upload-to-qiniu" target="_blank" rel="noopener">res</a></p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201808033/" rel="external">【分享】 Qiniu_upload windows工具</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201808033/" target="_blank" rel="external">https://zhouie.cn/posts/201808033/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool-share/">Tool-share</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/七牛云/">七牛云</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图床/">图床</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201808033/&sharesource=qzone&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201808033/&srcUrl=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201808033/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201808033/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201808033/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201808033/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201808033/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201808091/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 VPN工具整理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201808032/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 Md2All Markdown排版利器</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201808033/&sharesource=qzone&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201808033/&srcUrl=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201808033/&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201808033/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201808033/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201808033/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Qiniu_upload windows工具》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201808033/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201808033/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201808033/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

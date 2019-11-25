@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Git,Hexo,NodeJS,Travis CI">
+    <meta name="description" content="完成Hexo主题安装和配置如果您还没有安装Hexo环境，请参考Hexo文档安装，也给出这样两篇博文————百度经验和2018最新版hexo+Github搭建个人博客教程仅供参考，这个去网上一搜到处都有，而且操作也很简单，就不赘述了。 我采用的是Indigo 主题，而且这个主题还很详细地给出了配置安装本主题的详细教程步骤(3.0 以上Hexo版本) Indigo 主题，一个Material Desi">
+<meta name="keywords" content="Git,Hexo,NodeJS,Travis CI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署">
+<meta property="og:url" content="https://zhouie.cn/posts/201804261/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="完成Hexo主题安装和配置如果您还没有安装Hexo环境，请参考Hexo文档安装，也给出这样两篇博文————百度经验和2018最新版hexo+Github搭建个人博客教程仅供参考，这个去网上一搜到处都有，而且操作也很简单，就不赘述了。 我采用的是Indigo 主题，而且这个主题还很详细地给出了配置安装本主题的详细教程步骤(3.0 以上Hexo版本) Indigo 主题，一个Material Desi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署">
+<meta name="twitter:description" content="完成Hexo主题安装和配置如果您还没有安装Hexo环境，请参考Hexo文档安装，也给出这样两篇博文————百度经验和2018最新版hexo+Github搭建个人博客教程仅供参考，这个去网上一搜到处都有，而且操作也很简单，就不赘述了。 我采用的是Indigo 主题，而且这个主题还很详细地给出了配置安装本主题的详细教程步骤(3.0 以上Hexo版本) Indigo 主题，一个Material Desi">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-26T11:09:41.000Z" itemprop="datePublished" class="page-time">
+  2018-04-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#完成Hexo主题安装和配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">完成Hexo主题安装和配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基于Travis-CI实现同步部署"><span class="post-toc-number">2.</span> <span class="post-toc-text">基于Travis CI实现同步部署</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考内容"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">参考内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#相关链接"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">相关链接</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#待补充"><span class="post-toc-number">3.</span> <span class="post-toc-text">待补充</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-04-27-【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-26 11:09:41" datetime="2018-04-26T11:09:41.000Z"  itemprop="datePublished">2018-04-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        3 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="完成Hexo主题安装和配置"><a href="#完成Hexo主题安装和配置" class="headerlink" title="完成Hexo主题安装和配置"></a>完成Hexo主题安装和配置</h2><p>如果您还没有安装<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a>环境，请参考<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">Hexo文档</a>安装，也给出这样两篇博文————<a href="https://jingyan.baidu.com/article/d8072ac493ce16ec95cefd2a.html" target="_blank" rel="noopener">百度经验</a>和<a href="https://blog.csdn.net/qq_32454537/article/details/79482908" target="_blank" rel="noopener">2018最新版hexo+Github搭建个人博客教程</a>仅供参考，这个去网上一搜到处都有，而且操作也很简单，就不赘述了。</p>
+<p>我采用的是<a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">Indigo 主题</a>，而且这个主题还很详细地给出了配置安装本主题的详细<a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="noopener">教程步骤</a>(3.0 以上<code>Hexo</code>版本)</p>
+<p><a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">Indigo 主题</a>，一个<code>Material Design</code>风格的<code>Hexo</code>主题..预览：<a href="https://yscoder.github.io/" target="_blank" rel="noopener">https://yscoder.github.io/</a>..</p>
+<p><a href="https://github.com/iissnan/hexo-theme-next/blob/master/README.cn.md" target="_blank" rel="noopener">NexT 主题</a>，一个高质量并且优雅的<code>Hexo</code>主题，<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT使用文档</a>..</p>
+<p>当然了，<code>Hexo</code>主题很多，更多可访问<a href="https://hexo.io/themes/" target="_blank" rel="noopener">官网</a>以及<a href="https://github.com/hexojs/hexo/wiki" target="_blank" rel="noopener">Hexo’s GitHub WiKi</a></p>
+<h2 id="基于Travis-CI实现同步部署"><a href="#基于Travis-CI实现同步部署" class="headerlink" title="基于Travis CI实现同步部署"></a>基于Travis CI实现同步部署</h2><h3 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h3><p>在这里要特别感谢一下这位CSDN认证<code>博客专家</code><a href="https://blog.csdn.net/qinyuanpei" target="_blank" rel="noopener">PayneQin</a>以下两篇博文对总个过程的帮助！</p>
+<ul>
+<li><a href="https://blog.csdn.net/qinyuanpei/article/details/78381008" target="_blank" rel="noopener">持续集成在Hexo自动化部署上的实践</a></li>
+<li><a href="https://blog.csdn.net/qinyuanpei/article/details/79388983" target="_blank" rel="noopener">基于Travis CI实现Hexo在Github和Coding的同步部署</a></li>
+</ul>
+<p>当然还有这篇<a href="https://blog.csdn.net/woblog/article/details/51319364" target="_blank" rel="noopener">手把手教你使用Travis CI自动部署你的Hexo博客到Github上</a>..</p>
+<p>以及Travis CI自动部署Hexo系列文章</p>
+<ul>
+<li><a href="https://jingyan.baidu.com/article/359911f5a3744657fe030683.html" target="_blank" rel="noopener">Travis自动部署Hexo一</a></li>
+<li><a href="https://jingyan.baidu.com/article/27fa7326ae44c046f8271f83.html" target="_blank" rel="noopener">Travis自动部署Hexo二</a></li>
+<li><a href="https://jingyan.baidu.com/article/db55b609d94c414ba30a2f0e.html" target="_blank" rel="noopener">Travis自动部署Hexo三</a></li>
+<li><a href="https://jingyan.baidu.com/article/215817f7b606e81eda142388.html" target="_blank" rel="noopener">Travis自动部署Hexo四</a></li>
+<li><a href="https://jingyan.baidu.com/article/b87fe19e57eb54521935684d.html" target="_blank" rel="noopener">Travis自动部署Hexo五</a></li>
+<li><a href="https://jingyan.baidu.com/article/bea41d43a6cd12b4c41be64e.html" target="_blank" rel="noopener">Travis自动部署Hexo六</a></li>
+</ul>
+<h3 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h3><ul>
+<li><p><a href="https://twitter.com/tommy351" target="_blank" rel="noopener">Hexo的创建者@tommy351 | Twitter</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/ganzhilin520/article/category/7398650" target="_blank" rel="noopener">hexo专区文章</a></p>
+</li>
+<li><p><a href="https://github.com/hexojs/hexo/wiki" target="_blank" rel="noopener">Hexo主题集锦</a></p>
+</li>
+<li><p><a href="http://wenjunjiang.win/2018/02/11/%E5%88%A9%E7%94%A8CI%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">利用CI自动部署hexo博客</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/finrODi4BfYPACSzZ0tUuA" target="_blank" rel="noopener">Travis CI - 项目持续集成好伴侣</a></p>
+</li>
+<li><p><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Hexo Plugins</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">有哪些好看的 Hexo 主题？——知乎</a></p>
+</li>
+</ul>
+<p>原谅我最近很累，没打算去一点一点去码字记录下之前整个完整的过程了，所以呢，😅贴了一面A4大小的链接烂文…</p>
+<p>不过还是按照我的路线写清了过程</p>
+<p>如果之后会有什么问题的话，我会在本文后面补充说明，嗯就是这样</p>
+<p>如果还有更新的话，我也会在<a href="https://zhouie.cn/posts/201804271/">详细的更新日志</a>中给出</p>
+<h2 id="待补充"><a href="#待补充" class="headerlink" title="待补充"></a>待补充</h2><p>🙏希望少出问题啦</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201804261/" rel="external">【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201804261/" target="_blank" rel="external">https://zhouie.cn/posts/201804261/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travis-CI/">Travis CI</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804261/&sharesource=qzone&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804261/&srcUrl=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804261/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804261/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804261/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804261/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804261/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201804271/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【博客】 详细的更新日志</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201804241/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 图床工具分享</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804261/&sharesource=qzone&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804261/&srcUrl=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804261/&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804261/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804261/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804261/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 基于Travis CI实现Hexo在Github和Coding的同步自动化部署》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804261/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804261/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201804261/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

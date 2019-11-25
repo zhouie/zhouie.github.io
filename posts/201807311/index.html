@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【分享】 Cmder - 命令行增强工具 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Tool-share,Cmder">
+    <meta name="description" content="cmdercmder是一款Windows环境下非常简洁美观易用的cmd替代者，它是一个跨平台的命令行增强工具，可以集成windows batch, power shell, git, linux bash等多种命令行于一体，支持了大部分的Linux命令，比如 grep, curl(没有 wget)，vim，grep，tar，unzip，ssh，ls，bash，perl等。还可以通过自定义，让它更方">
+<meta name="keywords" content="Tool-share,Cmder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【分享】 Cmder - 命令行增强工具">
+<meta property="og:url" content="https://zhouie.cn/posts/201807311/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="cmdercmder是一款Windows环境下非常简洁美观易用的cmd替代者，它是一个跨平台的命令行增强工具，可以集成windows batch, power shell, git, linux bash等多种命令行于一体，支持了大部分的Linux命令，比如 grep, curl(没有 wget)，vim，grep，tar，unzip，ssh，ls，bash，perl等。还可以通过自定义，让它更方">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a381d949.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a37c5151.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a3839c16.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a38340f4.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a37da921.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a37d4c38.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729a37d2f54.png">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【分享】 Cmder - 命令行增强工具">
+<meta name="twitter:description" content="cmdercmder是一款Windows环境下非常简洁美观易用的cmd替代者，它是一个跨平台的命令行增强工具，可以集成windows batch, power shell, git, linux bash等多种命令行于一体，支持了大部分的Linux命令，比如 grep, curl(没有 wget)，vim，grep，tar，unzip，ssh，ls，bash，perl等。还可以通过自定义，让它更方">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/24/5c729a381d949.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【分享】 Cmder - 命令行增强工具</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【分享】 Cmder - 命令行增强工具</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-31T17:23:51.000Z" itemprop="datePublished" class="page-time">
+  2018-07-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cmder"><span class="post-toc-number">1.</span> <span class="post-toc-text">cmder</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装cmder"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装cmder</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#让cmder便于使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">让cmder便于使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将cmder添加到右键菜单中"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">将cmder添加到右键菜单中</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在设置中添加语言环境"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">在设置中添加语言环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置默认使用cmd、PowerShell还是bash"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">设置默认使用cmd、PowerShell还是bash</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调节背景的透明度"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">调节背景的透明度</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加ll等命令"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">添加ll等命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用快捷键"><span class="post-toc-number">4.</span> <span class="post-toc-text">常用快捷键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Q-amp-A"><span class="post-toc-number">5.</span> <span class="post-toc-text">Q&amp;A</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解决文字重叠问题"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">解决文字重叠问题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改命令提示符号λ"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">修改命令提示符号λ</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-07-31-【分享】 Cmder - 命令行增强工具"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【分享】 Cmder - 命令行增强工具</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-31 17:23:51" datetime="2018-07-31T17:23:51.000Z"  itemprop="datePublished">2018-07-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        8 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="cmder"><a href="#cmder" class="headerlink" title="cmder"></a>cmder</h3><p><a href="http://cmder.net/" target="_blank" rel="noopener">cmder</a>是一款Windows环境下非常简洁美观易用的cmd替代者，它是一个跨平台的命令行增强工具，可以集成windows batch, power shell, git, linux bash等多种命令行于一体，支持了大部分的Linux命令，比如 grep, curl(没有 wget)，vim，grep，tar，unzip，ssh，ls，bash，perl等。还可以通过自定义，让它更方便。最重要的是颜值也比Windows自带的cmd好得多，支持文字颜色区分。</p>
+<p>Windows自带的cmd有哪些缺点</p>
+<ol>
+<li>复制文本，不能直接用鼠标拷贝，还需要多一道菜单操作；而且，还只能块状拷贝，而不是按行字符，极其不便</li>
+<li>不支持多Tab页，多窗口管理不便</li>
+</ol>
+<hr>
+<h3 id="安装cmder"><a href="#安装cmder" class="headerlink" title="安装cmder"></a>安装cmder</h3><p>在<a href="http://cmder.net/" target="_blank" rel="noopener">cmder官网</a>下载Full版本（内建Git for Windows），直接解压便可以使用啦</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a381d949.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h3 id="让cmder便于使用"><a href="#让cmder便于使用" class="headerlink" title="让cmder便于使用"></a>让cmder便于使用</h3><h4 id="将cmder添加到右键菜单中"><a href="#将cmder添加到右键菜单中" class="headerlink" title="将cmder添加到右键菜单中"></a>将cmder添加到右键菜单中</h4><ol>
+<li>在<code>PATH</code>中增加<code>Cmder.exe</code>所在目录（如D:\Program Files\cmder）</li>
+<li>然后进入Cmder的根目录，在命令行中执行<code>Cmder.exe /REGISTER USER</code>或<code>Cmder.exe /REGISTER ALL</code>注册表命令，就可以在右键中出现Cmder Here了</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a37c5151.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>另外呢，在网上我又看到这样一段gist描述去添加右键</p>
+<blockquote>
+<p>在Cmder根目录新建一个init.bat，输入以下代码：</p>
+<blockquote>
+<p>@echo offSET CMDER_ROOT=%~dp0reg add “HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\Cmder” /ve /d “Cmder Here” /freg add “HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\Cmder” /v “Icon” /d “\”%CMDER_ROOT%cmder.exe\”” /freg add “HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\Cmder” /v “Extended” /freg add “HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\Cmder\command” /ve /d “\”%CMDER_ROOT%cmder.exe\” \”%%V\”” /fpause</p>
+</blockquote>
+<p>以管理员身份运行init.bat即可。删除的话再在根目录新建一个uninit.bat，依然是以管理员身份运行。代码如下：</p>
+<blockquote>
+<p>@echo offReg delete “HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\Cmder” /fpause</p>
+</blockquote>
+</blockquote>
+<hr>
+<h4 id="在设置中添加语言环境"><a href="#在设置中添加语言环境" class="headerlink" title="在设置中添加语言环境"></a>在设置中添加语言环境</h4><p><code>set LANG=zh_CN.UTF8</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a3839c16.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h4 id="设置默认使用cmd、PowerShell还是bash"><a href="#设置默认使用cmd、PowerShell还是bash" class="headerlink" title="设置默认使用cmd、PowerShell还是bash"></a>设置默认使用cmd、PowerShell还是bash</h4><p>安装之后默认的是<code>cmd</code>，至于选择哪个得看个人需求</p>
+<p>对于普通使用者来说，这里从几个方面来比较一下 <code>cmd</code> 以及 <code>PowerShell</code></p>
+<ul>
+<li>资源占用</li>
+</ul>
+<p>当我们运行 <code>Cmd</code> 时，大概只需占用不到 1M 的内存，几乎可以忽略不计。</p>
+<p>而使用 <code>PowerShell</code> 时，需要占用大约 20M的内存，两者几乎相差 40~50 倍。从这里可以看出，如果你的电脑比较老旧，性能较低，使用 <code>Cmd</code> 无疑可以获得更高的流畅性。</p>
+<ul>
+<li>界面</li>
+</ul>
+<p>当我们使用 <code>Cmd</code> 时，所有的字符都是同一个颜色的，无法实现语法高亮。但是，如果使用的是 <code>PowerShell</code>，关键字会被高亮，而且错误信息将以红色显示，确实美观不少。</p>
+<ul>
+<li>排版</li>
+</ul>
+<p>当我们使用 <code>Cmd</code> 运行一些较为复杂、较为耗时的命令时，随意拖动命令行窗口时，窗口中的内容依然能够保持原样，整洁美观。</p>
+<p>但是，若是使用 <code>PowerShell</code> 执行同样的命令，情况就不容乐观了。如果在执行命令期间快速拖动命令行窗口，其窗口中的中文字符就会出现叠影，严重影响了阅读感。</p>
+<ul>
+<li>命令支持程度</li>
+</ul>
+<p><code>Cmd</code> 只能支持传统的 Windows 命令，既不能使用 <code>.net</code> 库中的命令，也不能使用 Linux 下的命令。但这方面 <code>PowerShell</code> 就强大多了，不仅完美支持传统 Windows 命令和 <code>.net</code> 库中的命令，也支持部分常用的 Linux 命令。</p>
+<p>如果你并不常用命令行工具，建议使用 <code>Cmd</code>，它的资源占用更小，启动速度更快，而且更为成熟可靠稳定。但如果你是一个程序员，或是追求新奇特性，可以尝试使用 <code>PowerShell</code>，毕竟，它支持更多的命令内容，界面也更绚丽。</p>
+<hr>
+<h4 id="调节背景的透明度"><a href="#调节背景的透明度" class="headerlink" title="调节背景的透明度"></a>调节背景的透明度</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a38340f4.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h4 id="添加ll等命令"><a href="#添加ll等命令" class="headerlink" title="添加ll等命令"></a>添加<code>ll</code>等命令</h4><p>在<code>cmder-&gt;config-&gt;aliases</code>，打开<code>aliases</code>文件（我这里的便是<code>user-aliases.cmd</code>文件），将</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">l=ls --show-control-chars </span><br><span class="line">la=ls -aF --show-control-chars </span><br><span class="line">ll=ls -alF --show-control-chars </span><br><span class="line">ls=ls --show-control-chars -F</span><br></pre></td></tr></table></figure>
+<p>添加至文件末尾，用于增强命令并添加颜色区分。</p>
+<hr>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">快捷键</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Tab</td>
+<td style="text-align:center">自动路径补全</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+t</td>
+<td style="text-align:center">建立新页签</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+W</td>
+<td style="text-align:center">关闭页签</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+Tab</td>
+<td style="text-align:center">切换页签</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt+F4</td>
+<td style="text-align:center">关闭所有页签</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt+Shift+1</td>
+<td style="text-align:center">开启cmd.exe</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt+Shift+2</td>
+<td style="text-align:center">开启powershell.exe</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt+Shift+3</td>
+<td style="text-align:center">开启powershell.exe (系统管理员权限)</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+1</td>
+<td style="text-align:center">快速切换到第1个页签</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+n</td>
+<td style="text-align:center">快速切换到第n个页签( n值无上限)</td>
+</tr>
+<tr>
+<td style="text-align:center">Alt+enter</td>
+<td style="text-align:center">切换到全屏状态</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctr+r</td>
+<td style="text-align:center">历史命令搜索</td>
+</tr>
+<tr>
+<td style="text-align:center">Win+Alt+P</td>
+<td style="text-align:center">开启工具选项视窗</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl + Shift + v</td>
+<td style="text-align:center">复制</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><h4 id="解决文字重叠问题"><a href="#解决文字重叠问题" class="headerlink" title="解决文字重叠问题"></a>解决文字重叠问题</h4><p><code>Win + Ait + P</code>唤出设置界面，<code>General-&gt; Fonts-&gt; monospce</code>,去掉那勾勾即可。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a37da921.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h4 id="修改命令提示符号λ"><a href="#修改命令提示符号λ" class="headerlink" title="修改命令提示符号λ"></a>修改命令提示符号<code>λ</code></h4><p>将<code>λ</code>符号修改成<code>$</code>，在<code>../cmder/vendor/clink.lua</code>批处理文件中，修改其中第43行的将<code>λ</code>为<code>$</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a37d4c38.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>修改前 <code>local lambda = &quot;λ&quot;</code>，修改后 <code>local lambda = &quot;$&quot;</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729a37d2f54.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201807311/" rel="external">【分享】 Cmder - 命令行增强工具</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201807311/" target="_blank" rel="external">https://zhouie.cn/posts/201807311/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cmder/">Cmder</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool-share/">Tool-share</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807311/&sharesource=qzone&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807311/&srcUrl=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807311/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807311/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807311/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807311/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807311/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201808031/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 Markdown-Here md-2-html渲染</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201807271/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【Python学习实践】 speech智能语音模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807311/&sharesource=qzone&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807311/&srcUrl=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807311/&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807311/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807311/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807311/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Cmder - 命令行增强工具》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807311/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807311/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201807311/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="SSL,HTTPS">
+    <meta name="description" content="直奔主题为什么要使用https协议？ 提高网站访问安全性，网络连接都是加密的 (PS：虽然SSL并不是无懈可击的，但是我们应该尽可能提高窃听成本)。  目前越来越多的浏览器会判断当前站点支不支持https协议，提高用户信任度，体验好.  例如：据外媒报道，从2017年1月份正式发布的Chrome 56开始，Google将把某些包含敏感内容的HTTP页面标记为“不安全”，比如含有密码或支付表单信息。">
+<meta name="keywords" content="SSL,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制">
+<meta property="og:url" content="https://zhouie.cn/posts/201804231/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="直奔主题为什么要使用https协议？ 提高网站访问安全性，网络连接都是加密的 (PS：虽然SSL并不是无懈可击的，但是我们应该尽可能提高窃听成本)。  目前越来越多的浏览器会判断当前站点支不支持https协议，提高用户信任度，体验好.  例如：据外媒报道，从2017年1月份正式发布的Chrome 56开始，Google将把某些包含敏感内容的HTTP页面标记为“不安全”，比如含有密码或支付表单信息。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7155bba23d6.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7156ab2eadb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7156c6357c5.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c715710009a1.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7157d994bd5.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7158e14f1ce.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7158f91602a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c715929765a5.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c715964bc516.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c715972c1f75.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c7159b8abe7c.png">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制">
+<meta name="twitter:description" content="直奔主题为什么要使用https协议？ 提高网站访问安全性，网络连接都是加密的 (PS：虽然SSL并不是无懈可击的，但是我们应该尽可能提高窃听成本)。  目前越来越多的浏览器会判断当前站点支不支持https协议，提高用户信任度，体验好.  例如：据外媒报道，从2017年1月份正式发布的Chrome 56开始，Google将把某些包含敏感内容的HTTP页面标记为“不安全”，比如含有密码或支付表单信息。">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/23/5c7155bba23d6.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-23T10:01:44.000Z" itemprop="datePublished" class="page-time">
+  2018-04-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#直奔主题"><span class="post-toc-number">1.</span> <span class="post-toc-text">直奔主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要使用https协议？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">为什么要使用https协议？</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#借用CloudFlare-给自己的域名加个-s"><span class="post-toc-number">2.</span> <span class="post-toc-text">借用CloudFlare 给自己的域名加个 s</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详细步骤"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">详细步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#补充-转载"><span class="post-toc-number">3.</span> <span class="post-toc-text">补充[转载]</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么Github-Pages不支持为自定义域名添加SSL证书呢？"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">为什么Github Pages不支持为自定义域名添加SSL证书呢？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思考我们牺牲了什么"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">思考我们牺牲了什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检查是否引用外部资源"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">检查是否引用外部资源</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-04-23-【博客】 为GitHub Pages自定义域名并添加SSL-开启HTTPS强制"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-23 10:01:44" datetime="2018-04-23T10:01:44.000Z"  itemprop="datePublished">2018-04-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        15 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="直奔主题"><a href="#直奔主题" class="headerlink" title="直奔主题"></a>直奔主题</h2><h3 id="为什么要使用https协议？"><a href="#为什么要使用https协议？" class="headerlink" title="为什么要使用https协议？"></a>为什么要使用https协议？</h3><ol>
+<li><p>提高网站访问安全性，网络连接都是加密的 (PS：虽然<code>SSL</code>并不是无懈可击的，但是我们应该尽可能提高窃听成本)。</p>
+</li>
+<li><p>目前越来越多的浏览器会判断当前站点支不支持https协议，提高用户信任度，体验好.</p>
+<blockquote>
+<p>例如：据外媒报道，从2017年1月份正式发布的Chrome 56开始，Google将把某些包含敏感内容的HTTP页面标记为<code>“不安全”</code>，比如含有密码或支付表单信息。Google最终目标是将所有打破了https连接的HTTP页面，用特定的<code>红色图标</code>给标记出来… 此举旨在唤起用户有关HTTP连接不安全、容易受到中间人攻击等危险的意识。通过HTTP连接发送的数据（比如密码和支付细节），会被通网络下别有用心的人轻易拦截。</p>
+</blockquote>
+</li>
+<li><p>Mozilla也在做着同样的事情——其中就有通过提供免费的TSL证书，以便其为网站服务部署https连接的<code>Let&#39;s Encrypt项目</code>。根据Chrome的遥测数据，在该浏览器每天加载的网页中，有近一半是通过https连接的。</p>
+</li>
+<li><p>福利：使用了https之后，如果网站的访客是从其他已经使用了https的网站上跳转过来，你就能在<code>Google Analytics</code>中获取更完整的来源信息。(说到这，不得不吐槽一下”墙”，它导致 <code>Google Analytics</code>的信息延迟长达一天以上，最后我不得不再将 <code>Baidu Analytics</code> 纳入我的选择。)</p>
+</li>
+<li><p>使用https之后，谷歌、百度等搜索排名权值（PR等）也会有相对提升。</p>
+</li>
+<li><p>And 个人原因，作为一个有个性并略有强迫症的耿直Boy，终于在前一阵子给自己的博客弄了个人域名zhouie.cn(阿里云)，怎么可以没有一把小小的<code>绿锁头</code>？！</p>
+</li>
+</ol>
+<p>默认情况下使用GitHub Pages的给定域名则支持http和https两种协议，但是如果使用自定义域名的话，则只能通过<code>http://</code>访问，也就是说我们在<code>Github上搭建 Hexo 或Jekyll 主题博客</code>后，通过<code>CNAME</code>绑定个人域名后，我们只能通过<code>http://</code>域名来访问。如果访问<code>https://XXX.github.io/</code>(即原来的GitHub Pages域名)将会被重定向到<code>我们的自定义域名</code>。但若直接访问<code>https://我们的自定义域名</code>，浏览器会报<code>SSL_DOMAIN_NOT_MATCHED</code>警告。</p>
+<blockquote>
+<p>附：<code>在Github上搭建 Hexo 或Jekyll 主题博客</code>，这个网上教程很多，提供一篇我之前有写过的一篇教程<a href="https://zhouie.cn/posts/201802151/">Jekyll 搭建个人博客</a>。</p>
+</blockquote>
+<p>那么怎么给自己的域名加上<code>https</code>呢？这个时候就需要使用第三方网站的证书了。而GitHub Pages并不支持上传SSL证书。</p>
+<p>我在Google、Bbaidu上找相关解决办法时，又看到这样一个帖子：<a href="https://www.v2ex.com/t/379653" target="_blank" rel="noopener">GitHub Pages 自定义域名启用 SSL，各位有什么建议？</a>。</p>
+<p>从网上提供的信息来看，目前方案主要有两种：</p>
+<ul>
+<li><p>自己购买证书，部署到一台机器，机器部署<code>nginx</code>，<code>stunnel</code>等代理软件，反向代理到GitHub pages站点，域名指向代理机器IP(收费的SSL服务肯定是比免费的更加周到，一般收费的SSL都会提供端到端的加密，但是价格不菲，不推荐，不过这里还是分享一篇相关教程<a href="https://zhuanlan.zhihu.com/p/29644657" target="_blank" rel="noopener">一步步教你把HTTP网站免费转成HTTPS网站</a>)；</p>
+</li>
+<li><p>使用CloudFlare提供方案1类似的设置(推荐)</p>
+</li>
+</ul>
+<hr>
+<h2 id="借用CloudFlare-给自己的域名加个-s"><a href="#借用CloudFlare-给自己的域名加个-s" class="headerlink" title="借用CloudFlare 给自己的域名加个 s"></a>借用CloudFlare 给自己的域名加个 s</h2><p><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">CloudFlare</a> 是一家CDN提供商，它提供了<code>免费的https服务</code>(但不是应用SSL证书)。实现模式就是，用户到CDN服务器的连接为<code>https</code>，而CDN服务器到GithubPage服务器的连接为<code>http</code>，就是在CDN服务器那里加上反向代理。</p>
+<blockquote>
+<p>在网上还找到这样一种解释<br>Cloudflare 提供一种被他们称之为<code>Universal SSL</code>的服务，可以让任意 <code>HTTP</code>站点支持 <code>HTTPS</code>。它的原理是当访客使用 <code>HTTPS</code>访问站点的时候，从访客到 Cloudflare 这段是加密的，然后从 Cloudflare 到站点这段是明文的。虽然不是全程加密，但是也能很大程度上解决中间人，如果从 Cloudflare 到站点的信道相对可靠的话</p>
+</blockquote>
+<ol>
+<li>注册并登录CloudFlare，并将自己域名下的<code>name server</code>修改为CloudFlare的<code>name server</code>。</li>
+<li>在CloudFlare的DNS设置域名匹配到自己的GithubPage(启用动态DNS加速)。</li>
+<li>在CloudFlare的<code>Crypto</code>设置SSL为<code>Flexible</code>(等待一定时间实现建立连接后，就可以通过<code>https</code>来访问自己的 GithubPage )。</li>
+<li>在CloudFlare的<code>Page Rules</code>中设置路由规则。一般情况下，利用<code>Always use https</code>设置两条规则，规则链接分别为<code>http://域名/*</code> 与<code>http://域名/</code>(开启https强制跳转)。</li>
+</ol>
+<p>还有其他的一些，例如Cloudflare还提供免费的<code>CDN</code>和<code>缓存技术</code>，让浏览者有更好的体验~~</p>
+<h3 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h3><ul>
+<li>创建CloudFlare帐户，并添加网站</li>
+</ul>
+<p>首先你已经有自己的<code>自定义域名</code>的GitHub Pages ，我的 GitHub Pages CNAME文件写的是 <code>zhouie.cn</code></p>
+<blockquote>
+<p>明确一下我们的实现目标： 当访客输入<code>zhouie.cn</code> 强制跳转使用https，访问<code>wwww.zhouie.cn</code> 也会跳转到<code>https://www.zhouie.cn</code></p>
+</blockquote>
+<p>如果你还没有Cloudflare账号，<a href="https://www.cloudflare.com/a/sign-up" target="_blank" rel="noopener">点击注册</a></p>
+<ul>
+<li>登陆后，<a href="https://www.cloudflare.com/a/add-site" target="_blank" rel="noopener">点击这里</a> 增加你的域名，如下图，输入你的域名，例如 <code>zhouie.cn</code> 并点击<code>Add Site</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7155bba23d6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>注意不要写<code>WWW</code>前缀，大约60秒即可完成域名解析扫描。完成后点击<code>Confirm Setup</code> 继续下一步</p>
+</blockquote>
+<ul>
+<li>选择免费计划，然后下一步~</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7156ab2eadb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>你看到<code>DNS记录（包括子域）列表</code>之后，按照下图提示设置后，其中<code>cname</code>是为了重定向<code>www</code>备的，点击<code>Continue</code>下一步</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7156c6357c5.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>到你域名控制面板修改<code>cloudflare</code>给出的域名服务器，我这里以<code>阿里云</code>为例</p>
+</blockquote>
+<ul>
+<li>在<code>域名管理台</code>点击<code>管理</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c715710009a1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>注：虽然官方说明，域名服务器修改最长需要72小时生效，但我用域名做了自己测试，大约只需要 5~10 分钟，看到 <strong>Status: Active</strong> 即可</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7157d994bd5.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>设置SSL<br>点击 <code>crypto</code>菜单 , 然后设置<code>Flexible SSL</code> ，如下图</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7158e14f1ce.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>添加www重定向到<code>https://zhouie.cn</code>并添加自动重定向到 SSL页面</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7158f91602a.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>添加SSL的教程就此完成，一般需要5~30分钟生效，小绿锁出现了，哈哈，美滋滋=.=</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c715929765a5.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<h2 id="补充-转载"><a href="#补充-转载" class="headerlink" title="补充[转载]"></a>补充<a href="https://steffan.cn/" target="_blank" rel="noopener">[转载]</a></h2><h3 id="为什么Github-Pages不支持为自定义域名添加SSL证书呢？"><a href="#为什么Github-Pages不支持为自定义域名添加SSL证书呢？" class="headerlink" title="为什么Github Pages不支持为自定义域名添加SSL证书呢？"></a>为什么Github Pages不支持为自定义域名添加SSL证书呢？</h3><p>当我们访问自定义域名，DNS指向的地址(<code>Github Pages</code>的<code>IP</code>)会在我们的仓库中寻找<code>cname</code>文件，判断目标文件和请求来源地址的域名一致后，<code>Github Pages</code>会将<code>errorlife.github.io</code>的内容返回给用户。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c715964bc516.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c715972c1f75.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li><p>Ok，这是一个比较完整的过程，但是在解析的途中，看上面两张图(tracert一下这个”裸奔”站好了 :P)，你会发现请求的地址是“美国Fastly公司CDN网络节点”，很明显这是Github的CDN，而且它只支持80端口，不支持443端口，免费的CDN一般不支持,而https默认就是使用443端口。</p>
+</li>
+<li><p>所以我们就知道Github Pages在解析域名和原生地址所分配的是不同的CDN，前者是不支持https的，而后者恰恰相反。</p>
+</li>
+</ul>
+<h3 id="思考我们牺牲了什么"><a href="#思考我们牺牲了什么" class="headerlink" title="思考我们牺牲了什么"></a>思考我们牺牲了什么</h3><blockquote>
+<p>天下没有免费的午餐，不劳而获始终都是泡沫。所以在这个过程中我们究竟牺牲了什么？</p>
+</blockquote>
+<ol>
+<li>我们必须<code>修改域名的DNS服务器</code>为Cloudflare提供的地址才能使用这项服务；</li>
+<li>无法进行<code>coding+github双线部署</code>，除非你使用Cloudflare的<code>收费服务</code>，或者<code>反向代理</code>，更多思路详见<code>v2ex</code>提问的一个<a href="https://www.v2ex.com/t/344686" target="_blank" rel="noopener">帖子</a>。</li>
+</ol>
+<h3 id="检查是否引用外部资源"><a href="#检查是否引用外部资源" class="headerlink" title="检查是否引用外部资源"></a>检查是否引用外部资源</h3><p>这个问题在我这儿并没有出现过，可是从网上教程来看，因为以往(一两年前)引用的某些外部资源还是<code>http</code>的，会出现一些问题，比如：</p>
+<blockquote>
+<p>生效后我发现我的网站是不太安全的状态，而且当我点击加载脚本之后，从不太安全的状态变成了不安全的状态。</p>
+</blockquote>
+<p>v友的解决办法：</p>
+<blockquote>
+<p>按下<code>F12</code>，尴尬的事情发生了，原来是配置文件和<code>palceholder</code>在作怪，由于<code>多说</code>的头像用的还是<code>http</code>，巧的是，没多久，多说就下线关门了。</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c7159b8abe7c.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>这就要求我们对https协议理解通透，之后google了一下，发现https并不支持这种第三方引入资源。</p>
+</blockquote>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/" target="_blank" rel="noopener">cloudflare官方使用指南</a></li>
+<li><a href="https://blog.keanulee.com/2014/10/11/setting-up-ssl-on-github-pages.html" target="_blank" rel="noopener">keanulee Blog</a></li>
+<li><a href="https://sheharyar.me/blog/free-ssl-for-github-pages-with-custom-domains/" target="_blank" rel="noopener">sheharyar Blog</a></li>
+<li><a href="https://blog.jamespan.me/2015/04/17/github-and-gitcafe-pages" target="_blank" rel="noopener">Pages 博客 HTTPS 化尝试与 Universal SSL</a></li>
+<li><a href="https://www.yicodes.com/2016/12/04/free-cloudflare-ssl-for-custom-domain/" target="_blank" rel="noopener">为自定义域名的GitHub Pages添加SSL 完整方案</a></li>
+<li><a href="https://www.mdslq.cn/archives/40865889.html" target="_blank" rel="noopener">Hexo支持https访问</a></li>
+<li><a href="https://www.zhihu.com/question/33495825" target="_blank" rel="noopener">github pages绑定了个人域名，怎么使用https访问而证书不报错呢？-知乎</a></li>
+<li><a href="http://mazhuang.org/2016/05/21/enable-https-for-github-pages/" target="_blank" rel="noopener">为绑定域名的 GitHub Pages 启用 HTTPS</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201804231/" rel="external">【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201804231/" target="_blank" rel="external">https://zhouie.cn/posts/201804231/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSL/">SSL</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804231/&sharesource=qzone&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804231/&srcUrl=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804231/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804231/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804231/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804231/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804231/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201804242/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 在线演示工具分享</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201804171/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 转载的一些站点与工具(一)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201804231/&sharesource=qzone&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201804231/&srcUrl=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201804231/&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201804231/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201804231/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201804231/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 为GitHub Pages自定义域名并添加SSL-开启https强制》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201804231/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201804231/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201804231/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【软件测试】 Bugzilla的安装配置 - RedHat Linux - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="实习,Bugzilla,缺陷管理">
+    <meta name="description" content="写在前面这次长沙实习中接触到了 “Linux环境下安装配置Bugzilla” 这个需求，其实最开始也是不明所以的，连Bugzilla是什么都不清楚，也是安装教程稀里糊涂地给装好了。至于安装教程下面也会讲到，不过在这之前，先看一下Bugzilla系统究竟是什么吧？  Bugzilla是Mozilla公司向我们提供的一个开源的免费缺陷跟踪工具,它能够为你建立一个完善的Bug跟踪体系，包括报告Bug、查">
+<meta name="keywords" content="实习,Bugzilla,缺陷管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件测试】 Bugzilla的安装配置 - RedHat Linux">
+<meta property="og:url" content="https://zhouie.cn/posts/201807181/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="写在前面这次长沙实习中接触到了 “Linux环境下安装配置Bugzilla” 这个需求，其实最开始也是不明所以的，连Bugzilla是什么都不清楚，也是安装教程稀里糊涂地给装好了。至于安装教程下面也会讲到，不过在这之前，先看一下Bugzilla系统究竟是什么吧？  Bugzilla是Mozilla公司向我们提供的一个开源的免费缺陷跟踪工具,它能够为你建立一个完善的Bug跟踪体系，包括报告Bug、查">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729679b3fcb.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296794d331.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729679cc472.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296794ebcc.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c72967957cbe.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c72967952169.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729679505bd.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e936292.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e9347f2.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e939aa3.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e92ea66.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e93b480.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e93057a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e937f9f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7296e931cd6.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729748e2199.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729748ea40e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c72974983945.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729749869c7.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c72974985168.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729749da754.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7297864888c.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729787eb935.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c72978779fc1.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729786e6cf7.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7297879f355.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729787e537c.png">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【软件测试】 Bugzilla的安装配置 - RedHat Linux">
+<meta name="twitter:description" content="写在前面这次长沙实习中接触到了 “Linux环境下安装配置Bugzilla” 这个需求，其实最开始也是不明所以的，连Bugzilla是什么都不清楚，也是安装教程稀里糊涂地给装好了。至于安装教程下面也会讲到，不过在这之前，先看一下Bugzilla系统究竟是什么吧？  Bugzilla是Mozilla公司向我们提供的一个开源的免费缺陷跟踪工具,它能够为你建立一个完善的Bug跟踪体系，包括报告Bug、查">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/24/5c729679b3fcb.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【软件测试】 Bugzilla的安装配置 - RedHat Linux</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【软件测试】 Bugzilla的安装配置 - RedHat Linux</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-18T22:13:31.000Z" itemprop="datePublished" class="page-time">
+  2018-07-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件测试/">软件测试</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#准备点什么"><span class="post-toc-number">2.</span> <span class="post-toc-text">准备点什么</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装环境"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安装环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#正式安装配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">正式安装配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提前准备"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">提前准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#安装Apache-httpd服务"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">安装Apache(httpd服务)</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#修改IP信息"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">修改IP信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第一阶段"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">第一阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第二阶段"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">第二阶段</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改配置文件"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">修改配置文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最后一步"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">最后一步</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-07-18-【软件测试】 Bugzilla的安装配置 - RedHat Linux"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【软件测试】 Bugzilla的安装配置 - RedHat Linux</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-18 22:13:31" datetime="2018-07-18T22:13:31.000Z"  itemprop="datePublished">2018-07-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件测试/">软件测试</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        17 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>这次长沙实习中接触到了 “Linux环境下安装配置Bugzilla” 这个需求，其实最开始也是不明所以的，连Bugzilla是什么都不清楚，也是安装教程稀里糊涂地给装好了。至于安装教程下面也会讲到，不过在这之前，先看一下Bugzilla系统究竟是什么吧？</p>
+<blockquote>
+<p>Bugzilla是Mozilla公司向我们提供的一个开源的免费缺陷跟踪工具,它能够为你建立一个完善的Bug跟踪体系，包括报告Bug、查询Bug记录并产生报表、处理解决、管理员系统初始化和设置四部分</p>
+</blockquote>
+<p>因为Bugzilla是开源的，所以在网上也有很多基于此开发出的在线缺陷跟踪站点；我这里讲的是如何在Linux环境下安装配置Bugzilla，当然，在windows平台下依然可以成功安装使用，这个有兴趣的可以自行去尝试一下，我个人觉得没必要。毕竟将服务端部署在Linux环境下维护起来更加灵活方便一些。</p>
+<p>注意：以下操作是在虚拟机上进行的…</p>
+<h3 id="准备点什么"><a href="#准备点什么" class="headerlink" title="准备点什么"></a>准备点什么</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><ul>
+<li><a href="https://pan.baidu.com/s/1jGPsHFOiDGD47gHHXhhfdA" target="_blank" rel="noopener">Red Hat Linux光盘映像文件</a>，提取码：skny</li>
+<li><a href="https://pan.baidu.com/s/1xENl7EHPPNOlkxAIlWpXQg" target="_blank" rel="noopener">Bugzilla光盘映像文件</a>，提取码：3f4f</li>
+</ul>
+<h4 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h4><ul>
+<li>操作系统：<ul>
+<li>发行版本 Red Hat Linux Realease 9（Shrike）</li>
+<li>内核版本 Linux 2.4.20-8 #1 Thu Mar 13 17:54:28 EST 2003 i686 i686 i386 GNU/Linux</li>
+</ul>
+</li>
+<li>Perl解释器：Perl-5.8.0-88</li>
+<li>数据库：MySQL Ver 12.22 Distrib 4.0.21 ,for pc-linux</li>
+<li>Web服务器(Apache)：httpd-2.0.40-21</li>
+</ul>
+<p>补充说明：</p>
+<p>1、如何查看发行版本、内核版本</p>
+<p>查看内核版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uname -a            #显示电脑以及操作系统的相关信息</span><br><span class="line">或</span><br><span class="line">cat /proc/version   #正在运行的内核版本</span><br></pre></td></tr></table></figure>
+<p>查看发行版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line">或</span><br><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说明一下：<br>内核版本 Linux 2.4.20-8 #1 Thu Mar 13 17:54:28 EST 2003 i686 i686 i386 GNU/Linux<br>其中，2是主版本，4是次版本（偶数代表稳定版本，奇数代表测试版本），20是release version，8是revised version。</p>
+</blockquote>
+<p>2、如何查看perl解释器、MySQL数据库、Apache服务器版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -q perl         #perl解释器</span><br><span class="line">rpm -q httpd        #Apache服务器版本</span><br><span class="line">mysql --version     #MySQL数据库</span><br></pre></td></tr></table></figure>
+<h3 id="正式安装配置"><a href="#正式安装配置" class="headerlink" title="正式安装配置"></a>正式安装配置</h3><h4 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h4><h5 id="安装Apache-httpd服务"><a href="#安装Apache-httpd服务" class="headerlink" title="安装Apache(httpd服务)"></a>安装Apache(httpd服务)</h5><p>注意，这需要挂载至磁盘1，也就是<code>shrike-i386-disc1.iso</code>磁盘下，至于怎么挂载，请参照下面的动图来操作即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/cdrom /mnt/cdrom</span><br></pre></td></tr></table></figure>
+<p>挂载之后，再去安装httpd服务（因为Linux镜像文件自带httpd服务的安装包，所以没去在线下载，当然了在线下载也是可以的），因为我之前已经安装过一次了，所以，再次安装它会提示我<code>Already installed</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729679b3fcb.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h5 id="修改IP信息"><a href="#修改IP信息" class="headerlink" title="修改IP信息"></a>修改IP信息</h5><p>修改IP地址确保虚拟机与主机网络地址相同（前三个字段），这样互相才能ping通。因为我的网络IP地址是随机分配的，所以我这里选择临时修改IP地址方式。当然网上也有更多一些其他方式，自查</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.103 netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296794d331.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h4><p>将磁盘挂起至<code>/mnt/cdrom</code>目录下，挂起步骤如上所示（ps：<code>umount /mnt/cdrom</code> 解开挂载指令）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/cdrom /mnt/cdrom</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729679cc472.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>磁盘挂载后，这个目录<code>/mnt/cdrom</code>下有着这些文件：(3个MySQL.rpm文件、gcc.rpm文件、perl文件夹、buzilla压缩包)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296794ebcc.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>之后我们需要将<code>/mnt/cdrom</code>中的文件复制cp到<code>/tmp</code>目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/perl</span><br><span class="line">cp /mnt/cdrom/* /tmp/</span><br><span class="line">cp /mnt/cdrom/perl/* /tmp/perl/</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c72967957cbe.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>解压bugzilla文件包，然后将文件移到<code>/var/www/html/bugzilla</code>目录下（ps:<code>/var/www/html</code>为apache的 docroot，可以在<code>httpd.conf</code>中修改<code>DocumentRoot &quot;/var/www/html&quot;</code>这条语句来换个位置）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c72967952169.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729679505bd.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>注意：记住上面提到的几个目录：<code>/tmp</code>、<code>/tmp/perl</code>、<code>/var/www/html/bugzilla</code>，在整个安装过程中可能会在这几个目录来回切入切出，所以心里要有点数：每个目录下的文件有哪些？是干嘛的？</p>
+<h4 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h4><p>下面就算是正式进入Perl模块的安装了，很多操作可能是重复的，所以有点耐心吧</p>
+<p>主要安装的组件有哪些呢？可以通过这个命令来实时看一下自己还需要安装哪些</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e936292.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e9347f2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e939aa3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>AppConfig</li>
+<li>CGI</li>
+<li>TimeDate</li>
+<li>DBI</li>
+<li>MySQL</li>
+<li>DBD(要在MySQL装了之后再装)</li>
+<li>gcc</li>
+<li>gd</li>
+<li>GD</li>
+<li>Template-toolkit</li>
+<li>GDTextUtil</li>
+<li>GDGraph</li>
+<li>Chart</li>
+</ul>
+<p>perl指令说明<br><code>perl Makefile.PL</code>(生成Makefile安装文件，没生成功的，删除Makefile文件、再装)、<code>make</code>(编译)、<code>make test</code>(测试能不能安装，有无系统或文件依赖) 、<code>make install</code>(安装)、<code>cd  /var/www/html/bugzilla</code>(返回bugzailla看看是否安装成功)、<code>perl checksetup.pl |more</code>(或 <code>./checksetup.pl|more</code>，看到Appconfig为OK就是安装好了)</p>
+<p>注意：<code>make test</code>、<code>cd  /var/www/html/bugzilla</code>、<code>perl checksetup.pl |more</code>这些在接下来的安装过程中是用来检查安装情况的，是可以不用每次都敲一遍的。</p>
+<p>安装下面的顺序来安装即可</p>
+<p>(一)、安装AppConfig-1.56<br>进入/tmp/perl,解压AppConfig-1.56.tar.gz，然后进入AppConfig-1.56文件，perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e92ea66.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e93b480.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(二)、安装CGI.pm-3.05<br>进入/tmp/perl,解压CGI.pm-3.05.tar.gz，然后进入CGI.pm-3.05,perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e93057a.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e937f9f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7296e931cd6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(三)、安装TimeDate-1.16<br>进入/tmp/perl,解压TimeDate-1.16.tar.gz，然后进入TimeDate-1.16,perl Makefile.PL、make、make test 、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729748e2199.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729748ea40e.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(四)、安装DBI-1.45<br>进入/tmp/perl,解压DBI-1.45.tar.gz，然后进入DBI-1.45,perl Makefile.PL、make、make test 、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(五)、安装MySQL-client-4.0.21-0.i386.rpm、MySQL-devel-4.0.21-0.i386.rpm、MySQL-server-4.0.21-0.i386.rpm</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c72974983945.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(六)、安装DBD-mysql-2.9004(要在安装了数据库之后安装)<br>进入/tmp/perl,解压DBD-mysql-2.9004.tar.gz，然后进入DBD-mysql-2.9004.,unset LANG(清掉设置，如有Makefile文件将它删掉)、perl Makefile.PL、make、make test 、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729749869c7.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c72974985168.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(七)、安装gcc -3.2.2-5.i386.rpm</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729749da754.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(八)、安装gd-2.0.33<br>进入/tmp/perl,解压gd-2.0.33.tar.gz，然后进入gd-2.0.33,./configure、make、make check、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7297864888c.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729787eb935.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(九)、安装GD-2.30<br>进入/tmp/perl,解压GD-2.30.tar.gz ，然后进入GD-2.30,perl Makefile.PL、make、make test、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(十)、安装Template-Toolkit-2.14<br>进入/tmp/perl,解压Template-Toolkit-2.14.tar.gz，然后进入Template-Toolkit-2.14,perl Makefile.PL、make、make test、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(十一)、安装GDTextUtil -0.86<br>进入/tmp/perl,解压GDTextUtil -0.86.tar.gz，然后进入GDTextUtil -0.86,perl Makefile.PL、make、make test、make install、cd  /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(十二)、安装GDGraph-1.43<br>进入/tmp/perl,解压GDGraph-1.43.tar.gz，然后进入GDGraph-1.43,perl Makefile.PL、make、make test、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(十三)、安装Chart-2.3<br>进入/tmp/perl,解压Chart-2.3.tar.gz，然后进入Chart-2.3,perl Makefile.PL、make、make test、make install、cd /var/www/html/bugzilla、perl checksetup.pl |more</p>
+<p>这里就不放截图了哦，过程步骤同上面是类似的。</p>
+<p>(十四)、验证检查一下目前的安装情况</p>
+<p>再次执行perl checksetup.pl |more 命令，看看是否以上组件是否都安装好了</p>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>(一)、修改localconfig文件</p>
+<blockquote>
+<p>localconfig文件包含安装时需要设定的很多重要信息，比如比如，<code>$webservergroup=&#39;daemon&#39;</code> 表示apache使用的group；<code>$db_driver = &#39;mysql&#39;;</code>表示使用的数据库；<code>$db_host = &#39;localhost&#39;;</code>表示数据库服务器ip；<code>$db_name = &#39;bugs&#39;;</code>表示数据库名称；<code>$db_user = &#39;bugs&#39;;</code>表示连接数据库的用户名；<code>$db_pass = &#39;bugs&#39;;</code>表示连接数据库的用户密码。</p>
+</blockquote>
+<p>我们需要根据实际情况来手动修改这些配制项。特别的数据库账户，需要我们事先在数据库中创建出这个账户并赋予其相应权限，以便下一步安装时通过通过该用户执行建库脚本！</p>
+<p><code>cd /var/www/html/bugzilla</code>，进入修改bugzilla目录下，<code>vi localconfig</code>，修改localconfig文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c72978779fc1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>(二)、修改Apache的配置</p>
+<blockquote>
+<p>我们需要通过配置来告诉Apache新安装的bugzilla的位置，并且特别告知它是一个cgi程序，具体配制方法就是在apache的conf/httpd.conf文件中加入以下代码：</p>
+</blockquote>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729786e6cf7.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>说明：<br><code>AddHandler cgi-script .cgi</code> 指明这个目录是cgi应用；<code>Options Indexes ExecCGI</code> 赋予执行 cgi应用的权力<br>Apache的配置文件 httpd.conf 在<code>/etc/httpd/conf</code>目录下，注意，修改后需重启Apache服务！ </p>
+<h4 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7297879f355.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>按照上面的操作走完之后，将会提示输入管理员邮件地址、真实用户名、密码，至于，bugzilla的安装已经完成。</p>
+<p>访问服务器IP/bugzilla（这里的服务器IP就是之前配置的临时IP地址，这个依照你主机的IP地址来定就好，比如我的就是<a href="http://192.168.1.103/bugzilla/index.cgi）" target="_blank" rel="noopener">http://192.168.1.103/bugzilla/index.cgi）</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729787e537c.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201807181/" rel="external">【软件测试】 Bugzilla的安装配置 - RedHat Linux</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201807181/" target="_blank" rel="external">https://zhouie.cn/posts/201807181/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bugzilla/">Bugzilla</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实习/">实习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/缺陷管理/">缺陷管理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807181/&sharesource=qzone&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807181/&srcUrl=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807181/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807181/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807181/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807181/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807181/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201807191/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【软件测试】 实习分享与总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201807121/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 目录文件同步工具</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807181/&sharesource=qzone&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807181/&srcUrl=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807181/&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807181/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807181/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807181/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【软件测试】 Bugzilla的安装配置 - RedHat Linux》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807181/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807181/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201807181/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

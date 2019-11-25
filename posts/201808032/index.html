@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【分享】 Md2All Markdown排版利器 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Tool-share,Markdown,图床">
+    <meta name="description" content="关于Md2All 有这样一位程序猿，也同样被公众号的Markdown排版折磨得苦不堪言，花了差不多一个星期的时间，研究各种现有的工具，但并没有找到较为满意的解决方案。因为这样程序猿比较喜欢较真，于是就萌生了自己写一个公众号Markdown排版工具的想法，这就有了现在的Md2All。虽然开发的过程也因遇到的各种奇芭的坑而艰苦异常，但结果还是令人满意的，起码上面提到的问题都解决了。  Markdown">
+<meta name="keywords" content="Tool-share,Markdown,图床">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【分享】 Md2All Markdown排版利器">
+<meta property="og:url" content="https://zhouie.cn/posts/201808032/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="关于Md2All 有这样一位程序猿，也同样被公众号的Markdown排版折磨得苦不堪言，花了差不多一个星期的时间，研究各种现有的工具，但并没有找到较为满意的解决方案。因为这样程序猿比较喜欢较真，于是就萌生了自己写一个公众号Markdown排版工具的想法，这就有了现在的Md2All。虽然开发的过程也因遇到的各种奇芭的坑而艰苦异常，但结果还是令人满意的，起码上面提到的问题都解决了。  Markdown">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5dcf675.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5dc968a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5dc786f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5dc5c32.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5d74ec5.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729bd8ae29f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5e573f6.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5de4117.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729b5d6e0d6.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c3260671.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c3276d6b.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c327d2db.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c3264d16.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c32a2a3a.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7dd996e.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7de2a35.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7e2d171.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7e426b9.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7e5c033.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c729c7e658bc.gif">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【分享】 Md2All Markdown排版利器">
+<meta name="twitter:description" content="关于Md2All 有这样一位程序猿，也同样被公众号的Markdown排版折磨得苦不堪言，花了差不多一个星期的时间，研究各种现有的工具，但并没有找到较为满意的解决方案。因为这样程序猿比较喜欢较真，于是就萌生了自己写一个公众号Markdown排版工具的想法，这就有了现在的Md2All。虽然开发的过程也因遇到的各种奇芭的坑而艰苦异常，但结果还是令人满意的，起码上面提到的问题都解决了。  Markdown">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/24/5c729b5dcf675.gif">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【分享】 Md2All Markdown排版利器</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【分享】 Md2All Markdown排版利器</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-03T17:31:22.000Z" itemprop="datePublished" class="page-time">
+  2018-08-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于Md2All"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于Md2All</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整体体验"><span class="post-toc-number">2.</span> <span class="post-toc-text">整体体验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Md2All的云图床"><span class="post-toc-number">3.</span> <span class="post-toc-text">Md2All的云图床</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#准备步骤"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">准备步骤</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#效果展示"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">效果展示</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示Latex公式"><span class="post-toc-number">4.</span> <span class="post-toc-text">显示Latex公式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CSS样式"><span class="post-toc-number">5.</span> <span class="post-toc-text">CSS样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全局样式自定义"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">全局样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#引用块样式自定义"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">引用块样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#段落样式自定义"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">段落样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#粗体、斜体、删除线样式自定义"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">粗体、斜体、删除线样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分隔线样式自定义"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">分隔线样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#行内代码样式自定义"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">行内代码样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#代码块样式自定义"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">代码块样式自定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#标题样式自定义"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">标题样式自定义</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-08-03-【分享】 Md2All Markdown排版利器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【分享】 Md2All Markdown排版利器</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-03 17:31:22" datetime="2018-08-03T17:31:22.000Z"  itemprop="datePublished">2018-08-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/">分享</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分享/博客/">博客</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        14 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="关于Md2All"><a href="#关于Md2All" class="headerlink" title="关于Md2All"></a>关于Md2All</h3><blockquote>
+<p>有这样一位程序猿，也同样被公众号的Markdown排版折磨得苦不堪言，花了差不多一个星期的时间，研究各种现有的工具，但并没有找到较为满意的解决方案。<br>因为这样程序猿比较喜欢较真，于是就萌生了自己写一个公众号Markdown排版工具的想法，这就有了现在的Md2All。虽然开发的过程也因遇到的各种奇芭的坑而艰苦异常，但结果还是令人满意的，起码上面提到的问题都解决了。</p>
+</blockquote>
+<p><a href="http://md.aclickall.com" target="_blank" rel="noopener">Markdown排版利器：Md2All</a></p>
+<ul>
+<li>支持 <strong>一键排版</strong>和自定义css；</li>
+<li>支持边编辑边预览；</li>
+<li>支持左右滚动联动；</li>
+<li>对IT人士特别友好，支持80多种代码主题；</li>
+<li>支持通用的Markdown语法和部分扩展语法(如：表格，任务列表，latex数学公式，注脚等…)，并对html，css样式有很好的支持；</li>
+<li>能让Markdown内容，无需作任何调整就能一键复制到微信公众号、博客园、掘金、知乎、csdn、51cto、wordpress、hexo等平台。</li>
+</ul>
+<p><strong>一键排版</strong> 中提供了几种常用的排版样式模版，也提供了足够多的注释，让初学者也能很容易根据注释中的提示个性化自己的样式。<br>如果你觉得现有的样式模板不适合你，那就大胆尝试去改吧，就算改错了也就”恢复预设值“就OK了，所以不用担心啊。ps：记得保存了才会生效啊。</p>
+<p>Md2All教程请参考：<a href="https://www.cnblogs.com/garyyan/p/8329343.html" target="_blank" rel="noopener">https://www.cnblogs.com/garyyan/p/8329343.html</a></p>
+<h3 id="整体体验"><a href="#整体体验" class="headerlink" title="整体体验"></a>整体体验</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5dcf675.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Md2All的云图床"><a href="#Md2All的云图床" class="headerlink" title="Md2All的云图床"></a>Md2All的云图床</h3><h4 id="准备步骤"><a href="#准备步骤" class="headerlink" title="准备步骤"></a>准备步骤</h4><p>1、注册七牛云帐号</p>
+<p>为什么用七牛云呢？<br>七牛云技术已相当成熟，在图片存储管理上已经有些年头了，从知乎上来看，在国内目前的图床服务上属于靠前的服务商了，而且，目前很多国外的图床服务还是被墙没法使用，具体可供大家参考选择的<a href="https://zhouie.cn/posts/201804241/">图床工具分享</a></p>
+<p>还没有七牛云帐号的朋友，😉欢迎通过我的邀请注册链接：<a href="https://portal.qiniu.com/signup?code=3lowm9s25ur82" target="_blank" rel="noopener">https://portal.qiniu.com/signup?code=3lowm9s25ur82</a>完成七牛云的注册，注册后会发邮件到你邮箱，通过邮件激活并登录即可。</p>
+<blockquote>
+<p>ps：注册的时候，你要填一项个人网站域名，如果没网站的，就请随便填一个真实存在的网站吧，<code>www.baidu.com</code>也是可以的哦~</p>
+</blockquote>
+<p>2、新建七牛云存储空间(bucket)</p>
+<blockquote>
+<p>现在七牛云的新建存储空间要个人身份认证，这里建议用支付宝认证，十分钟左右就可以收到认证通过的信息了。ps：认证通过后会有10G/月的免费空间，这肯定是够用了吧…</p>
+</blockquote>
+<p>按照 <code>登录七牛云-&gt;管理控制台-&gt;对象存储-&gt;新建存储空间</code> 操作顺序新建一个存储空间即bucket</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5dc968a.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>点击该 bucket，在右边看到一个测试域名，该域名是图片上传后的访问域名即 <code>bucketDomain</code>。这里要特别注意域名不要少了前面的<code>http://</code>头部。</p>
+<p>3、设置云图床</p>
+<p>3.1、<code>Acess Key</code>和<code>Secret Key</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5dc786f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>3.2、<code>BucketName</code>和<code>BucketDomain</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5dc5c32.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>3.3、在Md2All中设置七牛图床</p>
+<p>在 Md2All 中点击左上角的<code>图片</code>图标，然后参考下面的1,2,3,4和上图的1,2,3,4对应，并记得保存设置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5d74ec5.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>4、测试一下</p>
+<p>按照下面的显示效果动图操作一番，看看<code>内容管理</code>界面是否成功上传。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729bd8ae29f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><ul>
+<li>直接把图片拖到编辑框</li>
+</ul>
+<p>注意：Markdown内容是插入到光标处，为了避免不知内容插入到那儿，拖图片前，请先点一点光标</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5e573f6.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>截图，直接复制粘贴</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5de4117.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>点击上传图片选择</li>
+</ul>
+<p>这个功能就不录屏了，相信聪明的你一定知道怎样做的</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729b5d6e0d6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="显示Latex公式"><a href="#显示Latex公式" class="headerlink" title="显示Latex公式"></a>显示Latex公式</h3><blockquote>
+<p>目前国内很多的 Markdown编辑环境中还不支持功能强大的 Latex公式，以前最通常的做法是这样的：找一个支持 Latex公式 的网站（如CSDN)，先把 Latex公式 显示出来，然后再一个个去截屏保存。如果一两条公式也就算了，可如果公式很多，那工作量也是让人头痛。</p>
+<p>原本一篇好好的 Markdown文档，本来打算复制过来直接发布的，却因为不支持 Latex公式 的原因，又得重新整理一次，这真的是很浪费时间。</p>
+</blockquote>
+<p>为了解决 Latex公式的显示问题，Md2All新增了对 Latex公式 到各平台显示的完美支持。</p>
+<p>直接支持在 Markdown中包含 Latex公式，一键 <strong>复制</strong>就能转换到各平台都能正常显示的 Latex公式内容。</p>
+<p>其实它是这样做的：一键 <strong>复制</strong>直接把 Latex公式 转换成 图片，再次复制 就能把包含转换好的 Latex公式的内容直接复制出来，完美解决了跨平台不支持Latex公式的显示问题，免去了截图保存再上传的这种麻烦。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c3260671.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h3><p>注意，Md2All 中用的都是标准的css样式，而且在样式文件中有很多的注释。</p>
+<p>举个例子来说，如果我想改<code>###</code>这个<code>h3</code>标题的效果，那就只要改样式文件中以<code>h3</code>为开头的样式的内容即可。如：</p>
+<p>从 <strong>默认样式</strong>中把整个样式内容复制到 <strong>最爱样式</strong>中然后再进行修改。因为所有的样式模板都是从 <strong>默认样式</strong>中修改过来的，另外，其它的样式模板目前还有可能在不断改进中，所以在 <strong>最爱样式</strong>中定义自己的样式是最好的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.3em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2.3em</span>;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#159957</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以直接在后面添加，后面的会覆盖前面的，如:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.3em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2.3em</span>;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#159957</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="全局样式自定义"><a href="#全局样式自定义" class="headerlink" title="全局样式自定义"></a>全局样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c3276d6b.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以看到，修改<code>output_wrapper{}</code>下的样式后，就直接影响了整个文档的显示效果，而每个样式的修改，从英文单词和GIF效果中已能很清楚地看到。</p>
+<p>可能有人会有疑问，不是说全局的吗，为什么最上面的引用块的样式没有变？这是因为，更具体定义的元素，无论放在前面还是后面，也不会被范围更大的定义覆盖，如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">blockquote</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="attribute">color</span>:<span class="number">#ffffff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">output_wrapper</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="attribute">color</span>:<span class="number">#00000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>output_wrapper</code>的<code>color</code>不会覆盖<code>blockquote</code>（引用块）的。原因是<code>output_wrapper</code>是针对所有的，而<code>blockquote</code>只是针对引用块。<br>好吧，既然说了引用块<code>blockquote</code>，那就接着<code>blockquote{}</code>来说吧！</p>
+<h4 id="引用块样式自定义"><a href="#引用块样式自定义" class="headerlink" title="引用块样式自定义"></a>引用块样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c327d2db.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>有了上面的介绍后，这儿看起来应该没压力了吧，就是改<code>blockquote{}</code>,说白了就是英语单词的事了。</p>
+<h4 id="段落样式自定义"><a href="#段落样式自定义" class="headerlink" title="段落样式自定义"></a>段落样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c3264d16.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="粗体、斜体、删除线样式自定义"><a href="#粗体、斜体、删除线样式自定义" class="headerlink" title="粗体、斜体、删除线样式自定义"></a>粗体、斜体、删除线样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c32a2a3a.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>可以看到，对于斜体<code>em{}</code>，我把<code>font-style:itaic</code>拿掉就不斜，对于删除线<code>del{}</code>,只要添加<code>text-decoration:none;</code>就会把删除线可掉，对于强调<code>strong{}</code>可以添加<code>font-weight:normal;</code>把粗体去掉。这样你就可以把它作为其它的作用了啊。</p>
+<h4 id="分隔线样式自定义"><a href="#分隔线样式自定义" class="headerlink" title="分隔线样式自定义"></a>分隔线样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7dd996e.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="行内代码样式自定义"><a href="#行内代码样式自定义" class="headerlink" title="行内代码样式自定义"></a>行内代码样式自定义</h4><p>行内代码，也就是改<code>code{}</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7de2a35.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><strong>行内代码</strong>和 <strong>代码块</strong>一般情况都是用于代码显示，不过行内代码是可以和其它的内容放在同一行的，所以一般用行内代码来显示一些自己要突出的内容；而代码块，就是独立为显示一段代码的区域。</p>
+<h4 id="代码块样式自定义"><a href="#代码块样式自定义" class="headerlink" title="代码块样式自定义"></a>代码块样式自定义</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7e2d171.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>看到这儿，就算工具栏没了 <strong>代码紧凑</strong>的功能，也应该知道怎样实现了，另外，代码高亮也可以随心所欲地去定义了！</p>
+<h4 id="标题样式自定义"><a href="#标题样式自定义" class="headerlink" title="标题样式自定义"></a>标题样式自定义</h4><p>写markdown时，我比较喜欢用<code>h3</code>，即<code>###</code>，因为一般情况下，<code>h3</code>默认的<code>font-size</code>对我来说，大小刚好合适。</p>
+<p>但这并没有什么参考性，自己把握好喜好就行。</p>
+<p>标题酷酷的改进</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7e426b9.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>标题首字突出的改进</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7e5c033.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>标题上下边框的改进</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c729c7e658bc.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201808032/" rel="external">【分享】 Md2All Markdown排版利器</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201808032/" target="_blank" rel="external">https://zhouie.cn/posts/201808032/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool-share/">Tool-share</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图床/">图床</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201808032/&sharesource=qzone&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201808032/&srcUrl=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201808032/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201808032/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201808032/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201808032/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201808032/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201808033/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 Qiniu_upload windows工具</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201808031/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 Markdown-Here md-2-html渲染</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201808032/&sharesource=qzone&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201808032/&srcUrl=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201808032/&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201808032/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201808032/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201808032/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【分享】 Md2All Markdown排版利器》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201808032/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201808032/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201808032/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

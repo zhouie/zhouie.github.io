@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【软件测试】 Selenium环境搭建-Eclipse 简易教程 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="selenium,UI自动化,实习">
+    <meta name="description" content="写在前面 selenium是可以支持多平台的，本身的环境安装也是很简单的 学习的测试脚本编写是Java语言，所以之后要将selenium与eclipse集联起来 将selenium与eclipse集联起来也是这次配置体验中可能会出现的（一些）难点 对软件测试还算不上熟练掌握，如果错误，欢迎指正  安装（配置）步骤说明 安装配置好JAVA环境（JDK 1.8以上）以及Eclipse（建议使用高版本）">
+<meta name="keywords" content="selenium,UI自动化,实习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【软件测试】 Selenium环境搭建-Eclipse 简易教程">
+<meta property="og:url" content="https://zhouie.cn/posts/201807101/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="写在前面 selenium是可以支持多平台的，本身的环境安装也是很简单的 学习的测试脚本编写是Java语言，所以之后要将selenium与eclipse集联起来 将selenium与eclipse集联起来也是这次配置体验中可能会出现的（一些）难点 对软件测试还算不上熟练掌握，如果错误，欢迎指正  安装（配置）步骤说明 安装配置好JAVA环境（JDK 1.8以上）以及Eclipse（建议使用高版本）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee1e53d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee2a3b8.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee3619f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee4da10.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee59364.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183eed3abb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee6ebf6.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7183ee9a16f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f593a3.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f7a212.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f983fe.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f864eb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2fa6003.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f908ba.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d2f92bc2.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d9897467.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d9895339.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d989fc49.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d98a189c.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d98a330f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d989c6cb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d98cd138.gif">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d989e33e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c720d98a9bdb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d45a4aa.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d47ef13.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d4a371e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d4d0892.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d4785a4.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d476a10.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/24/5c7283d54ed24.gif">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【软件测试】 Selenium环境搭建-Eclipse 简易教程">
+<meta name="twitter:description" content="写在前面 selenium是可以支持多平台的，本身的环境安装也是很简单的 学习的测试脚本编写是Java语言，所以之后要将selenium与eclipse集联起来 将selenium与eclipse集联起来也是这次配置体验中可能会出现的（一些）难点 对软件测试还算不上熟练掌握，如果错误，欢迎指正  安装（配置）步骤说明 安装配置好JAVA环境（JDK 1.8以上）以及Eclipse（建议使用高版本）">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/24/5c7183ee1e53d.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【软件测试】 Selenium环境搭建-Eclipse 简易教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【软件测试】 Selenium环境搭建-Eclipse 简易教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-10T23:30:11.000Z" itemprop="datePublished" class="page-time">
+  2018-07-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件测试/">软件测试</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装（配置）步骤说明"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装（配置）步骤说明</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装配置JAVA环境"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装配置JAVA环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载与安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">下载与安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置本机JAVA环境"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置本机JAVA环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Eclipse-IDE"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Eclipse IDE</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装配置mvn（Maven）本地环境"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装配置mvn（Maven）本地环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载与安装-1"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">下载与安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置Maven本地仓库"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">配置Maven本地仓库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置Eclipse的Maven环境"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置Eclipse的Maven环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方式一、在线安装"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">方式一、在线安装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#方式二、离线安装"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">方式二、离线安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载浏览器对应的Driver"><span class="post-toc-number">6.</span> <span class="post-toc-text">下载浏览器对应的Driver</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Eclipse中新建Maven项目并安装selenium依赖"><span class="post-toc-number">7.</span> <span class="post-toc-text">Eclipse中新建Maven项目并安装selenium依赖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编写一个简易的测试脚本代码演示"><span class="post-toc-number">8.</span> <span class="post-toc-text">编写一个简易的测试脚本代码演示</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-07-10-【软件测试】 Selenium环境搭建-Eclipse 简易教程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【软件测试】 Selenium环境搭建-Eclipse 简易教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-10 23:30:11" datetime="2018-07-10T23:30:11.000Z"  itemprop="datePublished">2018-07-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件测试/">软件测试</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        24 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><ul>
+<li>selenium是可以支持多平台的，本身的环境安装也是很简单的</li>
+<li>学习的测试脚本编写是Java语言，所以之后要将selenium与eclipse集联起来</li>
+<li>将selenium与eclipse集联起来也是这次配置体验中可能会出现的（一些）难点</li>
+<li>对软件测试还算不上熟练掌握，如果错误，欢迎指正</li>
+</ul>
+<h3 id="安装（配置）步骤说明"><a href="#安装（配置）步骤说明" class="headerlink" title="安装（配置）步骤说明"></a>安装（配置）步骤说明</h3><ol>
+<li>安装配置好JAVA环境（JDK 1.8以上）以及Eclipse（建议使用高版本）</li>
+<li>安装配置好mvn（Maven）本地环境</li>
+<li>Eclipse安装Maven插件</li>
+<li>准备好与浏览器对应的WebDriver</li>
+<li>在Eclipse中新建<code>Maven Projects -&gt; pom.xml文件中安装selenium-java dependency（依赖） -&gt; 编写一个简易的测试脚本代码演示</code></li>
+</ol>
+<p>其中，selenium与eclipse集联的关键步骤在于第5步，后面也会提到。</p>
+<h3 id="安装配置JAVA环境"><a href="#安装配置JAVA环境" class="headerlink" title="安装配置JAVA环境"></a>安装配置JAVA环境</h3><h4 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h4><p>这里提供一下一直在用版本号为”1.8.0_92”的JDK安装包下载链接</p>
+<p><a href="https://pan.baidu.com/s/1vKczTd4XobGMFLmiiVDRIQ" target="_blank" rel="noopener">JDK-1.8.0_92</a>，提取密码：929a</p>
+<p>特别注意：可以不用我这里所提供的JDK安装包，去<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">Oracle 官网</a>去找相应版本JDK，那么你所下载的JDK版本也要保证至少要1.8以上</p>
+<p>相信不少朋友的电脑上都安装配置有JAVA环境（JDK），那么可以通过<code>Win + R</code> -&gt; <code>cmd</code> -&gt; <code>java -version</code> 来查看是否安装了JAVA环境以及相应JDK版本</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee1e53d.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>至于安装JDK的步骤，一直默认Next即可，没有什么需要特别注意的。</p>
+<h4 id="配置本机JAVA环境"><a href="#配置本机JAVA环境" class="headerlink" title="配置本机JAVA环境"></a>配置本机JAVA环境</h4><ul>
+<li>安装完成后，右击”我的电脑”，点击”属性”，选择”高级系统设置”</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee2a3b8.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>选择”高级”选项卡，点击”环境变量”</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee3619f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>然后就会出现如下图所示的画面：</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee4da10.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>在”<strong>系统变量</strong>“中设置3项属性，JAVA_HOME,PATH,CLASSPATH(大小写无所谓),若已存在则点击”编辑”，不存在则点击”新建”。变量设置参数如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">变量名</th>
+<th style="text-align:center">变量值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">JAVA_HOME</td>
+<td style="text-align:center">C:\Program Files (x86)\Java\jdk1.8.0_91 //根据自己的实际路径配置</td>
+</tr>
+<tr>
+<td style="text-align:center">CLASSPATH</td>
+<td style="text-align:center">.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;//记得前面有个”.”</td>
+</tr>
+<tr>
+<td style="text-align:center">Path</td>
+<td style="text-align:center">%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：在 Windows10 中，因为系统的限制，path 变量只可以使用 JDK 的绝对路径。%JAVA_HOME% 会无法识别，导致配置失败。如下所示：</p>
+<blockquote>
+<p>C:\Program Files (x86)\Java\jdk1.8.0_91\bin;C:\Program Files (x86)\Java\jdk1.8.0_91\jre\bin;</p>
+</blockquote>
+<p>如果使用1.5以上版本的JDK，不用设置CLASSPATH环境变量，也可以正常编译和运行Java程序。</p>
+</blockquote>
+<ul>
+<li>测试JDK是否安装成功<ul>
+<li><code>Win + R</code> -&gt; <code>cmd</code></li>
+<li>键入命令: <code>java -version</code>、<code>java</code>、<code>javac</code> 几个命令，出现以下信息，说明环境变量配置成功</li>
+</ul>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee59364.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="Eclipse-IDE"><a href="#Eclipse-IDE" class="headerlink" title="Eclipse IDE"></a>Eclipse IDE</h4><p>至于Eclipse IDE，网上版本有很多，不过我个人还是建议到<a href="http://www.eclipse.org/" target="_blank" rel="noopener">Eclipse官网</a>下载安装，功能完善还很放心</p>
+<p>考虑到高版本的Eclipse IDE自带了mvn插件，不用安装能免去一些步骤，建议去安装较高版本的</p>
+<blockquote>
+<p>在eclipse的4.4以上的版本加入了对maven的支持，即不需要安装maven插件，但对4.4以下的版本需要自己安装插件</p>
+</blockquote>
+<p>这里提供一个Eclipse压缩文件（该Eclipse版本号为：Neon.3 Release-4.6.3，解压打开即可使用）</p>
+<p><a href="https://pan.baidu.com/s/1RiSIkljL1PGwVoE062Nq9w" target="_blank" rel="noopener">eclipse-jee-neon-R-win32-x86_64</a>，提取密码：g440。</p>
+<h3 id="安装配置mvn（Maven）本地环境"><a href="#安装配置mvn（Maven）本地环境" class="headerlink" title="安装配置mvn（Maven）本地环境"></a>安装配置mvn（Maven）本地环境</h3><h4 id="下载与安装-1"><a href="#下载与安装-1" class="headerlink" title="下载与安装"></a>下载与安装</h4><p>这里提供一个Maven程序包：<a href="https://pan.baidu.com/s/1vnn9JAZ57nKqfPjskUTAvw" target="_blank" rel="noopener">apache-maven-3.3.9</a>，提取密码：3xwe。当然，也可前往<a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">https://maven.apache.org/download.cgi</a>下载编译过的版本</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183eed3abb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>将文件解压到<code>D:\Program Files\apache-maven-3.3.9</code>目录下，文件目录结构如下所示：<ul>
+<li>bin目录：该目录包含了mvn运行的脚本，这些脚本用来配置Java命令；</li>
+<li>boot目录：只包含一个文件：plexus-classworlds-2.5.2.jar，是一个类加载器框架，相当于java类的默认加载器。</li>
+<li>conf目录：包含了settings.xml，一个重要的配置文件，可以全局定制Maven的行为。</li>
+<li>lib目录：该目录包含了所有Maven运行时需要的Java类库。</li>
+<li>LICENSE.txt</li>
+<li>NOTICE.txt：记录了Maven包含的第三方软件。</li>
+<li>README.txt</li>
+</ul>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee6ebf6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>同JDK环境配置一样，新建环境变量 <code>MAVEN_HOME</code>，赋值<code>D:\Program Files\apache-maven-3.3.9</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7183ee9a16f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>新建环境变量 <code>MAVEN</code> ，赋值 <code>%MAVEN_HOME%\bin</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f593a3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>新建环境变量 <code>MAVEN_OPTS</code> ，赋值 <code>-Xms256m -Xmx512m</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f7a212.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>编辑环境变量<code>Path</code>，增加<code>%MAVEN%;</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f983fe.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>测试mvn是否安装成功<ul>
+<li><code>Win + R</code> -&gt; <code>cmd</code></li>
+<li>键入命令: <code>mvn -v</code>，出现以下信息，说明mvn环境配置成功</li>
+</ul>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f864eb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="配置Maven本地仓库"><a href="#配置Maven本地仓库" class="headerlink" title="配置Maven本地仓库"></a>配置Maven本地仓库</h4><ul>
+<li><p>在E盘目录下新建<code>maven-repository</code>文件夹，该目录用作maven的本地仓库。</p>
+</li>
+<li><p>打开<code>D:\Program Files\apache-maven-3.3.9\conf\settings.xml</code>文件，查找下面这行代码：</p>
+</li>
+</ul>
+<blockquote>
+<localrepository>/path/to/local/repo</localrepository>
+</blockquote>
+<p><code>localRepository</code>节点默认是被注释掉的，需要把它移到注释之外，然后将<code>localRepository</code>节点的值改为我们在上面创建的目录<code>E:\maven-repository</code>，这里记得写成绝对路径，你所下载的包就会放在你填写的目录下了。</p>
+<p>说明：<code>localRepository</code>节点用于配置本地仓库，本地仓库其实起到了一个缓存的作用，它的默认地址是 <code>C:\Users\计算机用户名\.m2</code>，我们一般会自己定义一个文件夹，让maven的依赖包装在你所想要放在文件夹下，便于以后自己的维护和管理。<br>当我们从maven中获取jar包的时候，maven首先会在本地仓库中查找，如果本地仓库有则返回；如果没有则从远程仓库中获取包，并在本地仓库中保存。<br>此外，我们在maven项目中运行<code>mvn install</code>，项目将会自动打包并安装到本地仓库中。</p>
+<ul>
+<li>仓库镜像的配置 </li>
+</ul>
+<p>maven自带的仓库是国外的maven官方的一个仓库<a href="http://repo1.maven.org/maven2/" target="_blank" rel="noopener">http://repo1.maven.org/maven2/</a>，一般不翻墙的话速度非常慢</p>
+<p>在setting.xml中找到<code>&lt;mirrors&gt;…………&lt;/mirrors&gt;</code>的位置，在<code>&lt;mirrors&gt;…………&lt;/mirrors&gt;</code>中间加入你想要的仓库的标签，这里推荐几个国内网速比较快，资源比较全的仓库</p>
+<p>1、阿里云的maven仓库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、开源中国的仓库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-osc<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus osc<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-osc-thirdparty<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>thirdparty<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus osc thirdparty<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.oschina.net/content/repositories/thirdparty/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行<code>mvn help:system</code>命令验证一下，运行情况应该如下图所示，如果前面的配置成功，那么<code>E:\maven-repository</code>会出现一些文件。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2fa6003.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>这里补充一下，要不要设置HTTP代理呢？</li>
+</ul>
+<p>如果上网没使用代理，这里则不需要配置。但是之前帮别的同学在Eclipse中安装Maven插件时失败了好多次，我也不知道是不是之前没有设置HTTP代理的原因，所以保险起见，最好还是配置一下吧</p>
+<p>首先在cmd中输入：<code>ping repo1.maven.org</code>，如果不能ping通，则一定要先设置一下代理，设置的方式为：</p>
+<p>进入Maven目录下，找到settings.xml文件，然后在<code>&lt;proxies&gt;</code>标签中加入如下信息：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">proxies</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">proxy</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span>&gt;</span>my-proxy<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">active</span>&gt;</span>true<span class="tag">&lt;/<span class="name">active</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">protocol</span>&gt;</span>http<span class="tag">&lt;/<span class="name">protocol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">host</span>&gt;</span>114.212.80.250<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">port</span>&gt;</span>80<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">username</span>&gt;</span>PARK<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">password</span>&gt;</span>****<span class="tag">&lt;/<span class="name">password</span>&gt;</span>     </span><br><span class="line">  <span class="tag">&lt;<span class="name">nonProxyHosts</span>&gt;</span>www.park.com|*.host.com<span class="tag">&lt;/<span class="name">nonProxyHosts</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">proxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">标签名</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">代理ID，标识代理</td>
+</tr>
+<tr>
+<td style="text-align:center">active</td>
+<td style="text-align:center">设置代理是否启用</td>
+</tr>
+<tr>
+<td style="text-align:center">protocol</td>
+<td style="text-align:center">代理使用的协议</td>
+</tr>
+<tr>
+<td style="text-align:center">username</td>
+<td style="text-align:center">连接代理的用户名，如此代理不需要用户名，则可把此标签删掉</td>
+</tr>
+<tr>
+<td style="text-align:center">password</td>
+<td style="text-align:center">连接代理的密码，同上</td>
+</tr>
+<tr>
+<td style="text-align:center">host</td>
+<td style="text-align:center">代理的网址</td>
+</tr>
+<tr>
+<td style="text-align:center">port</td>
+<td style="text-align:center">代理使用的端口</td>
+</tr>
+</tbody>
+</table>
+<p>其中，<code>&lt;host&gt;</code>, <code>&lt;username&gt;</code>, <code>&lt;password&gt;</code>标签中改为自己的<code>IP地址</code>，<code>主机名</code>和<code>密码</code>即可</p>
+<h3 id="配置Eclipse的Maven环境"><a href="#配置Eclipse的Maven环境" class="headerlink" title="配置Eclipse的Maven环境"></a>配置Eclipse的Maven环境</h3><p>对于一些低版本的或是功能不完整的Eclipse IDE，在做这一步之前，可能就需要手动去Eclipse安装Maven插件，主要有以下两种在线安装方式：</p>
+<h4 id="方式一、在线安装"><a href="#方式一、在线安装" class="headerlink" title="方式一、在线安装"></a>方式一、在线安装</h4><p>这可以分为两种方式来下载安装<br>（1）、Install New Software</p>
+<p>打开eclipse，点击<code>help–&gt;Install New Software</code>,然后输入要下载插件的链接地址：<code>http://m2eclipse.sonatype.org/sites/m2e</code>，如下图</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f908ba.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>勾选择要下载的项，点击下一步进行下载。下载完成会自动安装。安装速度跟你自身网速和服务器有关。</p>
+<p>（2）、Eclipse Marketplace</p>
+<p>打开eclipse，点击<code>help–&gt;Eclipse Marketplace</code>,然后输入<code>maven</code>回车搜索，选择以下勾选的插件”<code>Maven Integration for Eclipse (Luna)</code>“，点击<code>Install</code>安装<br>参考网站：<a href="http://marketplace.eclipse.org/content/maven-integration-eclipse-luna" target="_blank" rel="noopener">http://marketplace.eclipse.org/content/maven-integration-eclipse-luna</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d2f92bc2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="方式二、离线安装"><a href="#方式二、离线安装" class="headerlink" title="方式二、离线安装"></a>方式二、离线安装</h4><p><a href="https://pan.baidu.com/s/1UXkFZloKFgmWQhSQL1Hnjg" target="_blank" rel="noopener">eclipse-maven3-plugin.zip</a>，提取密码：x5hq。</p>
+<p>这也可以分为两种方式来下载安装</p>
+<p>（1）、link方式（自定义方式）</p>
+<ol>
+<li>在你的 eclipse安装的根目录下创建两个文件夹：<code>links</code>，<code>mavenPlugins</code>（文件夹名称可自定义），把<code>eclipse-maven3-plugin.zip</code>解压后的<code>features</code>和<code>plugins</code>文件夹放到<code>mavenPlugins</code>文件夹下（必须如此，注意解压后文件夹的嵌套情况）。</li>
+<li>在 <code>links</code>目录下创建一个<code>maven.link</code>（文件名称可自定义）文件，打开并输入：<code>path=mavenPlugins文件夹绝对路径</code>（需要注意文件夹路径中是”/“或者”\“  而不是”\” ）。</li>
+<li>重启 eclipse后，再次打开<code>Window ---&gt; Preferences</code>会发现一个多了一个选项Maven，说明Maven插件安装成功了。</li>
+</ol>
+<p>（2）、直接粗暴的方式</p>
+<p>将解压后的子文件夹<code>features</code>和<code>plugins</code>的<code>jar包文件</code>分别导入Eclipse安装目录下的<code>features</code>和<code>plugins</code>文件夹内，然后重启Eclipse就可以在<code>Preferences</code>中看到Maven选项了，即Maven插件配置成功。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d9897467.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>保证Eclipse有了Maven插件后，那么就按照下面的步骤来 <strong>配置Maven</strong>:</p>
+<ul>
+<li>在<code>windows -&gt; preferences</code>中找到maven选项，下图</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d9895339.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>找到<code>maven -&gt; installations</code>，选择<code>add按钮</code>，找到的maven的对应路径，如下</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d989fc49.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>eclipse中更新配置文件</li>
+</ul>
+<p>找到<code>User settings</code>，修改配置文件为之前已经修改好了的配置文件<code>settings.xml</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d98a189c.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>至此，Maven和eclipse的集成已经完成！</p>
+<h3 id="下载浏览器对应的Driver"><a href="#下载浏览器对应的Driver" class="headerlink" title="下载浏览器对应的Driver"></a>下载浏览器对应的Driver</h3><p>这里需要说明的是，Driver对应<code>IE浏览器</code>、<code>Mozilla Firefox浏览器</code>、<code>Chrome Google浏览器</code>可分为3种</p>
+<p>下面三个链接分别对应IE浏览器、Firefox浏览器、Google浏览器的driver下载：</p>
+<p><a href="https://www.nuget.org/packages/Selenium.WebDriver.IEDriver/" target="_blank" rel="noopener">Selenium.WebDriver.IEDriver</a></p>
+<p><a href="https://github.com/mozilla/geckodriver/releases/" target="_blank" rel="noopener">mozilla-geckodriver</a></p>
+<p><a href="http://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="noopener">chromedriver</a>、<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">chromedriver2</a></p>
+<p><strong>注意</strong>：为了避免浏览器与Driver版本上的不匹配，所以建议大家下载相应的最新版driver，并将浏览器更新至最新版，这样就可以避免出现不必要的错误。</p>
+<p>下载好对应浏览器的Driver之后，将其解压放在浏览器安装目录下。比如，我用的是google浏览器，所以对应下载的是最高版本的<code>chromedriver.exe</code>，解压后放在对应Google浏览器的安装目录下，如下图所示</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d98a330f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Eclipse中新建Maven项目并安装selenium依赖"><a href="#Eclipse中新建Maven项目并安装selenium依赖" class="headerlink" title="Eclipse中新建Maven项目并安装selenium依赖"></a>Eclipse中新建Maven项目并安装selenium依赖</h3><ul>
+<li>打开eclipse，点击<code>File –&gt; New -&gt; Project</code>,输入<code>Maven</code>搜索，选择<code>Maven Project</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d989c6cb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>一直点击Next（3次），填入相关名称信息，点击Finish完成。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d98cd138.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>如果没有什么问题的话，侧边栏<code>Project Explorer</code>中会出现一个正常的文件夹（这里的正常意味着未爆红，并且有<code>Maven Dependencies</code>这样一个目录）</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d989e33e.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>打开新建Maven项目<code>xtu2018</code>下的<code>pom.xml</code>文件，搜索定位到<code>&lt;dependencies&gt;</code>标签处</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c720d98a9bdb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>去<a href="http://mvnrepository.com/" target="_blank" rel="noopener">http://mvnrepository.com/</a><strong>maven公共库网站</strong>搜索<code>selenium</code>，选择第一项<code>Selenium Java</code>，点击进入，建议选择最新版本（也可以结合用户数参考）</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d45a4aa.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d47ef13.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>比如我这里选择了<code>Selenium Java 3.13.0</code>，那么点击<code>3.13.0</code>进入后，复制页面下方Maven对应代码块，粘贴至<code>pom.xml</code>文件对应位置并保存修改。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d4a371e.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>pom.xml文件修改前：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>pom.xml文件修改后：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.13.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在对<code>pom.xml</code>修改后并保存，Maven项目文件下的<code>Maven Dependencies</code>文件目录下会多出很多这样的<code>*.jar</code>包，如果是第一次创建Maven项目，那么加入这些<code>*.jar</code>包的时间要求很长，需要耐心等待才能看到这样的变化，当然也不乏会出一些问题，当然，这都是后话…</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d4d0892.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>如果这些<code>*.jar</code>包加入正常，没出什么问题，也就意味着selenium依赖安装完成（其实这在上面截图中的<code>*.jar</code>包中可以找到），那么就可以很愉快地直接进入代码编写阶段了…</li>
+</ul>
+<h3 id="编写一个简易的测试脚本代码演示"><a href="#编写一个简易的测试脚本代码演示" class="headerlink" title="编写一个简易的测试脚本代码演示"></a>编写一个简易的测试脚本代码演示</h3><ul>
+<li>移除掉<code>src/test/java</code>下的<code>com.xtu2018</code>包</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d4785a4.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>并在<code>src/test/java</code>下新建一个包package<code>com.xtu2018.one</code>，再在该包下新建一个类<code>demo01.java</code></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d476a10.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>编写一段如下所示的Demo代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xtu2018.one;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebElement;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">demo01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="comment">//1、找到driver路径</span></span><br><span class="line">        System.setProperty(<span class="string">"webdriver.chrome.driver"</span>, <span class="string">"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe"</span>);</span><br><span class="line">        <span class="comment">//2、创建一个浏览器</span></span><br><span class="line">        WebDriver driver = (WebDriver) <span class="keyword">new</span> ChromeDriver();</span><br><span class="line">        <span class="comment">//3、打开URL</span></span><br><span class="line">        driver.get(<span class="string">"http://www.baidu.com"</span>);</span><br><span class="line">        <span class="comment">//4、浏览器窗口最大化</span></span><br><span class="line">        driver.manage().window().maximize();</span><br><span class="line">        <span class="comment">//5、在搜索框输入内容</span></span><br><span class="line">        driver.findElement(By.id(<span class="string">"kw"</span>)).sendKeys(<span class="string">"12306"</span>);</span><br><span class="line">        WebElement btn =driver.findElement(By.id(<span class="string">"su"</span>));</span><br><span class="line">        btn.click();</span><br><span class="line">        <span class="comment">//延时等待</span></span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        <span class="comment">//6、后退</span></span><br><span class="line">        driver.navigate().back();</span><br><span class="line">        <span class="comment">//7、前进</span></span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        driver.navigate().forward();</span><br><span class="line">        Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        driver.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/24/5c7283d54ed24.gif" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201807101/" rel="external">【软件测试】 Selenium环境搭建-Eclipse 简易教程</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201807101/" target="_blank" rel="external">https://zhouie.cn/posts/201807101/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI自动化/">UI自动化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selenium/">selenium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实习/">实习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807101/&sharesource=qzone&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807101/&srcUrl=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807101/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807101/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807101/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807101/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807101/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201807121/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 目录文件同步工具</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201806252/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【分享】 屏幕截图与录屏工具</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201807101/&sharesource=qzone&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201807101/&srcUrl=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201807101/&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201807101/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201807101/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201807101/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【软件测试】 Selenium环境搭建-Eclipse 简易教程》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201807101/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201807101/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201807101/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

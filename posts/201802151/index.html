@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【博客】 Jekyll搭建个人博客-拓展版 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Jekyll,Ruby,Git,Comment">
+    <meta name="description" content="简介Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的。 书写博">
+<meta name="keywords" content="Jekyll,Ruby,Git,Comment">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【博客】 Jekyll搭建个人博客-拓展版">
+<meta property="og:url" content="https://zhouie.cn/posts/201802151/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="简介Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的。 书写博">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc38e988f.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc38b54f0.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc39e7e76.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc386f994.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc38b1394.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc38c7abb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c6fcc3a9cc49.png">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【博客】 Jekyll搭建个人博客-拓展版">
+<meta name="twitter:description" content="简介Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的。 书写博">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/22/5c6fcc38e988f.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【博客】 Jekyll搭建个人博客-拓展版</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【博客】 Jekyll搭建个人博客-拓展版</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-15T11:22:32.000Z" itemprop="datePublished" class="page-time">
+  2018-02-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面-网上搜集来的"><span class="post-toc-number">2.</span> <span class="post-toc-text">写在前面(网上搜集来的)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Ruby"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装Ruby</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Devkit"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装Devkit</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更改默认的source源"><span class="post-toc-number">5.</span> <span class="post-toc-text">更改默认的source源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装jekyll"><span class="post-toc-number">6.</span> <span class="post-toc-text">安装jekyll</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简析目录结构"><span class="post-toc-number">7.</span> <span class="post-toc-text">简析目录结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于网站评论管理系统与访问统计系统"><span class="post-toc-number">8.</span> <span class="post-toc-text">关于网站评论管理系统与访问统计系统</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于编写文章"><span class="post-toc-number">9.</span> <span class="post-toc-text">关于编写文章</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于自定义域名"><span class="post-toc-number">10.</span> <span class="post-toc-text">关于自定义域名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">11.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进一步了解"><span class="post-toc-number"></span> <span class="post-toc-text">进一步了解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#真正快速部署个人博客"><span class="post-toc-number">1.</span> <span class="post-toc-text">真正快速部署个人博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体步骤"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">具体步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充-常用git命令："><span class="post-toc-number">2.</span> <span class="post-toc-text">补充-常用git命令：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注意"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">注意:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关于-git-rm"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">关于 git rm</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2018-02-15-【博客】 Jekyll 搭建个人博客-拓展版"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【博客】 Jekyll搭建个人博客-拓展版</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-15 11:22:32" datetime="2018-02-15T11:22:32.000Z"  itemprop="datePublished">2018-02-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        28 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过 Markdown （或者 Textile） 以及 Liquid 转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的。</p>
+<p>书写博客是一个很好地习惯，所以就整理创建一个博客系统来记录自己的所见所闻所得！</p>
+<p>另外，个人感觉另一款博客框架<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo</a>也挺好的，实际上这两款博客框架都是目前较为主流的。</p>
+<hr>
+<h3 id="写在前面-网上搜集来的"><a href="#写在前面-网上搜集来的" class="headerlink" title="写在前面(网上搜集来的)"></a>写在前面(网上搜集来的)</h3><ul>
+<li><p>针对Windows系统下的用户，使用 Jekyll 搭建博客之前要确认下本机环境，<a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a> 环境（用于部署到远端）、<a href="http://www.ruby-lang.org/en/downloads/" target="_blank" rel="noopener">Ruby</a> 环境（Jekyll 是基于 Ruby 开发的）、包管理器 <a href="http://rubygems.org/pages/download" target="_blank" rel="noopener">RubyGems</a></p>
+<p>  (由于我是基于windows来做这个的，所以有必要配置安装相关的Windows环境，方便以后操作。)</p>
+<p>  <a href="http://jekyllcn.com/" target="_blank" rel="noopener">Jekyll</a>是一个免费的简单静态网页生成工具，可以配合第三方服务例如： 评论、分享等等扩展功能(评论第三方服务的选择后面会讲到)，Jekyll 可以直接部署在 Github（国外） 或 Coding（国内） 上，可以绑定自己的域名。<a href="http://jekyll.bootcss.com/" target="_blank" rel="noopener">Jekyll中文文档</a>、<a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll英文文档</a>、<a href="http://jekyllthemes.org/" target="_blank" rel="noopener">Jekyll主题列表</a>。</p>
+</li>
+<li><p>如果你是 Mac 用户，你就需要安装<code>Xcode</code>和<code>Command-Line Tools</code>了。</p>
+</li>
+</ul>
+<blockquote>
+<p>ruby与ruby gem的关系</p>
+</blockquote>
+<p>ruby是一种脚本语言<br>ruby的其中一个“程序”叫<code>rubygems</code>，简称<code>gem</code>(ruby 1.9.2及其以上就已经默认安装了ruby gem的，所以无需再次手动安装)<br>另外还有一个<code>ruby bunder</code>(rails框架中用来管理项目的gem的，叫bundle)，在windows中搭建jekyll，需要安装完ruby后用<code>gem</code>安装下<code>bunder</code>。</p>
+<blockquote>
+<p>ruby与jekyll的关系</p>
+</blockquote>
+<p>jekyll是基于ruby的，所以搭建jekyll之前必须确保ruby正常安装 注意，必须ruby大于2.0.0。</p>
+<blockquote>
+<p>jekyll与python的关系(表示才知道)</p>
+</blockquote>
+<p>jekyll3.0之前，有一个语法高亮插件”Pygments”，这玩意是基于python的，所以才会有各种教程里面都说搭建jekyll之前需要<code>python</code>环境。<br>!!!但是,请注意 jekyll3.0以后，语法高亮插件已经默认改成了 “rouge‘ 而它是基于ruby的，也就是说 现在搭建jekyll,我们完全不必要再安装<code>python</code>这样可以减少很大一部分工作量。</p>
+<blockquote>
+<p>为什么ruby要改用source来源</p>
+</blockquote>
+<p>不管是那一篇教程，都会告诉你安装完ruby后需要通过<code>gem</code>命令将官方源改成淘宝源或<code>[ruby china][]</code>源，这是因为默认的官方源在国外，国内几乎是无法访问的(具体原因么…)<br>所以才会必须改成其否源，否则无法使用，但是，请注意 现在淘宝源已经停止维护了，最新搭建jekyll 都应该要改成 <code>[ruby china][]</code>的源<code>http://gems.ruby-china.org</code></p>
+<blockquote>
+<p>如何解决jekyll安装过程中的问题</p>
+</blockquote>
+<p>首先，在确保ruby(2.0.0以上)正常安装，并且切换了<code>ruby china</code>源(或者淘宝源)后，其它遇到的所有问题几乎都能解决。当然，确实某些ruby程序的问题，所以只需要根据提示 通过相应命令，比如<code>gem install ...</code>即可解决.</p>
+<p>注：windows下还得确保<code>DEVELOPMENT KIT</code>正常安装，并且正确配置。</p>
+<p>提前总结一下，安装Jekyll主要有以下三个步骤</p>
+<ul>
+<li>安装 Ruby</li>
+<li>安装 DevKit</li>
+<li>安装 Jekyll</li>
+</ul>
+<p><strong>接下来就正式开始安装啦！</strong></p>
+<hr>
+<h3 id="安装Ruby"><a href="#安装Ruby" class="headerlink" title="安装Ruby"></a>安装Ruby</h3><p>下载安装exe，地址：<a href="http://rubyinstaller.org/downloads/" target="_blank" rel="noopener">http://rubyinstaller.org/downloads/</a></p>
+<p>根据自己的机型选择对应的安装包(因后续有需要安装不同的<code>gem</code>，我发现好多因为ruby版本问题装不了，所以在这推荐使用2.2.4版本的)<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc38e988f.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>安装的注意点：<br>自动帮你配置环境变量，要安装在根目录<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc38b54f0.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>测试是否安装完成：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ruby -v</span></span><br></pre></td></tr></table></figure>
+<p>我的输出结果是</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="number">2.3</span><span class="number">.0</span>p0 (<span class="number">2015</span><span class="number">-12</span><span class="number">-25</span> revision <span class="number">53290</span>) [x64-mingw32]</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="安装Devkit"><a href="#安装Devkit" class="headerlink" title="安装Devkit"></a>安装Devkit</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc39e7e76.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>1）运行安装包并解压缩至某文件夹，如<code>C:\DevKit</code></p>
+<p>2）通过初始化来创建<code>config.yml</code>文件。在命令行窗口内，输入下列命令：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cd</span> <span class="string">“C:\DevKit”</span></span><br><span class="line"><span class="attr">ruby</span> <span class="string">dk.rb init</span></span><br><span class="line"><span class="attr">notepad</span> <span class="string">config.yml</span></span><br></pre></td></tr></table></figure>
+<p>3）在打开的记事本窗口中，于末尾添加新的一行<code>- C:\Ruby200-x64</code>(这段代表加上自己的ruby路径，实际中可以将<code>C:\Ruby200-x64</code>改为自己的实际ruby目录)，保存文件并退出。</p>
+<p>4）回到命令行窗口内，审查（非必须）并安装。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ruby</span> <span class="selector-tag">dk</span><span class="selector-class">.rb</span> <span class="selector-tag">review</span></span><br><span class="line"><span class="selector-tag">ruby</span> <span class="selector-tag">dk</span><span class="selector-class">.rb</span> <span class="selector-tag">install</span></span><br></pre></td></tr></table></figure>
+<p>一切顺利后，就代表<code>Development Kit</code>已经正确安装并配置</p>
+<hr>
+<h3 id="更改默认的source源"><a href="#更改默认的source源" class="headerlink" title="更改默认的source源"></a>更改默认的source源</h3><p>这是很重要的一步！鉴于官方源无法访问，所以我们得更换为可以使用的源，这里推荐使用<code>[ruby china][]</code>源，大致步骤如下:</p>
+<ul>
+<li>先键入命令<code>gem sources -l</code>查看当前已经添加的源(默认应该是同时有官方源和淘宝源);</li>
+<li>然后通过<code>gem sources -r https://rubygems.org/</code> <code>gem sources -r https://ruby.taobao.org/</code>分别移除官方源和淘宝源 (注意，请对比实际，移除自己已经添加的源即可，可以改为自己上一步中查询出来的地址);</li>
+<li>通过<code>gem sources -a http://gems.ruby-china.org</code>添加了<code>[ruby china][]</code>的可用源;</li>
+<li>修改来源后可以通过<code>gem sources -l</code>查看是否正确修改。</li>
+</ul>
+<p>注意,上述的<code>[ruby china][]源</code>,我采用了<code>http</code>链接，这是因为我在<code>windows</code>中使用<code>https</code>时遇到了<code>ssl</code>问题，并且无法解决，如果你能正确解决，可以换为https链接。</p>
+<hr>
+<h3 id="安装jekyll"><a href="#安装jekyll" class="headerlink" title="安装jekyll"></a>安装jekyll</h3><p>先查看你的<code>gem</code>是否安装完毕：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">gem</span> <span class="string">-v</span></span><br><span class="line"><span class="attr">gem</span> <span class="string">install jekyll</span></span><br></pre></td></tr></table></figure>
+<p>测试是否安装完毕：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc386f994.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>新建jekyll 项目</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jekyll <span class="keyword">new</span> <span class="type">myblog</span></span><br><span class="line"><span class="type">cd</span> myblog</span><br></pre></td></tr></table></figure>
+<p>运行jekyll 项目： <a href="http://jekyllrb.com/docs/quickstart/" target="_blank" rel="noopener">官方文档</a></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">jekyll</span> s / jekyll serve</span><br></pre></td></tr></table></figure>
+<p>另外，如果过程中遇到一些其它缺失组件的情况，可以通过相应的<code>gem</code>命令安装<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc38b1394.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>最终成功运行！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc38c7abb.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>在浏览器里输入： <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>，就可以看到你的博客效果了.<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c6fcc3a9cc49.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<hr>
+<h3 id="简析目录结构"><a href="#简析目录结构" class="headerlink" title="简析目录结构"></a>简析目录结构</h3><p>　<br>Jekyll 的核心其实是一个文本转换引擎。它的概念其实就是： 你用你最喜欢的标记语言来写文章，可以是 <code>Markdown</code>，也可以是<code>Textile</code>,或者就是简单的<code>HTML</code>, 然后 Jekyll 就会帮你套入一个或一系列的布局中。在整个过程中你可以设置URL路径, 你的文本在布局中的显示样式等等。这些都可以通过纯文本编辑来实现，最终生成的静态页面就是你的成品了。</p>
+<p>一个基本的 Jekyll 网站的目录结构一般是像这样的：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">├── _config.yml</span><br><span class="line">├── _includes</span><br><span class="line"><span class="string">|   ├── footer.html</span></span><br><span class="line"><span class="string">|   └── header.html</span></span><br><span class="line">├── _layouts</span><br><span class="line"><span class="string">|   ├── default.html</span></span><br><span class="line"><span class="string">|   ├── post.html</span></span><br><span class="line"><span class="string">|   └── page.html</span></span><br><span class="line">├── _posts</span><br><span class="line"><span class="string">|   └── 2018-01-11-welcome-to-jekyll.md</span></span><br><span class="line">├── _sass</span><br><span class="line"><span class="string">|   ├── _base.scss</span></span><br><span class="line"><span class="string">|   ├── _layout.scss</span></span><br><span class="line"><span class="string">|   └── _syntax-highlighting.scss</span></span><br><span class="line">├── about.md</span><br><span class="line">├── css</span><br><span class="line"><span class="string">|   └── main.scss</span></span><br><span class="line">├── feed.xml</span><br><span class="line">└── index.html</span><br></pre></td></tr></table></figure>
+<p>注意：如果你暂时没有自己的域名，<code>CNAME</code>里面就什么都不用填。</p>
+<p>这些目录结构以及具体的作用可以参考 <a href="http://jekyll.com.cn/docs/structure/" target="_blank" rel="noopener">官网文档</a> </p>
+<p>进入 <code>_config.yml</code>里面，修改成你想看到的信息，重新 <code>jekyll server</code> ，刷新浏览器就可以看到你刚刚修改的信息了。</p>
+<p>到此，基于Jekyll初步搭建博客算是完成了。</p>
+<hr>
+<h3 id="关于网站评论管理系统与访问统计系统"><a href="#关于网站评论管理系统与访问统计系统" class="headerlink" title="关于网站评论管理系统与访问统计系统"></a>关于网站评论管理系统与访问统计系统</h3><p><strong>访问统计</strong></p>
+<p>你需要去<a href="http://tongji.baidu.com/web/register" target="_blank" rel="noopener">百度统计</a>和<a href="https://www.google.com/analytics/" target="_blank" rel="noopener">Google Analytics</a>(翻个墙咯~ 多大点事)注册账号，并提取相应的id（详细操作请Baidu或Google）这在后面会使用到。</p>
+<p><strong>评论管理系统</strong></p>
+<p>目前本网站使用的是一款韩国名为“来必力”评论系统，<a href="https://livere.com/" target="_blank" rel="noopener">来必力官网</a>。当然也推荐了解了一下这款快速、简洁且高效的无后端评论系统——<a href="https://valine.js.org/" target="_blank" rel="noopener">Valine评论系统</a>，补充以下浏览到的这篇文字<a href="http://www.zhaojun.im/hexo-valine-modify/" target="_blank" rel="noopener">Valine优化增强版</a>;</p>
+<p>后面我又发现了<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">gitment</a>，一款由国内大牛<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="noopener">imsun</a>开发的基于github issues的评论系统，网上也是有不少相关的布置教程的，作者在这里提供一篇仅供参考–<a href="https://www.cnblogs.com/jacobpan/archive/2017/07/18/7200512.html" target="_blank" rel="noopener">在Jekyll博客添加评论系统：gitment篇</a>。</p>
+<p>下面是这段时间在解决 <strong> 添加评论系统 </strong> 问题时,花时间找了一下国内外的几个第三方评论系统:</p>
+<ul>
+<li><p>多说，曾经较火的评论系统，网上介绍文章比较多，但已于2017年6月1日正式关停服务，无法再用了。</p>
+</li>
+<li><p>畅言，<a href="https://www.kuaizhan.com/" target="_blank" rel="noopener">sohu</a>旗下的，网上说：需要个人博客备案后才能使用，备案操作本身就很繁琐(这个我没有测试过，不肯确定)。</p>
+</li>
+<li><p>友言，<a href="http://www.jiathis.com/" target="_blank" rel="noopener">jiaThis</a>旗下的，网上说：由于时http请求，github pages现在都是https了， 在https站点无法调用http请求，故也无法使用(这个我也没有测试过，不肯确定)。</p>
+</li>
+<li><p>网易云跟贴，曾被当作“多说”的替代品，可惜官方通报说也在2017年8月1日下线了。</p>
+</li>
+<li><p>再看看<a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a>，国外比较火的评论系统，但在国内墙了，也只能暂时放弃了。</p>
+</li>
+<li><p>很感谢碰到了<a href="https://livere.com/" target="_blank" rel="noopener">来必力</a>,通过这段时间使用情况看，还是挺好的。</p>
+</li>
+</ul>
+<hr>
+<p>下面这些是后期补充的</p>
+<ul>
+<li><p><a href="https://gitalk.github.io/" target="_blank" rel="noopener">Gittalk</a></p>
+</li>
+<li><p><a href="https://imsun.github.io/gitment/" target="_blank" rel="noopener">Gitment</a></p>
+</li>
+<li><p><a href="https://valine.js.org/" target="_blank" rel="noopener">Valine</a></p>
+</li>
+<li><p><a href="https://www.hypercomments.com/en" target="_blank" rel="noopener">HYPERCOMMENTS</a></p>
+</li>
+</ul>
+<hr>
+<h3 id="关于编写文章"><a href="#关于编写文章" class="headerlink" title="关于编写文章"></a>关于编写文章</h3><p>所有的文章都是<code>_posts</code>目录下面，文章格式为<code>mardown</code> 格式，文章文件名可以是<code>.mardown</code>或者<code>.md</code>。</p>
+<p>编写一篇新文章很简单，你可以直接从<code>_posts/</code>目录下复制一份出来 <code>2018-01-13-Hello World.md</code> ，修改名字为 <code>2018-01-11-article1.md</code> ，注意：文章名的格式必须为  <code>年-月-日-articleName</code> ，后面的 <code>articleName</code>同时也是该篇文章的链接 URL。</p>
+<p>只不过如果文章名为中文，比如文章<code>https://javef.github.io/2018/04/走进Markdown园子/</code>的链接URL就会变成这样的：<code>https://javef.github.io/2018/04/%E8%B5%B0%E8%BF%9BMarkdown%E5%9B%AD%E5%AD%90/</code>。</p>
+<p>所以建议文章名最好是英文或者阿拉伯数字。 </p>
+<p>打开你新建的博客文章<code>2018-01-11-article1.markdown</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">layout:</span> <span class="string">post</span></span><br><span class="line"><span class="attr">title:</span>  <span class="string">"article1"</span></span><br><span class="line"><span class="attr">date:</span>   <span class="number">2018</span><span class="number">-01</span><span class="number">-11</span></span><br><span class="line"><span class="attr">tag:</span> <span class="string">jekyll</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">(这儿便是正文内容了...)</span></span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">title:</span>  显示的文章名， 如：<span class="string">title:</span> 我的第一篇文章                    </span><br><span class="line"><span class="string">date:</span>   显示的文章发布日期，如：<span class="string">date:</span> <span class="number">2018</span><span class="number">-01</span><span class="number">-11</span>(格式要对)                          </span><br><span class="line"><span class="string">tag:</span>    tag标签的分类，如：<span class="string">tag:</span> 随笔</span><br></pre></td></tr></table></figure>
+<p>注意：文章头部格式必须包含上面的那些样板信息，这样才能正确解析。</p>
+<p>我写文章使用的是<a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="noopener">Cmd Markdown 编辑阅读器</a>，如果你对 Markdown 语法不熟悉或者想要了解更多，也可以看看我的另一篇博客: <a href="https://zhouie.cn/posts/201804111/">走进Markdown园子</a>。</p>
+<h3 id="关于自定义域名"><a href="#关于自定义域名" class="headerlink" title="关于自定义域名"></a>关于自定义域名</h3><p>其实官方的帮助文档<a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/" target="_blank" rel="noopener">Setting up a custom domain with GitHub Pages</a>已经讲得很清楚了，而且网上也有一大堆教程。</p>
+<p>需要注意的是：</p>
+<ul>
+<li><code>CNAME</code>文件名必须是大写；</li>
+<li>如果要使用的域名是<code>zhouie.cn</code>，所以在域名解析设置应该使用<code>A</code>记录，解析到Github的IP。如果我要使用的域名是<code>www.zhouie.cn</code>，才应该使用<code>CNAME</code>记录，解析到<code>***.github.io</code></li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>虽然说在windows上搭建jekyll时遇到了各种各样问题，但是最终都解决了；</p>
+</li>
+<li><p>在解决的那一瞬间，其实是挺有满足感的(大概这也是乐此不疲的原因之一吧)，而且确实感觉知识面比起以前还是有所拓展的；</p>
+</li>
+<li><p>所以不管怎么样，还是得多学多动手尝试！</p>
+</li>
+<li><p>你现在所学的知识，一定会在将来的某个时间段派上用场！</p>
+</li>
+</ul>
+<hr>
+<p>update 2018/4/22</p>
+<h2 id="进一步了解"><a href="#进一步了解" class="headerlink" title="进一步了解"></a>进一步了解</h2><ul>
+<li><p>我们前面讲的都是基于<code>ruby</code>+<code>git</code>配置安装jekyll(Hexo也一样)，实际上是利用了Jekyll的博客框架的优势！</p>
+</li>
+<li><p>通过本地开启Jekyll服务实现本地随时随地调试，方便；</p>
+</li>
+<li><p>再将自己调试好的个人博客项目上传到远端代码托管仓库，如GitHub、Coding等，利用他们提供的Pages功能实现静态网页的部署；</p>
+</li>
+<li><p>当然，如果你有自己的域名的话，也可以将你的域名绑定到你的Pages页面，可以看看我的这篇文章：<a href="https://zhouie.cn/posts/201804231/">为GitHub Pages自定义域名并添加SSL-开启HTTPS强制</a></p>
+</li>
+</ul>
+<hr>
+<h3 id="真正快速部署个人博客"><a href="#真正快速部署个人博客" class="headerlink" title="真正快速部署个人博客"></a>真正快速部署个人博客</h3><p>先提前说明一下这种取巧的方法，需要下载安装哪些</p>
+<ul>
+<li><a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a></li>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git</a></li>
+</ul>
+<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h4><ol>
+<li><p>创建一个 github 账号，然后创建一个跟你账户名一样的仓库，如我的 github 账户名叫 <a href="https://github.com/Javef" target="_blank" rel="noopener">Javef</a>，我的 github 仓库名就叫 <a href="https://github.com/Javef/javef.github.io" target="_blank" rel="noopener">javef.github.io</a>；</p>
+</li>
+<li><p>其实这个时候去浏览器输入<a href="https://javef.github.io" target="_blank" rel="noopener">https://javef.github.io</a>,这个静态页面就已经创建好了，只是这个时候页面内容太空虚…</p>
+</li>
+<li><p>那么为了创建一个好看又稳定、简洁又完整的网页，去Google或Baidu搜索挑选下载某个你认为与你审美搭得上的Jekyll、Hexo等等框架开放源码项目，至于修改其中哪些配置参数变成你自己可用的页面框架，这里就不赘述了，很简单的。这里我提供一些:<a href="https://github.com/jekyll/jekyll/wiki/sites" target="_blank" rel="noopener"><strong>Jekyll-powered blogs and sites</strong></a>；</p>
+</li>
+<li><p>下载安装Git；</p>
+</li>
+<li><p>下载安装GitHub Desktop，输入你的GitHub账号密码登录；</p>
+</li>
+<li><p>通过以下方法将你之前挑选准备的网页框架项目文件上传到远端托管仓库。</p>
+<ul>
+<li>打开此电脑，选择一个文件夹，比如 f 盘的 test 文件，右键空白处点击 git bash here；</li>
+<li>git clone <a href="https://github.com/Javef/javef.github.io.git" target="_blank" rel="noopener">https://github.com/Javef/javef.github.io.git</a> javef.github.io</li>
+<li>cd javef.github.io</li>
+<li>将自己之前准备的网页框架项目文件复制粘贴至 f 盘的 test 文件中</li>
+<li>git add .                         # 将新添加的文件加入索引中</li>
+<li>git commit -m “first commit”      # 将这次的修改作为一个打包</li>
+<li>git push origin master            # 提交到远程仓库</li>
+<li>可能会有弹出框让你输入你的 github 账号和密码哦</li>
+<li>这个时候你再去浏览器输入<a href="https://javef.github.io" target="_blank" rel="noopener">https://javef.github.io</a>，刷新一下，就可以看到全新的页面了~</li>
+</ul>
+</li>
+</ol>
+<h3 id="补充-常用git命令："><a href="#补充-常用git命令：" class="headerlink" title="补充-常用git命令："></a>补充-常用git命令：</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> git clone  <span class="comment">//本地如果无远程代码，先做这步，不然就忽略</span></span><br><span class="line"><span class="symbol">$</span> cd <span class="comment">//定位到你blog的目录下</span></span><br><span class="line"><span class="symbol">$</span> git status <span class="comment">//查看本地自己修改了多少文件</span></span><br><span class="line"><span class="symbol">$</span> git add . <span class="comment">//添加远程不存在的git文件</span></span><br><span class="line"><span class="symbol">$</span> git commit  -m <span class="string">"what I want told to someone"</span> <span class="comment">//提交修改</span></span><br><span class="line"><span class="symbol">$</span> git push  <span class="comment">//更新到远程服务器上</span></span><br><span class="line"><span class="symbol">$</span> git rm <span class="comment">//移除文件</span></span><br></pre></td></tr></table></figure>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><ul>
+<li><p><code>git status</code>  列出当前目录所有还没有被git管理的文件和被git管理且被修改但还未提交(<code>git commit</code>)的文件，也就是所有改动文件，红色字体标出。</p>
+</li>
+<li><p>然后输入 <code>git add .</code> (有个点) 表示添加当前目录下的所有文件和子目录，</p>
+</li>
+<li><p>然后再输入一次 <code>git status</code> 如果看见文件都变绿了 ，那么就代表 它们已经准备好了被提交（<code>git commit</code>）。</p>
+</li>
+</ul>
+<hr>
+<h4 id="关于-git-rm"><a href="#关于-git-rm" class="headerlink" title="关于 git rm"></a>关于 <code>git rm</code></h4><blockquote>
+<p>由于在github上只能删除仓库,却无法删除文件夹或文件，所以只能通过命令来解决</p>
+</blockquote>
+<ul>
+<li>$ git rm file1.txt                #删除file1.txt</li>
+<li>git commit -m ‘delete file1.txt’  #提交,添加操作说明</li>
+<li>git push -u origin master         #将本次更改更新到github项目上去</li>
+</ul>
+<p>这个命令必须是在提交到版本库中以后才能够执行的,否则的话：</p>
+<ul>
+<li>如果这个文件没有提交到暂存区，它是不会被发现的：</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm file1.txt</span><br><span class="line">fata<span class="variable">l:</span> pathspec <span class="string">'file1.txt'</span> did not <span class="keyword">match</span> any <span class="keyword">files</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果提交到暂存区了以后，还是没办法删除：</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm file1.txt</span><br><span class="line"><span class="keyword">error: </span>the following file has changes staged in the index:</span><br><span class="line">    file1.txt</span><br><span class="line">(use --cached to keep the file, or -f to force removal)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果这个文件与版本库中不一致，就删除不了，除非强制删除，如下所示：</li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git rm file2.txt</span><br><span class="line"><span class="keyword">error: </span>the following file has staged content different from both the file and the HEAD:</span><br><span class="line">    file2.txt</span><br><span class="line">(use -f to force removal)</span><br></pre></td></tr></table></figure>
+<p>如果你只有一个文件想要删除，使用这个命令可以真正的从文件系统中删除了文件，并且它会暂存这个文件已经被删除的事实，如果你提交了，这个文件不会从之前的历史中消失，但会从未来的提交中消失。</p>
+<blockquote>
+<p>参数–cached</p>
+</blockquote>
+<p>如果你想删除这样一个文件，不想从文件系统中真正的删除它,也就是本地项目中的文件不受操作影响,删除的只是远程仓库中的文件，就是用下面的命令：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm <span class="comment">--cached file3.txt</span></span><br></pre></td></tr></table></figure>
+<p>换个说法，你想告诉Git，不再跟踪这个文件，但是把它保留在工作树中，这可能是一种情况，你以外地提交了一个文件，你并不想让他成为历史的一部分。它暂存了删除，但是，他在那里保存了文件，现在，在你的工作树中，作为一个不被追踪的文件。</p>
+<blockquote>
+<p>注意：每次增加文件或删除文件，都要commit 然后直接 git push -u origin master，就可以同步到github上了。</p>
+</blockquote>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><p><a href="https://github.com/jekyll/jekyll/wiki" target="_blank" rel="noopener">Jekyll主题集锦</a></p>
+</li>
+<li><p><a href="https://www.jekyll.com.cn/docs/plugins/" target="_blank" rel="noopener">Jekyll Plugins</a></p>
+</li>
+<li><p><a href="https://github.com/lmk123/blog/issues/55" target="_blank" rel="noopener">介绍一些免费好用的静态网站托管服务</a></p>
+</li>
+<li><p><a href="http://www.ituring.com.cn/article/114888" target="_blank" rel="noopener">Jekyll+多说，建立属于你的轻博客</a>&gt;&gt;&gt;&gt;虽然<code>多说</code>已经亡了，但通过这篇博文很感慨这家伙当年的强大…</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201802151/" rel="external">【博客】 Jekyll搭建个人博客-拓展版</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201802151/" target="_blank" rel="external">https://zhouie.cn/posts/201802151/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Comment/">Comment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jekyll/">Jekyll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ruby/">Ruby</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201802151/&sharesource=qzone&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201802151/&srcUrl=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201802151/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201802151/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201802151/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201802151/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201802151/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201803011/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【分享】 PDF相关工具</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201802141/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【转载】 图灵访谈：为什么写博客？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201802151/&sharesource=qzone&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201802151/&srcUrl=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201802151/&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201802151/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201802151/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201802151/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【博客】 Jekyll搭建个人博客-拓展版》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201802151/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201802151/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201802151/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【转载】 图灵访谈：Redis带你尽享丝滑 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="阅读,Redis">
+    <meta name="description" content="作者简介：白宸，本名郑明杭，现阿里云NOSQL数据库技术专家。先后从事Tair分布式系统、Memcached云服务及阿里云Redis数据库云服务开发，关注分布式系统及NOSQL存储技术前沿。曾在飞马网&amp;amp;中生代技术嘉年华上发表题为《ApsaraDB for Redis云数据库技术栈详解》的演讲内容，获得观众一致好评！  问：为什么选择数据库方面的工作？ 答：数据库是产品应用的基础。直播、共">
+<meta name="keywords" content="阅读,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】 图灵访谈：Redis带你尽享丝滑">
+<meta property="og:url" content="https://zhouie.cn/posts/201803191/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="作者简介：白宸，本名郑明杭，现阿里云NOSQL数据库技术专家。先后从事Tair分布式系统、Memcached云服务及阿里云Redis数据库云服务开发，关注分布式系统及NOSQL存储技术前沿。曾在飞马网&amp;amp;中生代技术嘉年华上发表题为《ApsaraDB for Redis云数据库技术栈详解》的演讲内容，获得观众一致好评！  问：为什么选择数据库方面的工作？ 答：数据库是产品应用的基础。直播、共">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c7013798e448.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c70138da981d.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c7013a003b7a.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/02/22/5c7013c3becdd.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/02/23/5c70b09b0c946.jpg">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】 图灵访谈：Redis带你尽享丝滑">
+<meta name="twitter:description" content="作者简介：白宸，本名郑明杭，现阿里云NOSQL数据库技术专家。先后从事Tair分布式系统、Memcached云服务及阿里云Redis数据库云服务开发，关注分布式系统及NOSQL存储技术前沿。曾在飞马网&amp;amp;中生代技术嘉年华上发表题为《ApsaraDB for Redis云数据库技术栈详解》的演讲内容，获得观众一致好评！  问：为什么选择数据库方面的工作？ 答：数据库是产品应用的基础。直播、共">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/22/5c7013798e448.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【转载】 图灵访谈：Redis带你尽享丝滑</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【转载】 图灵访谈：Redis带你尽享丝滑</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-19T17:30:39.000Z" itemprop="datePublished" class="page-time">
+  2018-03-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/图灵访谈/">图灵访谈</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+<article id="post-2018-03-19-【转载】 图灵访谈：Redis带你尽享丝滑"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【转载】 图灵访谈：Redis带你尽享丝滑</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-19 17:30:39" datetime="2018-03-19T17:30:39.000Z"  itemprop="datePublished">2018-03-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/图灵访谈/">图灵访谈</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        23 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>作者简介：白宸，本名郑明杭，现阿里云NOSQL数据库技术专家。先后从事Tair分布式系统、Memcached云服务及阿里云Redis数据库云服务开发，关注分布式系统及NOSQL存储技术前沿。<br>曾在飞马网&amp;中生代技术嘉年华上发表题为《ApsaraDB for Redis云数据库技术栈详解》的演讲内容，获得观众一致好评！</p>
+</blockquote>
+<p><strong>问</strong>：为什么选择数据库方面的工作？</p>
+<p><strong>答</strong>：数据库是产品应用的基础。直播、共享单车等每个火爆产品的背后都是大量关系型数据库、NOSQL类型数据库在支撑。另外，中小企业为了专注自身业务的发展都会选择云计算，将基础设置的建设交给云服务商。云服务商为了提供高性能、高可用的数据库产品需要投入足够多的研发精力。在数据库研发过程中，数据库研发者既可以深入内核、网络、存储设备进行深度的优化改进，又能够在数据库层面扩展出分布式、异地容灾等不同的产品形态，同时结合不同类型的业务进行不同的深度优化。</p>
+<p>选择数据库开发工作主要是为了能够结合计算机理论知识，实践分布式、存储、数据库、内核，反过来在实践开发过程中巩固提高自己。</p>
+<p><strong>问</strong>：阿里云的Redis数据库和其他云计算厂商相比，有何优点？</p>
+<p><strong>答</strong>：阿里云的Redis云服务整体架构在ApsaraDB上，具有完善的任务管理、监控运维、高可用体系，能够支撑海量的实例管理及不同的产品需求。阿里云Redis数据库提供了主从双副本、主从单副本、集群双副本等多样的产品供用户选择。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c7013798e448.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>主从双副本版本要求主从双机热备，将数据持久化到磁盘，当主库发生故障的时候快速切换到备库上以保证服务的可用性。相比开源Redis及其他厂商的Redis，阿里云对Redis的故障探测进行了更深度地优化：通过专门的探测端口来避免Redis单线程阻塞的影响，通过对磁盘、CPU、内存等硬件的检测提前发现故障隐患进行主动切换，优化原生的主备复制机制，采用增量日志加内存buffer的方式进行同步，避免弱网情况下主备复制频繁断开及全量同步。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c70138da981d.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>主从单副本是云数据库 Redis 推出的一种全新系列，采用单个数据库节点部署架构。与双副本版本相比，它只包含一个节点，没有备用节点实时同步数据，不提供数据持久化和备份策略，适用于对数据可靠性要求不高的纯缓存业务场景。与其他云厂商相比，阿里云Redis单副本能够保证在主库发生故障的时候快速切换到新节点，但是这个新节点是没有数据的，用户需要在切换完成之后进行数据预热避免数据库的打穿。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c7013a003b7a.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>阿里云Redis集群完全采用自研的技术体系，设计的时候充分考虑到用户能够从主从版本平滑迁移过来的需求。Redis集群架构引入了Proxy、Config模块，Proxy负责数据的分发及路由，Config负责数据的迁移及路由表管理。多个无状态的Proxy、Config模块可以保证整个链路的高可用，避免单点问题。与其他云厂商相比，阿里云Redis集群能够保证更高的兼容性，用户可以在主从版本和Redis集群之间进行无缝切换，不需要去更改用户的代码。同时，阿里云Redis集群还支持多db的模式，相比大部分开源的Redis集群方案有较大的优势。</p>
+<p>为了更好的服务用户，后续阿里云Redis产品还会推出读写分离、异地容灾、异地多活等产品形态供用户进行选择。最近阿里云Redis又推出了256MB的主从双副本实例，适用于PHP缓存、论坛加速、数据库加速等，随着业务的发展用户还可以进一步扩容。<del>活动期间可以享受99元包年的优惠</del>！</p>
+<p><strong>问</strong>：先后接触过Tair，Memcached和Redis后，在云服务开发中有哪些深刻的体会？</p>
+<p><strong>答</strong>：作为基础服务开发工程师，数据库的稳定性、性能是第一要位的。用户对数据库的高可用及稳定性都有很高要求的，我们在开发过程中需要选用合理的架构，在架构上避免单点问题，避免故障无法恢复问题。对于云服务需要做到足够的隔离，避免不同租户的互相影响，同时在设计云服务过程中需要考虑到可扩展性。公有云服务的每个业务都有自己的特点，会催生出不同的业务需求，所以在初步设计的时候需要保留支持多种业务模式的能力。</p>
+<p><strong>问</strong>：在阿里云内部，Redis技术最得意的应用场景是什么？使用过程中存在哪些痛点？</p>
+<p><strong>答</strong>：阿里内部大量使用了阿里云Redis服务，比如手淘、高德、CDN业务、菜鸟等都大量使用了Redis以实现不同的业务。微淘社区承载了亿级淘宝用户的社交关系链，其中每个用户都有自己的关注列表，每个商家都有自己的粉丝信息。我用下面的图来展示整个微淘社区承载的关系链。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/22/5c7013c3becdd.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果选用传统的关系型数据库模型表达上面的关系信息，业务设计会变得异常繁杂，也不能获得良好的性能体验。使用Redis集群，微淘社区缓存了存储社区的关注链，简化了关注信息的存储，并保证了双11业务丝滑一般的体验。微淘社区使用了Hashes存储用户之间的关注信息，存储结构如下图所示。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/23/5c70b09b0c946.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>随着业务规模的壮大，用户需要后端Redis云服务能够做到动态扩容。阿里云Redis集群实例提供了资源变配功能，用户可以在需要的时候进行变配以应对容量的增加。另外，对于淘宝业务来说，每年的双11都是重中之重，我们在双11之前都会跟业务方确认当年的访问量和业务量，同时提前进行双11的全链路压测，保证业务丝滑般的体验。</p>
+<p>在使用开源Redis的过程中，我们也碰到了很多问题，比如原生Redis的同步依赖于内存buffer，这会带来一个问题：在弱网情况下，如果内存buffer溢出，原生Redis需要进行一次全量同步。为此阿里云Redis对主备同步进行了优化，通过binlog日志加内存buffer的形式解决掉弱网全量同步的缺陷。另外，在云服务开发运维过程中难免需要对Redis服务进行升级管理，但原生的Redis内核不能很好地支持热升级机制，如果直接重启会对用户的访问产生很大的影响。阿里云Redis通过拆分动态库的形式做到了3ms内对一个实例进行热升级，而且升级过程中对用户的访问不会有任何影响。</p>
+<p><strong>问</strong>：关系型和非关系型数据库在实现上有哪些主要区别？各自面向的应用领域和作用是什么？</p>
+<p><strong>答</strong>：简单来说，关系型数据库是指采用关系模型来组织的数据库。传统的关系型数据库由二维表模型来组织，表与表之间具有一定联系，业务可以通过SQL语句对数据库进行更新、查找、删除。非关系型数据库（NoSQL）的最初定义是没有SQL的轻量级数据库，并且不保证遵循ACID原则的数据存储系统。</p>
+<p>关系型和非关系型最大的区别在于是否保持事务的一致性，虽然像Redis这样的非关系型数据库也有事务的说法，不过Redis事务是相对简单的事务模型，而传统关系型的数据库是要求读写操作来保证事务一致性的，因为关系型的数据库具有更多的应用场景，并且多用于对数据一致性有强烈要求的系统中。非关系型数据库里的key—value结构具有极高的并发读写性能，所以常常用于高速缓存中，作为传统数据库的缓存提供更高的并发访问。</p>
+<p><strong>问</strong>：新手如何选择数据库类型，传统关系型数据库还是非关系型数据库？</p>
+<p><strong>答</strong>：两种数据库类型是相辅相成的，关系型数据库可以用于对数据一致性有更高要求的场景，同时能够支撑复杂类型的关联查询，而非关系型的数据库可以用于数据库的缓存，或者用于结构简单的业务场景。另外，由于Redis提供了更多复杂类型的数据结构，所以也可以将Redis用于更丰富的业务场景，比如用List结构来实现推送系统、弹幕系统等。</p>
+<p><strong>问</strong>：数据库的实现相当复杂，如果想要研究如何实现数据库系统，即学习造轮子，您有什么建议？</p>
+<p><strong>答</strong>：如果要研究数据库的实现可以先从应用层的应用开始，先熟悉数据库的应用场景，也可以先阅读数据库相关的基础知识，了解数据库的SQL解析、持久化机制、数据同步、数据库索引等掌握数据库实现的设计原理。学习过程中，我们可以阅读优秀开源数据库的源码实现，跟踪调试了解整个数据库命令执行的过程；根据数据库命令的每一步执行，在代码跟进过程中思考如何优化和增加新功能。积极融入开源社区的各种活动，定期查看社区的问题。在解决社区用户汇报问题的过程中，对数据库知识做到整体地把握，着重深入某一具体方面的知识。</p>
+<p>以NOSQL数据库的学习为例，我们可以通过阅读Redis数据库源码，了解每种数据结构在内存里的组织方式，思考如何更好地存储复杂类型的数据结构。跟Memcached进行比较，分析两种做法的优劣。</p>
+<p>为了更好地研究数据库的实现，我们需要多动手，在实际项目中了解数据库的实现，通过开发新功能、优化老功能来巩固知识，同时兼顾数据库理论知识的学习。</p>
+<p><strong>问</strong>：如何保证缓存数据和数据库数据的一致性？</p>
+<p><strong>答</strong>：在大数据、高并发的情况下，很多业务系统都会采用“缓存+数据库”的方式，对缓存副本和数据库数据做同步处理。同步的方式主要有以下几种。</p>
+<ul>
+<li><p>自动失效: 通过设置过期时间让缓存中的数据自动失效，对数据一致性要求更高的业务，可以将过期时间设置得短一点</p>
+</li>
+<li><p>定时刷新: 通过后台设置定时刷新的线程，定时将数据库的数据同步到缓存中，这种模式适合对一致性要求不是很高的业务</p>
+</li>
+<li><p>同步更新：在更新完成数据库之后，直接更新缓存的数据。这样缓存的数据就永远在数据库之后更新，能够保证数据的一致性</p>
+</li>
+<li><p>中间件更新：通过中间件订阅数据库的binlog服务，感知数据库信息的变化在中间件上对缓存进行更新，这种模式能够快速感知数据库的变化并且不需要业务方去管理缓存，方便业务接入缓存系统</p>
+</li>
+</ul>
+<p><strong>问</strong>：谈谈分布式系统存储技术未来的方向？</p>
+<p>由于传统单机数据库在可扩展性上面临着巨大的挑战，而NOSQL并不能很好地支持关系型的数据库模型，NewSQL成为了目前分布式数据库存储技术最前沿的一个方向。NewSQL具有海量数据的存储管理并且能够保持传统数据库的ACID及SQL特性。</p>
+<p>NewSQL采用了大量的新技术。在存储方面，NewSQL采用以内存为主的存储，将主要的数据缓存于内存中，能够维持内存和持久化存储的数据比例，提高系统的性能；为了支持数据库的可扩展性，NewSQL通过数据分片的模式将数据分布到不同的group中，同时能够支持不同group的数据进行热迁移以达到数据的负载均衡；NewSQL在复制方面需要保证数据的一致性，事务的写入必须在被确认提交之前被确认并安装到所有副本；要做到高可用就需要从崩溃中恢复，相比传统的故障恢复，NewSQL还希望尽量减少故障恢复的时间。</p>
+<p>从技术角度来讲，NewSQL与传统数据库并不是完全不同的架构，NewSQL的新特点在于能够融合多方的技术，在一个独立的系统中进行实现，同时随着硬件技术的发展能够提供更可靠更具有扩展性的数据库服务。</p>
+<hr>
+<p>本文作者：六米，转载自<a href="https://mp.weixin.qq.com/s/wZVv0StwhkS5OLixwJ9MkA" target="_blank" rel="noopener">图灵访谈</a>，仅用于学习和交流目的，非商业转载请注明作译者、出处，并保留本文的原始链接。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201803191/" rel="external">【转载】 图灵访谈：Redis带你尽享丝滑</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201803191/" target="_blank" rel="external">https://zhouie.cn/posts/201803191/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201803191/&sharesource=qzone&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201803191/&srcUrl=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201803191/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201803191/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201803191/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201803191/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201803191/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201804111/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【博客】 走进Markdown园子</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201803161/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【摘录】 Justin Frankel - Winapp的反斗奇星</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201803191/&sharesource=qzone&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201803191/&srcUrl=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201803191/&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201803191/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201803191/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201803191/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【转载】 图灵访谈：Redis带你尽享丝滑》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201803191/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201803191/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201803191/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

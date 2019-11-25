@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【数通】 IP编址分类和子网划分 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="IP编址,CIDR,VLSM">
+    <meta name="description" content="IP地址IP地址唯一标示一台网络设备  IP地址：192.168.1.11-&amp;gt; 经二进制转化：1 1 0 0 0 0 0 0 . 1 0 1 0 1 0 0 0.0 0 0 0 0 0 0 1.0 0 0 0 1 0 1 1  IP地址组成 网络部分（后来会从主机部分划出几位子网部分，也算网络部分）IP地址的网络部分称为网络地址，网络地址用于唯一地标识一个网段，或者若干网段的聚合，同一网段中">
+<meta name="keywords" content="IP编址,CIDR,VLSM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数通】 IP编址分类和子网划分">
+<meta property="og:url" content="https://zhouie.cn/posts/201907221/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="IP地址IP地址唯一标示一台网络设备  IP地址：192.168.1.11-&amp;gt; 经二进制转化：1 1 0 0 0 0 0 0 . 1 0 1 0 1 0 0 0.0 0 0 0 0 0 0 1.0 0 0 0 1 0 1 1  IP地址组成 网络部分（后来会从主机部分划出几位子网部分，也算网络部分）IP地址的网络部分称为网络地址，网络地址用于唯一地标识一个网段，或者若干网段的聚合，同一网段中">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWNlZDdjOGE4Y2Y0Y2VmZjAucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWUwZjI2YWNiYjc3NDhkNDMucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTBmNWQ0NWUzNWRhMzUxNWMucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWY4NDU2MjZhNDhkYTlmMDQucG5n">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【数通】 IP编址分类和子网划分">
+<meta name="twitter:description" content="IP地址IP地址唯一标示一台网络设备  IP地址：192.168.1.11-&amp;gt; 经二进制转化：1 1 0 0 0 0 0 0 . 1 0 1 0 1 0 0 0.0 0 0 0 0 0 0 1.0 0 0 0 1 0 1 1  IP地址组成 网络部分（后来会从主机部分划出几位子网部分，也算网络部分）IP地址的网络部分称为网络地址，网络地址用于唯一地标识一个网段，或者若干网段的聚合，同一网段中">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWNlZDdjOGE4Y2Y0Y2VmZjAucG5n">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【数通】 IP编址分类和子网划分</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【数通】 IP编址分类和子网划分</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-22T10:25:35.000Z" itemprop="datePublished" class="page-time">
+  2019-07-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数通/">数通</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IP地址"><span class="post-toc-number">1.</span> <span class="post-toc-text">IP地址</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IP地址组成"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">IP地址组成</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#IP地址分类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">IP地址分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#私有IP地址"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">私有IP地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特殊IP地址"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">特殊IP地址</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用目的"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">使用目的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变长子网掩码VLSM"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">变长子网掩码VLSM</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无类别域间路由CIDR"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">无类别域间路由CIDR</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#无类别域间路由表示法"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">无类别域间路由表示法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#前缀路由聚合"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">前缀路由聚合</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#了解IPv6"><span class="post-toc-number">2.</span> <span class="post-toc-text">了解IPv6</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考文献</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2019-07-22-【数通】 IP编址分类和子网划分"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【数通】 IP编址分类和子网划分</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-22 10:25:35" datetime="2019-07-22T10:25:35.000Z"  itemprop="datePublished">2019-07-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数通/">数通</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        18 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址唯一标示一台网络设备</p>
+<blockquote>
+<p>IP地址：<code>192.168.1.11</code><br>-&gt; 经二进制转化：<code>1 1 0 0 0 0 0 0 . 1 0 1 0 1 0 0 0.0 0 0 0 0 0 0 1.0 0 0 0 1 0 1 1</code></p>
+</blockquote>
+<h4 id="IP地址组成"><a href="#IP地址组成" class="headerlink" title="IP地址组成"></a>IP地址组成</h4><ul>
+<li><p>网络部分（后来会从主机部分划出几位子网部分，也算网络部分）<br>IP地址的网络部分称为网络地址，网络地址用于唯一地标识一个网段，或者若干网段的聚合，同一网段中的网络设备有同样的网络地址。</p>
+</li>
+<li><p>主机部分<br>IP地址的主机部分称为主机地址，主机地址用于唯一的标识同一网段内的网络设备。</p>
+</li>
+</ul>
+<h4 id="IP地址分类"><a href="#IP地址分类" class="headerlink" title="IP地址分类"></a>IP地址分类</h4><p>常见的IP地址分为IPv4与IPv6两大类，我们这里只讨论32位的IPv4地址。</p>
+<p>为了和已存在的IP地址空间及IP数据报兼容，对IP地址的定义在1981年的RFC 791进行了修改。修改后的IP地址共有三种网络地址长度不同的单播地址（即A、B、C类地址）。如下所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWNlZDdjOGE4Y2Y0Y2VmZjAucG5n" alt="把IP地址分为A、B、C、D、E五类" title>
+                </div>
+                <div class="image-caption">把IP地址分为A、B、C、D、E五类</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWUwZjI2YWNiYjc3NDhkNDMucG5n" alt="每个类别所用的地址范围" title>
+                </div>
+                <div class="image-caption">每个类别所用的地址范围</div>
+            </figure>
+<blockquote>
+<p>注意一点：我们这里计算可用的主机地址时，总是2^N - 2，其中，N是主机地址的位数，减2是因为第一个（即主机地址全0）和最后一个地址（即主机地址全1）都是无效的。因此，对于用8位来表示主机地址的C类地址来说，最多可用的主机数就是2^N - 2 = 254。（后面也有详讲）</p>
+</blockquote>
+<p>其中，D类地址通常作为组播地址。E类地址保留用于科学研究。我们经常用到的是A、B、C三类地址。</p>
+<h4 id="私有IP地址"><a href="#私有IP地址" class="headerlink" title="私有IP地址"></a>私有IP地址</h4><p>私有IP地址可以理解为本地局域网上的IP，私有IP地址范围：</p>
+<ul>
+<li>A: <code>10.0.0.0</code>~<code>10.255.255.255</code> 即<code>10.0.0.0/8</code></li>
+<li>B: <code>172.16.0.0</code>~<code>172.31.255.255</code>即<code>172.16.0.0/12</code></li>
+<li>C: <code>192.168.0.0</code>~<code>192.168.255.255</code> 即<code>192.168.0.0/16</code></li>
+</ul>
+<p>这些地址是不会被Internet分配的，它们在Internet上也不会被路由，虽然它们不能直接和Internet网连接，但通过NAT（Network Address Translation，网络地址转换）技术手段把私有IP地址转换为Internet可识别的公有IP地址，仍旧可以和 Internet通讯。</p>
+<blockquote>
+<p>注意：现在进行IP地址规划时，我们通常在公司内部网络使用私有IP地址。比如，有些不需要与 Internet通讯的设备，如打印机、可管理集线器等可以使用这些地址，以节省IP地址资源。</p>
+</blockquote>
+<h4 id="特殊IP地址"><a href="#特殊IP地址" class="headerlink" title="特殊IP地址"></a>特殊IP地址</h4><p>IP地址用于唯一的标识一台网络设备，但并不是每一个IP地址都是可用的，一些特殊的IP地址被用于各种各样的其他用途，不能用于标识网络设备。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTBmNWQ0NWUzNWRhMzUxNWMucG5n" alt="特殊IP地址" title>
+                </div>
+                <div class="image-caption">特殊IP地址</div>
+            </figure>
+<ul>
+<li><p>主机部分全为“0”<br>对于主机部分全为“0”的IP地址，称为网络地址，网络地址用来标识一个网段。例如，A类地址<code>1.0.0.0</code>，私有地址<code>10.0.0.0</code>, <code>192.168.1.0</code>等。</p>
+</li>
+<li><p>主机部分全为“1”<br>对于主机部分全为“1”的IP地址，称为网段广播地址，广播地址用于标识一个网络的所有主机。例如，<code>10.255.255.255</code>, <code>192.168.1.255</code>等，路由器可以在<code>10.0.0.0</code>或者<code>192.168.1.0</code>等网段转发广播包。广播地址用于向本网段的所有节点发送数据包。</p>
+</li>
+<li><p>网络部分为127<br>对于网络部分为127的IP地址，例如<code>127.0.0.1</code>往往用于<strong>环回测试</strong>目的（环回测试是决定设备是否正常运行或是确定网络中失效节点的方式）。</p>
+</li>
+<li><p>全“0”的IP地址<br>全“0”的IP地址<code>0.0.0.0</code>代表所有的主机，华为Quidway系列路由器用0.0.0.0地址指定默认路由。</p>
+</li>
+<li><p>全“1”的IP地址<br>全“1”的IP地址<code>255.255.255.255</code>，也是广播地址（为受限广播地址”limited broadcast” destination address），但<code>255.255.255.255</code>代表所有主机，用来将一个分组以广播方式发送给本网络中的所有主机，路由器则阻挡该分组通过，将其广播功能限制在本网内部。</p>
+</li>
+</ul>
+<p>从上面可以看出，每一个网段都会有一些IP地址不能用作主机IP地址。</p>
+<p>【例1】B类网段<code>172.16.0.0</code>, 有16个主机位,因此有2^16 个IP地址，去掉一个网络地址<code>172.16.0.0</code>，一个广播地址<code>172.16.255.255</code>不能用作标识主机，那么共有2^16 -2个可用地址。</p>
+<p>【例2】C类网段<code>192.168.1.0</code>，有8个主机位，共有2^8=256个IP地址，去掉一个网络地址<code>192.168.1.0</code>，一个广播地址<code>192.168.1.255</code>，共有254个可用主机地址。</p>
+<p>现在，我们可以这样计算每一个网段可用主机地址：假定这个网段的主机部分位数为n，那么可用的主机地址个数为2^n-2个。</p>
+<p>###子网掩码SM</p>
+<h4 id="使用目的"><a href="#使用目的" class="headerlink" title="使用目的"></a>使用目的</h4><p>网络设备使用子网掩码（subnet masking）决定IP地址中哪部分为网络部分，哪部分为主机部分。</p>
+<p>子网掩码的好处就是：<strong>不管网络有没有划分子网，只要把子网掩码和IP地址进行逐位的“与”运算（AND）即得出网络地址来。这样在路由器处理到来的分组时就可以采用同样的方法。</strong></p>
+<p>子网掩码使用与IP地址一样的格式。子网掩码的网络部分和子网部分全都是1，主机部分全都是0。缺省状态下，如果没有进行子网划分：</p>
+<ul>
+<li>A类网络的子网掩码为<code>255.0.0.0</code></li>
+<li>B类网络的子网掩码为<code>255.255.0.0</code></li>
+<li>C类网络子网掩码为<code>255.255.255.0</code></li>
+</ul>
+<h4 id="变长子网掩码VLSM"><a href="#变长子网掩码VLSM" class="headerlink" title="变长子网掩码VLSM"></a>变长子网掩码VLSM</h4><p>引入子网划分的概念（<strong>子网的划分就是一个将主机部分的若干位分配到网络部分的过程</strong>）后，IPv4地址被分为三部分：<code>网络部分</code>（network）、<code>子网部分</code>（subnetwork，现在常被认为是网络部分的一部分——尽管它本来是“rest”部分的一部分）和<code>主机（host）部分</code>。</p>
+<blockquote>
+<p>注意：这里提到的“rest”部分就是指在没有引入子网划分时，自然状态下A、B、C、D、E类地址中的主机部分，这很好理解，毕竟子网划分来自于主机部分。</p>
+</blockquote>
+<p>例如，对于一个给定的A类网络：<code>10.0.0.0</code>，子网掩码：<code>255.255.0.0</code>可以将其划分为256个子网（从<code>10.0.0.0</code>到<code>10.255.0.0</code>）——第一个八位位组表示网络地址，第二个表示子网号，而最后两个表示主机部分。</p>
+<h4 id="无类别域间路由CIDR"><a href="#无类别域间路由CIDR" class="headerlink" title="无类别域间路由CIDR"></a>无类别域间路由CIDR</h4><p>无类别域间路由是 <strong>基于可变长子网掩码（VLSM）</strong>来进行任意长度的前缀的分配的，CIDR包括：</p>
+<ol>
+<li>指定任意长度的前缀的可变长子网掩码技术。遵从CIDR规则的地址有一个后缀说明前缀的位数，例如：<code>192.168.0.0/16</code>。这使得对日益缺乏的IPv4地址的使用更加有效。</li>
+<li>将多个连续的前缀聚合成超网，以及在互联网中，只要有可能，就显示为一个聚合的网络，因此在总体上可以减少路由表的表项数目。聚合使得互联网的路由表不用分为多级，并通过VLSM逆转“划分子网”的过程。</li>
+<li>根据机构的实际需要和短期预期需要而不是分类网络中所限定的过大或过小的地址块来管理IP地址的分配的过程。</li>
+</ol>
+<h5 id="无类别域间路由表示法"><a href="#无类别域间路由表示法" class="headerlink" title="无类别域间路由表示法"></a>无类别域间路由表示法</h5><p>无类别域间路由（Classless Inter-Domain Routing）表示方法给出的是<code>一个地址</code>加上<code>一个斜杠</code>以及<code>网络掩码的二进制表示法中“1”的位数</code>（即网络号中和网络掩码相关的是哪些位）。</p>
+<p>例如，<code>192.168 .1 .7/28</code>表示的是一个前28位被用作网络号的IP地址（和<code>255.255.255.240</code>所表示子网掩码的意思一样），具体来看：</p>
+<ul>
+<li>IP地址：<code>192.168 .1 .7</code>（11000000   10101000   00000001   00000111）</li>
+<li><p>子网掩码：<code>255.255.255 .240</code>（11111111    11111111     11111111      11110000）</p>
+<p>其中，子网掩码比特数：8 + 8 + 8+ 4 = 28，这个指的是子网掩码中连续1的个数。因此，便有子网掩码的一种表示方法：<code>192.168.1.7/28</code>！</p>
+</li>
+</ul>
+<h5 id="前缀路由聚合"><a href="#前缀路由聚合" class="headerlink" title="前缀路由聚合"></a>前缀路由聚合</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWY4NDU2MjZhNDhkYTlmMDQucG5n" alt="无类别域间路由（CIDR）" title>
+                </div>
+                <div class="image-caption">无类别域间路由（CIDR）</div>
+            </figure>
+<p>CIDR的另一个好处就是可以进行前缀路由聚合。如上图所示，一个ISP被分配了一些C类网络，<code>198.168.0.0</code>~<code>198.168.255.0</code>。这个ISP准备把这些C类网络分配给各个用户群，目前已经分配了三个C类网段给用户。如果没有实施CIDR技术，ISP的路由器的路由表中会有三条下连网段的路由条目，并且会把它通告给Internet上的路由器。</p>
+<p>通过实施CIDR技术，我们可以在ISP的路由器上把这三条网段<code>198.168.1.0</code>，<code>198.168.2.0</code>，<code>198.168.3.0</code>汇聚成一条路由<code>198.168.0.0/16</code>。这样ISP路由器只向Internet通告<code>198.168.0.0/16</code>这一条路由，大大减少了路由表的数目。这有效地减少了要对外显示的网络数，防止了路由表爆炸，也遏制了互联网进一步扩大。</p>
+<blockquote>
+<p>注意，<strong>使用CIDR技术汇聚的网络地址的比特位必须是一致的</strong>，如上例所示。如果上图所示的ISP连接了一个<code>172.178.1.0</code>网段，这些网段路由将无法汇聚，无法实现CIDR技术。</p>
+</blockquote>
+<h3 id="了解IPv6"><a href="#了解IPv6" class="headerlink" title="了解IPv6"></a>了解IPv6</h3><p>过去通常把A类地址保留给政府机构，B类地址分配给中等规模的公司，C类地址分配给小单位。然而，随着互联网络飞速发展，再加上IP地址的浪费，IP地址已经非常紧张。</p>
+<p>因此，相应的科研组织已研究出128位的IPv6，其IP地址数量最高可达3.402823669 × 10^38个，届时每个人家居中的每件电器，每件对象，甚至地球上每一粒沙子都可以拥有自己的IP地址。</p>
+<p>IPv6地址为128位长，但通常写作8组，每组四个十六进制数的形式。例如：<code>2001:0db8:85a3:08d3:1319:8a2e:0370:7344</code>是一个合法的IPv6地址。</p>
+<p>如果四个数字都是0，可以被省略。例如：<code>2001:0db8:85a3:0000:1319:8a2e:0370:7344</code>等价于<code>2001:0db8:85a3::1319:8a2e:0370:7344</code>。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ul>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdownload.csdn.net%2Fdownload%2Fjave_f%2F11431480" target="_blank" rel="noopener">《计算机网络》谢希仁. pdf版</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201907221/" rel="external">【数通】 IP编址分类和子网划分</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201907221/" target="_blank" rel="external">https://zhouie.cn/posts/201907221/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CIDR/">CIDR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IP编址/">IP编址</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VLSM/">VLSM</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201907221/&sharesource=qzone&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201907221/&srcUrl=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201907221/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201907221/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201907221/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201907221/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201907221/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201907251/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【数通】 VRRP虚拟路由冗余协议的配置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201907211/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【数通】 某些基本知识梳理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201907221/&sharesource=qzone&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201907221/&srcUrl=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201907221/&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201907221/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201907221/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201907221/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【数通】 IP编址分类和子网划分》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201907221/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201907221/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201907221/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

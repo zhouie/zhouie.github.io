@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理 - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="Oracle数据库,Oracle 11g,SSH">
+    <meta name="description" content="写在前面贴上与这次安装相关文件、安装包的链接：  实体机（客户端）链接：https://pan.baidu.com/s/13lpEv04jb1AL41yFRkU6kQ提取码：dqa0 虚拟机（服务器端）链接：https://pan.baidu.com/s/1AYuwHc2ECMawgc8sEf-H7Q提取码：jel2   如遇链接失效，Mail To nanzhouieATqq.com!  实验内">
+<meta name="keywords" content="Oracle数据库,Oracle 11g,SSH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理">
+<meta property="og:url" content="https://zhouie.cn/posts/201903241/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="写在前面贴上与这次安装相关文件、安装包的链接：  实体机（客户端）链接：https://pan.baidu.com/s/13lpEv04jb1AL41yFRkU6kQ提取码：dqa0 虚拟机（服务器端）链接：https://pan.baidu.com/s/1AYuwHc2ECMawgc8sEf-H7Q提取码：jel2   如遇链接失效，Mail To nanzhouieATqq.com!  实验内">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-1dc8a0a2960422f5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-4b75778372c442ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-acced08f8525796b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-8fb3715030425bd8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-2bb2d34a1a21ff84?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-52b8825356126603?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0bfa487e1e68f80d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-413813bdd5b19593?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0e99996534117d4f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-8eedb77173b43bf1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-46394392a2474745?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-07bf8f7f631a4741?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0603fef4e3569852?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-ed49201f938c9643?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-2ad8b0f3de4628b0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-dee547f1b175a02f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-cbc27bf4b8494221?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-7f9ad57bb86e1110?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-de9aafeda5b4bb13?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-28d397aece469d02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-78b360ac2f6ac152?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-ff2980bb88e24cd1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-e2f14184bd102626?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-20dfc120af86a0f6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-ec32de2ea25dc77c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-35b6376c10ba97db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-bbd5d043cd714ddd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-65d8235b39eabd98?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-451dd8eaeb25a446?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-62e9c091087ac224?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-46af35de1b2f0b0b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-8ee997ffa3c0c518?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0f5989ece6c27129?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-9f56bcb83fdc0eba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-5256678d831edec4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-f1fcbd9f66f93d70?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-01ef04431cfb57ed?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-6421cad657428e32?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-98231589a401ccfa?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-4b6746a3369b4809?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-97739298d1c072f1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-140897e6f9719600?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-5bbe51db491c1bde?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-24d4f4fc62da0ba4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-96b3632e4be7814e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-60a9d80d7e8b3e3e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-25e33f069563f53d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-8b75d23f71bb816c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-46beba552589c9a9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-a019ff1e3459cf01?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-cc266ba67ec12f0d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-f0cfdb00504ac935?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-c9ff6c61433c79cb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-927087915ef45538?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-6e86aa7a4da4062b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-fd459eee5572500b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-b09217e5837d98d3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-24b1520095a04c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-d9044bea068e60db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-d483da5e7162ba69?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-ffffb128c20a817f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-0826e3f4a60e55ee?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-bb8f17a7ed7beb34?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-ce0d8da4aa41d616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9934558-c987f4c00df89814?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理">
+<meta name="twitter:description" content="写在前面贴上与这次安装相关文件、安装包的链接：  实体机（客户端）链接：https://pan.baidu.com/s/13lpEv04jb1AL41yFRkU6kQ提取码：dqa0 虚拟机（服务器端）链接：https://pan.baidu.com/s/1AYuwHc2ECMawgc8sEf-H7Q提取码：jel2   如遇链接失效，Mail To nanzhouieATqq.com!  实验内">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/9934558-1dc8a0a2960422f5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-24T00:03:09.000Z" itemprop="datePublished" class="page-time">
+  2019-03-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle数据库/">Oracle数据库</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实验内容"><span class="post-toc-number">2.</span> <span class="post-toc-text">实验内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实验前期准备"><span class="post-toc-number">3.</span> <span class="post-toc-text">实验前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#软件目录"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">软件目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#准备配置文件、脚本文件"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">准备配置文件、脚本文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实验方案（具体步骤）"><span class="post-toc-number">4.</span> <span class="post-toc-text">实验方案（具体步骤）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在虚拟机上安装Oracle-Linux"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">在虚拟机上安装Oracle Linux</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在Linux上安装Oracle-11g-R2-服务器端"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">在Linux上安装Oracle 11g R2(服务器端)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#硬件环境监测"><span class="post-toc-number">4.2.1.1.</span> <span class="post-toc-text">硬件环境监测</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#检查各种补丁包、函数依赖包"><span class="post-toc-number">4.2.1.2.</span> <span class="post-toc-text">检查各种补丁包、函数依赖包</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#修改用户环境配置等参数文件"><span class="post-toc-number">4.2.1.3.</span> <span class="post-toc-text">修改用户环境配置等参数文件</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#切换到Oracle用户"><span class="post-toc-number">4.2.1.4.</span> <span class="post-toc-text">切换到Oracle用户</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#安装Oracle-11g"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">安装Oracle 11g</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#服务端NETCA创建配置监听程序"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">服务端NETCA创建配置监听程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#执行netca指令"><span class="post-toc-number">4.2.3.1.</span> <span class="post-toc-text">执行netca指令</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#接下来的界面弹窗中直接默认Next"><span class="post-toc-number">4.2.3.2.</span> <span class="post-toc-text">接下来的界面弹窗中直接默认Next</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#建立一个数据库实例DBCA建库"><span class="post-toc-number">4.2.4.</span> <span class="post-toc-text">建立一个数据库实例DBCA建库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#设置数据库名和SID"><span class="post-toc-number">4.2.4.1.</span> <span class="post-toc-text">设置数据库名和SID</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#不启用OEM"><span class="post-toc-number">4.2.4.2.</span> <span class="post-toc-text">不启用OEM</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#设置密码"><span class="post-toc-number">4.2.4.3.</span> <span class="post-toc-text">设置密码</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#不需修改、直接next"><span class="post-toc-number">4.2.4.4.</span> <span class="post-toc-text">不需修改、直接next</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#不启用快速恢复区、不启用归档"><span class="post-toc-number">4.2.4.5.</span> <span class="post-toc-text">不启用快速恢复区、不启用归档</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#不需修改、直接next-1"><span class="post-toc-number">4.2.4.6.</span> <span class="post-toc-text">不需修改、直接next</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#服务端启用ssh服务"><span class="post-toc-number">4.2.5.</span> <span class="post-toc-text">服务端启用ssh服务</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在主机上安装Oracle-11g-Client-客户端"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">在主机上安装Oracle 11g Client(客户端)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#检查ssh服务是否正常"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">检查ssh服务是否正常</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装Oracle客户端并配置本地网络服务监听"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">安装Oracle客户端并配置本地网络服务监听</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#点击setup-exe启动安装"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">点击setup.exe启动安装</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#配置前的一些准备"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">配置前的一些准备</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#本地网络服务名配置"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">本地网络服务名配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三方软件Toad-for-Oracle连接数据库"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">第三方软件Toad for Oracle连接数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#TNS检测"><span class="post-toc-number">4.5.1.</span> <span class="post-toc-text">TNS检测</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用Toad连接"><span class="post-toc-number">4.5.2.</span> <span class="post-toc-text">使用Toad连接</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立HR的模式（服务器端进行）"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">建立HR的模式（服务器端进行）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#准备脚本文件"><span class="post-toc-number">4.6.1.</span> <span class="post-toc-text">准备脚本文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#执行脚本文件"><span class="post-toc-number">4.6.2.</span> <span class="post-toc-text">执行脚本文件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实验出现的问题及解决办法"><span class="post-toc-number">5.</span> <span class="post-toc-text">实验出现的问题及解决办法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文章"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考文章</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最后一点说明"><span class="post-toc-number">7.</span> <span class="post-toc-text">最后一点说明</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2019-03-24-【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-24 00:03:09" datetime="2019-03-24T00:03:09.000Z"  itemprop="datePublished">2019-03-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Oracle数据库/">Oracle数据库</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        27 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>贴上与这次安装相关文件、安装包的链接：</p>
+<ul>
+<li>实体机（客户端）<br>链接：<a href="https://pan.baidu.com/s/13lpEv04jb1AL41yFRkU6kQ" target="_blank" rel="noopener">https://pan.baidu.com/s/13lpEv04jb1AL41yFRkU6kQ</a><br>提取码：<code>dqa0</code></li>
+<li>虚拟机（服务器端）<br>链接：<a href="https://pan.baidu.com/s/1AYuwHc2ECMawgc8sEf-H7Q" target="_blank" rel="noopener">https://pan.baidu.com/s/1AYuwHc2ECMawgc8sEf-H7Q</a><br>提取码：<code>jel2</code></li>
+</ul>
+<blockquote>
+<p>如遇链接失效，Mail To <code>nanzhouieATqq.com</code>!</p>
+</blockquote>
+<h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><ol>
+<li>安装 <code>virtualbox</code> 虚拟机（我更喜欢的是<code>VMware</code>）；</li>
+<li>在虚拟机上安装<code>Oracle Linux</code>；</li>
+<li>在<code>Oracle Linux</code>上安装<code>Oracle 11g</code>；</li>
+<li>配置虚拟机的网络，数据库服务器的监听，<code>TNS</code>，使得可以远程访问数据库服务器。</li>
+<li>采用远程登录方式，使用<code>ssh</code>登录数据库服务器，进行数据库实例管理。</li>
+<li>采用远程访问方式，使用 <code>i*sqlplus</code>或者第三方管理软件登录服务器，进行数据库实例管理。</li>
+<li>建立<code>HR</code>的模式（建议使用官方脚本）。</li>
+</ol>
+<h3 id="实验前期准备"><a href="#实验前期准备" class="headerlink" title="实验前期准备"></a>实验前期准备</h3><h4 id="软件目录"><a href="#软件目录" class="headerlink" title="软件目录"></a>软件目录</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">版本号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Vmware虚拟机</td>
+<td style="text-align:center">15.0.0-full-10134415-64bit</td>
+</tr>
+<tr>
+<td style="text-align:center">linux_11gR2_database_1of2</td>
+<td style="text-align:center">11.2.0.1.0 - 64bit</td>
+</tr>
+<tr>
+<td style="text-align:center">Putty.exe</td>
+<td style="text-align:center">Release 0.70-64bit</td>
+</tr>
+<tr>
+<td style="text-align:center">Toad for oracle</td>
+<td style="text-align:center">12.8.0.49 -32bit</td>
+</tr>
+<tr>
+<td style="text-align:center">Oracle_11gR2_client</td>
+<td style="text-align:center">11g Release2 (11.2)-32bit</td>
+</tr>
+<tr>
+<td style="text-align:center">Oracle Linux文件(DOC-1002902.ova)</td>
+<td style="text-align:center">Oracle Linux x64</td>
+</tr>
+</tbody>
+</table>
+<h4 id="准备配置文件、脚本文件"><a href="#准备配置文件、脚本文件" class="headerlink" title="准备配置文件、脚本文件"></a>准备配置文件、脚本文件</h4><ul>
+<li>在Oracle服务器端建立<code>HR(Human Resource)</code>模式所需的脚本执行文件；</li>
+<li>Oracle客户端配置<code>TNS</code>服务所需要的<code>tnsname.ora</code>、<code>listener.ora</code>文件。</li>
+</ul>
+<blockquote>
+<p>ps：以上这些安装、配置、脚本文件在上面我分享的百度云链接文件中都能找到。</p>
+</blockquote>
+<h3 id="实验方案（具体步骤）"><a href="#实验方案（具体步骤）" class="headerlink" title="实验方案（具体步骤）"></a>实验方案（具体步骤）</h3><h4 id="在虚拟机上安装Oracle-Linux"><a href="#在虚拟机上安装Oracle-Linux" class="headerlink" title="在虚拟机上安装Oracle Linux"></a>在虚拟机上安装Oracle Linux</h4><ol>
+<li>在虚拟机中导入老师提供的 <code>DOC-1002902.ova</code>文件，由于实验室32位PC机的原因，导入过程总是以失败结束；因此改选<code>64位PC机(配载VM虚拟机)</code>来操作。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-1dc8a0a2960422f5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-4b75778372c442ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ol start="2">
+<li>在VM虚拟机成功安装<code>Oracle linux</code>（我的账户登录密码 <del>oracle</del> ），可以去设置语言、时区、用户名及密码等。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-acced08f8525796b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ol>
+<h4 id="在Linux上安装Oracle-11g-R2-服务器端"><a href="#在Linux上安装Oracle-11g-R2-服务器端" class="headerlink" title="在Linux上安装Oracle 11g R2(服务器端)"></a>在Linux上安装Oracle 11g R2(服务器端)</h4><h5 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h5><h6 id="硬件环境监测"><a href="#硬件环境监测" class="headerlink" title="硬件环境监测"></a>硬件环境监测</h6><table>
+<thead>
+<tr>
+<th style="text-align:center">Content</th>
+<th style="text-align:center">Instruction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">检查物理内存</td>
+<td style="text-align:center"><code>grep MemTotal /proc/meminfo</code></td>
+</tr>
+<tr>
+<td style="text-align:center">查看交换分区</td>
+<td style="text-align:center"><code>grep SwapTotal /proc/meminfo</code></td>
+</tr>
+<tr>
+<td style="text-align:center">查看当前内存使用情况</td>
+<td style="text-align:center"><code>free</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>PS：这一类指令可以有很多，但其实只要在之前导入虚拟机文件过程没有什么异常，不是很有必要去了解这些硬件环境信息，那么这一步可以跳过。</p>
+</blockquote>
+<h6 id="检查各种补丁包、函数依赖包"><a href="#检查各种补丁包、函数依赖包" class="headerlink" title="检查各种补丁包、函数依赖包"></a>检查各种补丁包、函数依赖包</h6><ul>
+<li><p>方法：通过上网查找到需要的函数依赖包有以下这些：</p>
+  <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">binutils<span class="number">-2.17</span><span class="number">.50</span><span class="number">.0</span><span class="number">.6</span></span><br><span class="line">compat-libstdc++<span class="number">-33</span><span class="number">-3.2</span><span class="number">.3</span></span><br><span class="line">compat-libstdc++<span class="number">-33</span><span class="number">-3.2</span><span class="number">.3</span> (<span class="number">32</span> bit)</span><br><span class="line">elfutils-libelf<span class="number">-0.125</span></span><br><span class="line">elfutils-libelf-devel<span class="number">-0.125</span></span><br><span class="line">gcc<span class="number">-4.1</span><span class="number">.2</span></span><br><span class="line">gcc-c++<span class="number">-4.1</span><span class="number">.2</span></span><br><span class="line">glibc<span class="number">-2.5</span><span class="number">-24</span></span><br><span class="line">glibc<span class="number">-2.5</span><span class="number">-24</span> (<span class="number">32</span> bit)</span><br><span class="line">glibc-common<span class="number">-2.5</span></span><br><span class="line">glibc-devel<span class="number">-2.5</span></span><br><span class="line">glibc-devel<span class="number">-2.5</span> (<span class="number">32</span> bit)</span><br><span class="line">glibc-headers<span class="number">-2.5</span></span><br><span class="line">ksh<span class="number">-20060214</span></span><br><span class="line">libaio<span class="number">-0.3</span><span class="number">.106</span></span><br><span class="line">libaio<span class="number">-0.3</span><span class="number">.106</span> (<span class="number">32</span> bit)</span><br><span class="line">libaio-devel<span class="number">-0.3</span><span class="number">.106</span></span><br><span class="line">libaio-devel<span class="number">-0.3</span><span class="number">.106</span> (<span class="number">32</span> bit)</span><br><span class="line">libgcc<span class="number">-4.1</span><span class="number">.2</span></span><br><span class="line">libgcc<span class="number">-4.1</span><span class="number">.2</span> (<span class="number">32</span> bit)</span><br><span class="line">libstdc++<span class="number">-4.1</span><span class="number">.2</span></span><br><span class="line">libstdc++<span class="number">-4.1</span><span class="number">.2</span> (<span class="number">32</span> bit)</span><br><span class="line">libstdc++-devel <span class="number">4.1</span><span class="number">.2</span></span><br><span class="line">make<span class="number">-3.81</span></span><br><span class="line">sysstat<span class="number">-7.0</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过类似重复以下的操作，借助root用户终端 <code>yum search/install</code> 命令将这些未安装的依赖包全部安装到服务端。</p>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-8fb3715030425bd8?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-2bb2d34a1a21ff84?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" title>
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<ul>
+<li>然后，再使用<code>yum</code>快速安装oracle预装环境——<code>yum install oracle-rdbms-server-11gR2-preinstall</code></li>
+</ul>
+<h6 id="修改用户环境配置等参数文件"><a href="#修改用户环境配置等参数文件" class="headerlink" title="修改用户环境配置等参数文件"></a>修改用户环境配置等参数文件</h6><ul>
+<li><p>通过<code>vi .bash_profile</code>命令进入编辑界面，点击<code>i</code>进入<code>insert模式</code>，就可以写入以下数据了，写完数据后，点击<code>ESC</code>退出<code>insert模式</code>敲入<code>:wq</code> 保存本次修改并回到终端。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ORACLE_BASE=/u01/app/oracle</span><br><span class="line">ORACLE_HOME=<span class="variable">$ORACLE_BASE</span>/product/11.2.0/db_1</span><br><span class="line">ORACLE_SID=prod 			<span class="comment">#这个位置填写的是Service_name</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <code>/etc/hosts</code> ,增加 <code>ip地址</code> 和 <code>主机名</code> 的对应关系，按照和上面同样的方法，添加下面这条：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.216.128  docker.oracleworld.com  #ip地址 hostname</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：如果出现 <code>其他IP地址</code> 与 <code>hostname</code> 的对应关系，应当在前面加上<code>#</code>注释掉或者直接删掉。</p>
+</blockquote>
+<ul>
+<li>同样的方法，通过终端<code>vi mk_dir.sh</code> 添入以下数据  <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /u01/app/oraInventory</span><br><span class="line">chmod -R <span class="number">775</span> /u01/app/oraInventory</span><br><span class="line"><span class="built_in">mkdir</span> -p /u01/app/oracle</span><br><span class="line"><span class="built_in">mkdir</span> /u01/app/oracle/cfgtoollogs</span><br><span class="line">chown -R oracle:oinstall  /u01</span><br><span class="line">chmod -R <span class="number">775</span> /u01/app/oracle</span><br><span class="line"><span class="built_in">mkdir</span> -p /u01/app/oracle/product/<span class="number">11</span>.<span class="number">2</span>.<span class="number">0</span>/db_1</span><br><span class="line">chown -Roracle:oinstall/u01/app/oracle/product/<span class="number">11</span>.<span class="number">2</span>.<span class="number">0</span>/db_1</span><br><span class="line">chmod -R <span class="number">775</span> /u01/app/oracle/product/<span class="number">11</span>.<span class="number">2</span>.<span class="number">0</span>/db_1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="切换到Oracle用户"><a href="#切换到Oracle用户" class="headerlink" title="切换到Oracle用户"></a>切换到Oracle用户</h6><p>去设置里面找到<code>users</code>，解锁并修改已经生成的<code>oracle</code>用户密码，再切换用户登录到<code>oracle</code>下。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-52b8825356126603?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h5 id="安装Oracle-11g"><a href="#安装Oracle-11g" class="headerlink" title="安装Oracle 11g"></a>安装Oracle 11g</h5><p>在终端输入命令：<code>unzip oracle11g 11.2.0.4</code> 两个安装文件（也可以手动合并到同一个文件夹下），进入安装文件中的目录<code>database</code>，运行命令: <code>./runInstaller</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0bfa487e1e68f80d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>同时，如果由于环境配置的原因，发现随后<code>安装界面出现乱码</code>，那么最好在执行安装之前添上这样一条语句：<code>export LANG=en_US_UTF-8</code>。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-413813bdd5b19593?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>在随后出现的安装界面中，依次选择如下：</p>
+<ul>
+<li>注意:过程中可能省去了一些安装界面（默认<code>Next</code>即可） <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0e99996534117d4f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>这里不填email等直接<code>next</code>，出现弹窗点击<code>Yes</code>；<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-8eedb77173b43bf1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>在接下来的界面中，依次选 <code>install software only</code>。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-46394392a2474745?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>选择单实例类型的数据库<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-07bf8f7f631a4741?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>选择oracle的语言，选择英文<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0603fef4e3569852?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>数据库类型选择企业版<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-ed49201f938c9643?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>这里注意查看<code>Oracle_Base</code>路径和<code>Oracle_home</code>路径，必须保证和用户的初始化参数文件一致<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-2ad8b0f3de4628b0?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>设置 <code>INVENTORY DIRECTORY</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-dee547f1b175a02f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>检查<code>oracle</code>用户所属的组<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-cbc27bf4b8494221?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li><code>preinstall</code>检查阶段，监测<code>oracle</code>所依赖的软件包，重新安装缺失的软件包，如果仍然有错误，那么全部忽略即可<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-7f9ad57bb86e1110?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>最后一步监测<code>oracle</code>的情况<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-de9aafeda5b4bb13?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>久违的安装界面<br>安装到这个步骤，基本上问题不多了, <code>copying files</code> 阶段时，<code>root</code>模式下开一个终端，进入安装目录下的<code>sysman/lib</code>，编辑<code>ins_emagent.mk</code>文件。把 <code>$(MK_EMAGENT_NMECTL)</code>替换成<code>$(MK_EMAGENT_NMECTL) -lnnz11</code> <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-28d397aece469d02?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+同时这个过程中有可能会有一个提示对话框，然后按照指定路径及说明方法运行两个脚本。<br>打开终端，通过<code>su – root</code>切换到<code>root</code>用户，再通过<code>bash</code>命令依次执行对应目录的两个脚本，然后再来这个弹窗界面点击<code>OK</code>即可。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-78b360ac2f6ac152?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-ff2980bb88e24cd1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>随后，就可以点击<code>next</code>，出现如下界面，表示在虚拟机这边安装服务端的<code>Oracle 11g</code>就已经成功了<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-e2f14184bd102626?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h5 id="服务端NETCA创建配置监听程序"><a href="#服务端NETCA创建配置监听程序" class="headerlink" title="服务端NETCA创建配置监听程序"></a>服务端NETCA创建配置监听程序</h5><h6 id="执行netca指令"><a href="#执行netca指令" class="headerlink" title="执行netca指令"></a>执行netca指令</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-20dfc120af86a0f6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-ec32de2ea25dc77c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="接下来的界面弹窗中直接默认Next"><a href="#接下来的界面弹窗中直接默认Next" class="headerlink" title="接下来的界面弹窗中直接默认Next"></a>接下来的界面弹窗中直接默认Next</h6><p>在选择TCP/IP端口号时，可能会出现一个弹窗提示：默认的1521端口可能被占用。通过查找并没有发现被占用问题，因此选择Yes继续。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-35b6376c10ba97db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-bbd5d043cd714ddd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h5 id="建立一个数据库实例DBCA建库"><a href="#建立一个数据库实例DBCA建库" class="headerlink" title="建立一个数据库实例DBCA建库"></a>建立一个数据库实例DBCA建库</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-65d8235b39eabd98?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-451dd8eaeb25a446?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-62e9c091087ac224?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-46af35de1b2f0b0b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="设置数据库名和SID"><a href="#设置数据库名和SID" class="headerlink" title="设置数据库名和SID"></a>设置数据库名和SID</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-8ee997ffa3c0c518?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="不启用OEM"><a href="#不启用OEM" class="headerlink" title="不启用OEM"></a>不启用OEM</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0f5989ece6c27129?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-9f56bcb83fdc0eba?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="不需修改、直接next"><a href="#不需修改、直接next" class="headerlink" title="不需修改、直接next"></a>不需修改、直接next</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-5256678d831edec4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="不启用快速恢复区、不启用归档"><a href="#不启用快速恢复区、不启用归档" class="headerlink" title="不启用快速恢复区、不启用归档"></a>不启用快速恢复区、不启用归档</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-f1fcbd9f66f93d70?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h6 id="不需修改、直接next-1"><a href="#不需修改、直接next-1" class="headerlink" title="不需修改、直接next"></a>不需修改、直接next</h6><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-01ef04431cfb57ed?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-6421cad657428e32?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-98231589a401ccfa?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-4b6746a3369b4809?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>至此，Oracle服务端实例数据库创建完毕。</p>
+<h5 id="服务端启用ssh服务"><a href="#服务端启用ssh服务" class="headerlink" title="服务端启用ssh服务"></a>服务端启用ssh服务</h5><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-97739298d1c072f1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="在主机上安装Oracle-11g-Client-客户端"><a href="#在主机上安装Oracle-11g-Client-客户端" class="headerlink" title="在主机上安装Oracle 11g Client(客户端)"></a>在主机上安装Oracle 11g Client(客户端)</h4><h5 id="检查ssh服务是否正常"><a href="#检查ssh服务是否正常" class="headerlink" title="检查ssh服务是否正常"></a>检查ssh服务是否正常</h5><p>下载<code>putty.exe</code>，打开以后，安装下图填入相对应信息（虚拟机IP地址可以在网络设置中找到，同时，建议虚拟机端网络连接方式选择仅主机模式）进行测试（确保虚拟机处于开启状态）。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-140897e6f9719600?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-5bbe51db491c1bde?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h4 id="安装Oracle客户端并配置本地网络服务监听"><a href="#安装Oracle客户端并配置本地网络服务监听" class="headerlink" title="安装Oracle客户端并配置本地网络服务监听"></a>安装Oracle客户端并配置本地网络服务监听</h4><h5 id="点击setup-exe启动安装"><a href="#点击setup-exe启动安装" class="headerlink" title="点击setup.exe启动安装"></a>点击setup.exe启动安装</h5><ul>
+<li>安装过程中，除修改安装路径外，其余直接默认Next即可。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-24d4f4fc62da0ba4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>选择管理员选项<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-96b3632e4be7814e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h5 id="配置前的一些准备"><a href="#配置前的一些准备" class="headerlink" title="配置前的一些准备"></a>配置前的一些准备</h5><ul>
+<li>将之前准备好的 <code>listener.ora</code>、<code>tnsnames.ora</code>文件（两个文件里面的内容如下所示）放到如下所示目录下。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-60a9d80d7e8b3e3e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-25e33f069563f53d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-8b75d23f71bb816c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>同时，在环境变量中添加以下系统变量。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-46beba552589c9a9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>在ssh服务控制终端执行如下（开启数据库、开启监听）<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-a019ff1e3459cf01?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-cc266ba67ec12f0d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h5 id="本地网络服务名配置"><a href="#本地网络服务名配置" class="headerlink" title="本地网络服务名配置"></a>本地网络服务名配置</h5><p>在所有程序中找到<code>Net Configuration Assistant</code>，进入配置界面操作如下。在测试连接过程中更改登录如果忘了数据库服务端密码（以<code>sys</code>用户为例），则需要重新给<code>sys</code>设置密码（详见后面的实验问题及解决办法）。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-f0cfdb00504ac935?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-c9ff6c61433c79cb?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-927087915ef45538?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-6e86aa7a4da4062b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-fd459eee5572500b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h4 id="第三方软件Toad-for-Oracle连接数据库"><a href="#第三方软件Toad-for-Oracle连接数据库" class="headerlink" title="第三方软件Toad for Oracle连接数据库"></a>第三方软件Toad for Oracle连接数据库</h4><h5 id="TNS检测"><a href="#TNS检测" class="headerlink" title="TNS检测"></a>TNS检测</h5><p>进入<code>cmd</code>测试如下，说明数据库监听配置无误<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-b09217e5837d98d3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h5 id="使用Toad连接"><a href="#使用Toad连接" class="headerlink" title="使用Toad连接"></a>使用Toad连接</h5><p>打开<code>Toad for Oracle</code>中的<code>toad.exe</code>启动，输入数据库服务端用户名以及密码后成功连接会出现如下的工作界面。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-24b1520095a04c3f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-d9044bea068e60db?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure> </p>
+<h4 id="建立HR的模式（服务器端进行）"><a href="#建立HR的模式（服务器端进行）" class="headerlink" title="建立HR的模式（服务器端进行）"></a>建立HR的模式（服务器端进行）</h4><h5 id="准备脚本文件"><a href="#准备脚本文件" class="headerlink" title="准备脚本文件"></a>准备脚本文件</h5><p>在如下所示目录中，将已准备好的脚本文件粘贴过来<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-d483da5e7162ba69?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h5 id="执行脚本文件"><a href="#执行脚本文件" class="headerlink" title="执行脚本文件"></a>执行脚本文件</h5><p>进入数据库层面，按照下面流程执行<code>hr_main.sql</code>这个脚本文件设置参数，就可以解锁HR用户并构建<code>HR模式</code>，且数据表中都有初始样例数据。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-ffffb128c20a817f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h3 id="实验出现的问题及解决办法"><a href="#实验出现的问题及解决办法" class="headerlink" title="实验出现的问题及解决办法"></a>实验出现的问题及解决办法</h3><ol>
+<li>第一次尝试安装时，总是在<code>Linking Text File</code>出失败，且界面卡死在那里。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-0826e3f4a60e55ee?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+</ol>
+<ul>
+<li>解决办法：<br>虚拟机重新启动并通过恢复快照这一特性重新进行安装，主要在对那些依赖包的安装过程要尤为注意，一个一个一次检查确保已安装，虽然方法很笨拙，但至少不会出错。<br>同时，在<code>Prerequisite Checks</code>阶段忽略所有错误继续下一步，随后完成安装。</li>
+</ul>
+<ol start="2">
+<li>整个过程中经常会出现各种类型的错误,下面列出一些我遇到的这类问题</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">错误类型</th>
+<th style="text-align:center">错误原因</th>
+<th style="text-align:center">解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>ORA-12162</code></td>
+<td style="text-align:center"><code>TNS:net service name is incorrectly specified</code></td>
+<td style="text-align:center">给出ORACLE_SID（可赋临时值或是去host文件添加参数），重新尝试登录数据库服务端</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>TNS-12545</code></td>
+<td style="text-align:center"><code>Connect failed because target host or object does not exist</code></td>
+<td style="text-align:center">服务端root模式下修改host和listener.ora文件（即host文件里添上一条“IP地址 主机名”，listener文件里将host赋为修改后的主机名）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ORA-01078、LRM-00109</code></td>
+<td style="text-align:center"><code>Failure in processing system parameters</code></td>
+<td style="text-align:center">将<code>$ORACLE_BASE/admin/数据库名称/pfile</code>目录下的<code>init.ora.\********</code>形式的文件copy到<code>$ORACLE_HOME/dbs</code>目录下 <code>initoracle.ora</code>即可</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ORA-12514</code></td>
+<td style="text-align:center"><code>TNS 监听程序当前无法识别连接描述符中请求服务</code></td>
+<td style="text-align:center">listener.ora中添加：(SID_DESC =   (GLOBAL_DBNAME=全局数据库名)    (ORACLE_HOME =依照相对应的路径来填)    (SID_NAME = 数据库服务名)    )</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ORA-12154</code></td>
+<td style="text-align:center"><code>TNS无法解析指定的连接标识符</code></td>
+<td style="text-align:center">重新进行配置网络，在服务端查询此数据库服务下的服务名，并重新检查配置，填写相对应虚拟机的IP地址，对于账号、口令登陆的问题，需要去sysdba用户下去设置。</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>用户忘记了数据库服务端的口令，导致在本地客户端进行配置网络服务时总是出现口令错误的提示</li>
+</ol>
+<ul>
+<li>解决办法：按照下面的操作步骤进行，这样使用修改后的用户名和口令就可以测试成功了。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-bb8f17a7ed7beb34?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+只能选择用户状态是<code>open</code>的用户进行重新设置口令的处理<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-ce0d8da4aa41d616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
+<li><a href="http://www.cnblogs.com/iyoume2008/p/6986374.html" target="_blank" rel="noopener">⭐Oracle linux安装Oracle 11G</a></li>
+<li><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14198/scripts.htm#Cihgfecd" target="_blank" rel="noopener">HR Schema</a></li>
+<li><a href="https://blog.csdn.net/jave_f/article/details/78231905" target="_blank" rel="noopener">Oracle 11g中执行Execute的时候报异常ORA-01031的解决办法</a></li>
+<li><a href="https://blog.csdn.net/jave_f/article/details/78539082" target="_blank" rel="noopener">Oracle PL/SQL DBA 编程实践基础</a></li>
+<li><a href="https://blog.csdn.net/jave_f/article/details/77921442" target="_blank" rel="noopener">Oracle数据库任何用户密码都能以sysdba角色登入</a></li>
+<li><a href="https://blog.csdn.net/jave_f/article/details/77921554" target="_blank" rel="noopener">浅析Oracle PL/SQL 学习（部分）</a></li>
+<li><a href="https://jingyan.baidu.com/article/48a42057e29fb9a92425048d.html" target="_blank" rel="noopener">Oracle 11gR2安装乱码解决方案</a></li>
+</ul>
+<h3 id="最后一点说明"><a href="#最后一点说明" class="headerlink" title="最后一点说明"></a>最后一点说明</h3><p>这是我有史以来写过的最长最长的一篇安装配置教程了，大部分的内容步骤都还是大三选修所记录的实验报告内容。这段时间需要准备数据库知识的复习，这才重新拾起来，大体按照上面的步骤依次给重现了。让我意外的是，当时竟然没有po出一份安装配置教程放网上。所以，这次赶紧加了把劲，整理了这篇。</p>
+<p>这里面有些地方可能比较混乱，一是因为图片量太大了，可能会有一些偏差，还有就是我得承认文中有用了几张别的地方的图片；二是因为这次的整个安装配置过程相当繁琐，很多地方可能会出现报错、失败等等，我还记得当年选修这门课第一个实验就是弄这个，当时Linux指令等一些知识还不够娴熟，好像前后花了三天时间才完事。</p>
+<p>最后，我想说的就是，教程写的再完美，实际去操作的时候，每个人可能都难免会出现这样那样的问题，放在这篇来讲，出现最多的就是形如 “<code>ORA-××××××</code>” 的类似问题，出了问题并不可怕，去某度和谷歌搜一下“<code>ORA-××××××</code>”，只要不是特别棘手，基本上都能解决。</p>
+<p>贴张图！！！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/9934558-c987f4c00df89814?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="提神醒脑" title>
+                </div>
+                <div class="image-caption">提神醒脑</div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201903241/" rel="external">【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201903241/" target="_blank" rel="external">https://zhouie.cn/posts/201903241/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle-11g/">Oracle 11g</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle数据库/">Oracle数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201903241/&sharesource=qzone&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201903241/&srcUrl=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201903241/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201903241/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201903241/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201903241/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201903241/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201907201/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【数通】 OSI七层（或TCPIP五层）网络模型</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201903201/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【重装系统】 整理U盘启动快捷键查询列表</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201903241/&sharesource=qzone&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201903241/&srcUrl=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201903241/&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201903241/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201903241/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201903241/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【Oracle数据库】 Oracle Linux上部署Oracle 11g服务并实现SSH远程登录管理》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201903241/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201903241/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201903241/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

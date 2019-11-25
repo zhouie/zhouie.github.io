@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【数通】 静态路由表的配置（含负载分担、路由备份） - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="负载分担,主备路由备份,静态路由">
+    <meta name="description" content="拓扑图（含IP规划） 配置任务按照拓扑图要求配置IP地址，手动添加构建路由表，并在路由器R1和R2间实现静态路由的负载分担（到相同目的地址的下一跳不同，但优先级相同；到目的地的流量将均匀分布），在路由器R2和R3间实现静态路由的主备路由备份（到相同目的地址的下一跳和优先级都不同，优先级高的为主，低的为备），最终实现PC1和PC2的互相通信。  配置工具华为网络设备仿真平台eNSP">
+<meta name="keywords" content="负载分担,主备路由备份,静态路由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【数通】 静态路由表的配置（含负载分担、路由备份）">
+<meta property="og:url" content="https://zhouie.cn/posts/201907261/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="拓扑图（含IP规划） 配置任务按照拓扑图要求配置IP地址，手动添加构建路由表，并在路由器R1和R2间实现静态路由的负载分担（到相同目的地址的下一跳不同，但优先级相同；到目的地的流量将均匀分布），在路由器R2和R3间实现静态路由的主备路由备份（到相同目的地址的下一跳和优先级都不同，优先级高的为主，低的为备），最终实现PC1和PC2的互相通信。  配置工具华为网络设备仿真平台eNSP">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTMyODQwZTJmNzdhZjQxZjIucG5n">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWY4Y2RjMGEzOGRlN2U5YjQucG5n">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【数通】 静态路由表的配置（含负载分担、路由备份）">
+<meta name="twitter:description" content="拓扑图（含IP规划） 配置任务按照拓扑图要求配置IP地址，手动添加构建路由表，并在路由器R1和R2间实现静态路由的负载分担（到相同目的地址的下一跳不同，但优先级相同；到目的地的流量将均匀分布），在路由器R2和R3间实现静态路由的主备路由备份（到相同目的地址的下一跳和优先级都不同，优先级高的为主，低的为备），最终实现PC1和PC2的互相通信。  配置工具华为网络设备仿真平台eNSP">
+<meta name="twitter:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTMyODQwZTJmNzdhZjQxZjIucG5n">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【数通】 静态路由表的配置（含负载分担、路由备份）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【数通】 静态路由表的配置（含负载分担、路由备份）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-26T11:33:42.000Z" itemprop="datePublished" class="page-time">
+  2019-07-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数通/">数通</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拓扑图（含IP规划）"><span class="post-toc-number">1.</span> <span class="post-toc-text">拓扑图（含IP规划）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置步骤（含完整指令）"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置步骤（含完整指令）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结果验证"><span class="post-toc-number">3.</span> <span class="post-toc-text">结果验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考文献"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考文献</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2019-07-26-【数通】 静态路由表的配置（含负载分担、路由备份）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【数通】 静态路由表的配置（含负载分担、路由备份）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-26 11:33:42" datetime="2019-07-26T11:33:42.000Z"  itemprop="datePublished">2019-07-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数通/">数通</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        25 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="拓扑图（含IP规划）"><a href="#拓扑图（含IP规划）" class="headerlink" title="拓扑图（含IP规划）"></a>拓扑图（含IP规划）</h3><ul>
+<li><p>配置任务<br>按照拓扑图要求配置IP地址，手动添加构建路由表，并在路由器R1和R2间实现静态路由的<strong>负载分担（到相同目的地址的下一跳不同，但优先级相同；到目的地的流量将均匀分布）</strong>，在路由器R2和R3间实现静态路由的<strong>主备路由备份（到相同目的地址的下一跳和优先级都不同，优先级高的为主，低的为备）</strong>，最终实现PC1和PC2的互相通信。</p>
+</li>
+<li><p>配置工具<br>华为网络设备仿真平台<strong>eNSP</strong></p>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LTMyODQwZTJmNzdhZjQxZjIucG5n" alt="静态路由表的配置" title>
+                </div>
+                <div class="image-caption">静态路由表的配置</div>
+            </figure>
+<h3 id="配置步骤（含完整指令）"><a href="#配置步骤（含完整指令）" class="headerlink" title="配置步骤（含完整指令）"></a>配置步骤（含完整指令）</h3><p>首先，配置主机PC1、PC2的IP信息很简单（留意网关就好），比如PC1就这样：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85OTM0NTU4LWY4Y2RjMGEzOGRlN2U5YjQucG5n" alt="配置主机PC1" title>
+                </div>
+                <div class="image-caption">配置主机PC1</div>
+            </figure></p>
+<p>然后，需要配置的是R1、R2、R3、R4的各个端口所分配的IP地址，以R1为例，需要配置的有Eth0/0/0（192.168.1.2/24）、Eth0/0/1（10.1.1.1/30）、G0/0/0（10.1.2.1/30）这三个端口。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;Huawei&gt;sys</span>  <span class="comment">#R1</span></span><br><span class="line"><span class="string">Enter</span> <span class="string">system</span> <span class="string">view,</span> <span class="string">return</span> <span class="string">user</span> <span class="string">view</span> <span class="string">with</span> <span class="string">Ctrl+Z.</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">Eth0/0/0</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]ip</span> <span class="string">address</span> <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span> <span class="number">24</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:11:56-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[0]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:12:02-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">1</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">Eth0/0/1</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.1</span><span class="number">.1</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:14:34-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[1]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/1</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:14:42-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">2</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">g0/0/0</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.2</span><span class="number">.1</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:21:12-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[2]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">GigabitEthernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">17</span><span class="string">:21:13-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">3</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]display</span> <span class="string">ip</span> <span class="string">routing-table</span>  <span class="comment"># 查询一下当前的路由表中有哪些表项</span></span><br><span class="line"><span class="attr">Route Flags:</span> <span class="string">R</span> <span class="bullet">-</span> <span class="string">relay,</span> <span class="string">D</span> <span class="bullet">-</span> <span class="string">download</span> <span class="string">to</span> <span class="string">fib</span></span><br><span class="line"><span class="string">------------------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">Routing Tables:</span> <span class="string">Public</span></span><br><span class="line">         <span class="attr">Destinations : 8        Routes :</span> <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="string">Destination/Mask</span>    <span class="string">Proto</span>   <span class="string">Pre</span>  <span class="string">Cost</span>      <span class="string">Flags</span> <span class="string">NextHop</span>         <span class="string">Interface</span></span><br><span class="line"></span><br><span class="line">       <span class="number">10.1</span><span class="number">.1</span><span class="number">.0</span><span class="string">/30</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">10.1</span><span class="number">.1</span><span class="number">.1</span>        <span class="string">Ethernet0/0/1</span></span><br><span class="line">       <span class="number">10.1</span><span class="number">.1</span><span class="number">.1</span><span class="string">/32</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">Ethernet0/0/1</span></span><br><span class="line">       <span class="number">10.1</span><span class="number">.2</span><span class="number">.0</span><span class="string">/30</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">10.1</span><span class="number">.2</span><span class="number">.1</span>        <span class="string">GigabitEthernet</span></span><br><span class="line"><span class="number">0</span><span class="string">/0/0</span></span><br><span class="line">       <span class="number">10.1</span><span class="number">.2</span><span class="number">.1</span><span class="string">/32</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">GigabitEthernet</span></span><br><span class="line"><span class="number">0</span><span class="string">/0/0</span></span><br><span class="line">      <span class="number">127.0</span><span class="number">.0</span><span class="number">.0</span><span class="string">/8</span>   <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">InLoopBack0</span></span><br><span class="line">      <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">/32</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">InLoopBack0</span></span><br><span class="line">    <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span><span class="string">/24</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>     <span class="string">Ethernet0/0/0</span></span><br><span class="line">    <span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span><span class="string">/32</span>  <span class="string">Direct</span>  <span class="number">0</span>    <span class="number">0</span>           <span class="string">D</span>   <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>       <span class="string">Ethernet0/0/0</span></span><br></pre></td></tr></table></figure>
+<p>类似地方法不断操作，可以完成R1、R1、R2、R3、R4的各个端口IP地址的配置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;Huawei&gt;sys</span>  <span class="comment">#R2</span></span><br><span class="line"><span class="string">Enter</span> <span class="string">system</span> <span class="string">view,</span> <span class="string">return</span> <span class="string">user</span> <span class="string">view</span> <span class="string">with</span> <span class="string">Ctrl+Z.</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">eth0/0/0</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.1</span><span class="number">.2</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:03-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[0]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:05-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">1</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">eth0/0/1</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.2</span><span class="number">.2</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:32-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[1]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/1</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:35-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">2</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">g0/0/0</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.3</span><span class="number">.1</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:52-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[2]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">GigabitEthernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:28:55-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">3</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">g0/0/1</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/1]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.4</span><span class="number">.1</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/1]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:29:09-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[3]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">GigabitEthernet0/0/1</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:29:15-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">4</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/1]q</span></span><br><span class="line"><span class="string">[Huawei]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;Huawei&gt;sys</span>  <span class="comment">#R3</span></span><br><span class="line"><span class="string">Enter</span> <span class="string">system</span> <span class="string">view,</span> <span class="string">return</span> <span class="string">user</span> <span class="string">view</span> <span class="string">with</span> <span class="string">Ctrl+Z.</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">eth0/0/0</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.3</span><span class="number">.2</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:31:29-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[0]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:31:35-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">1</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">eth0/0/1</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.4</span><span class="number">.2</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:31:59-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[1]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/1</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:32:05-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">2</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">g0/0/0</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.5</span><span class="number">.1</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:32:27-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[2]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">GigabitEthernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:32:35-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">3</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-GigabitEthernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;Huawei&gt;sys</span>  <span class="comment">#R4</span></span><br><span class="line"><span class="string">Enter</span> <span class="string">system</span> <span class="string">view,</span> <span class="string">return</span> <span class="string">user</span> <span class="string">view</span> <span class="string">with</span> <span class="string">Ctrl+Z.</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">Eth0/0/0</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]ip</span> <span class="string">address</span> <span class="number">10.1</span><span class="number">.5</span><span class="number">.2</span> <span class="number">30</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:33:47-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[0]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/0</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:33:55-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">1</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/0]q</span></span><br><span class="line"><span class="string">[Huawei]int</span> <span class="string">Eth0/0/1</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]ip</span> <span class="string">address</span> <span class="number">192.168</span><span class="number">.2</span><span class="number">.2</span> <span class="number">24</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:34:13-08:00</span> <span class="string">Huawei</span> <span class="string">%%01IFNET/4/LINK_STATE(l)[1]:The</span> <span class="string">line</span> <span class="string">protocol</span> <span class="string">IP</span> <span class="string">on</span> <span class="string">the</span> <span class="string">interface</span> <span class="string">Ethernet0/0/1</span> <span class="string">has</span> <span class="string">entered</span> <span class="string">the</span> <span class="string">UP</span> <span class="string">state.</span></span><br><span class="line"><span class="string">Jul</span> <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span><span class="string">:34:15-08:00</span> <span class="string">Huawei</span> <span class="string">DS/4/DATASYNC_CFGCHANGE:OID</span> <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> <span class="string">configurations</span> <span class="string">have</span> <span class="string">been</span> <span class="string">changed.</span> <span class="string">The</span> <span class="string">current</span> <span class="string">change</span> <span class="string">number</span> <span class="string">is</span> <span class="number">2</span><span class="string">,</span> <span class="string">the</span> <span class="string">change</span> <span class="string">loop</span> <span class="string">count</span> <span class="string">is</span> <span class="number">0</span><span class="string">,</span> <span class="string">and</span> <span class="string">the</span> <span class="string">maximum</span> <span class="string">number</span> <span class="string">of</span> <span class="string">records</span> <span class="string">is</span> <span class="number">4095</span><span class="string">.</span></span><br><span class="line"><span class="string">[Huawei-Ethernet0/0/1]q</span></span><br><span class="line"><span class="string">[Huawei]</span></span><br></pre></td></tr></table></figure>
+<p>接下来，需要在各个路由器上添加路由表信息，配置任务只需要我们“打通”PC1和PC2之间的数据通信，那么这里的会我偷个懒，用至少的配置步骤添加路由，过程如下：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;sys  #R1</span><br><span class="line">Enter<span class="built_in"> system </span>view, return<span class="built_in"> user </span>view with Ctrl+Z.</span><br><span class="line">[Huawei]ip route-static 192.168.2.1 24 10.1.2.2  #添加两条静态路由 负载分担</span><br><span class="line">Info: The destination<span class="built_in"> address </span><span class="keyword">and</span> mask of the configured static<span class="built_in"> route </span>mismatched</span><br><span class="line">, <span class="keyword">and</span> the static<span class="built_in"> route </span>192.168.2.0/24 was generated.</span><br><span class="line">Jul 25 2019 18:41:35-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 4, the change loop count is 0, <span class="keyword">and</span> the maximum number of records is 4095.</span><br><span class="line">[Huawei]ip route-static 192.168.2.1 24 10.1.1.2  #添加两条静态路由 负载分担</span><br><span class="line">Info: The destination<span class="built_in"> address </span><span class="keyword">and</span> mask of the configured static<span class="built_in"> route </span>mismatched</span><br><span class="line">, <span class="keyword">and</span> the static<span class="built_in"> route </span>192.168.2.0/24 was generated.</span><br><span class="line">Jul 25 2019 18:42:25-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 5, the change loop count is 0, <span class="keyword">and</span> the maximum number of records is 4095.</span><br><span class="line">[Huawei]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;sys  #R2</span><br><span class="line">Enter system view, <span class="keyword">return</span> user view with Ctrl+Z.</span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.3</span><span class="number">.2</span> preference <span class="number">100</span>  #添加主/备静态路由 备</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.2</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">47</span>:<span class="number">26</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">5</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.4</span><span class="number">.2</span> preference <span class="number">60</span>  #添加主/备静态路由 主</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.2</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">51</span>:<span class="number">26</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">6</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.1</span><span class="number">.1</span>   #添加两条静态路由 负载分担</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">53</span>:<span class="number">16</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">7</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.2</span><span class="number">.1</span>   #添加两条静态路由 负载分担</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">53</span>:<span class="number">36</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">8</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;sys  #R3</span><br><span class="line">Enter system view, <span class="keyword">return</span> user view with Ctrl+Z.</span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.5</span><span class="number">.2</span>  #添加一条静态路由</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.2</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">57</span>:<span class="number">46</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">4</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.3</span><span class="number">.1</span> preference <span class="number">100</span>  #添加主/备静态路由 备</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">58</span>:<span class="number">26</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">5</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]ip route-static <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="number">24</span> <span class="number">10.1</span><span class="number">.4</span><span class="number">.1</span> preference <span class="number">60</span>  #添加主/备静态路由 主</span><br><span class="line">Info: The destination address <span class="keyword">and</span> mask of the configured static route mismatched</span><br><span class="line">, <span class="keyword">and</span> the static route <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span>/<span class="number">24</span> was generated.</span><br><span class="line">Jul <span class="number">25</span> <span class="number">2019</span> <span class="number">18</span>:<span class="number">58</span>:<span class="number">56</span><span class="number">-08</span>:<span class="number">00</span> Huawei DS/<span class="number">4</span>/DATASYNC_CFGCHANGE:OID <span class="number">1.3</span><span class="number">.6</span><span class="number">.1</span><span class="number">.4</span><span class="number">.1</span><span class="number">.2011</span><span class="number">.5</span><span class="number">.25</span><span class="number">.191</span><span class="number">.3</span><span class="number">.1</span> configurations have been changed. The current change number <span class="keyword">is</span> <span class="number">6</span>, the change loop count <span class="keyword">is</span> <span class="number">0</span>, <span class="keyword">and</span> the maximum number of records <span class="keyword">is</span> <span class="number">4095.</span></span><br><span class="line">[Huawei]</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;sys  #R4</span><br><span class="line">Enter<span class="built_in"> system </span>view, return<span class="built_in"> user </span>view with Ctrl+Z.</span><br><span class="line">[Huawei]ip route-static 192.168.1.1 24 10.1.5.1    #添加一条静态路由</span><br><span class="line">Info: The destination<span class="built_in"> address </span><span class="keyword">and</span> mask of the configured static<span class="built_in"> route </span>mismatched</span><br><span class="line">, <span class="keyword">and</span> the static<span class="built_in"> route </span>192.168.1.0/24 was generated.</span><br><span class="line">[Huawei]</span><br><span class="line">Jul 25 2019 19:01:36-08:00 Huawei DS/4/DATASYNC_CFGCHANGE:OID 1.3.6.1.4.1.2011.5.25.191.3.1 configurations have been changed. The current change number is 3, the change loop count is 0, <span class="keyword">and</span> the maximum number of records is 4095.</span><br><span class="line">[Huawei]</span><br></pre></td></tr></table></figure>
+<p>经过上面的路由配置，我们的主机PC1和PC2应当可以就互相通信了！</p>
+<h3 id="结果验证"><a href="#结果验证" class="headerlink" title="结果验证"></a>结果验证</h3><ul>
+<li><p>ping验证（PC1 上 ping PC2）</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;<span class="built_in">ping</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Ping</span> <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: <span class="number">32</span> data bytes, Press Ctrl_C to <span class="built_in">break</span></span><br><span class="line">From <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: bytes=<span class="number">32</span> seq=<span class="number">1</span> ttl=<span class="number">124</span> <span class="built_in">time</span>=<span class="number">219</span> ms</span><br><span class="line">From <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: bytes=<span class="number">32</span> seq=<span class="number">2</span> ttl=<span class="number">124</span> <span class="built_in">time</span>=<span class="number">156</span> ms</span><br><span class="line">From <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: bytes=<span class="number">32</span> seq=<span class="number">3</span> ttl=<span class="number">124</span> <span class="built_in">time</span>=<span class="number">187</span> ms</span><br><span class="line">From <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: bytes=<span class="number">32</span> seq=<span class="number">4</span> ttl=<span class="number">124</span> <span class="built_in">time</span>=<span class="number">187</span> ms</span><br><span class="line">From <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>: bytes=<span class="number">32</span> seq=<span class="number">5</span> ttl=<span class="number">124</span> <span class="built_in">time</span>=<span class="number">187</span> ms</span><br><span class="line"></span><br><span class="line">--- <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span> <span class="built_in">ping</span> statistics ---</span><br><span class="line">  <span class="number">5</span> packet(s) transmitted</span><br><span class="line">  <span class="number">5</span> packet(s) received</span><br><span class="line">  <span class="number">0</span>.<span class="number">00</span>% packet loss</span><br><span class="line">  round-trip min/avg/max = <span class="number">156</span>/<span class="number">187</span>/<span class="number">219</span> ms</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>tracert验证<br>很显然，这同我们所期望的路由转发路径是一致的！主要看R2-R3这一段转发，我们配置了主备路由备份，转发路径必须沿着R2的GE0/0/1（10.1.4.1/30） -&gt; R3的Eth0/0/1（10.1.4.2/30） 转发！</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;tracert <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span></span><br><span class="line"></span><br><span class="line">traceroute to <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>, <span class="number">8</span> hops max</span><br><span class="line">(ICMP), press Ctrl+C to stop</span><br><span class="line"> <span class="number">1</span>  <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">2</span>   <span class="number">15</span> ms  <span class="number">31</span> ms  <span class="number">32</span> ms</span><br><span class="line"> <span class="number">2</span>  <span class="number">10</span>.<span class="number">1</span>.<span class="number">2</span>.<span class="number">2</span>   <span class="number">93</span> ms  <span class="number">79</span> ms  <span class="number">62</span> ms</span><br><span class="line"> <span class="number">3</span>  <span class="number">10</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">2</span>   <span class="number">94</span> ms  <span class="number">94</span> ms  <span class="number">125</span> ms</span><br><span class="line"> <span class="number">4</span>  <span class="number">10</span>.<span class="number">1</span>.<span class="number">5</span>.<span class="number">2</span>   <span class="number">140</span> ms  <span class="number">125</span> ms  <span class="number">125</span> ms</span><br><span class="line"> <span class="number">5</span>    *<span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">1</span>   <span class="number">156</span> ms  <span class="number">188</span> ms</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看路由表情况</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]display ip routing-table</span><br><span class="line">Route Flags: R - relay, D - download to fib</span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">Routing Tables: Public</span><br><span class="line">         Destinations : <span class="number">12</span>       Routes : <span class="number">13</span></span><br><span class="line"></span><br><span class="line">Destination/Mask    Proto   Pre  Cost      Flags NextHop         Interface</span><br><span class="line"></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">0</span>/<span class="number">30</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">10</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">2</span>        Ethernet0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">2</span>/<span class="number">32</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       Ethernet0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">2</span>.<span class="number">0</span>/<span class="number">30</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">10</span>.<span class="number">1</span>.<span class="number">2</span>.<span class="number">2</span>        Ethernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">2</span>.<span class="number">2</span>/<span class="number">32</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       Ethernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">3</span>.<span class="number">0</span>/<span class="number">30</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">10</span>.<span class="number">1</span>.<span class="number">3</span>.<span class="number">1</span>        GigabitEthernet</span><br><span class="line"><span class="number">0</span>/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">3</span>.<span class="number">1</span>/<span class="number">32</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       GigabitEthernet</span><br><span class="line"><span class="number">0</span>/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">0</span>/<span class="number">30</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">10</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">1</span>        GigabitEthernet</span><br><span class="line"><span class="number">0</span>/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">       <span class="number">10</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">1</span>/<span class="number">32</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       GigabitEthernet</span><br><span class="line"><span class="number">0</span>/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">      <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>/<span class="number">8</span>   Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       InLoopBack0</span><br><span class="line">      <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>/<span class="number">32</span>  Direct  <span class="number">0</span>    <span class="number">0</span>           D   <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>       InLoopBack0</span><br><span class="line">    <span class="number">192</span>.<span class="number">168</span>.<span class="number">1</span>.<span class="number">0</span>/<span class="number">24</span>  Static  <span class="number">60</span>   <span class="number">0</span>          <span class="built_in">RD</span>   <span class="number">10</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>        Ethernet0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">                    Static  <span class="number">60</span>   <span class="number">0</span>          <span class="built_in">RD</span>   <span class="number">10</span>.<span class="number">1</span>.<span class="number">2</span>.<span class="number">1</span>        Ethernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">    <span class="number">192</span>.<span class="number">168</span>.<span class="number">2</span>.<span class="number">0</span>/<span class="number">24</span>  Static  <span class="number">60</span>   <span class="number">0</span>          <span class="built_in">RD</span>   <span class="number">10</span>.<span class="number">1</span>.<span class="number">4</span>.<span class="number">2</span>        GigabitEthernet</span><br><span class="line"><span class="number">0</span>/<span class="number">0</span>/<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里其实有一个问题，我们在路由器R2上给目的地址<code>192.168.1.1/24</code>即主机PC1定义了两条静态路由负载分担，这在上面的路由表中有体现出来，没什么问题。但同时我们也有在给目的地址<code>192.168.2.1/24</code>即主机PC2定义了两条主/备静态路由（优先级不同），不过在路由表中没有这样的两条记录。</p>
+<p>其实，这很好理解，对于这种主/备路由备份模式，由于我们给“主用路由表项”定义的优先级始终最高，所以它应当是处于<strong>Active</strong>状态的，根本轮不到那条“备用路由表项”，因此它的状态应当是<strong>Inactive</strong>的！</p>
+<p>那么，既然<code>display ip routing-table</code>这条命令无法查看到那条Inactive状态的路由表项，我们就得另想办法，这里介绍这样几条指令——<code>display ip routing-table protocol static</code>，<code>display ip routing-table verbose</code>以及<code>display current-configuration</code>!</p>
+<ul>
+<li><code>display ip routing-table protocol static</code>这条指令表示查看协议类型为static的所有路由表项（包括Inactive状态的），类似的，查看协议类型为ospf的所有路由表项，就是用<code>display ip routing-table protocol ospf</code>。</li>
+<li><code>display ip routing-table verbose</code>这条指令可以查看路由表的详细信息（也就是包括所有路由表项）。</li>
+<li><code>display current-configuration</code>显示当前配置信息。</li>
+</ul>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ul>
+<li><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fdownload.csdn.net%2Fdownload%2Fjave_f%2F11431480" target="_blank" rel="noopener">《计算机网络》谢希仁. pdf版</a></li>
+<li><a href="https://www.jianshu.com/p/7fbaa718fe0e" target="_blank" rel="noopener">多区域OSPF动态路由协议的配置</a></li>
+<li><a href="https://www.jianshu.com/p/34fb66b9491b" target="_blank" rel="noopener">某些数通基本知识梳理</a></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201907261/" rel="external">【数通】 静态路由表的配置（含负载分担、路由备份）</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201907261/" target="_blank" rel="external">https://zhouie.cn/posts/201907261/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主备路由备份/">主备路由备份</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/负载分担/">负载分担</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态路由/">静态路由</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201907261/&sharesource=qzone&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201907261/&srcUrl=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201907261/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201907261/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201907261/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201907261/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201907261/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201907261/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【数通】 多区域OSPF动态路由协议的配置</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/201907251/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">【数通】 VRRP虚拟路由冗余协议的配置</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201907261/&sharesource=qzone&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201907261/&srcUrl=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201907261/&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201907261/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201907261/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201907261/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【数通】 静态路由表的配置（含负载分担、路由备份）》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201907261/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201907261/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201907261/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

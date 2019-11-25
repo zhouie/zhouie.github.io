@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-117762077-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=65795960"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?691056d9723d4c6dc862bc15de1dc5d4"></script>
+<!-- End Baidu Tongji -->
+
+
+ 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+    <meta charset="utf-8">
+    <!-- HTTP 1.1 -->  
+    <meta http-equiv="pragma" content="no-cache">  
+    <!-- HTTP 1.0 -->  
+    <meta http-equiv="cache-control" content="no-cache">
+    
+    
+    <meta name="google-site-verification" content="KZ_uFAkIzJs1qHL3SkF_RWRekw1-1d4uoyWOfOFAogo">
+    
+
+    
+    
+    <title>
+        【转载】 图灵访谈：为什么写博客？ - 北岛向南的小屋
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3366FF">
+    
+    
+    <meta name="keywords" content="阅读">
+    <meta name="description" content="作者简介：阮一峰，70年代生于上海。毕业于上海财经大学，经济学博士，同时也是一名程序员，个人博客访问量过千万，译有《黑客与画家》、《软件随想录》。目前供职于一所上海本地高校。本文为阮一峰笔记体博客文集《如何变得有思想？》和《一个寻找作者的读者》的代序。   2010年4月，我与百姓网CEO王建硕有过一次对话。我们谈到了为什么写博客。 ​ 阮：建硕，我知道你有两个博客，一个是英文的，另一个是中文的">
+<meta name="keywords" content="阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】 图灵访谈：为什么写博客？">
+<meta property="og:url" content="https://zhouie.cn/posts/201802141/index.html">
+<meta property="og:site_name" content="北岛向南的小屋">
+<meta property="og:description" content="作者简介：阮一峰，70年代生于上海。毕业于上海财经大学，经济学博士，同时也是一名程序员，个人博客访问量过千万，译有《黑客与画家》、《软件随想录》。目前供职于一所上海本地高校。本文为阮一峰笔记体博客文集《如何变得有思想？》和《一个寻找作者的读者》的代序。   2010年4月，我与百姓网CEO王建硕有过一次对话。我们谈到了为什么写博客。 ​ 阮：建硕，我知道你有两个博客，一个是英文的，另一个是中文的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-25T01:25:36.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转载】 图灵访谈：为什么写博客？">
+<meta name="twitter:description" content="作者简介：阮一峰，70年代生于上海。毕业于上海财经大学，经济学博士，同时也是一名程序员，个人博客访问量过千万，译有《黑客与画家》、《软件随想录》。目前供职于一所上海本地高校。本文为阮一峰笔记体博客文集《如何变得有思想？》和《一个寻找作者的读者》的代序。   2010年4月，我与百姓网CEO王建硕有过一次对话。我们谈到了为什么写博客。 ​ 阮：建硕，我知道你有两个博客，一个是英文的，另一个是中文的">
+    
+        <link rel="alternate" type="application/atom+xml" title="北岛向南的小屋" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/styles/style.css?v=1.7.1">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(https://i.loli.net/2019/02/22/5c6f885a1f9fa.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">zhouie</h5>
+          <a href="mailto:nanzhouie@qq.com" title="nanzhouie@qq.com" class="mail">nanzhouie@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/books"  >
+                <i class="icon icon-lg icon-book"></i>
+                读书
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/movies"  >
+                <i class="icon icon-lg icon-film"></i>
+                电影
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/musics"  >
+                <i class="icon icon-lg icon-music"></i>
+                音乐
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/works"  >
+                <i class="icon icon-lg icon-laptop"></i>
+                作品
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-secret"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">【转载】 图灵访谈：为什么写博客？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">【转载】 图灵访谈：为什么写博客？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-14T20:30:11.000Z" itemprop="datePublished" class="page-time">
+  2018-02-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/图灵访谈/">图灵访谈</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+<div class="container body-wrap">
+    
+<article id="post-2018-02-14-【转载】 图灵访谈：为什么写博客？"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">【转载】 图灵访谈：为什么写博客？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-14 20:30:11" datetime="2018-02-14T20:30:11.000Z"  itemprop="datePublished">2018-02-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/">转载</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/转载/图灵访谈/">图灵访谈</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+    <span>
+        <i class="icon icon-clock-o"></i>
+        19 min.
+    </span>
+    
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>作者简介：<strong>阮一峰</strong>，70年代生于上海。毕业于上海财经大学，经济学博士，同时也是一名程序员，个人博客访问量过千万，译有《黑客与画家》、《软件随想录》。目前供职于一所上海本地高校。本文为阮一峰笔记体博客文集《<a href="http://www.ituring.com.cn/book/1391" target="_blank" rel="noopener">如何变得有思想？</a>》和《<a href="http://www.ituring.com.cn/book/1432" target="_blank" rel="noopener">一个寻找作者的读者</a>》的代序。</p>
+</blockquote>
+<hr>
+<p>2010年4月，我与百姓网CEO王建硕有过一次对话。我们谈到了为什么写博客。 ​</p>
+<p><strong>阮</strong>：建硕，我知道你有两个博客，一个是英文的，另一个是中文的。但是，你更新英文博客的频率，远远高于中文博客，这是为什么？</p>
+<p><strong>王</strong>：这其实是一种机缘巧合。</p>
+<p>2000 年，我在微软做工程师，习惯阅读一种叫做KB（知识库）的文章。我就模仿这样的格式和写法，写了一些关于浦东机场的英文介绍，结果排在Google搜索Pudong Airport的第一条结果，可见当时互联网上关于中国的英文内容非常少。</p>
+<p>2002年，我开始用Movable Type架博客的时候，我觉得自己应该写一些能提供价值的东西。为来华的外国旅行者撰写英文介绍，就是一个很独特、而且我做得到的事情。</p>
+<p>此后的8年，我在博客上记录的事情，不过只是一些日常生活。如果用中文写，本地的读者可能没兴趣，不觉得这样的文章有任何价值。比如，上海的公交车票2块钱一张，上海的火警电话是119、不是911等等，这种鸡毛蒜皮的话题，本地读者司空见惯，但对于英文读者，却是其他地方很难得到的信息。我的中文博客也在写，不过内容主要是IT评论，更新频率就慢一些。</p>
+<p><strong>阮</strong>：我觉得，你说出了写作博客的正确做法，那就是为读者创造价值。如果有人想要建立一个受欢迎的、有影响力的博客，那么这一点是他必须牢记的。只有你的文章对他人有价值，你才会有读者。我其实一直想建立一个英文博客，但就是因为找不到我能够写的、并且西方读者也会感兴趣的内容，所以迟迟没有动手。</p>
+<p>当然，除了创造价值，博客还有另一个作用—-沟通媒介。通过博客，别人能够知道我们在干什么，怎么想，每一篇博客都是一个与他人沟通的机会。所以，你较少写中文blog，我觉得挺遗憾的，因为这样一来，你与其他同业的沟通、你在国内业界的影响力就少了一个重要渠道，毕竟你的事业还是在国内。不过，我现在对这一点也不是很确定了，博客的沟通功能也许并不重要。上个月，Joel宣布不在网志上谈论软件了，因为他发现除了自己以外，没有人能够通过写博客获得成功。</p>
+<p>所以，我就想问你第二个问题，写作Blog与个人职业之间，到底是一个怎样的关系？因为我发现，你很少在网志上谈到你的公司，尤其很少谈到公司的产品？</p>
+<p><strong>王</strong>：其实在微软的时候，我是有意避免谈论公司的。</p>
+<p>两个原因。第一，我不太能区分哪些是公开信息，哪些不是，分起来很累。第二，也是更重要的原因，博客是我个人的表达，不是传播公司信息的渠道。微软是一家很了不起的公司，它的名声和光环是属于它自己的，不是属于我的，我只是一个微软的普通员工。</p>
+<p>我觉得一定要分清楚，哪些是自己建立起来的，哪些是公司带给你的。你之所以拥有后者，很可能仅仅是因为运气好，是公司的成功，而不是你的成功。所以，我不太会写到公司。</p>
+<p>后来在百姓网，我同样延续了这种方式，把公司和自己分开。自己就是有血有肉的一个人，在需要代表公司的时候，我会扮演那个角色，而在博客上，是自己。</p>
+<p><strong>阮</strong>：看来你把博客和公司分得很开。确实如你所说，个人博客不是宣传公司的窗口。事实上，很少人有动力，无偿为公司做宣传，这也是为什么商业公司的博客大多不成功的原因。但是，如果公司是你自己的，你会不会在博客上写自己的公司？我的问题其实是，创业者应不应该利用博客，作为宣传自己的工具？</p>
+<p><strong>王</strong>： 即使是自己的公司，我希望在博客上面分享的更多的是运行公司过程中的心得，尤其是失误和教训，来帮助其他的创业者。这部分是我作为一个活生生的人，与他人分享我的想法，不是在做宣传。</p>
+<p>我更多地把读者当做自己的朋友，而不是我要发展的客户。我从来不想在家人和朋友面前炫耀公司，更多的是分享自己的心得。每个人写博客的原因千差万别，有人写博客是为了宣传自己的公司或者自己，这个动机无可厚非，只是这不是我写博客的目的。</p>
+<p><strong>阮</strong>：如果我创业的话，肯定会在博客上宣传，因为我需要更多的人帮我。所以，我还是挺看重网站流量的。你写作博客的立足点是分享心得，对流量大概就不是很重视了。你的博客流量目前是多少？</p>
+<p><strong>王</strong>：刚才看了下，远没有以前多，大概每个月25万（只是以前的1/4）。可见现在关于上海的英文信息越来越多，我的博客已经不是那么重要了，这是好事情。同时，越来越多的人订阅Feed来看博客，不再访问网站了。</p>
+<p><strong>阮</strong>：我的流量比你少，现在一个月的独立IP访问者，大概10多万。而且已经一年了，一直稳定在这个数量，没有明显增长。所以，我怀疑博客也不是一个很好的商业工具，到了一定程度，流量就上不去了。</p>
+<p>当然，非商业性的个人博客，不用太在乎流量。但我也不觉得流量减少是好事情，因为读者反馈也会相应减少。如果长期没有足够的读者留言，对我写文章的积极性是有打击的。老实说，我确实希望每篇文章的读者留言能够多一点。</p>
+<p>说到读者留言，那就引出了下面一个问题，写作博客的意义到底何在？有些人很不理解，认为写作博客无偿给他人阅读，是一种很傻的行为，既赚不到钱，又浪费时间。我当然不同意这种看法，但是我想先问问你，坚持不断写网志，你觉得最大的收获是什么？</p>
+<p><strong>王</strong>：促进思考。</p>
+<p>每天写博客，帮助自己养成了更多观察、更多探究的习惯。看到地铁开通，或者其他有趣的事情，我总是习惯性地去关心，这就是多年博客写作让我养成的习惯。每天晚上，我都要问自己：今天有什么特别？我应该写点什么？……你知道一件事情，与你要表达一件事情，这是完全不同的。通过写作，你能帮助自己更清楚地理解问题。</p>
+<p>另一方面，全世界读者的留言，是我从博客收获的最大财富。每天与不同的观点对话，会让自己更全面地看待这个世界。</p>
+<p><strong>阮</strong>：说得好！写作帮助我们整理自己的思想。博客其实是一种理性思维和表达能力的训练，很多时候我们写作博客，就是在做这种训练。我写作的时候，有时会尝试不同的表达方法，看看怎么写最容易看懂、最容易被他人接受。每当有读者留言批评我的观点，我就知道了我的思维和表达在什么地方还有欠缺。Joel说过，写作能力是区分领袖和普通程序员的标志。我们不一定要当领袖，但是能够说服他人认同你的观点，这绝对是不容忽视的能力，而博客就是获取这种能力的一种卓越训练方法。</p>
+<p>此外，写作博客还有一个最大理由。我记得，你在网志中写过一件事，有人问：”你为什么写博客？”你反问道：”你为什么打电话？”我简直要为这个回答拍案叫绝。我们需要与人交流，渴望了解全部的世界，博客帮助我们遇到那些其他方式无法遇到的人。</p>
+<p>不过，写作博客的代价，是要花费很多时间和精力。你每天要在博客上用掉多少时间？</p>
+<p><strong>王</strong>：平均每天半个小时。</p>
+<p><strong>阮</strong>：这就是我佩服你的地方。你用英语写，经常有1000词以上的长文，而且写得很清晰易读，却只需要半个小时。这意味着，你基本上没有把时间花在苦苦构思和反复修改上面，属于一次成文。我用汉语写，也做不到这一点。</p>
+<p>我的每一篇文章，通常需要2小时~6小时的写作时间。有时候写完以后，觉得特别累，都不想干别的事情了。不过，我还是觉得这是值得的。回过头看，我幸亏把时间花在写作博客上面，否则那些时间就白白过去了，没有留下任何印记。</p>
+<p>我现在怀疑的就是，我能不能把这种写作热情保持下去。你能保持吗？相比十年前，你对于博客是否还有同样的热情，或者说同等程度的通过文字、向他人表达自己的愿望？</p>
+<p><strong>王</strong>：我依然热情不减。我的博客最重要的读者，就是我自己。如果碰巧帮助了别人，那是额外的收获。即使没有人读，我觉得我也会继续，因为它帮助自己思考。</p>
+<p><strong>阮</strong>：这一点，我与你不同。博客就好像一个人在自说自话，但是随着年龄的增大，我想要说出自己见解的意愿不是那么强烈了，也不是那么在乎，能不能获得外界的承认了。如果有一天，我觉得自己想说的东西，都已经说完了，可能就不写博客了。冯友兰《中国哲学简史》的结束语，我印象很深。他说：”人必须先说很多话，然后保持静默。”不过，我的这一天，还要等很久才会到来。</p>
+<p>你想过这个问题吗？觉得自己还会坚持博客多久？forever？</p>
+<p><strong>王</strong>：我觉得只要这还是一种可以帮助自己思考、帮助自己记录的好办法，我就会继续。但是如果不是了，我并没有永远写作博客下去的预设的目标。</p>
+<p>下面这句话，与诸位共勉…</p>
+<blockquote>
+<p>I want to write, not to run blogging software.</p>
+</blockquote>
+<hr>
+<p>转载自<a href="http://www.ituring.com.cn/space/4570" target="_blank" rel="noopener">盼盼姐</a>，本文仅用于学习和交流目的，非商业转载请注明作译者、出处，并保留本文的原始链接。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        <p><b>版权声明：</b>
+        <a href="https://zhouie.cn/posts/201802141/" rel="external">【转载】 图灵访谈：为什么写博客？</a>
+        ，由&nbsp;<a href="/about" target="_blank" rel="external">zhouie</a>&nbsp;
+        首次发表于&nbsp;<a href="/" target="_blank" rel="external">北岛向南的小屋</a>&nbsp;
+        ，本文地址为：<a href="https://zhouie.cn/posts/201802141/" target="_blank" rel="external">https://zhouie.cn/posts/201802141/</a>
+        ，转载请注明<b>作者</b>和<b>出处</b>。</p>
+    </div>
+    <footer>
+        <a href="https://zhouie.cn">
+            <img src="https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" alt="zhouie">
+            zhouie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201802141/&sharesource=qzone&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201802141/&srcUrl=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201802141/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201802141/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201802141/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201802141/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201802141/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/201802151/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">【博客】 Jekyll搭建个人博客-拓展版</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'zhouie';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        赠人玫瑰，手有余香
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="https://i.loli.net/2019/02/22/5c6f8f5534b72.jpg" data-alipay="https://i.loli.net/2019/02/22/5c6f9576d940e.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>	
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span>
+                    <a href="/atom.xml" target="_blank" class="rss" title="RSS" rel="external nofollow">
+                        <i class="icon icon-rss"></i>
+                    </a>
+                </span>
+            
+            <span>
+                <a href="http://weibo.com/u/5736541528" rel="external nofollow" title="Weibo" target="_blank">
+                    <i class="icon icon-weibo"></i>
+                </a>
+            </span>
+            <span>
+                <a href="https://github.com/zhouie/zhouie.github.io" rel="external nofollow" title="GitHub" target="_blank" >
+                    <i class="icon icon-github"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://www.linkedin.com/in/zhouie/" rel="external nofollow" title="LinkedIn" target="_blank">
+                    <i class="icon icon-linkedin"></i>
+                </a>
+            </span>
+            <span>
+                <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" title="License" target="_blank">
+                    <i class="icon icon-cc"></i>
+                </a>
+            </span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>
+                zhouie · Copyright &copy; 2017 -  2019 · Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external nofollow">indigo</a><br>
+
+                
+                
+                
+                <img src="http://zhouie.oss-cn-beijing.aliyuncs.com/zhouie/file/img/1.png" /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030202001139">湘公网安备43030202001139号</a>
+                
+
+                
+                <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1273664769'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1273664769%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&source=北岛向南的小屋" data-title="QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qzone share-sns" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://zhouie.cn/posts/201802141/&sharesource=qzone&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pics=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&summary=北岛向南的小屋" data-title="QQ空间">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a49d.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="renren share-sns" target="_blank" href="http://widget.renren.com/dialog/share?resourceUrl=https://zhouie.cn/posts/201802141/&srcUrl=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&description=北岛向南的小屋" data-title="人人网">
+          <img src="https://i.loli.net/2019/03/31/5ca0883589571.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="youdao share-sns" target="_blank" href="http://note.youdao.com/signIn/index.html?&callback=http://note.youdao.com/memory/?url=https://zhouie.cn/posts/201802141/&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&sumary=北岛向南的小屋&pic=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&product=北岛向南" data-title="有道云笔记">
+          <img src="https://i.loli.net/2019/03/31/5ca088358a321.png"/>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" target="_blank" href="https://www.douban.com/share/service?name=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&href=https://zhouie.cn/posts/201802141/&utm_content=note&utm_medium=reader_share&utm_source=douban&image=https://i.loli.net/2019/02/22/5c6f8812ce1c0.jpg&updated=&bm=1&url==https://zhouie.cn/posts/201802141/&utm_content=note&utm_medium=reader_share&utm_source=douban&title=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&sel=&v=1" data-title="豆瓣">
+          <img src="https://i.loli.net/2019/03/31/5ca0ace235d5d.png"/>
+        </a>
+      </li>
+
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://zhouie.cn/posts/201802141/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《【转载】 图灵访谈：为什么写博客？》 — 北岛向南的小屋&url=https://zhouie.cn/posts/201802141/&via=https://zhouie.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://zhouie.cn/posts/201802141/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://zhouie.cn/posts/201802141/" alt="微信分享二维码">
+</div>
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.6/waves.min.js"></script>
+
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/assets/scripts/hxjzg.min.js?v=1.7.1"></script>
+<script src="/assets/scripts/love.min.js?v=1.7.1"></script>
+
+<script src="/assets/scripts/main.min.js?v=1.7.1"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/assets/scripts/search.min.js?v=1.7.1" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</body>
+</html>

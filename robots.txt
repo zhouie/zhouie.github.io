@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /books/
+Allow: /movies/
+Allow: /works/
+Allow: /about/
+Allow: /musics/
+
+Disallow: /wiki/
+Disallow: /assets/
+
+Sitemap: https://www.zhouie.cn/sitemap.xml
+Sitemap: https://www.zhouie.cn/baidusitemap.xml
+
